@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   base: '/mmn_microloan/',
+  publicDir: 'public',
   root: '.',
   build: {
     outDir: 'dist',
@@ -30,5 +31,6 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'gsap', '@rive-app/canvas']
-  }
+  },
+  assetsInclude: ['**/*.riv']
 }); 
