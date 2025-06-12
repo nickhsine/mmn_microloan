@@ -1,0 +1,28 @@
+{
+    "block": [
+        {
+            "type": "notification",
+            "content": "content text",
+            "start": 1,
+            "duration": 5,
+            "startPos": [1,5],
+            "endPos": [2,5]
+        },
+        {
+            "type": "notification",
+            "content": "content text",
+            "start": 1,
+            "duration": 5,
+            "startPos": [1,5],
+            "endPos": [2,5]
+        },
+        {
+            "type": "subtitle",
+            "content": "content text",
+            "start": 1,
+            "duration": 5,
+            "startPos": [1,5],
+            "endPos": [2,5]
+        }
+    ]
+}
