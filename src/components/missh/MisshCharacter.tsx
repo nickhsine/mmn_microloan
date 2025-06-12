@@ -3,13 +3,12 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { useRive, useStateMachineInput } from '@rive-app/react-webgl2';
-import scenemisshRiv from '../../assets/scenemissh.riv?url';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const MisshCharacter: React.FC = () => {
   const { rive, RiveComponent } = useRive({
-    src: scenemisshRiv,
+    src: '/src/assets/scenemissh.riv',
     artboard: 'MissH',
     stateMachines: 'State Machine 1',
     autoplay: true,
