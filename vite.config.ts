@@ -2,8 +2,8 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: "/mmn_microloan/",
   plugins: [react()],
+  base: '/mmn_microloan/',
   root: '.',
   build: {
     outDir: 'dist',
