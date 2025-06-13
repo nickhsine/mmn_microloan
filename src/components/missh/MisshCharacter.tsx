@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRive, useStateMachineInput } from '@rive-app/react-webgl2';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP);
 
 export const MisshCharacter: React.FC = () => {
   const { rive, RiveComponent } = useRive({
@@ -17,19 +17,22 @@ export const MisshCharacter: React.FC = () => {
 
   const triggerWalk = useStateMachineInput(rive, 'State Machine 1', 'Walk');
 
+  const misshRef = useRef<HTMLDivElement>(null);
+
   useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
     if (!rive) return;
 
     ScrollTrigger.create({
-      trigger: '.missh-character',
-      markers: true,
+      trigger: misshRef.current,
+      markers: false,
       start: '10% 50%',
       end: 'bottom 50%',
       onEnter: () => {
         if (triggerWalk) { triggerWalk.fire(); }
       }
     });
-  }, { dependencies: [triggerWalk] });
+  }, { scope: misshRef, dependencies: [triggerWalk] });
 
   useEffect(() => {
     // 檢查是否支援 WebGL2
@@ -41,8 +44,8 @@ export const MisshCharacter: React.FC = () => {
   });
   
   return (
-    <div className="missh-character">
-        <RiveComponent style={{ width: '100%', height: '100vh', marginTop: '100vh' }}/>
+    <div className="missh-character" ref={misshRef}>
+        <RiveComponent style={{ width: '100%', height: '100vh' }}/>
     </div>
   );
 }; 
