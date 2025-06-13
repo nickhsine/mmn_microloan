@@ -12,18 +12,22 @@ export const Caption: React.FC = () => {
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
     
-    // 使用 ScrollTrigger.batch() 處理所有 caption 元素的淡入淡出
+
+    const showCaption = (elements: Element[], duration: number = 1) => {
+      gsap.to(elements, { opacity: 1, duration, visibility: 'visible', filter: 'blur(0px)' });
+    };
+    const hideCaption = (elements: Element[], duration: number = 1) => {
+      gsap.to(elements, { 
+        opacity: 0, duration, filter: 'blur(15px)',
+        onComplete: function() { gsap.set(elements, { visibility: 'hidden' }) } 
+      });
+    };
+    
     ScrollTrigger.batch('.caption', {
-      onEnter: (elements) => { gsap.to(elements, { opacity: 1, duration: 1, visibility: 'visible' })},
-      onEnterBack: (elements) => { gsap.to(elements, { opacity: 1, duration: 1, visibility: 'visible' })},
-      onLeave: (elements) => { gsap.to(elements, { 
-        opacity: 0, duration: 1, 
-        onComplete: function() { gsap.set(elements, { visibility: 'hidden' }) } 
-      })},
-      onLeaveBack: (elements) => { gsap.to(elements, { 
-        opacity: 0, duration: 1, 
-        onComplete: function() { gsap.set(elements, { visibility: 'hidden' }) } 
-      })},
+      onEnter: (elements) => showCaption(elements, 1),
+      onEnterBack: (elements) => showCaption(elements, 0.5),
+      onLeave: (elements) => hideCaption(elements, 1),
+      onLeaveBack: (elements) => hideCaption(elements, 0.5),
       start: '50% 50%',
       end: '+=300 50%'
     });
