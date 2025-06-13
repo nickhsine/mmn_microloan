@@ -11,7 +11,7 @@ export const Caption: React.FC = () => {
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+    const vh = (coef: number) => window.innerHeight * (coef/100);
 
     const showCaption = (elements: Element[], duration: number = 1) => {
       gsap.to(elements, { opacity: 1, duration, visibility: 'visible', filter: 'blur(0px)' });
@@ -29,7 +29,7 @@ export const Caption: React.FC = () => {
       onLeave: (elements) => hideCaption(elements, 1),
       onLeaveBack: (elements) => hideCaption(elements, 0.5),
       start: '50% 50%',
-      end: '+=300 50%'
+      end: `${vh(30)} 50%`
     });
 
     if (captionContainerRef.current) {
@@ -38,7 +38,7 @@ export const Caption: React.FC = () => {
         ScrollTrigger.create({
           trigger: element,
           start: '50% 50%',
-          end: '+=300 50%',
+          end: `${vh(30)} 50%`,
           pin: true,
           scrub: 1,
           markers: true,
@@ -51,15 +51,18 @@ export const Caption: React.FC = () => {
 
   return (
     <div className='caption-container' ref={captionContainerRef}>
-      {captionData.missh.map((caption, index) => (
-        <p 
-          key={index}
-          className={`caption ${caption.type}`}
-          style={caption.top ? { top: caption.top } : undefined}
-        >
-          {caption.content}
-        </p>
-      ))}
+      {/* 顯示所有字幕資料 */}
+      {Object.entries(captionData).map(([_, captions]) => 
+        captions.map((caption, index) => (
+          <p 
+            key={`${caption.type}-${index}`}
+            className={`caption ${caption.type}`}
+            style={caption.top ? { top: `${(caption.top)}vh` } : undefined}
+          >
+            {caption.content}
+          </p>
+        ))
+      )}
     </div>
   );
 }; 

@@ -25,12 +25,14 @@ export const MisshCharacter: React.FC = () => {
 
     ScrollTrigger.create({
       trigger: misshRef.current,
-      markers: false,
-      start: '10% 50%',
+      start: 'top 50%',
       end: 'bottom 50%',
+      pin: true,
       onEnter: () => {
         if (triggerWalk) { triggerWalk.fire(); }
-      }
+      },
+      markers: true,
+      id: 'missh-character'
     });
   }, { scope: misshRef, dependencies: [triggerWalk] });
 
@@ -44,8 +46,8 @@ export const MisshCharacter: React.FC = () => {
   });
   
   return (
-    <div className="missh-character" ref={misshRef}>
-        <RiveComponent style={{ width: '100%', height: '100vh' }}/>
+    <div className="missh-character" ref={misshRef} style={{ height: '100%' }}>
+        <RiveComponent className="missh-character-rive"/>
     </div>
   );
 }; 

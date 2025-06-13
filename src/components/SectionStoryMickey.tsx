@@ -1,7 +1,6 @@
 import React from 'react';
 import { Brief } from './mickey/Brief';
 import { Audio } from './mickey/Audio';
-import { Caption } from './mickey/Caption';
 import { MickeyCharacter } from './mickey/MickeyCharacter';
 import { MickeyBackground } from './mickey/MickeyBackground';
 import { MickeyScene1 } from './mickey/MickeyScene1';
@@ -13,7 +12,6 @@ export const SectionStoryMickey: React.FC = () => {
     <section className="section-story-mickey">
       <Brief />
       <Audio />
-      <Caption />
       <MickeyCharacter />
       <MickeyBackground />
       <MickeyScene1 />

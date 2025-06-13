@@ -4,13 +4,24 @@
 html { scroll-behavior: smooth; }
 body {
     font-family: 'Roboto Slab', 'Noto Sans TC', sans-serif;
-    color: #333;
     font-size: 12px;
     background-color: #000;
 }
 
+/* 劇情長度 */
+section.section-landing {
+    height: 100vh;
+    background-color: #333;
+}
 section.section-story-missh {
     height: 500vh;
+}
+
+/* missh */
+.missh-character-rive {
+    width: auto;
+    height: 50vh;
+    transform: translate(0%, 0%);
 }
 
 /* Shared Styles */
@@ -21,7 +32,7 @@ section.section-story-missh {
     left: 0;
     width: 100%;
     height: auto;
-    z-index: 1;
+    z-index: 10;
 }
 p.caption {
     position: absolute;
@@ -32,7 +43,7 @@ p.caption {
     opacity: 0;
     visibility: hidden;
     backdrop-filter: blur(10px);
-    
+
     &.normal {
         width: 80%;
         color: hsla(0, 0%, 100%, 0.8);
@@ -46,7 +57,7 @@ p.caption {
 .missh-character {
     width: 100%;
     height: 100vh;
-    z-index: 0;
+    z-index: 100;
 }
 
 /* Responsive Design */
@@ -54,7 +65,7 @@ p.caption {
 }
 
 /* GSAP Functionality Settings */
-.gsap-marker-start, .gsap-marker-end { font-size: 12px !important; opacity: 0.5; }
+.gsap-marker-start, .gsap-marker-end { font-size: 12px !important; opacity: 0.3; }
 .gsap-marker-scroller-start, .gsap-marker-scroller-end { font-size: 0px !important; }
 
 #smooth-wrapper {

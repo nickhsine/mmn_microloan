@@ -1,5 +1,4 @@
 import React from 'react';
-import { Caption } from './missh/Caption';
 import { MisshCharacter } from './missh/MisshCharacter';
 import { MisshBackground } from './missh/MisshBackground';
 import { MisshScene1 } from './missh/MisshScene1';
@@ -9,7 +8,6 @@ import { MisshScene3 } from './missh/MisshScene3';
 export const SectionStoryMissh: React.FC = () => {
   return (
     <section className="section-story-missh">
-      <Caption />
       <MisshCharacter />
       <MisshBackground />
       <MisshScene1 />
