@@ -1,10 +1,11 @@
 import React, { ReactNode } from 'react';
 
+
 interface PhoneInProps {
   children?: ReactNode;
 }
 
-export const PhoneIn: React.FC<PhoneInProps> = ({ children }) => {
+export const PhoneIn = ({ children }: PhoneInProps) => {
   return (
     <div className="phone-in">
       {/* 電話來電組件 */}

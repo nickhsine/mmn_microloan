@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Bookkeeping: React.FC = () => {
+export const Bookkeeping = () => {
   return (
     <div className="bookkeeping">
       {/* 記帳組件 */}

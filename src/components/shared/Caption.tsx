@@ -6,7 +6,7 @@ import captionData from '../../assets/Captions.json';
 
 gsap.registerPlugin(useGSAP);
 
-export const Caption: React.FC = () => {
+export const Caption = () => {
   const captionContainerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {

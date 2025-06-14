@@ -6,9 +6,9 @@ import { useRive, useStateMachineInput } from '@rive-app/react-webgl2';
 
 gsap.registerPlugin(useGSAP);
 
-export const MisshCharacter: React.FC = () => {
+export const MisshCharacter = () => {
   const { rive, RiveComponent } = useRive({
-    src: '/src/assets/scenemissh.riv',
+    src: '/src/assets/rive/scenemissh.riv',
     artboard: 'MissH',
     stateMachines: 'State Machine 1',
     autoplay: true,

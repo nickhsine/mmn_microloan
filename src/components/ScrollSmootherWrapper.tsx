@@ -10,7 +10,7 @@ interface ScrollSmootherWrapperProps {
   children: React.ReactNode;
 }
 
-export const ScrollSmootherWrapper: React.FC<ScrollSmootherWrapperProps> = ({ children }) => {
+export const ScrollSmootherWrapper = ({ children }: ScrollSmootherWrapperProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

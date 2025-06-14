@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Notification: React.FC = () => {
+export const Notification = () => {
   return (
     <div className="notification">
       {/* 通知組件 */}

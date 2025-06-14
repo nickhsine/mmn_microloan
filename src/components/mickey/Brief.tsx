@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Brief: React.FC = () => {
+export const Brief = () => {
   return (
     <div className="mickey-brief">
       {/* Mickey故事簡介 */}

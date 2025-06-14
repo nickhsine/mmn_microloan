@@ -7,7 +7,7 @@ import { MickeyScene1 } from './mickey/MickeyScene1';
 import { MickeyScene2 } from './mickey/MickeyScene2';
 import { MickeyScene3 } from './mickey/MickeyScene3';
 
-export const SectionStoryMickey: React.FC = () => {
+export const SectionStoryMickey = () => {
   return (
     <section className="section-story-mickey">
       <Brief />

@@ -4,7 +4,7 @@ import { SectionStoryMissh } from './SectionStoryMissh';
 import { SectionStoryMickey } from './SectionStoryMickey';
 import { Caption } from './shared/Caption';
 
-export const ScrollAnimationApp: React.FC = () => {
+export const ScrollAnimationApp = () => {
   return (
     <div className="scroll-animation-app">
       <Caption />

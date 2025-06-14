@@ -3,7 +3,7 @@ import { Bookkeeping } from '../shared/Bookkeeping';
 import { Notification } from '../shared/Notification';
 import { Audio } from '../shared/Audio';
 
-export const MickeyScene3: React.FC = () => {
+export const MickeyScene3 = () => {
   return (
     <div className="mickey-scene3">
       <Bookkeeping />

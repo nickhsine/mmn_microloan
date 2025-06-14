@@ -6,7 +6,7 @@ import { PhoneIn } from '../shared/PhoneIn';
 import { Dialogs } from '../shared/Dialogs';
 import { Audio } from '../shared/Audio';
 
-export const MisshScene3: React.FC = () => {
+export const MisshScene3 = () => {
   return (
     <div className="missh-scene3">
       <Notification />

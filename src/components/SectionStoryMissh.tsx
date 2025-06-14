@@ -5,7 +5,7 @@ import { MisshScene1 } from './missh/MisshScene1';
 import { MisshScene2 } from './missh/MisshScene2';
 import { MisshScene3 } from './missh/MisshScene3';
 
-export const SectionStoryMissh: React.FC = () => {
+export const SectionStoryMissh = () => {
   return (
     <section className="section-story-missh">
       <MisshCharacter />

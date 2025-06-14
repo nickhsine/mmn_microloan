@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Title: React.FC = () => {
+export const Title = () => {
   return (
     <div className="landing-title">
       {/* 標題內容 */}
