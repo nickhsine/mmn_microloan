@@ -1,4 +1,3 @@
-import React from 'react';
 import { Advertisement } from './Advertisement';
 import { Consultant } from './Consultant';
 

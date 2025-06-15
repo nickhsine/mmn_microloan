@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,7 +8,7 @@ gsap.registerPlugin(useGSAP);
 
 export const MisshCharacter = () => {
   const { rive, RiveComponent } = useRive({
-    src: '/src/assets/rive/scenemissh.riv',
+    src: '/src/assets/rive/scene-missh.riv',
     artboard: 'MissH',
     stateMachines: 'State Machine 1',
     autoplay: true,

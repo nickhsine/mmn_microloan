@@ -1,6 +1,5 @@
-import React from 'react';
 import { Brief } from './mickey/Brief';
-import { Audio } from './mickey/Audio';
+import { AudioPlayer } from './shared/AudioPlayer';
 import { MickeyCharacter } from './mickey/MickeyCharacter';
 import { MickeyBackground } from './mickey/MickeyBackground';
 import { MickeyScene1 } from './mickey/MickeyScene1';
@@ -11,7 +10,7 @@ export const SectionStoryMickey = () => {
   return (
     <section className="section-story-mickey">
       <Brief />
-      <Audio />
+      <AudioPlayer />
       <MickeyCharacter />
       <MickeyBackground />
       <MickeyScene1 />

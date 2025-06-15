@@ -1,4 +1,3 @@
-import React from 'react';
 import { PhoneInWithDialogs } from './PhoneInWithDialogs';
 import { Message } from '../shared/Message';
 

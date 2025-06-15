@@ -1,12 +1,11 @@
-import React from 'react';
 import { Contracts } from './Contracts';
-import { Audio } from '../shared/Audio';
+import { AudioPlayer } from '../shared/AudioPlayer';
 
 export const MisshScene2 = () => {
   return (
     <div className="missh-scene2">
       <Contracts />
-      <Audio />
+      <AudioPlayer />
     </div>
   );
 }; 

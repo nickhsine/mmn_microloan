@@ -1,10 +1,9 @@
-import React from 'react';
 import { Notification } from '../shared/Notification';
 import { FloatingNumbersBG } from './FloatingNumbersBG';
 import { Bookkeeping } from '../shared/Bookkeeping';
 import { PhoneIn } from '../shared/PhoneIn';
 import { Dialogs } from '../shared/Dialogs';
-import { Audio } from '../shared/Audio';
+import { AudioPlayer } from '../shared/AudioPlayer';
 
 export const MisshScene3 = () => {
   return (
@@ -33,7 +32,7 @@ export const MisshScene3 = () => {
       <div className="step-4">
         <PhoneIn>
           <Dialogs />
-          <Audio />
+          <AudioPlayer />
         </PhoneIn>
       </div>
     </div>

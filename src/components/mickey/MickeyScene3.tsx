@@ -1,14 +1,13 @@
-import React from 'react';
 import { Bookkeeping } from '../shared/Bookkeeping';
 import { Notification } from '../shared/Notification';
-import { Audio } from '../shared/Audio';
+import { AudioPlayer } from '../shared/AudioPlayer';
 
 export const MickeyScene3 = () => {
   return (
     <div className="mickey-scene3">
       <Bookkeeping />
       <Notification />
-      <Audio />
+      <AudioPlayer />
     </div>
   );
 }; 
