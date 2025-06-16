@@ -10,7 +10,7 @@ export let globalAudioEnabled = false;
 
 const useAudioRive = (artboard: string) => {
   const { RiveComponent, rive } = useRive({
-    src: '/assets/rive/shared-audiohandler.riv',
+    src: './assets/rive/shared-audiohandler.riv',
     stateMachines: 'State Machine 1',
     artboard,
     autoplay: true,
