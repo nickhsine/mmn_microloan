@@ -8,7 +8,7 @@ gsap.registerPlugin(useGSAP);
 
 export const MisshCharacter = () => {
   const { rive, RiveComponent } = useRive({
-    src: '/rive/scene-missh.riv',
+    src: '/assets/rive/scene-missh.riv',
     artboard: 'MissH',
     stateMachines: 'State Machine 1',
     autoplay: true,

@@ -10,7 +10,7 @@ export const Caption = () => {
   const [captionData, setCaptionData] = useState<any>(null);
 
   useEffect(() => {
-    fetch('/data/Captions.json')
+    fetch('/assets/data/Captions.json')
       .then(response => response.json())
       .then(data => setCaptionData(data));
   }, []);
