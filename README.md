@@ -63,7 +63,3 @@ mmn_microloan/
    ```bash
    npm run dev
 
-4. **iframe測試使用部署**:
-   ```bash
-   npm run deploy
-   ```

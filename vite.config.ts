@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react()],
   root: '.',
+  base: command === 'build' ? '/mmn-microloan/' : '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -30,4 +31,4 @@ export default defineConfig({
   optimizeDeps: {
     include: ['react', 'react-dom', 'gsap', '@rive-app/canvas']
   }
-}); 
+})); 
