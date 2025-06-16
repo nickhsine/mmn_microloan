@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ command }) => ({
   plugins: [react()],
   root: '.',
-  base: command === 'build' ? '/mmn-microloan/' : '/',
+  base: command === 'build' ? '/mmn_microloan/' : '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

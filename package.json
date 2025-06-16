@@ -1,6 +1,6 @@
 {
   "name": "mmn-microloan",
-  "homepage": "https://E3KONG.github.io/mmn-microloan/",
+  "homepage": "https://E3KONG.github.io/mmn_microloan/",
   "version": "1.0.0",
   "description": "Multimedia news design with GSAP and Rive scrollable animations for twreporter.org",
   "main": "src/index.tsx",
