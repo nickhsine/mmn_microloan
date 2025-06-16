@@ -13,7 +13,7 @@ interface AudioPlayerProps {
 }
 
 export const AudioPlayer = ({ 
-  audioSrc = '/src/assets/audio/SFX_CellPhoneVibrate_v1.aac',
+  audioSrc = '/audio/SFX_CellPhoneVibrate_v1.aac',
   volume = 0.5,
   loop = true 
 }: AudioPlayerProps) => {

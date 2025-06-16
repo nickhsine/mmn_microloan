@@ -1,15 +1,23 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import captionData from '../../assets/Captions.json';
 
 gsap.registerPlugin(useGSAP);
 
 export const Caption = () => {
   const captionContainerRef = useRef<HTMLDivElement>(null);
+  const [captionData, setCaptionData] = useState<any>(null);
+
+  useEffect(() => {
+    fetch('/data/Captions.json')
+      .then(response => response.json())
+      .then(data => setCaptionData(data));
+  }, []);
 
   useGSAP(() => {
+    if (!captionData || !captionContainerRef.current) return;
+    
     gsap.registerPlugin(ScrollTrigger);
     const vh = (coef: number) => window.innerHeight * (coef/100);
 
@@ -32,28 +40,28 @@ export const Caption = () => {
       end: `${vh(30)} 50%`
     });
 
-    if (captionContainerRef.current) {
-      const captions = captionContainerRef.current.querySelectorAll('.caption');
-      captions.forEach((element, index) => {
-        ScrollTrigger.create({
-          trigger: element,
-          start: '50% 50%',
-          end: `${vh(30)} 50%`,
-          pin: true,
-          scrub: 1,
-          markers: true,
-          id: `caption-${index+1}`
-        });
+    const captions = captionContainerRef.current.querySelectorAll('.caption');
+    captions.forEach((element, index) => {
+      ScrollTrigger.create({
+        trigger: element,
+        start: '50% 50%',
+        end: `${vh(30)} 50%`,
+        pin: true,
+        scrub: 1,
+        markers: true,
+        id: `caption-${index+1}`
       });
-    }
+    });
 
-  }, { scope: captionContainerRef, dependencies: [captionContainerRef] });
+  }, { scope: captionContainerRef, dependencies: [captionData] });
+
+  if (!captionData) return null;
 
   return (
     <div className='caption-container' ref={captionContainerRef}>
       {/* 顯示所有字幕資料 */}
-      {Object.entries(captionData).map(([_, captions]) => 
-        captions.map((caption, index) => (
+      {Object.entries(captionData).map(([_, captions]: [string, any]) => 
+        captions.map((caption: any, index: number) => (
           <p 
             key={`${caption.type}-${index}`}
             className={`caption ${caption.type}`}
