@@ -6,6 +6,10 @@ body {
     font-family: 'Roboto Slab', 'Noto Sans TC', sans-serif;
     font-size: 12px;
     background-color: #000;
+    -ms-overflow-style: none; 
+}
+body::-webkit-scrollbar {
+    display: none;
 }
 
 /* 劇情長度 */
@@ -15,7 +19,6 @@ section.section-story-missh { height: 500vh; }
 /* Shared Styles */
 .caption-container {
     overflow: visible;
-    /* scrollbar-width: none; */
     top: 0;
     left: 0;
     width: 100%;
