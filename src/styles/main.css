@@ -13,7 +13,7 @@ body::-webkit-scrollbar {
 }
 
 /* 劇情長度 */
-section.section-landing { height: 100vh; background-color: #333; }
+section.section-landing { height: 100vh; background-color: #090913; }
 section.section-story-missh { height: 500vh; }
 
 /* Shared Styles */
@@ -95,6 +95,31 @@ p.caption {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+}
+
+/* Phone In Component */
+.phone-in {
+    width: 390px;
+    height: 100px;
+    left: 50%;
+    transform: translate(-50%,0%);
+}
+.phone-in-rive {
+    height: 100%;
+    width: auto;
+}
+.phone-in-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    border-radius: 100px;
+    border: solid 0px hsla(0, 0%, 100%, 0.05);
+    box-shadow: inset 1px 1px 4px 0 hsla(0, 0%, 100%, 0.2);
+    z-index: -1;
+    opacity: 1;
 }
 
 /* GSAP Functionality Settings */
