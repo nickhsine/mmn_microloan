@@ -42,7 +42,7 @@ export const AudioPlayer = ({
     audio.loop = loop;
 
     const audioIn = () => {
-      audio.play().catch(() => console.log('無法播放聲音'));
+      audio.play().catch((error) => console.log('無法播放聲音', error));
       const targetVolume = globalAudioEnabled ? volume : 0;
       gsap.to(audio, { volume: targetVolume, duration: 0.5 });
       setIsPlaying(true);

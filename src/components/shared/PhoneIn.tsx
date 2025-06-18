@@ -29,17 +29,21 @@ export const PhoneIn = ({ children }: PhoneInProps) => {
 
     ScrollTrigger.create({
       trigger: phoneInRef.current,
-      start: 'top 50%',
-      end: '+=500 50%',
+      start: 'top 10%',
+      end: '+=1000 10%',
       pin: true,
       scrub: 1,
       markers: true,
+      onEnter: () => {gsap.fromTo(phoneInRef.current, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5, });},
+      onLeave: () => {gsap.fromTo(phoneInRef.current, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.9, duration: 0.5, });},
+      onEnterBack: () => {gsap.fromTo(phoneInRef.current, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5, });},
+      onLeaveBack: () => {gsap.fromTo(phoneInRef.current, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.9, duration: 0.5, });},
       onUpdate: (self) => {
         progress.value = self.progress * 100 * 3;
         if (progress.value >= 65) {
-          gsap.to('.phone-in-background', { opacity: 0, duration: 0.5, });
+          gsap.to('.phone-in-background', { opacity: 1, width: `80px` });
         } else {
-          gsap.to('.phone-in-background', { opacity: 1, duration: 0.5, });
+          gsap.to('.phone-in-background', { opacity: 1, width: `320px`, duration: 0.3, });
         }
       },
       id: 'phone-in-trigger'
@@ -48,9 +52,9 @@ export const PhoneIn = ({ children }: PhoneInProps) => {
 
   return (
     <div className="phone-in" ref={phoneInRef}>
+      {children}
       <div className="phone-in-rive"><RiveComponent /></div>
       <div className="phone-in-background" />
-      {children}
     </div>
   );
 }; 

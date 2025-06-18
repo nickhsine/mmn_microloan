@@ -10,21 +10,27 @@ interface ScrollSmootherWrapperProps {
   children: React.ReactNode;
 }
 
+// 檢測是否為行動裝置的函數
+const isMobile = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
+    || window.innerWidth <= 768 
+    || ('ontouchstart' in window);
+};
+
 export const ScrollSmootherWrapper = ({ children }: ScrollSmootherWrapperProps) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (wrapperRef.current) {
-      // 創建 ScrollSmoother 實例
+    if (wrapperRef.current && !isMobile()) {
       ScrollSmoother.create({
         wrapper: '#smooth-wrapper',
         content: '#smooth-content',
         smooth: 2,
         effects: true,
+        normalizeScroll: false,
       });
     }
 
-    // 清理函數
     return () => {
       ScrollSmoother.get()?.kill();
     };
