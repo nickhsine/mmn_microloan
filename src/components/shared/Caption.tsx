@@ -48,7 +48,7 @@ export const Caption = () => {
         end: `${vh(30)} 50%`,
         pin: true,
         scrub: 1,
-        markers: true,
+        markers: false,
         id: `caption-${index+1}`
       });
     });

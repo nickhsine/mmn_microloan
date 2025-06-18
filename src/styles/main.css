@@ -4,8 +4,8 @@
 html { scroll-behavior: smooth; }
 body {
     font-family: 'Roboto Slab', 'Noto Sans TC', sans-serif;
-    font-size: 12px;
-    background-color: #000;
+    font-size: 16px;
+    background-color: #090913;
     -ms-overflow-style: none; 
 }
 body::-webkit-scrollbar {
@@ -21,7 +21,6 @@ section.section-story-missh { height: 500vh; }
     overflow: visible;
     top: 0;
     left: 0;
-    width: 100%;
     height: auto;
     z-index: 10;
 }
@@ -36,12 +35,12 @@ p.caption {
     backdrop-filter: blur(10px);
 
     &.normal {
-        width: 80%;
-        color: hsla(0, 0%, 100%, 0.8);
-        background-color: hsla(0, 0%, 100%, 0.2);
+        width: 320px;
+        color: hsla(0, 0%, 100%, 0.7);
+        background-color: hsla(0, 0%, 100%, 0.02);
         border-radius: 10px;
-        padding: 10px;
-        border: solid hsla(0, 0%, 100%, 0.4);
+        padding: 10px 14px 14px 14px;
+        border: solid hsla(0, 0%, 100%, 0.1);
         border-width: 1px 0 0 1px;
     }
 }
@@ -70,10 +69,28 @@ p.caption {
 }
 
 /* MissH */
+.missh-character {
+    position: absolute;
+    top: 100vh; /* landing Section height*/
+    width: 100%;
+    height: 100%;
+}
 .missh-character-rive {
-    width: auto;
-    height: 50vh;
-    transform: translate(0%, 0%);
+    height: 30vh;
+    transform: translate(0%,-100%);
+}
+.missh-background {
+    position: absolute;
+    top: 100vh;
+    left: 50%;
+    height: 100vh;
+    width:calc(100vh * 21 / 9);
+    z-index: -1;
+    transform: translate(-50%,0%);
+}
+.missh-background-rive {
+    height: 100vh;
+    object-fit: cover;
 }
 
 /* Responsive Design */
@@ -82,7 +99,7 @@ p.caption {
 
 /* GSAP Functionality Settings */
 .gsap-marker-start, .gsap-marker-end { font-size: 12px !important; opacity: 0.3; }
-.gsap-marker-scroller-start, .gsap-marker-scroller-end { font-size: 0px !important; }
+.gsap-marker-scroller-start, .gsap-marker-scroller-end { font-size: 12px !important; }
 
 #smooth-wrapper {
   top: 0;

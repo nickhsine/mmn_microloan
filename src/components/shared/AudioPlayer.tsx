@@ -64,7 +64,7 @@ export const AudioPlayer = ({
       onLeave: audioOut,
       onEnterBack: audioIn,
       onLeaveBack: audioOut,
-      markers: true,
+      markers: false,
       id: 'audio-scroll-trigger'
     });
 
