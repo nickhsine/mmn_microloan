@@ -32,7 +32,7 @@ export const MisshScene3 = () => {
       <div className="step-4">
         <PhoneIn>
           <Dialogs />
-          <AudioPlayer />
+          {/* <AudioPlayer /> */}
         </PhoneIn>
       </div>
     </div>

@@ -7,7 +7,7 @@ export const MickeyScene3 = () => {
     <div className="mickey-scene3">
       <Bookkeeping />
       <Notification />
-      <AudioPlayer />
+      {/* <AudioPlayer /> */}
     </div>
   );
 }; 

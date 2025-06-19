@@ -11,6 +11,9 @@ body {
 body::-webkit-scrollbar {
     display: none;
 }
+:root {
+    --phoneInWidth: 320px;
+}
 
 /* 劇情長度 */
 section.section-landing { height: 100vh; background-color: #090913; }
@@ -42,6 +45,10 @@ p.caption {
         padding: 10px 14px 14px 14px;
         border: solid hsla(0, 0%, 100%, 0.1);
         border-width: 1px 0 0 1px;
+    }
+    &.none {
+        width: 0px;
+        color: hsla(0, 0%, 100%, 0);
     }
 }
 .audio-handler-full {
@@ -99,8 +106,8 @@ p.caption {
 
 /* Phone In Component */
 .phone-in {
-    width: 320px;
-    height: 100%;
+    width: var(--phoneInWidth);
+    height: 450px;
     left: 50%;
     transform: translate(-50%,0%);
     opacity: 0;
@@ -122,9 +129,9 @@ p.caption {
     }
 }
 .phone-in-conversation {
-    opacity: 0.7;
+    opacity: 0;
     height: 300px;
-    width: 450px;
+    width: calc(var(--phoneInWidth) + 130px);
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -147,14 +154,14 @@ p.caption {
     position: absolute;
     bottom: 0;
     height: 80px;
-    width: auto;
+    width: var(--phoneInWidth);
 }
 .phone-in-background {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0%);
-    width: 320px;
+    width: var(--phoneInWidth);
     height: 78px;
     backdrop-filter: blur(5px);
     border-radius: 100px;
@@ -166,7 +173,7 @@ p.caption {
 
 /* GSAP Functionality Settings */
 .gsap-marker-start, .gsap-marker-end { font-size: 12px !important; opacity: 0.3; }
-.gsap-marker-scroller-start, .gsap-marker-scroller-end { font-size: 12px !important; }
+.gsap-marker-scroller-start, .gsap-marker-scroller-end { font-size: 8px !important; font-weight: 200 !important; opacity: 0.5; }
 
 #smooth-wrapper {
   top: 0;

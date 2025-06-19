@@ -10,7 +10,7 @@ export const SectionStoryMickey = () => {
   return (
     <section className="section-story-mickey">
       <Brief />
-      <AudioPlayer />
+      {/* <AudioPlayer /> */}
       <MickeyCharacter />
       <MickeyBackground />
       <MickeyScene1 />

@@ -6,7 +6,6 @@ import { Notification } from '../shared/Notification';
 export const MisshScene1 = () => {
   return (
     <div className="missh-scene1">
-      <AudioPlayer />
       <PhoneIn>
         <div className="phone-in-contact">
           <h3>台新銀行</h3>

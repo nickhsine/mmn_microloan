@@ -5,7 +5,7 @@ export const MisshScene2 = () => {
   return (
     <div className="missh-scene2">
       <Contracts />
-      <AudioPlayer />
+      {/* <AudioPlayer /> */}
     </div>
   );
 }; 

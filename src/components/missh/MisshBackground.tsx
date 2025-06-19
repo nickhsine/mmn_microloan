@@ -96,7 +96,7 @@ export const MisshBackground = () => {
           });
         }
       },
-      markers: true,
+      markers: false,
       id: 'missh-background'
     });
   }, { dependencies: [rive, S1toS2, S2toS3] });

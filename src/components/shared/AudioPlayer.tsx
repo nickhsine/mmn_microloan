@@ -10,12 +10,16 @@ interface AudioPlayerProps {
   audioSrc?: string;
   volume?: number;
   loop?: boolean;
+  start?: string;
+  end?: string;
 }
 
 export const AudioPlayer = ({ 
   audioSrc = './assets/audio/SFX_PhoneVibrate_v1.aac',
   volume = 0.5,
-  loop = true 
+  loop = true,
+  start = 'top 50%',
+  end = '+=300 50%'
 }: AudioPlayerProps) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -58,20 +62,20 @@ export const AudioPlayer = ({
     
     ScrollTrigger.create({
       trigger: containerRef.current,
-      start: 'top 50%',
-      end: '+=300 50%',
+      start: start,
+      end: end,
       onEnter: audioIn,
       onLeave: audioOut,
       onEnterBack: audioIn,
       onLeaveBack: audioOut,
-      markers: false,
+      markers: true,
       id: 'audio-scroll-trigger'
     });
 
   }, { scope: containerRef, dependencies: [volume, loop] });
 
   return (
-    <div className="audio-player" ref={containerRef}>
+    <div className="audio-player" ref={containerRef} style={{ height: '0px', width: '0px', }}>
       <audio
         ref={audioRef}
         src={audioSrc}

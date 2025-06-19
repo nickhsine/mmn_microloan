@@ -8,7 +8,6 @@ import { AudioPlayer } from './shared/AudioPlayer';
 export const SectionStoryMissh = () => {
   return (
     <section className="section-story-missh">
-      <AudioPlayer audioSrc="./assets/audio/SFX_PhoneVibrate_v2.aac" volume={0.2}/>
       {/* <MisshCharacter /> */}
       <MisshBackground />
       <MisshScene1 />
