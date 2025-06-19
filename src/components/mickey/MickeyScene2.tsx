@@ -1,11 +1,11 @@
 import { PhoneInWithDialogs } from './PhoneInWithDialogs';
-import { Message } from '../shared/Message';
+import { Messages } from '../shared/Messages';
 
 export const MickeyScene2 = () => {
   return (
     <div className="mickey-scene2">
       <PhoneInWithDialogs />
-      <Message />
+      <Messages />
     </div>
   );
 }; 

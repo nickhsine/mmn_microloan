@@ -3,10 +3,19 @@ import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
+
+const DEFAULT_OFFSET = '45%';
+const VH = (coef: number) => window.innerHeight * (coef / 100);
+
+const ANIMATION_CONFIG = {
+  show: { opacity: 1, visibility: 'visible', filter: 'blur(0px)' },
+  hide: { opacity: 0, filter: 'blur(15px)' },
+  duration: { enter: 1, enterBack: 0.5, leave: 1, leaveBack: 0.5 }
+};
 
 export const Caption = () => {
-  const captionContainerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [captionData, setCaptionData] = useState<any>(null);
 
   useEffect(() => {
@@ -16,56 +25,59 @@ export const Caption = () => {
   }, []);
 
   useGSAP(() => {
-    if (!captionData || !captionContainerRef.current) return;
-    
-    gsap.registerPlugin(ScrollTrigger);
-    const vh = (coef: number) => window.innerHeight * (coef/100);
+    if (!captionData || !containerRef.current) return;
 
-    const showCaption = (elements: Element[], duration: number = 1) => {
-      gsap.to(elements, { opacity: 1, duration, visibility: 'visible', filter: 'blur(0px)' });
-    };
-    const hideCaption = (elements: Element[], duration: number = 1) => {
-      gsap.to(elements, { 
-        opacity: 0, duration, filter: 'blur(15px)',
-        onComplete: function() { gsap.set(elements, { visibility: 'hidden' }) } 
+    const ctx = gsap.context(() => {
+      const createAnimation = (element: Element, isShow: boolean, duration: number) => {
+        if (isShow) { gsap.to(element, { ...ANIMATION_CONFIG.show, duration }); } else {
+          gsap.to(element, { ...ANIMATION_CONFIG.hide, duration,
+            onComplete: () => { gsap.set(element, { visibility: 'hidden' }); }
+          });
+        }
+      };
+
+      Object.entries(captionData).forEach(([category, captionArray]: [string, any]) => {
+        captionArray.forEach((captionItem: any, index: number) => {
+          const selector = `[data-caption-category="${category}"][data-caption-index="${index}"]`;
+          const captionElement = containerRef.current?.querySelector(selector);
+          
+          if (captionElement) {
+            const offset = captionItem.offset || DEFAULT_OFFSET;
+            
+            ScrollTrigger.create({
+              trigger: captionElement,
+              start: `50% ${offset}`,
+              end: `${VH(25)} ${offset}`,
+              pin: true,
+              scrub: 1,
+              markers: true,
+              invalidateOnRefresh: true,
+              id: `caption-${category}-${index}`,
+              onEnter: () => createAnimation(captionElement, true, ANIMATION_CONFIG.duration.enter),
+              onEnterBack: () => createAnimation(captionElement, true, ANIMATION_CONFIG.duration.enterBack),
+              onLeave: () => createAnimation(captionElement, false, ANIMATION_CONFIG.duration.leave),
+              onLeaveBack: () => createAnimation(captionElement, false, ANIMATION_CONFIG.duration.leaveBack),
+            });
+          }
+        });
       });
-    };
-    
-    ScrollTrigger.batch('.caption', {
-      onEnter: (elements) => showCaption(elements, 1),
-      onEnterBack: (elements) => showCaption(elements, 0.5),
-      onLeave: (elements) => hideCaption(elements, 1),
-      onLeaveBack: (elements) => hideCaption(elements, 0.5),
-      start: '50% 50%',
-      end: `${vh(30)} 50%`
-    });
+    }, containerRef);
 
-    const captions = captionContainerRef.current.querySelectorAll('.caption');
-    captions.forEach((element, index) => {
-      ScrollTrigger.create({
-        trigger: element,
-        start: '50% 50%',
-        end: `${vh(30)} 50%`,
-        pin: true,
-        scrub: 1,
-        markers: false,
-        id: `caption-${index+1}`
-      });
-    });
-
-  }, { scope: captionContainerRef, dependencies: [captionData] });
+    return () => ctx.revert();
+  }, { dependencies: [captionData] });
 
   if (!captionData) return null;
 
   return (
-    <div className='caption-container' ref={captionContainerRef}>
-      {/* 顯示所有字幕資料 */}
-      {Object.entries(captionData).map(([_, captions]: [string, any]) => 
+    <div className='caption-container' ref={containerRef}>
+      {Object.entries(captionData).map(([category, captions]: [string, any]) => 
         captions.map((caption: any, index: number) => (
           <p 
-            key={`${caption.type}-${index}`}
+            key={`${category}-${index}`}
             className={`caption ${caption.type}`}
-            style={caption.top ? { top: `${(caption.top)}vh` } : undefined}
+            data-caption-category={category}
+            data-caption-index={index}
+            style={caption.top ? { top: `${caption.top}vh` } : undefined}
           >
             {caption.content}
           </p>

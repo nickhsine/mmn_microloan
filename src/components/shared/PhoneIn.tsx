@@ -1,4 +1,4 @@
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useRef, CSSProperties } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -9,9 +9,10 @@ gsap.registerPlugin(useGSAP);
 
 interface PhoneInProps {
   children?: ReactNode;
+  top?: string;
 }
 
-export const PhoneIn = ({ children }: PhoneInProps) => {
+export const PhoneIn = ({ children, top }: PhoneInProps) => {
   const { rive, RiveComponent } = useRive({
     src: './assets/rive/shared-phonein.riv',
     artboard: 'Slide',
@@ -21,6 +22,14 @@ export const PhoneIn = ({ children }: PhoneInProps) => {
 
   const progress = useStateMachineInput(rive, 'State Machine 1', 'Progress');
   const phoneInRef = useRef<HTMLDivElement>(null);
+
+  // 計算容器樣式
+  const containerStyle: CSSProperties = top ? {
+    position: 'absolute',
+    top,
+    left: '50%',
+    transform: 'translate(-50%, 0%)'
+  } : {};
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -44,17 +53,15 @@ export const PhoneIn = ({ children }: PhoneInProps) => {
         progress.value = self.progress * 100 * 3;
         if (progress.value >= 65) {
           gsap.to('.phone-in-background', { opacity: 1, width: `80px` });
-          gsap.to('.phone-in-conversation', { opacity: 1, duration: 0.3, });
         } else {
-          gsap.to('.phone-in-background', { opacity: 1, width: `320px`, duration: 0.3, });
-          gsap.to('.phone-in-conversation', { opacity: 0 });
+          gsap.to('.phone-in-background', { opacity: 1, width: `320px`, duration: 1, });
         }
       },
     });
   }, { scope: phoneInRef, dependencies: [progress] });
 
   return (
-    <div className="phone-in" ref={phoneInRef}>
+    <div className="phone-in" ref={phoneInRef} style={containerStyle}>
       <AudioPlayer start="top 10%" end="+=200 10%" volume={0.2} audioSrc="./assets/audio/SFX_PhoneVibrate_v2.aac"/>
       {children}
       <div className="phone-in-rive"><RiveComponent /></div>

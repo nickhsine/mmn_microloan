@@ -10,27 +10,23 @@ export const MisshScene3 = () => {
     <div className="missh-scene3">
       <Notification />
       <FloatingNumbersBG />
-      
-      {/* Step 1 */}
+
       <div className="step-1">
         <Bookkeeping />
       </div>
-      
-      {/* Step 2 */}
+
       <div className="step-2">
-        <PhoneIn>
+        <PhoneIn top="800vh">
           <Dialogs />
         </PhoneIn>
       </div>
-      
-      {/* Step 3 */}
+
       <div className="step-3">
         <Bookkeeping />
       </div>
-      
-      {/* Step 4 */}
+
       <div className="step-4">
-        <PhoneIn>
+        <PhoneIn top="1000vh">
           <Dialogs />
           {/* <AudioPlayer /> */}
         </PhoneIn>
