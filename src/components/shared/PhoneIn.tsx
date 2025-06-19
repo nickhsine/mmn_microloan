@@ -51,7 +51,7 @@ export const PhoneIn = ({ children, top }: PhoneInProps) => {
       onLeaveBack: () => {gsap.fromTo(phoneInRef.current, { opacity: 1, scale: 1 }, { opacity: 0, scale: 0.9, duration: 0.5, });},
       onUpdate: (self) => {
         progress.value = self.progress * 100 * 3;
-        if (progress.value >= 65) {
+        if (progress.value >= 80) {
           gsap.to('.phone-in-background', { opacity: 1, width: `80px` });
         } else {
           gsap.to('.phone-in-background', { opacity: 1, width: `320px`, duration: 1, });

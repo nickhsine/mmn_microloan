@@ -17,15 +17,33 @@ const ANIMATION_CONFIG = {
 export const Caption = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [captionData, setCaptionData] = useState<any>(null);
+  const [processedCaptions, setProcessedCaptions] = useState<any>(null);
 
   useEffect(() => {
     fetch('./assets/data/Captions.json')
       .then(response => response.json())
-      .then(data => setCaptionData(data));
+      .then(data => {
+        setCaptionData(data);
+        
+        const processed = Object.entries(data).reduce((acc: any, [category, captions]: [string, any]) => {
+          let cumulativeTop = 0;
+          
+          acc[category] = captions.map((caption: any, index: number) => {
+            if (index === 0) {
+              cumulativeTop = caption.top || 0;} else {
+              cumulativeTop += caption.top || 0;
+            }
+            return { ...caption, calculatedTop: cumulativeTop };
+          });
+          return acc;
+        }, {});
+        
+        setProcessedCaptions(processed);
+      });
   }, []);
 
   useGSAP(() => {
-    if (!captionData || !containerRef.current) return;
+    if (!processedCaptions || !containerRef.current) return;
 
     const ctx = gsap.context(() => {
       const createAnimation = (element: Element, isShow: boolean, duration: number) => {
@@ -36,7 +54,7 @@ export const Caption = () => {
         }
       };
 
-      Object.entries(captionData).forEach(([category, captionArray]: [string, any]) => {
+      Object.entries(processedCaptions).forEach(([category, captionArray]: [string, any]) => {
         captionArray.forEach((captionItem: any, index: number) => {
           const selector = `[data-caption-category="${category}"][data-caption-index="${index}"]`;
           const captionElement = containerRef.current?.querySelector(selector);
@@ -64,20 +82,20 @@ export const Caption = () => {
     }, containerRef);
 
     return () => ctx.revert();
-  }, { dependencies: [captionData] });
+  }, { dependencies: [processedCaptions] });
 
-  if (!captionData) return null;
+  if (!processedCaptions) return null;
 
   return (
     <div className='caption-container' ref={containerRef}>
-      {Object.entries(captionData).map(([category, captions]: [string, any]) => 
+      {Object.entries(processedCaptions).map(([category, captions]: [string, any]) => 
         captions.map((caption: any, index: number) => (
           <p 
             key={`${category}-${index}`}
             className={`caption ${caption.type}`}
             data-caption-category={category}
             data-caption-index={index}
-            style={caption.top ? { top: `${caption.top}vh` } : undefined}
+            style={{ top: `${caption.calculatedTop}vh` }}
           >
             {caption.content}
           </p>

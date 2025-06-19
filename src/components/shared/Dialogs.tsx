@@ -11,7 +11,7 @@ interface DialogsProps {
   end?: string;
 }
 
-export const Dialogs = ({ children, start = 'top 10%', end = '+=600 10%' }: DialogsProps) => {
+export const Dialogs = ({ children, start = 'top 10%', end = '+=500 10%' }: DialogsProps) => {
   const dialogsRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {

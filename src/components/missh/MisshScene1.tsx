@@ -32,7 +32,7 @@ export const MisshScene1 = () => {
           </div>
         </Dialogs>
       </PhoneIn>
-      <Messages top="300vh">
+      <Messages top="110vh">
         <div className="messageIn">
           <img className="avatar" src={('./assets/img/avatar_A.svg')} />
           <p>小姐你好</p>
