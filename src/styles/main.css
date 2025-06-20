@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Roboto+Slab:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Roboto+Slab:wght@100..900&family=Noto+Serif+TC:wght@100..900&display=swap');
 @import url('./noise.css');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,8 +15,88 @@ body::-webkit-scrollbar { display: none; }
 }
 
 /* 劇情長度 */
-section.section-landing { height: 100vh; background-color: #090913; }
-section.section-story-missh { height: 500vh; }
+section.section-landing { 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+section.section-story-missh { height: 1000vh; }
+
+/* Landing */
+.landing-title {
+    font-family: 'Roboto Slab', 'Noto Serif TC', serif;
+    position: absolute;
+    top: 40vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+    h1 {
+        font-size: 54px;
+        font-weight: 800;
+        color: #F1F1F1;
+        text-align: center;
+    }
+    .subtitle {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        hr {
+            width: 20%;
+        }
+        h2 {
+            display: inline;
+            font-size: 24px;
+            font-weight: 600;
+            color: #F1F1F1;
+            text-align: center;
+        }
+    }
+}
+.landing-brief {
+    position: absolute;
+    top: 58vh;
+    width: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    font-weight: 300;
+    color: #F1F1F188;
+    text-align: center;
+    border-top: solid 1px #F1F1F188;
+    border-bottom: solid 1px #F1F1F188;
+    padding: 20px 0 24px 0;
+}
+/* Audio Handler */
+.audio-handler-full {
+    position: absolute;
+    right: 50vw;
+    transform: translate(50%, 0%);
+    top: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #F1F1F1;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 12px 0;
+    width: 100%;
+    z-index: 10;
+}
+.audio-handler-simple {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    transform: translate(0%, 0%);
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+}
 
 /* MissH */
 .missh-character {
@@ -74,31 +154,6 @@ p.caption {
         width: 0px;
         color: hsla(0, 0%, 100%, 0);
     }
-}
-
-/* Audio Handler */
-.audio-handler-full {
-    position: absolute;
-    right: 50vw;
-    transform: translate(50%, 0%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    color: #F1F1F1;
-    font-size: 14px;
-    font-weight: 400;
-    margin: 12px 0;
-    width: 100%;
-}
-.audio-handler-simple {
-    position: fixed;
-    top: 30px;
-    right: 50vw;
-    transform: translate(50%, 0%);
-    z-index: 10;
-    opacity: 0;
-    pointer-events: none;
 }
 
 /* Phone In Component */

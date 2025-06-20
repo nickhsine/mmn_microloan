@@ -7,7 +7,6 @@ import { Caption } from './shared/Caption';
 export const ScrollAnimationApp = () => {
   return (
     <div className="scroll-animation-app">
-      <AudioHandler />
       <Caption />
       <SectionLanding />
       <SectionStoryMissh />

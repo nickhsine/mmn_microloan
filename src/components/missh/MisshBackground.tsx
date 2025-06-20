@@ -18,16 +18,39 @@ export const MisshBackground = () => {
   const S1toS2 = useStateMachineInput(rive, 'State Machine 2', 'Progress_S1toS2');
   const S2toS3 = useStateMachineInput(rive, 'State Machine 2', 'Progress_S2toS3');
   const misshRef = useRef<HTMLDivElement>(null);
-  const isScrolling = useRef(false);
-  const stopWalkingTimeout = useRef<gsap.core.Tween | null>(null);
 
   useGSAP(() => {
     if (!rive || !S1toS2 || !S2toS3) return;
 
     gsap.set(S1toS2, { value: 0 });
     gsap.set(S2toS3, { value: 0 });
-    
     rive.setNumberStateAtPath('WalkSpeed', 0, 'MissH');
+
+    let isScrolling = false;
+    let walkSpeedTween: gsap.core.Tween | null = null;
+    let stopTimeout: gsap.core.Tween | null = null;
+    let currentWalkSpeed = 0;
+
+    const setWalkSpeed = (targetValue: number, duration: number = 1) => {
+      if (walkSpeedTween) {
+        walkSpeedTween.kill();
+        walkSpeedTween = null;
+      }
+      
+      walkSpeedTween = gsap.to({ value: currentWalkSpeed }, {
+        value: targetValue,
+        duration: duration,
+        ease: "power2.out",
+        onUpdate: function() {
+          currentWalkSpeed = this.targets()[0].value;
+          rive.setNumberStateAtPath('WalkSpeed', currentWalkSpeed, 'MissH');
+        },
+        onComplete: () => {
+          walkSpeedTween = null;
+          currentWalkSpeed = targetValue;
+        }
+      });
+    };
 
     ScrollTrigger.create({
       trigger: '.section-story-missh',
@@ -37,7 +60,7 @@ export const MisshBackground = () => {
       scrub: 1,
       onUpdate: (self) => {
         const progress = self.progress;
-        
+
         if (progress <= 0.5) {
           S1toS2.value = (progress / 0.5) * 100;
           S2toS3.value = 0;
@@ -46,59 +69,38 @@ export const MisshBackground = () => {
           S2toS3.value = ((progress - 0.5) / 0.5) * 100;
         }
 
-        if (!isScrolling.current) {
-          isScrolling.current = true;
-          
-          if (stopWalkingTimeout.current) {
-            stopWalkingTimeout.current.kill();
-            stopWalkingTimeout.current = null;
-          }
-          
-          gsap.to({ value: 0 }, { 
-            value: 100, 
-            duration: 1,
-            onUpdate: function() {
-              rive.setNumberStateAtPath('WalkSpeed', this.targets()[0].value, 'MissH');
-            }
-          });
+        if (!isScrolling) {isScrolling = true;
+          if (stopTimeout) { stopTimeout.kill(); stopTimeout = null; }
+          setWalkSpeed(100, 3);
         }
         
-        if (stopWalkingTimeout.current) {
-          stopWalkingTimeout.current.kill();
-        }
-        
-        stopWalkingTimeout.current = gsap.delayedCall(0.1, () => {
-          isScrolling.current = false;
-          stopWalkingTimeout.current = gsap.to({ value: 100 }, { 
-            value: 0, 
-            duration: 5,
-            onUpdate: function() {
-              rive.setNumberStateAtPath('WalkSpeed', this.targets()[0].value, 'MissH');
-            }
-          });
+
+        if (stopTimeout) stopTimeout.kill();
+        stopTimeout = gsap.delayedCall(0.1, () => {
+          isScrolling = false;
+          setWalkSpeed(0, 4);
         });
       },
       onToggle: (self) => {
         if (!self.isActive) {
-          isScrolling.current = false;
-          
-          if (stopWalkingTimeout.current) {
-            stopWalkingTimeout.current.kill();
-            stopWalkingTimeout.current = null;
+          isScrolling = false;
+          if (stopTimeout) {
+            stopTimeout.kill();
+            stopTimeout = null;
           }
-          
-          gsap.to({ value: 100 }, { 
-            value: 0, 
-            duration: 1,
-            onUpdate: function() {
-              rive.setNumberStateAtPath('WalkSpeed', this.targets()[0].value, 'MissH');
-            }
-          });
+          setWalkSpeed(0, 1);
         }
       },
+      invalidateOnRefresh: true,
       markers: false,
       id: 'missh-background'
     });
+
+
+    return () => {
+      if (walkSpeedTween) walkSpeedTween.kill();
+      if (stopTimeout) stopTimeout.kill();
+    };
   }, { dependencies: [rive, S1toS2, S2toS3] });
   
   return (

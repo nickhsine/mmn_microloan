@@ -12,6 +12,7 @@ section.noise {
     mix-blend-mode: overlay;
     z-index: 999;
     opacity: 0.25;
+    pointer-events: none;
     @media (min-width: 1920px) {
         opacity: 0.5;
     }
