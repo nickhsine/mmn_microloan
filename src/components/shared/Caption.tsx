@@ -65,7 +65,7 @@ export const Caption = () => {
             ScrollTrigger.create({
               trigger: captionElement,
               start: `50% ${offset}`,
-              end: `${VH(25)} ${offset}`,
+              end: `${VH(40)} ${offset}`,
               pin: true,
               scrub: 1,
               markers: true,
