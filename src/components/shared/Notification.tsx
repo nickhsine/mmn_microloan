@@ -5,7 +5,6 @@ interface NotificationProps {
 }
 
 export const Notification = ({ top }: NotificationProps) => {
-  // 計算容器樣式
   const containerStyle: CSSProperties = top ? {
     position: 'absolute',
     top,

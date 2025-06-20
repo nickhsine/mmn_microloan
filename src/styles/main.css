@@ -305,7 +305,15 @@ p.caption {
     }
 }
 
-
+/* Contracts */
+.contracts {
+    width: 30vw;
+    height: 100%;
+}
+.contracts-rive {
+    width: 100%;
+    height: 100%;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
 }
