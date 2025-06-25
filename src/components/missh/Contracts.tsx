@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 
 interface ContractsProps {
   top?: string;
@@ -14,7 +14,6 @@ export const Contracts = ({ top }: ContractsProps) => {
 
   return (
     <div className="contracts" style={containerStyle}>
-
     </div>
   );
 }; 
