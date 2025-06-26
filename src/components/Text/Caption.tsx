@@ -14,7 +14,11 @@ const ANIMATION_CONFIG = {
   duration: { enter: 1, enterBack: 0.5, leave: 1, leaveBack: 0.5 }
 };
 
-export const Caption = () => {
+interface CaptionProps {
+  markers?: boolean;
+}
+
+export const Caption = ({ markers = false }: CaptionProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [captionData, setCaptionData] = useState<any>(null);
   const [processedCaptions, setProcessedCaptions] = useState<any>(null);
@@ -68,7 +72,7 @@ export const Caption = () => {
               end: `${VH(40)} ${offset}`,
               pin: true,
               scrub: 1,
-              markers: true,
+              markers: markers,
               invalidateOnRefresh: true,
               id: `caption-${category}-${index}`,
               onEnter: () => createAnimation(captionElement, true, ANIMATION_CONFIG.duration.enter),

@@ -1,10 +1,11 @@
 import { CSSProperties } from 'react';
 
-interface ContractsProps {
+interface ContractProps {
   top?: string;
+  markers?: boolean;
 }
 
-export const Contracts = ({ top }: ContractsProps) => {
+export const Contract = ({ top, markers = false }: ContractProps) => {
   const containerStyle: CSSProperties = top ? {
     position: 'absolute',
     top,
@@ -13,7 +14,7 @@ export const Contracts = ({ top }: ContractsProps) => {
   } : {};
 
   return (
-    <div className="contracts" style={containerStyle}>
+    <div className="contract" style={containerStyle}>
     </div>
   );
 }; 

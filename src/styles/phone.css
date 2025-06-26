@@ -1,0 +1,150 @@
+/* Phone Calls */
+.calls {
+    width: var(--phoneInWidth);
+    height: 450px;
+    left: 50%;
+    transform: translate(-50%,0%);
+    opacity: 0;
+}
+.phone-in-contact {
+    opacity: 0.7;
+    padding-bottom: 15px;
+    h3 {
+        font-size: 36px;
+        font-weight: 500;
+        color: #F1F1F1;
+        text-align: center;
+    }
+    p {
+        font-size: 16px;
+        font-weight: 400;
+        color: #F1F1F1;
+        text-align: center;
+    }
+}
+.calls-rive {
+    position: absolute;
+    bottom: 0;
+    height: 80px;
+    width: var(--phoneInWidth);
+}
+.calls-background {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: var(--phoneInWidth);
+    height: 78px;
+    backdrop-filter: blur(5px);
+    border-radius: 100px;
+    border: solid 0px hsla(0, 0%, 100%, 0.05);
+    box-shadow: inset 1px 1px 4px 0 hsla(0, 0%, 100%, 0.2);
+    z-index: -1;
+    opacity: 1;
+}
+
+/* Phone Call Dialogs */
+.dialogs {
+    height: auto;
+    width: calc(var(--phoneInWidth) * 1.2);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    /* background-color: #090913; */
+    .dialogIn {
+        opacity: 0;
+        text-align: left;
+        border-radius: 10px;
+        padding: 6px 10px 10px 10px;
+        border: solid hsla(0, 0%, 100%, 0.1);
+        border-width: 1px 0 0 1px;
+        background-color: hsla(0, 0%, 100%, 0.02);
+        width: fit-content;
+        max-width: 80%;
+        align-self: flex-start;
+        backdrop-filter: blur(5px);
+     }
+     .dialogOut {
+        opacity: 0;
+        text-align: right;
+        border-radius: 10px;
+        padding: 6px 10px 10px 10px;
+        border: solid hsla(0, 0%, 100%, 0.1);
+        border-width: 1px 0 0 1px;
+        background-color: hsla(0, 0%, 100%, 0.02);
+        width: fit-content;
+        max-width: 80%;
+        align-self: flex-end;
+        backdrop-filter: blur(5px);
+     }
+    p {
+        font-size: 16px;
+        font-weight: 400;
+        color: hsla(0, 0%, 100%, 0.7);
+    }
+    span {
+        font-size: 12px;
+        font-weight: 400;
+        color: hsla(0, 0%, 100%, 0.5);
+    }
+}
+
+
+/* Message */
+.messages {
+    height: 300px;
+    width: calc(var(--phoneInWidth) * 1.2);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    .messageIn {
+        opacity: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+     }
+     .messageOut {
+        opacity: 0;
+        align-self: flex-end;
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+     }
+     img.avatar {
+        width: 38px;
+        height: 38px;
+        backdrop-filter: blur(5px);
+        opacity: 0.5;
+        align-self: flex-start;
+        &.blank {
+            opacity: 0;
+        }
+     }
+    p {
+        font-size: 16px;
+        font-weight: 400;
+        color: hsla(0, 0%, 100%, 0.7);
+        border-radius: 20px;
+        padding: 7px 13px 10px 13px;
+        border: solid hsla(0, 0%, 100%, 0.1);
+        border-width: 1px 0 0 1px;
+        background-color: hsla(0, 0%, 100%, 0.02);
+        width: fit-content;
+        max-width: 90%;
+        align-self: flex-start;
+        backdrop-filter: blur(5px);
+    }
+    span {
+        font-size: 12px;
+        font-weight: 400;
+        color: hsla(0, 0%, 100%, 0.2);
+        align-self: flex-end;
+    }
+}

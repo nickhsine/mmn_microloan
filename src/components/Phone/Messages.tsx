@@ -10,9 +10,10 @@ interface MessagesProps {
   start?: string;
   end?: string;
   top?: string;
+  markers?: boolean;
 }
 
-export const Messages = ({ children, start = 'top 10%', end = '+=600 10%', top }: MessagesProps) => {
+export const Messages = ({ children, start = 'top 10%', end = '+=600 10%', top, markers = false }: MessagesProps) => {
   const messagesRef = useRef<HTMLDivElement>(null);
 
   // 計算容器樣式
@@ -39,7 +40,7 @@ export const Messages = ({ children, start = 'top 10%', end = '+=600 10%', top }
         end: end,
         pin: true,
         scrub: 1,
-        markers: true,
+        markers: markers,
         id: 'messages-trigger',
         onEnter: () => { gsap.to(messagesRef.current, { opacity: 1, duration: 0.5, ease: "power2.out" }); },
         onEnterBack: () => { gsap.to(messagesRef.current, { opacity: 1, duration: 0.5, ease: "power2.out" }); },

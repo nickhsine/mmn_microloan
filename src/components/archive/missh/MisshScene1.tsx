@@ -1,12 +1,12 @@
-import { PhoneIn } from '../shared/PhoneIn';
-import { Dialogs } from '../shared/Dialogs';
-import { Messages } from '../shared/Messages';
-import { Notification } from '../shared/Notification';
+import { Calls } from '../Phone/Calls';
+import { Dialogs } from '../Phone/Dialogs';
+import { Messages } from '../Phone/Messages';
+import { Notification } from '../Phone/Notification';
 
 export const MisshScene1 = () => {
   return (
     <div className="missh-scene1" style={{ position: 'relative' }}>
-      <PhoneIn top="0vh">
+      <Calls top="0vh">
         <div className="phone-in-contact">
           <h3>台新銀行</h3>
           <p>Whoscall</p>
@@ -31,7 +31,7 @@ export const MisshScene1 = () => {
             <p>不客氣，有任何問題都可以再聯繫我</p>
           </div>
         </Dialogs>
-      </PhoneIn>
+      </Calls>
       <Messages top="110vh">
         <div className="messageIn">
           <img className="avatar" src={('./assets/img/avatar_A.svg')} />

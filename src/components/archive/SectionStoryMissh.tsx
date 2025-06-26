@@ -3,7 +3,7 @@ import { MisshBackground } from './missh/MisshBackground';
 import { MisshScene1 } from './missh/MisshScene1';
 import { MisshScene2 } from './missh/MisshScene2';
 import { MisshScene3 } from './missh/MisshScene3';
-import { AudioPlayer } from './shared/AudioPlayer';
+import { AudioPlayer } from '../utility/AudioPlayer';
 
 export const SectionStoryMissh = () => {
   return (

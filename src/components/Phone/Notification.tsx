@@ -2,9 +2,10 @@ import React, { CSSProperties } from 'react';
 
 interface NotificationProps {
   top?: string;
+  markers?: boolean;
 }
 
-export const Notification = ({ top }: NotificationProps) => {
+export const Notification = ({ top, markers = false }: NotificationProps) => {
   const containerStyle: CSSProperties = top ? {
     position: 'absolute',
     top,

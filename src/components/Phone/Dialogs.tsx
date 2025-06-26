@@ -9,9 +9,10 @@ interface DialogsProps {
   children?: ReactNode;
   start?: string;
   end?: string;
+  markers?: boolean;
 }
 
-export const Dialogs = ({ children, start = 'top 10%', end = '+=500 10%' }: DialogsProps) => {
+export const Dialogs = ({ children, start = 'top 10%', end = '+=500 10%', markers = false }: DialogsProps) => {
   const dialogsRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -29,7 +30,7 @@ export const Dialogs = ({ children, start = 'top 10%', end = '+=500 10%' }: Dial
         start: start,
         end: end,
         scrub: 1,
-        markers: true,
+        markers: markers,
         id: 'dialogs-trigger'
       }
     });

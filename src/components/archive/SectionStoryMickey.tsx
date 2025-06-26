@@ -1,5 +1,5 @@
 import { Brief } from './mickey/Brief';
-import { AudioPlayer } from './shared/AudioPlayer';
+import { AudioPlayer } from '../utility/AudioPlayer';
 import { MickeyCharacter } from './mickey/MickeyCharacter';
 import { MickeyBackground } from './mickey/MickeyBackground';
 import { MickeyScene1 } from './mickey/MickeyScene1';

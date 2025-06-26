@@ -60,13 +60,13 @@ mmn_microloan/
 │   │   │   ├── MickeyScene3.tsx         # Mickey場景3組件
 │   │   │   ├── Advertisement.tsx        # 廣告動畫組件
 │   │   │   ├── Consultant.tsx           # 顧問動畫組件
-│   │   │   └── PhoneInWithDialogs.tsx   # 帶對話框的電話組件
+│   │   │   └── CallsWithDialogs.tsx     # 帶對話框的來電組件
 │   │   │
 │   │   └── shared/                      # 共享組件
 │   │       ├── RiveAnimation.tsx        # Rive動畫基礎組件
 │   │       ├── AudioPlayer.tsx          # 音訊播放器組件
 │   │       ├── Caption.tsx              # 字幕組件
-│   │       ├── PhoneIn.tsx              # 電話來電組件
+│   │       ├── Calls.tsx                # 電話來電組件
 │   │       ├── Message.tsx              # 訊息組件
 │   │       ├── Notification.tsx         # 通知組件
 │   │       ├── Dialogs.tsx              # 對話框組件
@@ -117,7 +117,7 @@ mmn_microloan/
 - **RiveAnimation** - Rive動畫的基礎包裝組件
 - **AudioPlayer** - 音訊播放控制組件
 - **Caption** - 字幕顯示組件
-- **PhoneIn** - 電話來電UI組件
+- **Calls** - 電話來電UI組件
 - **Message** - 訊息顯示組件
 - **Notification** - 通知彈出組件
 - **Dialogs** - 對話框顯示組件

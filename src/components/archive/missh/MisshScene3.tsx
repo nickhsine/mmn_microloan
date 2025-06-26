@@ -1,9 +1,9 @@
-import { Notification } from '../shared/Notification';
+import { Notification } from '../Phone/Notification';
 import { FloatingNumbersBG } from './FloatingNumbersBG';
 import { Bookkeeping } from '../shared/Bookkeeping';
-import { PhoneIn } from '../shared/PhoneIn';
-import { Dialogs } from '../shared/Dialogs';
-import { AudioPlayer } from '../shared/AudioPlayer';
+import { Calls } from '../Phone/Calls';
+import { Dialogs } from '../Phone/Dialogs';
+import { AudioPlayer } from '../Utility/AudioPlayer';
 
 export const MisshScene3 = () => {
   return (
@@ -16,9 +16,9 @@ export const MisshScene3 = () => {
       </div>
 
       <div className="step-2">
-        <PhoneIn top="800vh">
+        <Calls top="800vh">
           <Dialogs />
-        </PhoneIn>
+        </Calls>
       </div>
 
       <div className="step-3">
@@ -26,10 +26,10 @@ export const MisshScene3 = () => {
       </div>
 
       <div className="step-4">
-        <PhoneIn top="1000vh">
+        <Calls top="1000vh">
           <Dialogs />
           {/* <AudioPlayer /> */}
-        </PhoneIn>
+        </Calls>
       </div>
     </div>
   );

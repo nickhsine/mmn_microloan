@@ -1,6 +1,6 @@
 import { Bookkeeping } from '../shared/Bookkeeping';
-import { Notification } from '../shared/Notification';
-import { AudioPlayer } from '../shared/AudioPlayer';
+import { Notification } from '../Phone/Notification';
+import { AudioPlayer } from '../Utility/AudioPlayer';
 
 export const MickeyScene3 = () => {
   return (

@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { globalAudioEnabled } from '../landing/AudioHandler';
+import { globalAudioEnabled } from './AudioHandler';
 
 gsap.registerPlugin(useGSAP);
 

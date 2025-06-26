@@ -1,6 +1,6 @@
-import { Title } from './landing/Title';
-import { Brief } from './landing/Brief';
-import { AudioHandler } from './landing/AudioHandler';
+import { Title } from './text/Title';
+import { Brief } from './text/Brief';
+import { AudioHandler } from './utility/AudioHandler';
 export const SectionLanding = () => {
   return (
     <section className="section-landing">
