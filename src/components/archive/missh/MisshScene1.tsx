@@ -1,7 +1,7 @@
-import { Calls } from '../Phone/Calls';
-import { Dialogs } from '../Phone/Dialogs';
-import { Messages } from '../Phone/Messages';
-import { Notification } from '../Phone/Notification';
+import { Calls } from '../../phone/Calls';
+import { Dialogs } from '../../phone/Dialogs';
+import { Messages } from '../../phone/Messages';
+import { Notification } from '../../phone/Notification';
 
 export const MisshScene1 = () => {
   return (
@@ -12,42 +12,42 @@ export const MisshScene1 = () => {
           <p>Whoscall</p>
         </div>
         <Dialogs>
-          <div className="dialogIn">
+          <div className="dialogRecieve">
             <span>台新銀行</span> 
             <p>妳符合貸款資格，想問有沒有興趣了解一下？</p>
           </div>
-          <div className="dialogOut">
+          <div className="dialogSent">
             <p>可以先聽聽看</p>
           </div>
-          <div className="dialogIn">
+          <div className="dialogRecieve">
             <span>台新銀行</span> 
             <p>我們有提供最高100萬的貸款，利率最低1.88%，還款期限最長5年，10天內快速過件，有興趣可以加入Line聯繫</p>
           </div>
-          <div className="dialogOut">
+          <div className="dialogSent">
             <p>好的，謝謝</p>
           </div>
-          <div className="dialogIn">
+          <div className="dialogRecieve">
             <span>台新銀行</span> 
             <p>不客氣，有任何問題都可以再聯繫我</p>
           </div>
         </Dialogs>
       </Calls>
       <Messages top="110vh">
-        <div className="messageIn">
+        <div className="messageRecieve">
           <img className="avatar" src={('./assets/img/avatar_A.svg')} />
           <p>小姐你好</p>
           <span>17:30</span>
         </div>
-        <div className="messageIn">
+        <div className="messageRecieve">
           <img className="avatar blank" src={('./assets/img/avatar_A.svg')} />
           <p>我是剛剛跟你聯絡的徐專員</p>
           <span>17:31</span>
         </div>
-        <div className="messageOut">
+        <div className="messageSent">
           <span>17:31</span>
           <p>你好</p>
         </div>
-        <div className="messageIn">
+        <div className="messageRecieve">
           <img className="avatar" src={('./assets/img/avatar_A.svg')} />
           <p>
             商品貸款🪄👀<br/>
@@ -64,12 +64,12 @@ export const MisshScene1 = () => {
           </p>
           <span>17:32</span>
         </div>
-        <div className="messageIn">
+        <div className="messageRecieve">
           <img className="avatar blank" src={('./assets/img/avatar_A.svg')} />
           <p>這是我們的方案，給你參考一下</p>
           <span>17:32</span>
         </div>
-        <div className="messageOut">
+        <div className="messageSent">
           <span>17:35</span>
           <p>不好意思<br/>所以你們是台新銀行辦理的嗎？</p>
         </div>

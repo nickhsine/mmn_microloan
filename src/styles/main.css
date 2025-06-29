@@ -1,18 +1,47 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Roboto+Slab:wght@100..900&family=Noto+Serif+TC:wght@100..900&display=swap');
-@import url('./noise.css');
+@import "tailwindcss";
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+@import "./noise.css";
+@import "./calculator.css";
+@import "./document.css";
+@import "./phone.css";
+
+/* * { margin: 0; padding: 0; box-sizing: border-box; } */
+html { 
+    scroll-behavior: smooth; 
+    font-size: 18px;
+}
 body {
     font-family: 'Roboto Slab', 'Noto Sans TC', sans-serif;
-    font-size: 16px;
-    background-color: #090913;
+    color: hsla(0, 0%, 60%, 1);
+    background-color: #F1F1F1;
     -ms-overflow-style: none; 
 }
 body::-webkit-scrollbar { display: none; }
+
 :root {
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.75rem;
+
+    --color-gray-50: hsl(0, 0%, 95%);
+    --color-gray-100: hsl(0, 0%, 90%);
+    --color-gray-200: hsl(0, 0%, 85%);
+    --color-gray-300: hsl(0, 0%, 80%);
+    --color-gray-400: hsl(0, 0%, 70%);
+    --color-gray-500: hsl(0, 0%, 60%);
+    --color-gray-600: hsl(0, 0%, 50%);
+    --color-gray-700: hsl(0, 0%, 40%);
+    --color-gray-800: hsl(0, 0%, 30%);
+    --color-gray-900: hsl(0, 0%, 20%);
+    --color-gray-950: hsl(0, 0%, 10%);
+
     --phoneInWidth: 320px;
 }
+
 
 /* 劇情長度 */
 section.section-landing { 
@@ -23,7 +52,7 @@ section.section-landing {
     justify-content: center;
     gap: 10px;
 }
-section.section-story-missh { height: 1000vh; }
+section.section-missh { height: 500vh; }
 
 /* Caption */
 .caption-container {
@@ -45,7 +74,7 @@ p.caption {
 
     &.normal {
         width: 320px;
-        color: hsla(0, 0%, 100%, 0.7);
+        color: hsla(0, 0%, 0%, 0.7);
         background-color: hsla(0, 0%, 100%, 0.02);
         border-radius: 10px;
         padding: 10px 14px 14px 14px;
@@ -159,20 +188,14 @@ p.caption {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    html { 
+        scroll-behavior: normal;
+        font-size: 18px;
+    }
 }
 
 /* GSAP Functionality Settings */
 .gsap-marker-start, .gsap-marker-end { font-size: 12px !important; opacity: 0.3; }
 .gsap-marker-scroller-start, .gsap-marker-scroller-end { font-size: 8px !important; font-weight: 200 !important; opacity: 0.5; }
-#smooth-wrapper {
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-}
-#smooth-content {
-  min-height: 100vh;
-  width: 100%;
-}
-
- 
+#smooth-wrapper { top: 0; left: 0; width: 100%; overflow: hidden; }
+#smooth-content { min-height: 100vh; width: 100%; }

@@ -11,14 +11,14 @@ section.noise {
     filter: url(#noise);
     mix-blend-mode: overlay;
     z-index: 999;
-    opacity: 0.25;
+    opacity: 0.15;
     pointer-events: none;
     @media (min-width: 1920px) {
         opacity: 0.5;
     }
-}
-svg.noise {
-    width: 0;
-    height: 0;
+    svg.noise {
+        width: 0;
+        height: 0;
+    }
 }
   

@@ -4,8 +4,6 @@ import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { globalAudioEnabled } from './AudioHandler';
 
-gsap.registerPlugin(useGSAP);
-
 interface AudioPlayerProps {
   audioSrc?: string;
   volume?: number;

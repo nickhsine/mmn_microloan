@@ -80,9 +80,9 @@ export const ScrollCounter = () => {
         left: '20px',
         zIndex: 9999,
 
-        background: 'rgba(0, 0, 0, 0)',
+        background: 'hsla(0, 0%, 100%, 0.5)',
         backdropFilter: 'blur(10px)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        border: '1px solid hsla(0, 0%, 0%, 0.1)',
         borderRadius: isCollapsed ? '12px' : '8px',
         
         padding: isCollapsed ? '7px 9px' : '12px 16px',
@@ -90,7 +90,7 @@ export const ScrollCounter = () => {
         width: isCollapsed ? 'auto' : 'auto',
         height: isCollapsed ? 'auto' : 'auto',
         
-        color: '#FFFFFF88',
+        color: 'hsla(0, 0%, 0%, 0.5)',
         fontSize: '12px',
         userSelect: 'none',
         cursor: 'pointer',

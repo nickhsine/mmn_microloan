@@ -1,21 +1,43 @@
-import { CSSProperties, ReactNode } from 'react';
+import { CSSProperties, ReactNode, useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import { gsap } from 'gsap';
+import Draggable from 'gsap/Draggable';
 
 interface PhoneProps {
-  top?: string;
-  markers?: boolean;
   children?: ReactNode;
 }
 
-export const Phone = ({ top, markers = false, children }: PhoneProps) => {
-  const containerStyle: CSSProperties = top ? {
+export const Phone = ({
+  children,
+}: PhoneProps) => {
+  const phoneRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.registerPlugin(Draggable);
+
+    Draggable.create(phoneRef.current, {
+      type: "x,y",
+      inertia: true,
+      onDragEnd: function() {
+        gsap.to(this.target, {
+          x: 0, y: 0,
+          duration: 3,
+          ease: "power1.out"
+        });
+      }
+    });
+  }, []);
+
+  const containerStyle: CSSProperties = {
     position: 'absolute',
-    top,
-    left: '50%',
-    transform: 'translate(-50%, 0%)'
-  } : {};
+  };
 
   return (
-    <div className="phone" style={containerStyle}>
+    <div ref={phoneRef} className="phone" style={containerStyle}>
+      <div className="phone-frame">
+        <div className="top-bar" />
+        <div className="bottom-bar" />
+      </div>
       {children}
     </div>
   );

@@ -1,3 +1,55 @@
+:root {
+    --phone-height: 825px;
+    --phone-width: 400px;
+    --phone-roundness: 50px;
+}
+
+/* Phone */
+.phone {
+    height: var(--phone-height);
+    width: var(--phone-width);
+    background-color: hsla(0, 0%, 0%, 0.05);
+    border-radius: var(--phone-roundness);
+    box-shadow: inset 0 0 20px 0 hsla(0, 0%, 0%, 11);
+    backdrop-filter: blur(20px);
+    overflow: hidden;
+    transform: translate(-50%, -50%) scale(1);
+    position: absolute;
+    left: 50%;
+    top: 50vh;
+    .phone-frame {
+        width: 100%;
+        height: 100%;
+        border: 8px solid hsla(0, 0%, 90%, 1);
+        border-radius: calc(var(--phone-roundness) * 0.95);
+        position: relative;
+        z-index: 10;
+        pointer-events: none;
+        .top-bar {
+            width: 115px;
+            height: 30px;
+            background-color: hsla(0, 0%, 60%, 0.25);
+            border-radius: 20px;
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            z-index: 2;
+        }
+        .bottom-bar {
+            width: 130px;
+            height: 6px;
+            background-color: hsla(0, 0%, 60%, 0.25);
+            border-radius: 20px;
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            z-index: 2;
+        }
+    }
+}
+
 /* Phone Calls */
 .calls {
     width: var(--phoneInWidth);
@@ -46,7 +98,7 @@
 /* Phone Call Dialogs */
 .dialogs {
     height: auto;
-    width: calc(var(--phoneInWidth) * 1.2);
+    width: var(--phone-width);
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -55,7 +107,7 @@
     left: 50%;
     transform: translate(-50%, 0%);
     /* background-color: #090913; */
-    .dialogIn {
+    .dialogRecieve {
         opacity: 0;
         text-align: left;
         border-radius: 10px;
@@ -68,7 +120,7 @@
         align-self: flex-start;
         backdrop-filter: blur(5px);
      }
-     .dialogOut {
+     .dialogSent {
         opacity: 0;
         text-align: right;
         border-radius: 10px;
@@ -81,12 +133,12 @@
         align-self: flex-end;
         backdrop-filter: blur(5px);
      }
-    p {
+     .dialogRecieve p, .dialogSent p {
         font-size: 16px;
         font-weight: 400;
         color: hsla(0, 0%, 100%, 0.7);
     }
-    span {
+    .dialogRecieve span, .dialogSent span {
         font-size: 12px;
         font-weight: 400;
         color: hsla(0, 0%, 100%, 0.5);
@@ -95,22 +147,113 @@
 
 
 /* Message */
+.messages-app {
+    height: 100%;
+    width: 100%;
+    gap: 5px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 0;
+    .app-header {
+        width: 100%;
+        top: 0;
+        position: absolute;
+        display: flex;
+        padding: 55px 30px 12px 25px;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        align-self: stretch;
+        background: hsla(0, 0%, 100%, 0.5);
+        backdrop-filter: blur(20px);
+        color: hsla(0, 0%, 60%, 1);
+        box-shadow: 0 0 50px 0 hsla(0, 0%, 0%, 0.2);
+        .material-symbols-outlined {
+            font-size: var(--text-2xl);
+            color: hsla(0, 0%, 60%, 1);
+        }
+    }
+    .app-footer {
+        width: 100%;
+        bottom: 0;
+        position: absolute;
+        display: flex;
+        height: 90px;
+        padding: 12px 24px 40px 24px;
+        align-items: center;
+        gap: 4px;
+        flex-shrink: 0;
+        align-self: stretch;
+        background: hsla(0, 0%, 100%, 0.5);
+        backdrop-filter: blur(20px);
+        color: hsla(0, 0%, 60%, 1);
+        box-shadow: 0 0 50px 0 hsla(0, 0%, 0%, 0.25);
+        .material-symbols-outlined {
+            font-size: var(--text-2xl);
+            color: hsla(0, 0%, 60%, 1);
+        }
+    }
+}
+
+/* Messages App */
 .messages {
-    height: 300px;
-    width: calc(var(--phoneInWidth) * 1.2);
+    height: 100%;
+    width: var(--phone-width);
     display: flex;
     flex-direction: column;
     gap: 5px;
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0%);
-    .messageIn {
+    z-index: 0;
+    .app-header {
+        width: 100%;
+        top: 0;
+        position: absolute;
+        display: flex;
+        padding: 55px 30px 12px 25px;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        align-self: stretch;
+        background: hsla(0, 0%, 100%, 0.5);
+        backdrop-filter: blur(20px);
+        color: hsla(0, 0%, 60%, 1);
+        box-shadow: 0 0 50px 0 hsla(0, 0%, 0%, 0.2);
+        .material-symbols-outlined {
+            font-size: var(--text-2xl);
+            color: hsla(0, 0%, 60%, 1);
+        }
+    }
+    .app-footer {
+        width: 100%;
+        bottom: 0;
+        position: absolute;
+        display: flex;
+        height: 90px;
+        padding: 12px 24px 40px 24px;
+        align-items: center;
+        gap: 4px;
+        flex-shrink: 0;
+        align-self: stretch;
+        background: hsla(0, 0%, 100%, 0.5);
+        backdrop-filter: blur(20px);
+        color: hsla(0, 0%, 60%, 1);
+        box-shadow: 0 0 50px 0 hsla(0, 0%, 0%, 0.25);
+        .material-symbols-outlined {
+            font-size: var(--text-2xl);
+            color: hsla(0, 0%, 60%, 1);
+        }
+    }
+    .messageRecieve {
         opacity: 0;
         display: flex;
         flex-direction: row;
         gap: 5px;
      }
-     .messageOut {
+     .messageSent {
         opacity: 0;
         align-self: flex-end;
         display: flex;
@@ -127,7 +270,7 @@
             opacity: 0;
         }
      }
-    p {
+    .messageRecieve p, .messageSent p {
         font-size: 16px;
         font-weight: 400;
         color: hsla(0, 0%, 100%, 0.7);
@@ -141,10 +284,36 @@
         align-self: flex-start;
         backdrop-filter: blur(5px);
     }
-    span {
+    .messageRecieve span, .messageSent span {
         font-size: 12px;
         font-weight: 400;
         color: hsla(0, 0%, 100%, 0.2);
         align-self: flex-end;
+    }
+}
+
+
+/* 響應式縮放 */
+@media (max-width: 480px) {
+    .phone {
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
+
+@media (max-width: 768px) {
+    .phone {
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
+
+@media (min-width: 1200px) {
+    .phone {
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@media (min-width: 1600px) {
+    .phone {
+        transform: translate(-50%, -50%) scale(1.2);
     }
 }

@@ -3,8 +3,6 @@ import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(useGSAP);
-
 interface DialogsProps {
   children?: ReactNode;
   start?: string;
@@ -20,7 +18,7 @@ export const Dialogs = ({ children, start = 'top 10%', end = '+=500 10%', marker
     
     if (!dialogsRef.current) return;
 
-    const dialogElements = dialogsRef.current.querySelectorAll('.dialogIn, .dialogOut');
+    const dialogElements = dialogsRef.current.querySelectorAll('.dialogRecieve, .dialogSent');
     
     if (dialogElements.length === 0) return;
 

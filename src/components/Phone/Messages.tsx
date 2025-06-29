@@ -3,8 +3,6 @@ import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(useGSAP);
-
 interface MessagesProps {
   children?: ReactNode;
   start?: string;
@@ -29,7 +27,7 @@ export const Messages = ({ children, start = 'top 10%', end = '+=600 10%', top, 
     
     if (!messagesRef.current) return;
 
-    const messageElements = messagesRef.current.querySelectorAll('.messageIn, .messageOut');
+    const messageElements = messagesRef.current.querySelectorAll('.messageRecieve, .messageSent');
     
     if (messageElements.length === 0) return;
 

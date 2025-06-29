@@ -5,8 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRive, useStateMachineInput } from '@rive-app/react-webgl2';
 import { AudioPlayer } from '../utility/AudioPlayer';
 
-gsap.registerPlugin(useGSAP);
-
 interface CallsProps {
   children?: ReactNode;
   top?: string;
