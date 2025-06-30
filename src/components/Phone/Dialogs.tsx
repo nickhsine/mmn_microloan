@@ -18,7 +18,7 @@ export const Dialogs = ({ children, start = 'top 10%', end = '+=500 10%', marker
     
     if (!dialogsRef.current) return;
 
-    const dialogElements = dialogsRef.current.querySelectorAll('.dialogRecieve, .dialogSent');
+    const dialogElements = dialogsRef.current.querySelectorAll('.Recieve, .Sent');
     
     if (dialogElements.length === 0) return;
 
@@ -44,7 +44,7 @@ export const Dialogs = ({ children, start = 'top 10%', end = '+=500 10%', marker
   }, { scope: dialogsRef, dependencies: [start, end] });
 
   return (
-    <div className="dialogs" ref={dialogsRef}>
+    <div className="dialogs-container" ref={dialogsRef}>
       {children}
     </div>
   );

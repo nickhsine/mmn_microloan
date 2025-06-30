@@ -1,14 +1,14 @@
-import { ReactNode } from 'react';
+import { ReactNode, forwardRef } from 'react';
 
 interface MessagesAppProps {
   children?: ReactNode;
   name?: string;
 }
 
-export const MessagesApp = ({ children, name = '涂專員' }: MessagesAppProps) => {
+export const MessagesApp = forwardRef<HTMLDivElement, MessagesAppProps>(({ children, name = '涂專員' }, ref) => {
 
   return (
-    <div className="messages-app">
+    <div className="messages-app" ref={ref}>
       <div className="app-header">
         <div className="flex items-center gap-2">
           <span className="material-symbols-outlined">arrow_back_ios_new</span>
@@ -33,4 +33,4 @@ export const MessagesApp = ({ children, name = '涂專員' }: MessagesAppProps) 
       </div>
     </div>
   );
-}; 
+}); 

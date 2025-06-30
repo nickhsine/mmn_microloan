@@ -1,11 +1,12 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties, useRef, forwardRef } from 'react';
 
 interface NotificationProps {
   top?: string;
   markers?: boolean;
 }
 
-export const Notification = ({ top, markers = false }: NotificationProps) => {
+export const Notification = forwardRef<HTMLDivElement, NotificationProps>(({ top, markers = false }, ref) => {
+  const notificationRef = useRef<HTMLDivElement>(null);
   const containerStyle: CSSProperties = top ? {
     position: 'absolute',
     top,
@@ -14,8 +15,8 @@ export const Notification = ({ top, markers = false }: NotificationProps) => {
   } : {};
 
   return (
-    <div className="notification" style={containerStyle}>
+    <div className="notification" ref={ ref || notificationRef } style={containerStyle}>
       {/* 通知組件 */}
     </div>
   );
-}; 
+}); 

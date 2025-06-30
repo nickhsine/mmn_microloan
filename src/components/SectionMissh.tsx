@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { Phone } from './phone/Phone';
-import { Calls } from './phone/Calls';
+import { Call } from './phone/Call';
 import { Dialogs } from './phone/Dialogs';
 import { MessagesApp } from './phone/MessagesApp';
 import { Messages } from './phone/Messages';
@@ -16,11 +16,15 @@ export const SectionMissh = () => {
   const phoneRef = useRef(null);
   const contractRef = useRef(null);
   const calculatorRef = useRef(null);
+  const callRef = useRef(null);
+  const messagesAppRef = useRef(null);
+  const notificationRef = useRef(null);
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
+    gsap.set([callRef.current, messagesAppRef.current, notificationRef.current], { opacity: 0 });
 
-    const tl = gsap.timeline({
+    const mainTl = gsap.timeline({
       scrollTrigger: {
         trigger: ".section-missh",
         start: "top top",
@@ -30,22 +34,60 @@ export const SectionMissh = () => {
         markers: true,
       }
     });
-
-    tl.to(phoneRef.current, { x: 500, duration: 1 })
+    mainTl
+      .to(phoneRef.current, { x: 500, duration: 1 })
       .to(contractRef.current, { x: 100, duration: 0 }, "-=0.5")
       .to(calculatorRef.current, { x: 100, duration: 0 }, "-=0.5");
+
+    const phoneComponentsTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".section-missh",
+        start: "top top",
+        end: "bottom center",
+        scrub: 1,
+        markers: true,
+      }
+    });
+    phoneComponentsTl
+      .to(callRef.current, { opacity: 1, duration: 0.5 }, 0)
+      .to(callRef.current, { opacity: 0 }, 1)
+      .fromTo(messagesAppRef.current, { opacity: 0, x: 200 }, { opacity: 1, x: 0, duration: 0.5 }, 1)
+      .fromTo(notificationRef.current, { opacity: 0, y: 20 }, { opacity: 0, y: 0, duration: 1 }, 5);
 
   }, []);
 
   return (
     <section className="section-missh">
       <Phone ref={phoneRef}>
-        {/* <Calls markers={true}>
-          <Dialogs markers={true} />
-        </Calls> */}
-        {/* <Notification markers={true} /> */}
-        <MessagesApp name="涂專員">
-          <Messages markers={true} top="0vh">
+        <Call ref={callRef} markers={true} top="0vh">
+            <div className="call-contact">
+            <h3>台新銀行</h3>
+            <p>Whoscall</p>
+            </div>
+            <Dialogs markers={true}>
+                <div className="dialog Recieve">
+                    <span>台新銀行</span> 
+                    <p>妳符合貸款資格，想問有沒有興趣了解一下？</p>
+                </div>
+                <div className="dialog Sent">
+                    <p>可以先聽聽看</p>
+                </div>
+                <div className="dialog Recieve">
+                    <span>台新銀行</span> 
+                    <p>我們有提供最高100萬的貸款，利率最低1.88%，還款期限最長5年，10天內快速過件，有興趣可以加入Line聯繫</p>
+                </div>
+                <div className="dialog Sent">
+                    <p>好的，謝謝</p>
+                </div>
+                <div className="dialog Recieve">
+                    <span>台新銀行</span> 
+                    <p>不客氣，有任何問題都可以再聯繫我</p>
+                </div>
+            </Dialogs>
+        </Call>
+        <Notification ref={notificationRef} markers={true} />
+        <MessagesApp ref={messagesAppRef} name="涂專員">
+          <Messages markers={true} top="100vh">
             <div className="messageRecieve">
               <img className="avatar" src="./assets/img/avatar_A.svg" />
               <p>小姐你好</p>

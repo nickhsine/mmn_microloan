@@ -51,97 +51,87 @@
 }
 
 /* Phone Calls */
-.calls {
-    width: var(--phoneInWidth);
-    height: 450px;
-    left: 50%;
-    transform: translate(-50%,0%);
-    opacity: 0;
-}
-.phone-in-contact {
-    opacity: 0.7;
-    padding-bottom: 15px;
-    h3 {
-        font-size: 36px;
-        font-weight: 500;
-        color: #F1F1F1;
-        text-align: center;
-    }
-    p {
-        font-size: 16px;
-        font-weight: 400;
-        color: #F1F1F1;
-        text-align: center;
-    }
-}
-.calls-rive {
+.call {
+    width: 100%;
+    height: 100%;
     position: absolute;
-    bottom: 0;
-    height: 80px;
-    width: var(--phoneInWidth);
-}
-.calls-background {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    width: var(--phoneInWidth);
-    height: 78px;
-    backdrop-filter: blur(5px);
-    border-radius: 100px;
-    border: solid 0px hsla(0, 0%, 100%, 0.05);
-    box-shadow: inset 1px 1px 4px 0 hsla(0, 0%, 100%, 0.2);
-    z-index: -1;
-    opacity: 1;
-}
-
-/* Phone Call Dialogs */
-.dialogs {
-    height: auto;
-    width: var(--phone-width);
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    gap: 5px;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    /* background-color: #090913; */
-    .dialogRecieve {
-        opacity: 0;
-        text-align: left;
-        border-radius: 10px;
-        padding: 6px 10px 10px 10px;
-        border: solid hsla(0, 0%, 100%, 0.1);
-        border-width: 1px 0 0 1px;
-        background-color: hsla(0, 0%, 100%, 0.02);
-        width: fit-content;
-        max-width: 80%;
-        align-self: flex-start;
-        backdrop-filter: blur(5px);
-     }
-     .dialogSent {
-        opacity: 0;
-        text-align: right;
-        border-radius: 10px;
-        padding: 6px 10px 10px 10px;
-        border: solid hsla(0, 0%, 100%, 0.1);
-        border-width: 1px 0 0 1px;
-        background-color: hsla(0, 0%, 100%, 0.02);
-        width: fit-content;
-        max-width: 80%;
-        align-self: flex-end;
-        backdrop-filter: blur(5px);
-     }
-     .dialogRecieve p, .dialogSent p {
-        font-size: 16px;
-        font-weight: 400;
-        color: hsla(0, 0%, 100%, 0.7);
+    align-items: center;
+    
+    .call-contact {
+        padding: 80px 25px 15px 25px;
+        h3 {
+            font-size: 36px;
+            font-weight: 500;
+            color: var(--color-gray-900);
+            text-align: center;
+        }
+        p {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--color-gray-900);
+            text-align: center;
+        }
     }
-    .dialogRecieve span, .dialogSent span {
-        font-size: 12px;
-        font-weight: 400;
-        color: hsla(0, 0%, 100%, 0.5);
+    .call-rive {
+        position: absolute;
+        bottom: 60px;
+        height: 80px;
+        width: 100%;
+    }
+    .call-background {
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+        transform: translate(-50%, 0%);
+        width: 100%;
+        height: 78px;
+        border-radius: 100px;
+        border: solid 0px hsla(0, 0%, 100%, 0.2);
+        box-shadow: inset 1px 1px 4px 0 hsla(0, 0%, 100%, 0.5);
+        background-color: hsla(0, 0%, 80%, 0.5);
+        z-index: -1;
+        opacity: 1;
+    }
+
+    /* Phone Call Dialogs */
+    .dialogs-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+        position: relative;
+        padding: 10px 25px;
+        .dialog {
+            opacity: 0;
+            border-radius: 10px;
+            padding: 6px 10px 10px 10px;
+            border: solid hsla(0, 0%, 100%, 0.1);
+            border-width: 1px 0 0 1px;
+            background-color: hsla(0, 0%, 100%, 0.35);
+            width: fit-content;
+            max-width: 80%;
+        }
+        .Recieve {
+            text-align: left;
+            align-self: flex-start;
+        }
+        .Sent {
+            text-align: right;
+            align-self: flex-end;
+        }
+        .Recieve p, .Sent p {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--color-gray-900);
+        }
+        .Recieve span, .Sent span {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--color-gray-900);
+        }
     }
 }
 
