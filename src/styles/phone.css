@@ -146,72 +146,21 @@
 }
 
 
-/* Message */
+/* Messages App */
 .messages-app {
     height: 100%;
     width: 100%;
-    gap: 5px;
     position: absolute;
     top: 0;
     left: 50%;
     transform: translate(-50%, 0%);
-    z-index: 0;
-    .app-header {
-        width: 100%;
-        top: 0;
-        position: absolute;
-        display: flex;
-        padding: 55px 30px 12px 25px;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        align-self: stretch;
-        background: hsla(0, 0%, 100%, 0.5);
-        backdrop-filter: blur(20px);
-        color: hsla(0, 0%, 60%, 1);
-        box-shadow: 0 0 50px 0 hsla(0, 0%, 0%, 0.2);
-        .material-symbols-outlined {
-            font-size: var(--text-2xl);
-            color: hsla(0, 0%, 60%, 1);
-        }
-    }
-    .app-footer {
-        width: 100%;
-        bottom: 0;
-        position: absolute;
-        display: flex;
-        height: 90px;
-        padding: 12px 24px 40px 24px;
-        align-items: center;
-        gap: 4px;
-        flex-shrink: 0;
-        align-self: stretch;
-        background: hsla(0, 0%, 100%, 0.5);
-        backdrop-filter: blur(20px);
-        color: hsla(0, 0%, 60%, 1);
-        box-shadow: 0 0 50px 0 hsla(0, 0%, 0%, 0.25);
-        .material-symbols-outlined {
-            font-size: var(--text-2xl);
-            color: hsla(0, 0%, 60%, 1);
-        }
-    }
-}
-
-/* Messages App */
-.messages {
-    height: 100%;
-    width: var(--phone-width);
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    align-items: space-between;
+    flex-shrink: 0;
     z-index: 0;
     .app-header {
         width: 100%;
-        top: 0;
-        position: absolute;
         display: flex;
         padding: 55px 30px 12px 25px;
         justify-content: space-between;
@@ -229,8 +178,6 @@
     }
     .app-footer {
         width: 100%;
-        bottom: 0;
-        position: absolute;
         display: flex;
         height: 90px;
         padding: 12px 24px 40px 24px;
@@ -247,48 +194,61 @@
             color: hsla(0, 0%, 60%, 1);
         }
     }
-    .messageRecieve {
-        opacity: 0;
+    .messages {
+        width: 100%;
         display: flex;
-        flex-direction: row;
-        gap: 5px;
-     }
-     .messageSent {
-        opacity: 0;
-        align-self: flex-end;
-        display: flex;
-        flex-direction: row;
-        gap: 5px;
-     }
-     img.avatar {
-        width: 38px;
-        height: 38px;
-        backdrop-filter: blur(5px);
-        opacity: 0.5;
-        align-self: flex-start;
-        &.blank {
+        flex: 1 0 0;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-end;
+        gap: 6px;
+        padding: 15px 20px;
+        overflow-y: auto;
+        .messageRecieve {
             opacity: 0;
+            align-self: flex-start;
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            display: none;
+         }
+         .messageSent {
+            opacity: 0;
+            align-self: flex-end;
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            display: none;
+         }
+         img.avatar {
+            width: 38px;
+            height: 38px;
+            opacity: 0.8;
+            align-self: flex-start;
+            &.blank {
+                opacity: 0;
+            }
+         }
+        .messageRecieve p, .messageSent p {
+            font-size: 16px;
+            font-weight: 400;
+            color: hsla(0, 0%, 25%, 1);
+            border-radius: 20px;
+            padding: 7px 13px 10px 13px;
+            border: solid hsla(0, 0%, 100%, 0.1);
+            border-width: 1px 0 0 1px;
+            background-color: hsla(0, 0%, 100%, 0.6);
+            width: fit-content;
+            max-width: 90%;
+            align-self: flex-start;
+            backdrop-filter: blur(5px);
         }
-     }
-    .messageRecieve p, .messageSent p {
-        font-size: 16px;
-        font-weight: 400;
-        color: hsla(0, 0%, 100%, 0.7);
-        border-radius: 20px;
-        padding: 7px 13px 10px 13px;
-        border: solid hsla(0, 0%, 100%, 0.1);
-        border-width: 1px 0 0 1px;
-        background-color: hsla(0, 0%, 100%, 0.02);
-        width: fit-content;
-        max-width: 90%;
-        align-self: flex-start;
-        backdrop-filter: blur(5px);
-    }
-    .messageRecieve span, .messageSent span {
-        font-size: 12px;
-        font-weight: 400;
-        color: hsla(0, 0%, 100%, 0.2);
-        align-self: flex-end;
+        .messageRecieve span, .messageSent span {
+            font-size: 12px;
+            font-weight: 400;
+            color: hsla(0, 0%, 80%, 1);
+            align-self: flex-end;
+        }
     }
 }
 

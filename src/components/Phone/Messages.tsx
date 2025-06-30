@@ -11,15 +11,11 @@ interface MessagesProps {
   markers?: boolean;
 }
 
-export const Messages = ({ children, start = 'top 10%', end = '+=600 10%', top, markers = false }: MessagesProps) => {
+export const Messages = ({ children, start = 'top 10%', end = '+=1000 10%', top, markers = false }: MessagesProps) => {
   const messagesRef = useRef<HTMLDivElement>(null);
 
-  // 計算容器樣式
   const containerStyle: CSSProperties = top ? {
-    position: 'absolute',
     top,
-    left: '50%',
-    transform: 'translate(-50%, 0%)'
   } : {};
 
   useGSAP(() => {
@@ -36,7 +32,6 @@ export const Messages = ({ children, start = 'top 10%', end = '+=600 10%', top, 
         trigger: messagesRef.current,
         start: start,
         end: end,
-        pin: true,
         scrub: 1,
         markers: markers,
         id: 'messages-trigger',
@@ -48,9 +43,9 @@ export const Messages = ({ children, start = 'top 10%', end = '+=600 10%', top, 
     });
 
     tl.fromTo(messageElements, 
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0,
-        duration: 1, stagger: 0.5, // 每個元素間隔 0.5 秒出現
+      { display: "none", opacity: 0, y: 10 },
+      { display: "flex", opacity: 1, y: 0,
+        duration: 1, stagger: 0.25, // 每個元素間隔 0.5 秒出現
         ease: "power2.out"
       }
     );

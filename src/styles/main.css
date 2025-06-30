@@ -41,7 +41,9 @@ body::-webkit-scrollbar { display: none; }
 
     --phoneInWidth: 320px;
 }
-
+::selection {
+    background-color: hsla(40, 100%, 50%, 0.55);
+}
 
 /* 劇情長度 */
 section.section-landing { 

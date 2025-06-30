@@ -1,11 +1,13 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, useRef, forwardRef } from 'react';
 
 interface ContractProps {
   top?: string;
   markers?: boolean;
 }
 
-export const Contract = ({ top, markers = false }: ContractProps) => {
+export const Contract = forwardRef<HTMLDivElement, ContractProps>(({ top, markers = false }, ref) => {
+  const contractRef = useRef(null);
+
   const containerStyle: CSSProperties = top ? {
     position: 'absolute',
     top,
@@ -14,7 +16,7 @@ export const Contract = ({ top, markers = false }: ContractProps) => {
   } : {};
 
   return (
-    <div className="contract" style={containerStyle}>
+    <div ref={ref || contractRef} className="contract" style={containerStyle}>
     </div>
   );
-}; 
+}); 

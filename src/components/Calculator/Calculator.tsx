@@ -1,11 +1,13 @@
-import { CSSProperties } from 'react';
+import { CSSProperties, useRef, forwardRef } from 'react';
 
 interface CalculatorProps {
   top?: string;
   markers?: boolean;
 }
 
-export const Calculator = ({ top, markers = false }: CalculatorProps) => {
+export const Calculator = forwardRef<HTMLDivElement, CalculatorProps>(({ top, markers = false }, ref) => {
+  const calculatorRef = useRef(null);
+
   const containerStyle: CSSProperties = top ? {
     position: 'absolute',
     top,
@@ -14,7 +16,7 @@ export const Calculator = ({ top, markers = false }: CalculatorProps) => {
   } : {};
 
   return (
-    <div className="calculator" style={containerStyle}>
+    <div ref={ref || calculatorRef} className="calculator" style={containerStyle}>
     </div>
   );
-}; 
+}); 

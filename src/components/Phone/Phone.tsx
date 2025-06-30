@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode, useRef } from 'react';
+import { CSSProperties, ReactNode, useRef, forwardRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import Draggable from 'gsap/Draggable';
@@ -7,9 +7,7 @@ interface PhoneProps {
   children?: ReactNode;
 }
 
-export const Phone = ({
-  children,
-}: PhoneProps) => {
+export const Phone = forwardRef<HTMLDivElement, PhoneProps>(({ children }, ref) => {
   const phoneRef = useRef(null);
 
   useGSAP(() => {
@@ -33,7 +31,7 @@ export const Phone = ({
   };
 
   return (
-    <div ref={phoneRef} className="phone" style={containerStyle}>
+    <div ref={ref || phoneRef} className="phone" style={containerStyle}>
       <div className="phone-frame">
         <div className="top-bar" />
         <div className="bottom-bar" />
@@ -41,4 +39,4 @@ export const Phone = ({
       {children}
     </div>
   );
-}; 
+}); 
