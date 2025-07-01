@@ -73,7 +73,7 @@ export const MessagesApp = forwardRef<HTMLDivElement, MessagesAppProps>(({
         <span className="material-symbols-outlined">add_2</span>
         <span className="material-symbols-outlined">photo_camera</span>
         <span className="material-symbols-outlined">image</span>
-        <div className="flex justify-between w-full rounded-full bg-gray-300/50 px-2 py-1 ml-1">
+        <div className="flex justify-between w-full rounded-full bg-gray-200/30 px-2 py-1 ml-1">
           <span className="material-symbols-outlined">match_case</span>
           <span className="material-symbols-outlined">sentiment_neutral</span>
         </div>

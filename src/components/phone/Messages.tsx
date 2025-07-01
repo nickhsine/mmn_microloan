@@ -34,7 +34,7 @@ export const Messages = ({
     tl.fromTo(elements, 
       { display: "none", opacity: 0, y: 10 },
       { display: "flex", opacity: 1, y: 0,
-        duration: 1, stagger: 0.25,
+        stagger: 0.5,
       }
     );
   };

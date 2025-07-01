@@ -9,35 +9,39 @@ interface PhoneProps {
 
 export const Phone = forwardRef<HTMLDivElement, PhoneProps>(({ children }, ref) => {
   const phoneRef = useRef(null);
+  const draggableRef = useRef(null);
   const combinedRef = useCallback((node: HTMLDivElement | null) => {
     if (node) { (phoneRef as any).current = node; }
     if (typeof ref === 'function') { ref(node); } 
     else if (ref) { (ref as any).current = node; }
   }, [ref]);
 
-  // useGSAP(() => {
-  //   gsap.registerPlugin(Draggable);
+  useGSAP(() => {
+    gsap.registerPlugin(Draggable);
 
-  //   Draggable.create(phoneRef.current, {
-  //     type: "x,y",
-  //     inertia: true,
-  //     onDragEnd: function() {
-  //       gsap.to(this.target, {
-  //         x: 0, y: 0,
-  //         duration: 3,
-  //         ease: "power1.out"
-  //       });
-  //     }
-  //   });
-  // }, { scope: phoneRef });
+    Draggable.create(draggableRef.current, {
+      type: "x,y",
+      inertia: true,
+      onDragEnd: function() {
+        gsap.to(this.target, {
+          x: 0, 
+          y: 0,
+          duration: 3,
+          ease: "power1.out"
+        });
+      }
+    });
+  }, { scope: phoneRef });
 
   return (
-    <div ref={combinedRef} className="phone">
-      <div className="phone-frame">
-        <div className="top-bar" />
-        <div className="bottom-bar" />
+    <div ref={draggableRef} className="phone-draggable">
+      <div ref={combinedRef} className="phone">
+        <div className="phone-frame">
+          {/* <div className="top-bar" /> */}
+          <div className="bottom-bar" />
+        </div>
+        {children}
       </div>
-      {children}
     </div>
   );
 }); 

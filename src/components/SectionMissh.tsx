@@ -34,7 +34,7 @@ export const SectionMissh = () => {
         markers: true,
       }
     });
-    tl.to(phoneRef.current, { x: 0, duration: 1 })
+    tl.to(phoneRef.current, { x: 50, duration: 1 })
       .to(contractRef.current, { x: 100, duration: 0 }, "-=0.5")
       .to(calculatorRef.current, { x: 100, duration: 0 }, "-=0.5");
   }, []);
@@ -68,13 +68,12 @@ export const SectionMissh = () => {
                 </div>
             </Dialogs>
         </Call>
-        <Notification markers={true} />
         <MessagesApp markers={true} name="涂專員" start="620vh" end="3000vh" >
             <Messages 
               markers={true} 
-              start="600vh" 
-              end="900vh" 
-              scrollDistance={200}
+              start="580vh" 
+              end="2700vh" 
+              scrollDistance={300}
               pausePoints={[
                 { index: 4, resumeAt: "1500vh" },
                 { index: 7, resumeAt: "2000vh" },
@@ -159,6 +158,12 @@ export const SectionMissh = () => {
                 </div>
             </Messages>
         </MessagesApp>
+        <Notification markers={true} start="2700vh" end="3000vh"
+            app="Messages" 
+            title="涂專員" 
+            time="17:30" 
+            message="您好，您申請裕富融資 25 萬汽機車貸款，貸款核定已通過。" 
+        />
       </Phone>
       <div ref={contractRef}>
         <Contract markers={true} />
