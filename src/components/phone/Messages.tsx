@@ -1,6 +1,6 @@
 import { ReactNode, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ScrollPause, PausePoint } from '../utilities/ScrollPause';
+import { ScrollPause, PausePoint } from '../utility/ScrollPause';
 
 interface MessagesProps {
   children?: ReactNode;

@@ -3,14 +3,14 @@ import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { Phone } from './phones/Phone';
-import { Call } from './phones/Call';
-import { Dialogs } from './phones/Dialogs';
-import { MessagesApp } from './phones/MessagesApp';
-import { Messages } from './phones/Messages';
-import { Notification } from './phones/Notification';
-import { Contract } from './documents/Contract';
-import { Calculator } from './calculators/Calculator';
+import { Phone } from './phone/Phone';
+import { Call } from './phone/Call';
+import { Dialogs } from './phone/Dialogs';
+import { MessagesApp } from './phone/MessagesApp';
+import { Messages } from './phone/Messages';
+import { Notification } from './phone/Notification';
+import { Contract } from './document/Contract';
+import { Calculator } from './calculator/Calculator';
 
 
 

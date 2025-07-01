@@ -1,4 +1,4 @@
-import { Caption } from './texting/Caption';
+import { Caption } from './text/Caption';
 import { SectionLanding } from './SectionLanding';
 import { SectionMissh } from './SectionMissh';
 import { SectionMickey } from './SectionMickey';

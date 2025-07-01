@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRive, useStateMachineInput } from '@rive-app/react-webgl2';
-import { AudioPlayer } from '../utilities/AudioPlayer';
+import { AudioPlayer } from '../utility/AudioPlayer';
 
 interface CallProps {
   children?: ReactNode;

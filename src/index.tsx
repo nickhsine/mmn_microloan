@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ScrollAnimationApp } from './components/ScrollAnimationApp';
-import { ScrollSmootherWrapper } from './components/utilities/ScrollSmootherWrapper';
+import { ScrollSmootherWrapper } from './components/utility/ScrollSmootherWrapper';
 import './styles/main.css';
-import { Noise } from './components/utilities/noise';
-import { ScrollCounter } from './components/utilities/ScrollCounter';
+import { Noise } from './components/utility/noise';
+import { ScrollCounter } from './components/utility/ScrollCounter';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

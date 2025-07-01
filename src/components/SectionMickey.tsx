@@ -1,7 +1,7 @@
-import { Phone } from './phones/Phone';
-import { Calculator } from './calculators/Calculator';
-import { Contract } from './documents/Contract';
-import { Envelope } from './documents/Envelope';
+import { Phone } from './phone/Phone';
+import { Calculator } from './calculator/Calculator';
+import { Contract } from './document/Contract';
+import { Envelope } from './document/Envelope';
 
 export const SectionMickey = () => {
   return (
