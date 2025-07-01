@@ -58,6 +58,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    top: 0;
     
     .call-contact {
         padding: 80px 25px 15px 25px;
@@ -161,6 +162,7 @@
         backdrop-filter: blur(20px);
         color: hsla(0, 0%, 60%, 1);
         box-shadow: 0 0 50px 0 hsla(0, 0%, 0%, 0.2);
+        border-radius: var(--phone-roundness) var(--phone-roundness) 0 0;
         .material-symbols-outlined {
             font-size: var(--text-2xl);
             color: hsla(0, 0%, 60%, 1);
@@ -179,6 +181,7 @@
         backdrop-filter: blur(20px);
         color: hsla(0, 0%, 60%, 1);
         box-shadow: 0 0 50px 0 hsla(0, 0%, 0%, 0.25);
+        border-radius: 0 0 var(--phone-roundness) var(--phone-roundness);
         .material-symbols-outlined {
             font-size: var(--text-2xl);
             color: hsla(0, 0%, 60%, 1);
@@ -201,6 +204,7 @@
             flex-direction: row;
             gap: 5px;
             display: none;
+            padding-right: 15px;
          }
          .messageSent {
             opacity: 0;
@@ -209,6 +213,7 @@
             flex-direction: row;
             gap: 5px;
             display: none;
+            padding-left: 45px;
          }
          img.avatar {
             width: 38px;
@@ -267,3 +272,15 @@
         transform: translate(-50%, -50%) scale(1.2);
     }
 }
+
+/* PauseAndResume 組件樣式 */
+.PauseAndResume {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    pointer-events: none; /* 讓滾動事件穿透 */
+}
+

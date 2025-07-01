@@ -19,12 +19,15 @@ mmn_microloan/
 │   ├── components/                      # React組件
 │   │   ├── ScrollAnimationApp.tsx       # 主應用程式
 │   │   ├── SectionLanding.tsx           # 首圖區(整合)
-│   │   ├── SectionStoryMissh.tsx        # H小姐(整合)
-│   │   ├── SectionStoryMickey.tsx       # 米奇(整合)
-│   │   ├── landing/                     # 首圖區組件
-│   │   ├── missh/                       # H小姐故事組件
-│   │   ├── mickey/                      # 米奇故事組件
-│   │   └── shared/                      # 共享組件
+│   │   ├── SectionMissh.tsx             # H小姐(整合)
+│   │   ├── SectionMickey.tsx            # 米奇(整合)
+│   │   ├── phone/                       # 手機相關組件
+│   │   │   ├── Messages.tsx             # 訊息組件
+│   │   │   └── ...                      # 其他手機組件
+│   │   ├── utility/                     # 工具組件
+│   │   │   ├── ScrollPause.tsx          # 滾動暫停控制組件
+│   │   │   └── ...                      # 其他工具組件
+│   │   └── ...                          # 其他組件
 │   └── styles/                          # 樣式檔案
 ├── index.html                           # HTML模板
 ├── ProjectStructure.md                  # 詳細專案結構文件

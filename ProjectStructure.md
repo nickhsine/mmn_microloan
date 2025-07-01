@@ -1,7 +1,7 @@
 # 微貸故事專案架構
 
 ## 專案概覽
-本專案是一個基於React + TypeScript + Vite的互動式故事敘述應用程式，使用GSAP、Rive動畫和Framer Motion，包含兩個主要故事線：Missh和Mickey的故事。
+本專案是一個基於React + TypeScript + Vite的互動式故事敘述應用程式，使用GSAP、Rive動畫和Framer Motion，包含兩個主要故事線：Missh和Mickey的故事。專案特色是分段式滾動動畫控制，使用自定義的 ScrollPause 組件實現。
 
 ## 技術棧
 - **前端框架**: React 18.2.0 + TypeScript 5.2.2
@@ -32,50 +32,44 @@ mmn_microloan/
 │   ├── index.tsx                        # 應用程式入口點
 │   ├── components/                      # React組件
 │   │   ├── ScrollAnimationApp.tsx       # 主應用程式組件
-│   │   ├── ScrollSmootherWrapper.tsx    # 滾動平滑包裝器
 │   │   ├── SectionLanding.tsx           # 登陸頁面區段
-│   │   ├── SectionStoryMissh.tsx        # Missh故事區段
-│   │   ├── SectionStoryMickey.tsx       # Mickey故事區段
+│   │   ├── SectionMissh.tsx             # Missh故事區段
+│   │   ├── SectionMickey.tsx            # Mickey故事區段
 │   │   │
-│   │   ├── landing/                     # 登陸頁面組件
-│   │   │   ├── Title.tsx                # 標題組件
+│   │   ├── calculator/                  # 計算器相關組件
+│   │   │   └── Calculator.tsx           # 計算器組件
+│   │   │
+│   │   ├── document/                    # 文件相關組件
+│   │   │   ├── Contract.tsx             # 合約組件
+│   │   │   └── Envelope.tsx             # 信封組件
+│   │   │
+│   │   ├── phone/                       # 手機相關組件
+│   │   │   ├── Call.tsx                 # 電話來電組件
+│   │   │   ├── Dialogs.tsx              # 對話框組件
+│   │   │   ├── Messages.tsx             # 訊息組件
+│   │   │   ├── MessagesApp.tsx          # 訊息應用組件
+│   │   │   ├── Notification.tsx         # 通知組件
+│   │   │   └── Phone.tsx                # 手機外殼組件
+│   │   │
+│   │   ├── text/                        # 文字相關組件
 │   │   │   ├── Brief.tsx                # 簡介組件
-│   │   │   └── AudioHandler.tsx         # 音訊處理組件
+│   │   │   ├── Caption.tsx              # 字幕組件
+│   │   │   └── Title.tsx                # 標題組件
 │   │   │
-│   │   ├── missh/                       # Missh故事組件
-│   │   │   ├── MisshCharacter.tsx       # Missh角色動畫組件
-│   │   │   ├── MisshBackground.tsx      # Missh背景動畫組件
-│   │   │   ├── MisshScene1.tsx          # Missh場景1組件
-│   │   │   ├── MisshScene2.tsx          # Missh場景2組件
-│   │   │   ├── MisshScene3.tsx          # Missh場景3組件
-│   │   │   ├── Contracts.tsx            # 合約組件
-│   │   │   └── FloatingNumbersBG.tsx    # 浮動數字背景組件
-│   │   │
-│   │   ├── mickey/                      # Mickey故事組件
-│   │   │   ├── Brief.tsx                # Mickey簡介組件
-│   │   │   ├── MickeyCharacter.tsx      # Mickey角色動畫組件
-│   │   │   ├── MickeyBackground.tsx     # Mickey背景動畫組件
-│   │   │   ├── MickeyScene1.tsx         # Mickey場景1組件
-│   │   │   ├── MickeyScene2.tsx         # Mickey場景2組件
-│   │   │   ├── MickeyScene3.tsx         # Mickey場景3組件
-│   │   │   ├── Advertisement.tsx        # 廣告動畫組件
-│   │   │   ├── Consultant.tsx           # 顧問動畫組件
-│   │   │   └── CallsWithDialogs.tsx     # 帶對話框的來電組件
-│   │   │
-│   │   └── shared/                      # 共享組件
-│   │       ├── RiveAnimation.tsx        # Rive動畫基礎組件
+│   │   └── utility/                     # 工具組件
+│   │       ├── AudioHandler.tsx         # 音訊處理組件
 │   │       ├── AudioPlayer.tsx          # 音訊播放器組件
-│   │       ├── Caption.tsx              # 字幕組件
-│   │       ├── Calls.tsx                # 電話來電組件
-│   │       ├── Message.tsx              # 訊息組件
-│   │       ├── Notification.tsx         # 通知組件
-│   │       ├── Dialogs.tsx              # 對話框組件
-│   │       └── Bookkeeping.tsx          # 記帳組件
-│   │
-│   ├── utils/                           # 工具函數目錄 (待開發)
+│   │       ├── noise.tsx                # 噪點效果組件
+│   │       ├── ScrollCounter.tsx        # 滾動計數器組件
+│   │       ├── ScrollPause.tsx          # 滾動暫停控制組件
+│   │       └── ScrollSmootherWrapper.tsx # 滾動平滑包裝器
 │   │
 │   └── styles/                          # 樣式檔案
-│       └── main.css                     # 主要樣式檔案
+│       ├── calculator.css               # 計算器樣式
+│       ├── document.css                 # 文件樣式
+│       ├── main.css                     # 主要樣式
+│       ├── noise.css                    # 噪點效果樣式
+│       └── phone.css                    # 手機組件樣式
 │
 ├── index.html                           # HTML模板
 ├── package.json                         # 專案依賴和腳本配置
@@ -95,33 +89,65 @@ mmn_microloan/
 1. **ScrollAnimationApp** - 根組件，管理整體滾動動畫邏輯
    - **ScrollSmootherWrapper** - 滾動平滑處理包裝器
    - **SectionLanding** - 登陸區段，包含專案介紹
-   - **SectionStoryMissh** - Missh故事區段
-   - **SectionStoryMickey** - Mickey故事區段
+   - **SectionMissh** - Missh故事區段
+   - **SectionMickey** - Mickey故事區段
 
-### Landing 登陸頁面
-- **Title** - 主標題展示
-- **Brief** - 專案簡介說明
+### 手機組件系統
+- **Phone** - 手機外殼組件，包含其他手機相關組件
+- **Messages** - 訊息顯示組件，使用 ScrollPause 實現分段滾動動畫
+- **MessagesApp** - 訊息應用界面組件
+- **Call** - 電話來電組件
+- **Dialogs** - 對話框組件
+- **Notification** - 通知組件
+
+### 工具組件系統
+- **ScrollPause** - 滾動暫停控制組件，核心功能組件
+- **ScrollSmootherWrapper** - 滾動平滑處理包裝器
 - **AudioHandler** - 音訊控制和處理
-
-### Missh故事流程
-1. **場景1 (MisshScene1)**: 電話來電 → 訊息 → 通知
-2. **場景2 (MisshScene2)**: 合約（高亮 + 簽名）→ 音訊
-3. **場景3 (MisshScene3)**: 通知 → 浮動數字背景 → 記帳步驟 → 電話對話循環
-
-### Mickey故事流程
-1. **場景1 (MickeyScene1)**: 廣告 → 顧問
-2. **場景2 (MickeyScene2)**: 電話對話 → 訊息  
-3. **場景3 (MickeyScene3)**: 記帳 → 通知 → 音訊
-
-### 共享組件系統
-- **RiveAnimation** - Rive動畫的基礎包裝組件
 - **AudioPlayer** - 音訊播放控制組件
-- **Caption** - 字幕顯示組件
-- **Calls** - 電話來電UI組件
-- **Message** - 訊息顯示組件
-- **Notification** - 通知彈出組件
-- **Dialogs** - 對話框顯示組件
-- **Bookkeeping** - 記帳介面組件
+- **ScrollCounter** - 滾動計數器組件
+- **noise** - 噪點效果組件
+
+## ScrollPause 組件說明
+
+### 功能概述
+ScrollPause 是一個可重用的 React 組件，用於控制基於滾動的動畫序列。它允許在特定元素後暫停動畫，然後在用戶繼續滾動到指定位置後恢復動畫。
+
+### 核心特性
+- **分組動畫**: 將元素分成多個組，每組有獨立的 ScrollTrigger 動畫
+- **多個暫停點**: 支持在多個位置暫停和恢復動畫
+- **自定義動畫**: 支持自定義動畫函數
+- **靈活配置**: 提供豐富的配置選項，如滾動距離、標記顯示等
+
+### 使用示例
+```tsx
+<ScrollPause
+  pausePoints={[
+    { index: 2, resumeAt: "1000vh" },  // 前3條消息後暫停，在1000vh恢復
+    { index: 4, resumeAt: "1300vh" }   // 前5條消息後再次暫停，在1300vh恢復
+  ]}
+  elementSelector=".messageRecieve, .messageSent"
+  scrollDistance={300}
+  start="500vh"
+  end="1500vh"
+  markers={true}
+  animation={(tl, elements) => {
+    // 自定義動畫
+    tl.fromTo(elements, 
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, stagger: 0.25 }
+    );
+  }}
+>
+  {/* 子元素內容 */}
+</ScrollPause>
+```
+
+### 技術實現
+- 使用 GSAP 的 ScrollTrigger 插件實現滾動觸發動畫
+- 利用 React 的 useGSAP 鉤子管理動畫生命週期
+- 通過計算斷點將元素分組
+- 為每個組創建獨立的時間軸和觸發器
 
 ## 資源檔案說明
 
@@ -138,6 +164,7 @@ mmn_microloan/
 
 ## 核心功能特點
 
+- **ScrollPause 分段動畫**: 實現高度可控的分段式滾動動畫
 - **Rive動畫整合**: 透過 `@rive-app/react-canvas` 和 `@rive-app/react-webgl2` 實現高品質角色和場景動畫
 - **GSAP滾動動畫**: 使用 `@gsap/react` 實現流暢的滾動觸發動畫
 - **ScrollSmoother**: GSAP的滾動平滑功能提升用戶體驗
@@ -150,6 +177,11 @@ mmn_microloan/
 - **GitHub Pages部署**: 自動化部署流程
 
 ## 開發指南
+
+### ScrollPause 組件開發
+- 在 `src/components/utility/ScrollPause.tsx` 中定義
+- 支持多種配置選項和自定義動畫
+- 可與任何需要分段滾動動畫的組件結合使用
 
 ### 組件開發
 - 所有組件都已建立基本結構，可在各個檔案中添加具體內容和邏輯
@@ -187,6 +219,7 @@ mmn_microloan/
 
 ## 注意事項
 
+- ScrollPause 組件需要正確配置暫停點和元素選擇器
 - Rive動畫組件需要提供正確的 `.riv` 檔案路徑
 - 所有組件都支援客製化CSS類別和屬性
 - 共享組件設計可在多個故事線中重複使用

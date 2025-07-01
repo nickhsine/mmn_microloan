@@ -10,7 +10,7 @@ interface DialogsProps {
   markers?: boolean;
 }
 
-export const Dialogs = ({ children, start = 'top 10%', end = '+=500 10%', markers = false }: DialogsProps) => {
+export const Dialogs = ({ children, start = '0vh', end = '500vh', markers = false }: DialogsProps) => {
   const dialogsRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -25,8 +25,8 @@ export const Dialogs = ({ children, start = 'top 10%', end = '+=500 10%', marker
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: dialogsRef.current,
-        start: start,
-        end: end,
+        start: `${start} 10%`,
+        end: `${end} 10%`,
         scrub: 1,
         markers: markers,
         id: 'dialogs-trigger'

@@ -1,12 +1,12 @@
-import { Phone } from './phone/Phone';
-import { Calculator } from './calculator/Calculator';
-import { Contract } from './document/Contract';
-import { Envelope } from './document/Envelope';
+import { Phone } from './phones/Phone';
+import { Calculator } from './calculators/Calculator';
+import { Contract } from './documents/Contract';
+import { Envelope } from './documents/Envelope';
 
 export const SectionMickey = () => {
   return (
     <section className="section-mickey">
-      <Phone markers={true} />
+      <Phone />
       <Calculator markers={true} />
       <Contract markers={true} />
       <Envelope markers={true} />

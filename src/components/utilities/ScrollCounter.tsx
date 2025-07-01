@@ -103,7 +103,7 @@ export const ScrollCounter = () => {
         <div style={{
           fontSize: '8px',
           fontWeight: 'bold',
-          color: '#00ff8888',
+          color: '#ffa500',
           textAlign: 'center',
           lineHeight: '1',
         }}>
@@ -116,7 +116,7 @@ export const ScrollCounter = () => {
             marginBottom: '8px',
             textAlign: 'center'
           }}>
-            <div style={{ fontWeight: 'bold', fontSize: '18px', color: '#00ff8888' }}>
+            <div style={{ fontWeight: 'bold', fontSize: '18px', color: '#ffa500' }}>
               {scrollData.vhPosition.toFixed(1)} VH
             </div>
           </div>
@@ -125,15 +125,15 @@ export const ScrollCounter = () => {
           <div style={{ fontSize: '11px', lineHeight: '1.4' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
               <span style={{ opacity: 0.7 }}>百分比:</span>
-              <span style={{ color: '#ffa50088' }}>{scrollData.percentage.toFixed(1)}%</span>
+              <span style={{ color: '#ff2020' }}>{scrollData.percentage.toFixed(1)}%</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
               <span style={{ opacity: 0.7 }}>像素:</span>
-              <span style={{ color: '#87ceeb88' }}>{Math.round(scrollData.pixelPosition)}px</span>
+              <span style={{ color: '#87ceeb' }}>{Math.round(scrollData.pixelPosition)}px</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
               <span style={{ opacity: 0.7 }}>視窗:</span>
-              <span style={{ color: '#dda0dd88' }}>{scrollData.viewportHeight}px</span>
+              <span style={{ color: '#dda0dd' }}>{scrollData.viewportHeight}px</span>
             </div>
           </div>
 
@@ -149,7 +149,7 @@ export const ScrollCounter = () => {
               ref={progressBarRef}
               style={{
                 height: '100%',
-                background: 'linear-gradient(90deg, #00ff88, #ffa500)',
+                background: 'linear-gradient(90deg, #ffa500, #ff2020)',
                 borderRadius: '2px',
                 transformOrigin: 'left center',
                 transform: 'scaleX(0)',

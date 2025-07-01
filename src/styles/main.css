@@ -57,6 +57,7 @@ section.section-landing {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    z-index: 0;
 }
 section.section-missh { height: 500vh; }
 
