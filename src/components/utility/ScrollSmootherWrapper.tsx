@@ -12,9 +12,11 @@ interface ScrollSmootherWrapperProps {
 
 // 檢測是否為行動裝置的函數
 const isMobile = () => {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) 
-    || window.innerWidth <= 768 
-    || ('ontouchstart' in window);
+  return (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+    window.innerWidth <= 768 ||
+    'ontouchstart' in window
+  );
 };
 
 export const ScrollSmootherWrapper = ({ children }: ScrollSmootherWrapperProps) => {
@@ -38,9 +40,7 @@ export const ScrollSmootherWrapper = ({ children }: ScrollSmootherWrapperProps) 
 
   return (
     <div id="smooth-wrapper" ref={wrapperRef}>
-      <div id="smooth-content">
-        {children}
-      </div>
+      <div id="smooth-content">{children}</div>
     </div>
   );
-}; 
+};

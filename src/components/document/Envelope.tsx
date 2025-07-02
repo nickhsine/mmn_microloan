@@ -6,15 +6,14 @@ interface EnvelopeProps {
 }
 
 export const Envelope = ({ top, markers = false }: EnvelopeProps) => {
-  const containerStyle: CSSProperties = top ? {
-    position: 'absolute',
-    top,
-    left: '50%',
-    transform: 'translate(-50%, 0%)'
-  } : {};
+  const containerStyle: CSSProperties = top
+    ? {
+        position: 'absolute',
+        top,
+        left: '50%',
+        transform: 'translate(-50%, 0%)',
+      }
+    : {};
 
-  return (
-    <div className="envelope" style={containerStyle}>
-    </div>
-  );
-}; 
+  return <div className="envelope" style={containerStyle}></div>;
+};

@@ -10,10 +10,10 @@ export const ScrollCounter = () => {
     vhPosition: 0,
     percentage: 0,
     pixelPosition: 0,
-    viewportHeight: 0
+    viewportHeight: 0,
   });
   const [isCollapsed, setIsCollapsed] = useState(true);
-  
+
   const counterRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
 
@@ -28,23 +28,23 @@ export const ScrollCounter = () => {
         document.documentElement.scrollHeight,
         document.documentElement.offsetHeight
       );
-      
+
       const maxScroll = totalHeight - viewportHeight;
       const vhPosition = (scrollTop / viewportHeight) * 100;
       const percentage = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
-      
+
       setScrollData({
         vhPosition,
         percentage,
         pixelPosition: scrollTop,
-        viewportHeight
+        viewportHeight,
       });
 
       // 更新進度條
       if (progressBarRef.current) {
-        gsap.set(progressBarRef.current, { 
+        gsap.set(progressBarRef.current, {
           scaleX: percentage / 100,
-          transformOrigin: 'left center'
+          transformOrigin: 'left center',
         });
       }
     };
@@ -52,10 +52,10 @@ export const ScrollCounter = () => {
     // 創建 ScrollTrigger
     ScrollTrigger.create({
       trigger: document.body,
-      start: "top top",
-      end: "bottom bottom",
+      start: 'top top',
+      end: 'bottom bottom',
       onUpdate: updateScrollData,
-      onRefresh: updateScrollData
+      onRefresh: updateScrollData,
     });
 
     // 初始化
@@ -71,7 +71,7 @@ export const ScrollCounter = () => {
   }, []);
 
   return (
-    <div 
+    <div
       ref={counterRef}
       onClick={() => setIsCollapsed(!isCollapsed)}
       style={{
@@ -84,12 +84,12 @@ export const ScrollCounter = () => {
         backdropFilter: 'blur(10px)',
         border: '1px solid hsla(0, 0%, 0%, 0.1)',
         borderRadius: isCollapsed ? '12px' : '8px',
-        
+
         padding: isCollapsed ? '7px 9px' : '12px 16px',
         minWidth: isCollapsed ? 'auto' : '160px',
         width: isCollapsed ? 'auto' : 'auto',
         height: isCollapsed ? 'auto' : 'auto',
-        
+
         color: 'hsla(0, 0%, 0%, 0.5)',
         fontSize: '12px',
         userSelect: 'none',
@@ -100,22 +100,26 @@ export const ScrollCounter = () => {
     >
       {isCollapsed ? (
         /* 小方塊狀態 - 只顯示 VH 數字 */
-        <div style={{
-          fontSize: '8px',
-          fontWeight: 'bold',
-          color: '#ffa500',
-          textAlign: 'center',
-          lineHeight: '1',
-        }}>
+        <div
+          style={{
+            fontSize: '8px',
+            fontWeight: 'bold',
+            color: '#ffa500',
+            textAlign: 'center',
+            lineHeight: '1',
+          }}
+        >
           {Math.round(scrollData.vhPosition)}
         </div>
       ) : (
         <>
           {/* 主要顯示 - VH 位置 */}
-          <div style={{ 
-            marginBottom: '8px',
-            textAlign: 'center'
-          }}>
+          <div
+            style={{
+              marginBottom: '8px',
+              textAlign: 'center',
+            }}
+          >
             <div style={{ fontWeight: 'bold', fontSize: '18px', color: '#ffa500' }}>
               {scrollData.vhPosition.toFixed(1)} VH
             </div>
@@ -138,14 +142,16 @@ export const ScrollCounter = () => {
           </div>
 
           {/* 進度條 */}
-          <div style={{ 
-            marginTop: '8px',
-            height: '4px',
-            background: 'rgba(255, 255, 255, 0.1)',
-            borderRadius: '2px',
-            overflow: 'hidden'
-          }}>
-            <div 
+          <div
+            style={{
+              marginTop: '8px',
+              height: '4px',
+              background: 'rgba(255, 255, 255, 0.1)',
+              borderRadius: '2px',
+              overflow: 'hidden',
+            }}
+          >
+            <div
               ref={progressBarRef}
               style={{
                 height: '100%',
@@ -161,4 +167,4 @@ export const ScrollCounter = () => {
       )}
     </div>
   );
-}; 
+};

@@ -6,6 +6,10 @@ import { useRive, useStateMachineInput } from '@rive-app/react-webgl2';
 
 gsap.registerPlugin(ScrollTrigger);
 
+interface AudioHandlerProps {
+  markers?: boolean;
+}
+
 export let globalAudioEnabled = false;
 
 const useAudioRive = (artboard: string) => {
@@ -18,19 +22,20 @@ const useAudioRive = (artboard: string) => {
   });
 
   const stateInput = useStateMachineInput(rive, 'State Machine 1', 'State');
-  
+
   return { RiveComponent, stateInput };
 };
 
-export const AudioHandler = () => {
+export const AudioHandler = ({ markers }: AudioHandlerProps) => {
   const { RiveComponent: FullRiveComponent, stateInput: fullStateInput } = useAudioRive('Full');
-  const { RiveComponent: SimpleRiveComponent, stateInput: simpleStateInput } = useAudioRive('Simple');
+  const { RiveComponent: SimpleRiveComponent, stateInput: simpleStateInput } =
+    useAudioRive('Simple');
 
   const handleToggle = () => {
     globalAudioEnabled = !globalAudioEnabled;
-    
+
     window.dispatchEvent(new CustomEvent('audioToggle'));
-    
+
     [fullStateInput, simpleStateInput].forEach(input => {
       input && (input.value = globalAudioEnabled);
     });
@@ -40,14 +45,19 @@ export const AudioHandler = () => {
     ScrollTrigger.create({
       trigger: '.audio-handler-full',
       start: 'bottom top',
+      markers: markers,
       onEnter: () => {
-        gsap.to('.audio-handler-simple', { 
-          opacity: 1, duration: 0.5, pointerEvents: 'auto' 
+        gsap.to('.audio-handler-simple', {
+          opacity: 1,
+          duration: 0.5,
+          pointerEvents: 'auto',
         });
       },
       onLeaveBack: () => {
         gsap.to('.audio-handler-simple', {
-          opacity: 0, duration: 0.5, pointerEvents: 'none'
+          opacity: 0,
+          duration: 0.5,
+          pointerEvents: 'none',
         });
       },
     });
@@ -55,22 +65,16 @@ export const AudioHandler = () => {
 
   return (
     <>
-      <div className='audio-handler-full'>
+      <div className="audio-handler-full">
         <p>本文含聲音敘事，開啟聲音以獲得完整閱讀體驗</p>
-        <div 
-          onClick={handleToggle} 
-          style={{ cursor: 'pointer', width: '104px', height: '36px' }}
-        >
+        <div onClick={handleToggle} style={{ cursor: 'pointer', width: '104px', height: '36px' }}>
           <FullRiveComponent />
         </div>
       </div>
-      
+
       {createPortal(
-        <div className='audio-handler-simple'>
-          <div 
-            onClick={handleToggle} 
-            style={{ cursor: 'pointer', width: '60px', height: '20px' }}
-          >
+        <div className="audio-handler-simple">
+          <div onClick={handleToggle} style={{ cursor: 'pointer', width: '60px', height: '20px' }}>
             <SimpleRiveComponent />
           </div>
         </div>,
@@ -78,4 +82,4 @@ export const AudioHandler = () => {
       )}
     </>
   );
-}; 
+};

@@ -1,24 +1,25 @@
 section.noise {
-    position: fixed;
-    top: -50px;
-    left: -50px;
-    width: calc(100% + 50px);
-    height: calc(100% + 50px);
-    background: repeating-linear-gradient(
-        #666, #666 50%, #FFF 50%, #FFF
-    );
-    background-size: 5px 5px;
-    filter: url(#noise);
-    mix-blend-mode: overlay;
-    z-index: 999;
-    opacity: 0.15;
-    pointer-events: none;
-    @media (min-width: 1920px) {
-        opacity: 0.5;
-    }
-    svg.noise {
-        width: 0;
-        height: 0;
-    }
+  position: fixed;
+  top: -50px;
+  left: -50px;
+  width: calc(100% + 50px);
+  height: calc(100% + 50px);
+  background: repeating-linear-gradient(#666, #666 50%, #fff 50%, #fff);
+  background-size: 5px 5px;
+  filter: url(#noise);
+  mix-blend-mode: overlay;
+  z-index: 999;
+  opacity: 0.15;
+  pointer-events: none;
 }
-  
+
+@media (min-width: 1920px) {
+  section.noise {
+    opacity: 0.5;
+  }
+}
+
+section.noise svg.noise {
+  width: 0;
+  height: 0;
+}

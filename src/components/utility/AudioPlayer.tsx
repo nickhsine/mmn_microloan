@@ -10,14 +10,16 @@ interface AudioPlayerProps {
   loop?: boolean;
   start?: string;
   end?: string;
+  markers?: boolean;
 }
 
-export const AudioPlayer = ({ 
+export const AudioPlayer = ({
   audioSrc = './assets/audio/SFX_PhoneVibrate_v1.aac',
   volume = 0.5,
   loop = true,
   start = 'top 50%',
-  end = '+=300 50%'
+  end = '+=300 50%',
+  markers = false,
 }: AudioPlayerProps) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -35,45 +37,47 @@ export const AudioPlayer = ({
     return () => window.removeEventListener('audioToggle', handleAudioToggle);
   }, [isPlaying, volume]);
 
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  useGSAP(
+    () => {
+      gsap.registerPlugin(ScrollTrigger);
 
-    if (!audioRef.current || !containerRef.current) return;
+      if (!audioRef.current || !containerRef.current) return;
 
-    const audio = audioRef.current;
-    audio.loop = loop;
+      const audio = audioRef.current;
+      audio.loop = loop;
 
-    const audioIn = () => {
-      audio.play().catch((error) => console.log('無法播放聲音', error));
-      const targetVolume = globalAudioEnabled ? volume : 0;
-      gsap.to(audio, { volume: targetVolume, duration: 0.5 });
-      setIsPlaying(true);
-    }
-    
-    const audioOut = () => {
-      gsap.to(audio, { 
-        volume: 0, 
-        duration: 0.5,
-        onComplete: () => setIsPlaying(false)
+      const audioIn = () => {
+        audio.play().catch(error => console.log('無法播放聲音', error));
+        const targetVolume = globalAudioEnabled ? volume : 0;
+        gsap.to(audio, { volume: targetVolume, duration: 0.5 });
+        setIsPlaying(true);
+      };
+
+      const audioOut = () => {
+        gsap.to(audio, {
+          volume: 0,
+          duration: 0.5,
+          onComplete: () => setIsPlaying(false),
+        });
+      };
+
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: start,
+        end: end,
+        onEnter: audioIn,
+        onLeave: audioOut,
+        onEnterBack: audioIn,
+        onLeaveBack: audioOut,
+        markers: markers,
+        id: 'audio-scroll-trigger',
       });
-    }
-    
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: start,
-      end: end,
-      onEnter: audioIn,
-      onLeave: audioOut,
-      onEnterBack: audioIn,
-      onLeaveBack: audioOut,
-      markers: true,
-      id: 'audio-scroll-trigger'
-    });
-
-  }, { scope: containerRef, dependencies: [volume, loop] });
+    },
+    { scope: containerRef, dependencies: [volume, loop] }
+  );
 
   return (
-    <div className="audio-player" ref={containerRef} style={{ height: '0px', width: '0px', }}>
+    <div className="audio-player" ref={containerRef} style={{ height: '0px', width: '0px' }}>
       <audio
         ref={audioRef}
         src={audioSrc}
@@ -82,4 +86,4 @@ export const AudioPlayer = ({
       />
     </div>
   );
-}; 
+};

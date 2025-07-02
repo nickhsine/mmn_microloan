@@ -1,8 +1,17 @@
-.contracts {
-    width: 30vw;
-    height: 100%;
+.contract-container {
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  border: 1px solid white;
+  z-index: 0;
 }
+
+.contract {
+  filter: drop-shadow(5px 5px 10px hsla(0, 0%, 0%, 0.15));
+}
+
 .envelope {
-    width: 30vw;
-    height: 100%;
+  width: 30vw;
+  height: 100%;
 }

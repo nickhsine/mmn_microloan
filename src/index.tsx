@@ -8,10 +8,10 @@ import { ScrollCounter } from './components/utility/ScrollCounter';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Noise />
+    {/* <Noise /> */}
     <ScrollCounter />
     <ScrollSmootherWrapper>
       <ScrollAnimationApp />
     </ScrollSmootherWrapper>
-  </React.StrictMode>,
-); 
+  </React.StrictMode>
+);
