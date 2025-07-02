@@ -64,12 +64,13 @@ section.section-landing {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  z-index: 0;
+  z-index: 1;
   overflow-x: hidden;
 }
 section.section-missh {
-  height: 500vh;
+  height: 4000px;
   overflow-x: hidden;
+  z-index: 0;
 }
 
 /* Caption */
@@ -78,7 +79,6 @@ section.section-missh {
   top: 0;
   left: 0;
   height: auto;
-  z-index: 10;
 }
 p.caption {
   position: absolute;
@@ -89,6 +89,7 @@ p.caption {
   opacity: 0;
   visibility: hidden;
   backdrop-filter: blur(10px);
+  z-index: 10;
 }
 
 p.caption.normal {
@@ -99,10 +100,10 @@ p.caption.normal {
   padding: 10px 14px 14px 14px;
   border: solid hsla(0, 0%, 100%, 0.1);
   border-width: 1px 0 0 1px;
+  z-index: 10;
 }
 p.caption.none {
-  width: 0px;
-  color: hsla(0, 0%, 100%, 0);
+  display: none;
 }
 
 /* Landing */

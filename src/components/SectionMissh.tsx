@@ -15,12 +15,13 @@ import { Calculator } from './calculator/Calculator';
 
 
 export const SectionMissh = () => {
-  const phoneRef = useRef(null);
-  const contractRef = useRef(null);
-  const calculatorRef = useRef(null);
   const sectionRef = useRef(null);
-  const globalmarks = true;
+  const phoneRef = useRef(null);
+  const contractARef = useRef(null);
+  const contractBRef = useRef(null);
+  const calculatorRef = useRef(null);
   
+  const globalmarks = true;
   const messageAvatarImg = "./assets/img/avatar_A.svg";
 
   useGSAP(() => {
@@ -38,20 +39,29 @@ export const SectionMissh = () => {
     });
 
     gsap.set(phoneRef.current, { x: 0, rotation: 0 });
-    gsap.set(contractRef.current, { x: -1000, y: 1000, rotation: 10 });
+    gsap.set(contractARef.current, { x: -1000, y: 1000, rotation: 10 });
+    gsap.set(contractBRef.current, { x: -1000, y: 1000, rotation: 10 });
     gsap.set(calculatorRef.current, { x: 100 });
 
     tl.to(phoneRef.current, { x: 700, rotation: 10, duration: 1 }, 1)
 
-      .to(contractRef.current, { x: 0, y: 0, rotation: 0, duration: 0.5 }, 1) 
+      .to(contractARef.current, { x: 20, y: 50, rotation: -5, duration: 0.5 }, 1) 
+      .to(contractBRef.current, { x: 20, y: 150, rotation: 5, duration: 0.5 }, 1) 
 
-      .to(calculatorRef.current, { x: 0, duration: 0 }, "-=0.5");
+      .to(calculatorRef.current, { x: 0, duration: 0 }, 1.5);
   }, []);
 
   return (
     <section className="section-missh" ref={sectionRef}>
-      <ContractDOM ref={contractRef} markers={globalmarks} start="3000" end="3500"
-        contractSrc="./assets/img/contract_1B.svg" highlightId="Highlight3"/>
+      <ContractDOM ref={contractARef} markers={globalmarks} start="3000" end="3500"
+        contractSrc="./assets/img/contract_1A.svg" 
+        highlightIds={["Highlight1"]}
+      />
+      <ContractDOM ref={contractBRef} markers={globalmarks} start="3000" end="3500"
+        contractSrc="./assets/img/contract_1B.svg" 
+        highlightIds={["Highlight2", "Highlight3"]}
+        stagger={0.5}
+      />
       <Calculator ref={calculatorRef} markers={globalmarks} />
       <Phone ref={phoneRef}>
         <Call markers={globalmarks} start="0" end="600">

@@ -7,16 +7,18 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface ContractProps {
   contractSrc: string;
-  highlightId: string;
+  highlightIds: string[];
   markers?: boolean;
   start?: string;
   end?: string;
+  stagger?: number;
 }
 
 export const Contract = forwardRef<HTMLDivElement, ContractProps>(({ 
   markers = false, start = '100vh', end = '500vh',
   contractSrc='./assets/img/contract_1A.svg', 
-  highlightId='Highlight3',
+  highlightIds=['Highlight3'],
+  stagger = 0.2,
 }, ref) => {
     const contractRef = useRef(null);
     const objectRef = useRef<HTMLObjectElement>(null);
@@ -28,22 +30,29 @@ export const Contract = forwardRef<HTMLDivElement, ContractProps>(({
           objectRef.current.onload = () => {
 
             const svgDoc = objectRef.current?.contentDocument;
-            const highlightElement = svgDoc?.getElementById(highlightId);
+            const highlightElements: Element[] = [];
             
-            console.log('Searching for #Highlight3:', highlightElement);
+            highlightIds.forEach(id => {
+              const element = svgDoc?.getElementById(id);
+              if (element) {
+                highlightElements.push(element);
+                console.log(`SVG Element Found: ${id}`, {
+                  tagName: element.tagName,
+                  id: element.id,
+                });
+              } else {
+                console.error(`無法找到元素 #${id}，請檢查 SVG 內容`);
+              }
+            });
             
-            if (highlightElement) {
-              console.log('SVG Element Found:', {
-                tagName: highlightElement.tagName,
-                id: highlightElement.id,
-              });
-              
-              gsap.set(highlightElement, { opacity: 0 });
+            if (highlightElements.length > 0) {
+              gsap.set(highlightElements, { opacity: 0 });
 
-              gsap.to(highlightElement, {
+              gsap.to(highlightElements, {
                 opacity: 1,
                 duration: 1,
                 ease: 'power2.out',
+                stagger: stagger,
                 scrollTrigger: {
                   trigger: contractRef.current,
                   start: `${start} 10%`,
@@ -54,12 +63,12 @@ export const Contract = forwardRef<HTMLDivElement, ContractProps>(({
                 },
               });
             } else {
-              console.error(`無法找到元素 #${highlightId}，請檢查 SVG 內容`);
+              console.error(`無法找到任何指定的高亮元素：${highlightIds.join(', ')}`);
             }
           };
         }
       },
-      { scope: contractRef, dependencies: [objectRef] }
+      { scope: contractRef, dependencies: [objectRef, highlightIds, stagger] }
     );
 
     const containerStyle: CSSProperties = {};
