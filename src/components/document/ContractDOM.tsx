@@ -14,85 +14,98 @@ interface ContractDOMProps {
   stagger?: number;
 }
 
-export const ContractDOM = forwardRef<TimelineHandle, ContractDOMProps>(({ 
-  contractSrc = './assets/img/contract_1A.svg',
-  highlightIds = ['Highlight1', 'Highlight2'],
-  stagger = 0.2,
-}, ref) => {
-  const contractRef = useRef<HTMLDivElement>(null);
-  const svgObjectRef = useRef<HTMLObjectElement>(null);
-  const [svgLoaded, setSvgLoaded] = useState(false);
-
-  // SVG 載入完成處理
-  const handleSvgLoad = () => {
-    console.log('SVG loaded');
-    setSvgLoaded(true);
-  };
-
-  // 暴露 createTimeline 方法和 DOM 引用
-  useImperativeHandle(ref, () => ({
-    createTimeline: () => {
-      const tl = gsap.timeline();
-      
-      if (!svgLoaded || !svgObjectRef.current) {
-        console.warn('SVG not loaded yet');
-        return tl;
-      }
-
-      const elements: Element[] = [];
-      
-      try {
-        // 獲取 SVG 文檔
-        const svgDoc = svgObjectRef.current.contentDocument;
-        
-        if (svgDoc) {
-          highlightIds.forEach(id => {
-            const element = svgDoc.getElementById(id);
-            if (element) {
-              elements.push(element);
-              console.log(`Timeline creating for: ${id}`, element);
-            } else {
-              console.warn(`Element #${id} not found in SVG`);
-            }
-          });
-        } else {
-          console.warn('Could not access SVG document');
-        }
-      } catch (error) {
-        console.error('Error accessing SVG elements:', error);
-      }
-      
-      if (elements.length > 0) {
-        // 確保初始狀態
-        gsap.set(elements, { opacity: 0 });
-        
-        tl.to(elements, {
-          opacity: 1,
-          duration: 0.2,
-          ease: 'power2.out',
-          stagger: stagger,
-        }, 0);
-        
-        console.log(`Animation created for ${elements.length} elements`);
-      } else {
-        console.warn('No highlight elements found for animation');
-      }
-      
-      return tl;
+export const ContractDOM = forwardRef<TimelineHandle, ContractDOMProps>(
+  (
+    {
+      contractSrc = './assets/img/contract_1A.svg',
+      highlightIds = ['Highlight1', 'Highlight2'],
+      stagger = 0.2,
     },
-    domElement: contractRef.current,
-  }), [highlightIds, stagger, svgLoaded]);
+    ref
+  ) => {
+    const contractRef = useRef<HTMLDivElement>(null);
+    const svgObjectRef = useRef<HTMLObjectElement>(null);
+    const [svgLoaded, setSvgLoaded] = useState(false);
 
-  return (
-    <div ref={contractRef} className="contract-container">
-      <object
-        ref={svgObjectRef}
-        data={contractSrc}
-        type="image/svg+xml"
-        className="contract"
-        onLoad={handleSvgLoad}
-        style={{ width: '100%', height: '100%' }}
-      />
-    </div>
-  );
-});
+    // SVG 載入完成處理
+    const handleSvgLoad = () => {
+      console.log('SVG loaded');
+      setSvgLoaded(true);
+    };
+
+    // 暴露 createTimeline 方法和 DOM 引用
+    useImperativeHandle(
+      ref,
+      () => ({
+        createTimeline: () => {
+          const tl = gsap.timeline();
+
+          if (!svgLoaded || !svgObjectRef.current) {
+            console.warn('SVG not loaded yet');
+            return tl;
+          }
+
+          const elements: Element[] = [];
+
+          try {
+            // 獲取 SVG 文檔
+            const svgDoc = svgObjectRef.current.contentDocument;
+
+            if (svgDoc) {
+              highlightIds.forEach(id => {
+                const element = svgDoc.getElementById(id);
+                if (element) {
+                  elements.push(element);
+                  console.log(`Timeline creating for: ${id}`, element);
+                } else {
+                  console.warn(`Element #${id} not found in SVG`);
+                }
+              });
+            } else {
+              console.warn('Could not access SVG document');
+            }
+          } catch (error) {
+            console.error('Error accessing SVG elements:', error);
+          }
+
+          if (elements.length > 0) {
+            // 確保初始狀態
+            gsap.set(elements, { opacity: 0 });
+
+            tl.to(
+              elements,
+              {
+                opacity: 1,
+                duration: 0.2,
+                ease: 'power2.out',
+                stagger: stagger,
+              },
+              0
+            );
+
+            console.log(`Animation created for ${elements.length} elements`);
+          } else {
+            console.warn('No highlight elements found for animation');
+          }
+
+          return tl;
+        },
+        domElement: contractRef.current,
+      }),
+      [highlightIds, stagger, svgLoaded]
+    );
+
+    return (
+      <div ref={contractRef} className="contract-container">
+        <object
+          ref={svgObjectRef}
+          data={contractSrc}
+          type="image/svg+xml"
+          className="contract"
+          onLoad={handleSvgLoad}
+          style={{ width: '100%', height: '100%' }}
+        />
+      </div>
+    );
+  }
+);

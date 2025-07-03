@@ -22,6 +22,8 @@
   },
   "rules": {
     "prettier/prettier": "error",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
+    "jsx-quotes": ["error", "prefer-double"]
   }
 } 

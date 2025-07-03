@@ -65,6 +65,7 @@ mmn_microloan/
 │   │       ├── noise.tsx                # 噪點效果組件
 │   │       ├── ScrollCounter.tsx        # 滾動計數器組件
 │   │       ├── ScrollPause.tsx          # 滾動暫停控制組件
+│   │       ├── TimelineHandle.ts        # 動畫時間軸橋接工具
 │   │       └── ScrollSmootherWrapper.tsx # 滾動平滑包裝器
 │   │
 │   └── styles/                          # 樣式檔案
@@ -154,6 +155,65 @@ ScrollPause 是一個可重用的 React 組件，用於控制基於滾動的動�
 - 利用 React 的 useGSAP 鉤子管理動畫生命週期
 - 通過計算斷點將元素分組
 - 為每個組創建獨立的時間軸和觸發器
+
+## TimelineHandle 工具函式說明
+
+TimelineHandle.ts 提供一套抽象介面與輔助函式，用來在不同 React 組件之間安全地組裝與控制 GSAP 時間軸。藉由統一的 `TimelineHandle` 介面，Section 級別的父時間軸可以在精確的時間點啟動、暫停、恢復或結束各子組件的動畫，而各子組件只需實作自身的 **開始**／**結束** 動畫即可。
+
+### 型別定義
+```ts
+export type TimelineHandle = {
+  // 建立「開始」動畫時間軸（必填）
+  createStartTimeline: () => gsap.core.Timeline;
+  // 建立「結束」動畫時間軸（選填）
+  createEndTimeline?: () => gsap.core.Timeline;
+  // 進階控制（選填）
+  pause?: () => void;      // 暫停自身動畫
+  resume?: () => void;     // 恢復自身動畫
+  stop?: () => void;       // 停止並重置動畫
+  // 供 safeGsapSet / safeGsapTo 直接存取的 DOM 節點
+  domElement: HTMLElement | null;
+};
+```
+
+### 核心輔助函式
+| 函式 | 說明 |
+|------|------|
+| `AddStartTL(parent, ref, pos)` | 在 `parentTimeline` 的 `pos` 位置插入子組件的開始時間軸 |
+| `AddEndTL(parent, ref, pos)` | 在 `parentTimeline` 的 `pos` 位置插入子組件的結束時間軸 |
+| `PauseTL(parent, ref, pos)` | 呼叫子組件 `pause` 並於 `parentTimeline` 插入到 `pos` |
+| `ResumeTL(parent, ref, pos)` | 呼叫子組件 `resume` 並於 `parentTimeline` 插入到 `pos` |
+| `StopTL(parent, ref, pos)` | 呼叫子組件 `stop` 並於 `parentTimeline` 插入到 `pos` |
+| `safeGsapSet(ref, vars)` | 在 DOM 存在時安全地執行 `gsap.set` |
+| `safeGsapTo(tl, ref, vars, pos)` | 在 DOM 存在時安全地向時間軸加入 `to` 動畫 |
+
+> **位置參數 `pos`**：可使用絕對數值（秒）或 GSAP 字串語法（`'<0.8'`, `'>1'` 等）靈活定位。
+
+### 使用示例
+以下片段示範如何在 Section 組件中組裝多個子組件的動畫：
+```ts
+const misshTL = gsap.timeline();
+
+// 1. 啟動 PhoneCall 動畫於 0 秒
+AddStartTL(misshTL, phoneCallRef.current, 0);
+// 2. 於 PhoneCall 開始後 0.8 秒顯示 Dialogs
+AddStartTL(misshTL, dialogsRef.current, '<0.8');
+// 3. 於 PhoneCall 結束後 0.5 秒執行其結束動畫
+AddEndTL(misshTL, phoneCallRef.current, '>0.5');
+
+// 4. 啟動 Messages 系列並在特定時間點進行控制
+AddStartTL(misshTL, messagesAppRef.current, '>0');
+AddStartTL(misshTL, messagesRef.current, '>0.1');
+PauseTL(misshTL, messagesRef.current, 2.5);
+ResumeTL(misshTL, messagesRef.current, 3);
+PauseTL(misshTL, messagesRef.current, 3.5);
+ResumeTL(misshTL, messagesRef.current, 4);
+```
+
+### 實作指引
+1. **子組件**：實作 `createStartTimeline`（必須）和 `createEndTimeline`（視需要）。如需額外控制，實作 `pause`／`resume`／`stop`。
+2. **父時間軸（Section 層級）**：使用 `AddStartTL`/`AddEndTL` 等函式將子時間軸插入，並透過 `PauseTL`/`ResumeTL`/`StopTL` 精準控制。
+3. **類型安全**：所有引用皆遵循 `TimelineHandle`，TypeScript 可避免遺漏實作。
 
 ## 資源檔案說明
 

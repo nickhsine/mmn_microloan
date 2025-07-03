@@ -10,7 +10,11 @@ export const SectionMickey = () => {
     <section className="section-mickey">
       <Phone />
       <Calculator markers={globalmarks} />
-      <ContractDOM markers={globalmarks} contractSrc="./assets/img/contract_1B.svg" highlightId="Highlight3"/>
+      <ContractDOM
+        markers={globalmarks}
+        contractSrc="./assets/img/contract_1B.svg"
+        highlightId="Highlight3"
+      />
       <Envelope markers={globalmarks} />
     </section>
   );

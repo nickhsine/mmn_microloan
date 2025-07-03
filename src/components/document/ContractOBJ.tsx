@@ -14,24 +14,28 @@ interface ContractProps {
   stagger?: number;
 }
 
-export const Contract = forwardRef<HTMLDivElement, ContractProps>(({ 
-  markers = false, start = '100vh', end = '500vh',
-  contractSrc='./assets/img/contract_1A.svg', 
-  highlightIds=['Highlight3'],
-  stagger = 0.2,
-}, ref) => {
+export const Contract = forwardRef<HTMLDivElement, ContractProps>(
+  (
+    {
+      markers = false,
+      start = '100vh',
+      end = '500vh',
+      contractSrc = './assets/img/contract_1A.svg',
+      highlightIds = ['Highlight3'],
+      stagger = 0.2,
+    },
+    ref
+  ) => {
     const contractRef = useRef(null);
     const objectRef = useRef<HTMLObjectElement>(null);
 
     useGSAP(
       () => {
-
         if (objectRef.current) {
           objectRef.current.onload = () => {
-
             const svgDoc = objectRef.current?.contentDocument;
             const highlightElements: Element[] = [];
-            
+
             highlightIds.forEach(id => {
               const element = svgDoc?.getElementById(id);
               if (element) {
@@ -44,7 +48,7 @@ export const Contract = forwardRef<HTMLDivElement, ContractProps>(({
                 console.error(`無法找到元素 #${id}，請檢查 SVG 內容`);
               }
             });
-            
+
             if (highlightElements.length > 0) {
               gsap.set(highlightElements, { opacity: 0 });
 
@@ -76,9 +80,9 @@ export const Contract = forwardRef<HTMLDivElement, ContractProps>(({
     return (
       <div ref={ref || contractRef} className="contract-container" style={containerStyle}>
         <div className="contract">
-          <object 
+          <object
             ref={objectRef}
-            data={contractSrc} 
+            data={contractSrc}
             type="image/svg+xml"
             className="w-full h-full"
           />

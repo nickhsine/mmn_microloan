@@ -10,24 +10,40 @@ export const Dialogs = forwardRef<TimelineHandle, DialogsProps>(({ children }, r
   const dialogsRef = useRef<HTMLDivElement>(null);
 
   useImperativeHandle(ref, () => ({
-    createTimeline: () => {
+    createStartTimeline: () => {
       const tl = gsap.timeline();
-      
+
       if (!dialogsRef.current) return tl;
 
       const dialogElements = dialogsRef.current.querySelectorAll('.Recieve, .Sent');
-      
+
       if (dialogElements.length === 0) return tl;
 
-      return tl.fromTo(dialogElements, 
+      return tl.fromTo(
+        dialogElements,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0,
-          duration: 1,
-          stagger: 0.25,
-          ease: "power2.out"
-        }
+        { opacity: 1, y: 0, duration: 1, stagger: 0.25, ease: 'power2.out' }
       );
     },
+
+    createEndTimeline: () => {
+      const tl = gsap.timeline();
+
+      if (!dialogsRef.current) return tl;
+
+      const dialogElements = dialogsRef.current.querySelectorAll('.Recieve, .Sent');
+
+      if (dialogElements.length === 0) return tl;
+
+      return tl.to(dialogElements, {
+        opacity: 0,
+        y: -10,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: 'power2.in',
+      });
+    },
+
     domElement: dialogsRef.current,
   }));
 
@@ -36,4 +52,4 @@ export const Dialogs = forwardRef<TimelineHandle, DialogsProps>(({ children }, r
       {children}
     </div>
   );
-}); 
+});

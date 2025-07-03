@@ -2,7 +2,16 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TimelineHandle, safeGsapSet, safeGsapTo, safeAddTimeline } from './utility/TimelineHandle';
+import {
+  TimelineHandle,
+  safeGsapSet,
+  safeGsapTo,
+  AddStartTL,
+  AddEndTL,
+  PauseTL,
+  ResumeTL,
+  StopTL,
+} from './utility/TimelineHandle';
 
 import { Phone } from './phone/Phone';
 import { PhoneCall } from './phone/PhoneCall';
@@ -13,7 +22,6 @@ import { Notification } from './phone/Notification';
 import { Contract } from './document/Contract';
 import { Calculator } from './calculator/Calculator';
 
-
 interface MessagesTimelineHandle extends TimelineHandle {
   pause: () => void;
   resume: () => void;
@@ -21,71 +29,66 @@ interface MessagesTimelineHandle extends TimelineHandle {
 
 export const SectionMissh = () => {
   const sectionRef = useRef(null);
-  const phoneRef = useRef(null);
+  const phoneRef = useRef<TimelineHandle | null>(null);
   const contractARef = useRef<TimelineHandle | null>(null);
   const contractBRef = useRef<TimelineHandle | null>(null);
-  const calculatorRef = useRef(null);
+  const calculatorRef = useRef<TimelineHandle | null>(null);
   const notificationRef = useRef<TimelineHandle | null>(null);
   const dialogsRef = useRef<TimelineHandle | null>(null);
   const phoneCallRef = useRef<TimelineHandle | null>(null);
   const messagesAppRef = useRef<TimelineHandle | null>(null);
-  const messagesRef = useRef<MessagesTimelineHandle | null>(null);
-  
+  const messagesRef = useRef<TimelineHandle | null>(null);
+
   const globalmarks = true;
-  const messageAvatarImg = "./assets/img/avatar_A.svg";
+  const messageAvatarImg = './assets/img/avatar_A.svg';
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     const misshTL = gsap.timeline({
       scrollTrigger: {
-        trigger: ".section-missh",
-        start: "top top",
-        end: "bottom center",
+        trigger: '.section-missh',
+        start: 'top top',
+        end: 'bottom center',
         scrub: 1,
         pin: sectionRef.current,
         markers: globalmarks,
-      }
+      },
     });
 
-    gsap.set(phoneRef.current, { x: 0, rotation: 0 });
-    gsap.set(calculatorRef.current, { x: 100 });
+    safeGsapSet(phoneRef.current, { x: 0, rotation: 0 });
+    safeGsapSet(calculatorRef.current, { x: 100 });
     safeGsapSet(contractARef.current, { x: -1000, y: 1000, rotation: 10 });
     safeGsapSet(contractBRef.current, { x: -1000, y: 1000, rotation: 10 });
-    safeGsapTo(misshTL, contractARef.current, 
-      { x: 20, y: 50, rotation: -5, duration: 0.5 }, 5
-    );
-    safeGsapTo(misshTL, contractBRef.current, 
-      { x: 20, y: 150, rotation: 5, duration: 0.5 }, 5
-    );
-    
+
+    safeGsapTo(misshTL, contractARef.current, { x: 20, y: 50, rotation: -5, duration: 0.5 }, 5);
+    safeGsapTo(misshTL, contractBRef.current, { x: 20, y: 150, rotation: 5, duration: 0.5 }, 5);
+
     // Time Positioning
-    safeAddTimeline(misshTL, phoneCallRef.current, 0);
-    safeAddTimeline(misshTL, dialogsRef.current, 0.85);
+    AddStartTL(misshTL, phoneCallRef.current, 0);
+    AddStartTL(misshTL, dialogsRef.current, '<0.8');
+    AddEndTL(misshTL, phoneCallRef.current, '>0.5');
 
-    safeAddTimeline(misshTL, messagesAppRef.current, 2.0);
-    safeAddTimeline(misshTL, messagesRef.current, 2.1);
-    misshTL.call(() => messagesRef.current?.pause(), [], 2.5);
-    misshTL.call(() => messagesRef.current?.resume(), [], 3);
-    misshTL.call(() => messagesRef.current?.pause(), [], 3.5);
-    misshTL.call(() => messagesRef.current?.resume(), [], 4);
-    
-    safeAddTimeline(misshTL, notificationRef.current, 4.5);
+    AddStartTL(misshTL, messagesAppRef.current, '>0');
+    AddStartTL(misshTL, messagesRef.current, '>0.1');
+    PauseTL(misshTL, messagesRef.current, 2.5);
+    ResumeTL(misshTL, messagesRef.current, 3);
+    PauseTL(misshTL, messagesRef.current, 3.5);
+    ResumeTL(misshTL, messagesRef.current, 4);
 
-    misshTL.to(phoneRef.current, { x: 700, rotation: 10, duration: 1 }, 5);
-    safeAddTimeline(misshTL, contractARef.current, 5);
-    safeAddTimeline(misshTL, contractBRef.current, 5);
+    AddStartTL(misshTL, notificationRef.current, 4.5);
 
-    misshTL.to(calculatorRef.current, { x: 0, duration: 0.5 }, 4.0);
-    
+    safeGsapTo(misshTL, phoneRef.current, { x: 700, rotation: 10, duration: 1 }, 5);
+    AddStartTL(misshTL, contractARef.current, 5);
+    AddStartTL(misshTL, contractBRef.current, 5);
+
+    safeGsapTo(misshTL, calculatorRef.current, { x: 0, duration: 0.5 }, 4.0);
   }, []);
 
   return (
     <section className="section-missh" ref={sectionRef}>
-      <Contract ref={contractARef} 
-        contract="1A" highlightIds={[1]} isHighlight={true}/>
-      <Contract ref={contractBRef} 
-        contract="1B" highlightIds={[2, 3]} isHighlight={true} />
+      <Contract ref={contractARef} contract="1A" highlightIds={[1]} isHighlight={true} />
+      <Contract ref={contractBRef} contract="1B" highlightIds={[2, 3]} isHighlight={true} />
       <Calculator ref={calculatorRef} markers={globalmarks} />
       <Phone ref={phoneRef}>
         <PhoneCall ref={phoneCallRef}>
@@ -95,21 +98,23 @@ export const SectionMissh = () => {
           </div>
           <Dialogs ref={dialogsRef}>
             <div className="dialog Recieve">
-              <span>台新銀行</span> 
+              <span>台新銀行</span>
               <p>妳符合貸款資格，想問有沒有興趣了解一下？</p>
             </div>
             <div className="dialog Sent">
               <p>可以先聽聽看</p>
             </div>
             <div className="dialog Recieve">
-              <span>台新銀行</span> 
-              <p>我們有提供最高100萬的貸款，利率最低1.88%，還款期限最長5年，10天內快速過件，有興趣可以加入Line聯繫</p>
+              <span>台新銀行</span>
+              <p>
+                我們有提供最高100萬的貸款，利率最低1.88%，還款期限最長5年，10天內快速過件，有興趣可以加入Line聯繫
+              </p>
             </div>
             <div className="dialog Sent">
               <p>好的，謝謝</p>
             </div>
             <div className="dialog Recieve">
-              <span>台新銀行</span> 
+              <span>台新銀行</span>
               <p>不客氣，有任何問題都可以再聯繫我</p>
             </div>
           </Dialogs>
@@ -133,16 +138,27 @@ export const SectionMissh = () => {
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg} />
               <p>
-                商品貸款🪄👀<br/>
-                最新優惠專案🪄<br/>
-                免拉聯徵不看負債比<br/>
-                審件撥款快速<br/>
-                申辦門低 過件率高<br/><br/>
-                ✍️準備資料如下：<br/>
-                1.雙證件正反面<br/>
-                2.近期信用卡帳單明<br/>
-                3.撥款給您的存摺封面<br/>
-                4.信用卡卡面（安全碼碼請遮蔽）<br/>
+                商品貸款🪄👀
+                <br />
+                最新優惠專案🪄
+                <br />
+                免拉聯徵不看負債比
+                <br />
+                審件撥款快速
+                <br />
+                申辦門低 過件率高
+                <br />
+                <br />
+                ✍️準備資料如下：
+                <br />
+                1.雙證件正反面
+                <br />
+                2.近期信用卡帳單明
+                <br />
+                3.撥款給您的存摺封面
+                <br />
+                4.信用卡卡面（安全碼碼請遮蔽）
+                <br />
                 5.健保明細
               </p>
               <span>17:32</span>
@@ -154,7 +170,11 @@ export const SectionMissh = () => {
             </div>
             <div className="messageSent">
               <span>17:40</span>
-              <p>不好意思<br/>所以你們是台新銀行辦理的嗎？</p>
+              <p>
+                不好意思
+                <br />
+                所以你們是台新銀行辦理的嗎？
+              </p>
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg} />
@@ -195,9 +215,12 @@ export const SectionMissh = () => {
             </div>
           </Messages>
         </MessagesApp>
-        <Notification ref={notificationRef}
-          app="Messages" title="涂專員" time="17:30" 
-          message="您好，您申請裕富融資 25 萬汽機車貸款，貸款核定已通過。" 
+        <Notification
+          ref={notificationRef}
+          app="Messages"
+          title="涂專員"
+          time="17:30"
+          message="您好，您申請裕富融資 25 萬汽機車貸款，貸款核定已通過。"
         />
       </Phone>
     </section>
