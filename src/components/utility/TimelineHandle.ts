@@ -35,7 +35,7 @@ export const safeAddTimeline = (
     const childTimeline = ref.createTimeline();
     if (childTimeline) {
       parentTimeline.add(childTimeline, position);
-      console.log('Timeline added to parent at position:', position);
+      // console.log('Timeline added to parent at position:', position);
     }
   } else {
     console.warn('safeAddTimeline: ref is null');

@@ -1,113 +1,75 @@
-import { ReactNode, useRef, forwardRef, useCallback } from 'react';
+import { ReactNode, useRef, forwardRef, useImperativeHandle } from 'react';
 import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useRive, useStateMachineInput } from '@rive-app/react-webgl2';
 import { AudioPlayer } from '../utility/AudioPlayer';
+import { TimelineHandle } from '../utility/TimelineHandle';
 
 interface CallProps {
   children?: ReactNode;
-  start?: string;
-  end?: string;
-  markers?: boolean;
 }
 
-export const Call = forwardRef<HTMLDivElement, CallProps>(
-  ({ children, markers = false, start = '0', end = '600vh' }, ref) => {
-    const { rive, RiveComponent } = useRive({
-      src: './assets/rive/shared-calls.riv',
-      artboard: 'Slide',
-      stateMachines: 'State Machine 1',
-      autoplay: true,
-    });
+interface ExtendedTimelineHandle extends TimelineHandle {
+  playAudio: () => void;
+  stopAudio: () => void;
+}
 
-    const progress = useStateMachineInput(rive, 'State Machine 1', 'Progress');
-    const callRef = useRef<HTMLDivElement>(null);
+export const Call = forwardRef<TimelineHandle, CallProps>(({ children }, ref) => {
+  const callRef = useRef<HTMLDivElement>(null);
+  const audioPlayerRef = useRef<ExtendedTimelineHandle>(null);
 
-    const combinedRef = useCallback(
-      (node: HTMLDivElement | null) => {
-        if (node) {
-          (callRef as any).current = node;
-        }
-        if (typeof ref === 'function') {
-          ref(node);
-        } else if (ref) {
-          (ref as any).current = node;
-        }
-      },
-      [ref]
-    );
+  useImperativeHandle(ref, () => ({
+    createTimeline: () => {
+      gsap.registerPlugin(ScrollTrigger);
+      const tl = gsap.timeline();
+      
+      gsap.set(callRef.current, { opacity: 0, scale: 0.9 });
+      gsap.set('.call-button', { 
+        left: '25%', 
+        background: 'linear-gradient(135deg, #8AFE71 0%, #0DD41A 100%)' 
+      });
+      gsap.set('.icon-call', { 
+        x:0, y:0, width: '55%', height: '55%',
+        top: '50%', left: '50%', transform: 'translate(-50%, -50%)', 
+        rotation: 0 
+      });
 
-    useGSAP(
-      () => {
-        gsap.registerPlugin(ScrollTrigger);
-        if (!rive || !progress) return;
+      tl.to(callRef.current, { opacity: 1, scale: 1, duration: 0.5 }, 0);
+      tl.fromTo('.call-button', 
+        { left: '25%' }, 
+        { left: '75%', duration: 0.5, ease: "power2.inOut" }, 
+        0.25
+      );
+      tl.fromTo('.call-button', 
+        { left: '75%', background: 'linear-gradient(135deg, #8AFE71 0%, #0DD41A 100%)' }, 
+        { left: '50%', background: 'linear-gradient(135deg, #fe7171 0%, #d40d0d 100%)', duration: 0.25, ease: "power2.inOut" }, 
+        0.75
+      );
+      tl.fromTo('.icon-call', 
+        { rotation: 0, y:0 }, 
+        { rotation: 135, y:3, duration: 0.25, ease: "power2.inOut" }, 
+        0.75
+      );
 
-        gsap.set(progress, { value: 0 });
-        gsap.set(callRef.current, { opacity: 0, scale: 0.9 });
+      if (audioPlayerRef.current) {
+        tl.call(() => audioPlayerRef.current?.playAudio(), [], 0);
+        tl.call(() => audioPlayerRef.current?.stopAudio(), [], 0.75);
+      }
+      
+      return tl;
+    },
+    domElement: callRef.current,
+  }));
 
-        ScrollTrigger.create({
-          trigger: callRef.current,
-          start: `${start} 10%`,
-          end: `${end} 10%`,
-          scrub: 1,
-          markers: markers,
-          id: 'call-trigger',
-          onEnter: () => {
-            gsap.fromTo(
-              callRef.current,
-              { opacity: 0, scale: 0.9 },
-              { opacity: 1, scale: 1, duration: 0.5 }
-            );
-          },
-          onLeave: () => {
-            gsap.fromTo(
-              callRef.current,
-              { opacity: 1, scale: 1 },
-              { opacity: 0, scale: 0.9, duration: 0.5 }
-            );
-          },
-          onEnterBack: () => {
-            gsap.fromTo(
-              callRef.current,
-              { opacity: 0, scale: 0.9 },
-              { opacity: 1, scale: 1, duration: 0.25 }
-            );
-          },
-          onLeaveBack: () => {
-            gsap.fromTo(
-              callRef.current,
-              { opacity: 1, scale: 1 },
-              { opacity: 0, scale: 0.9, duration: 0.25 }
-            );
-          },
-          onUpdate: self => {
-            progress.value = self.progress * 100 * 3;
-            if (progress.value >= 80) {
-              gsap.to('.call-background', { opacity: 1, width: `80px` });
-            } else {
-              gsap.to('.call-background', { opacity: 1, width: `320px`, duration: 1 });
-            }
-          },
-        });
-      },
-      { scope: callRef, dependencies: [progress] }
-    );
-
-    return (
-      <div className="call" ref={combinedRef}>
-        <AudioPlayer
-          start="top 10%"
-          end="+=200 10%"
-          volume={0.2}
-          audioSrc="./assets/audio/SFX_PhoneVibrate_v2.aac"
-        />
-        {children}
-        <div className="call-rive">
-          <RiveComponent />
-        </div>
-        <div className="call-background" />
+  return (
+    <div className="call" ref={callRef}>
+      <AudioPlayer ref={audioPlayerRef} volume={0.2}
+        audioSrc="./assets/audio/SFX_PhoneVibrate_v2.aac"
+      />
+      {children}
+      <div className="call-button">
+        <img src="./assets/img/icon_call.svg" alt="call-icon" className="icon-call" />
       </div>
-    );
-  }
-);
+      <div className="call-background" />
+    </div>
+  );
+});

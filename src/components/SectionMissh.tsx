@@ -21,6 +21,8 @@ export const SectionMissh = () => {
   const contractBRef = useRef<TimelineHandle | null>(null);
   const calculatorRef = useRef(null);
   const notificationRef = useRef<TimelineHandle | null>(null);
+  const dialogsRef = useRef<TimelineHandle | null>(null);
+  const callRef = useRef<TimelineHandle | null>(null);
   
   const globalmarks = true;
   const messageAvatarImg = "./assets/img/avatar_A.svg";
@@ -44,11 +46,17 @@ export const SectionMissh = () => {
     safeGsapSet(contractARef.current, { x: -1000, y: 1000, rotation: 10 });
     safeGsapSet(contractBRef.current, { x: -1000, y: 1000, rotation: 10 });
 
-    misshTL.to(phoneRef.current, { x: 700, rotation: 10, duration: 1 }, 1);
-    safeGsapTo(misshTL, contractARef.current, { x: 20, y: 50, rotation: -5, duration: 0.5 }, 1);
-    safeGsapTo(misshTL, contractBRef.current, { x: 20, y: 150, rotation: 5, duration: 0.5 }, 1);
+    misshTL.to(phoneRef.current, { x: 700, rotation: 10, duration: 1 }, 5);
+    safeGsapTo(misshTL, contractARef.current, 
+      { x: 20, y: 50, rotation: -5, duration: 0.5 }, 5
+    );
+    safeGsapTo(misshTL, contractBRef.current, 
+      { x: 20, y: 150, rotation: 5, duration: 0.5 }, 5
+    );
     
-    safeAddTimeline(misshTL, notificationRef.current, 0.6);
+    safeAddTimeline(misshTL, callRef.current, 0);
+    safeAddTimeline(misshTL, dialogsRef.current, 0.85);
+    safeAddTimeline(misshTL, notificationRef.current, 1.8);
     safeAddTimeline(misshTL, contractARef.current, 1.2);
     safeAddTimeline(misshTL, contractBRef.current, 1.5);
 
@@ -63,12 +71,12 @@ export const SectionMissh = () => {
         contract="1B" highlightIds={[2, 3]} isHighlight={true} />
       <Calculator ref={calculatorRef} markers={globalmarks} />
       <Phone ref={phoneRef}>
-        <Call markers={globalmarks} start="0" end="600">
+        <Call ref={callRef}>
           <div className="call-contact">
             <h3>台新銀行</h3>
             <p>Whoscall</p>
           </div>
-          <Dialogs markers={globalmarks} start="0" end="300">
+          <Dialogs ref={dialogsRef}>
             <div className="dialog Recieve">
               <span>台新銀行</span> 
               <p>妳符合貸款資格，想問有沒有興趣了解一下？</p>

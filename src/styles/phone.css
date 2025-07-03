@@ -61,6 +61,8 @@
   background-color: hsla(0, 0%, 0%, 0.5);
 }
 
+
+
 /* Phone Calls */
 .call {
   width: 100%;
@@ -90,26 +92,44 @@
   text-align: center;
 }
 
-.call .call-rive {
-  position: absolute;
-  bottom: 60px;
-  height: 80px;
-  width: 100%;
-}
-
 .call .call-background {
   position: absolute;
   bottom: 60px;
   left: 50%;
   transform: translate(-50%, 0%);
-  width: 100%;
-  height: 78px;
+  width: 70%;
+  height: 80px;
   border-radius: 100px;
   border: solid 0px hsla(0, 0%, 100%, 0.2);
   box-shadow: inset 1px 1px 4px 0 hsla(0, 0%, 100%, 0.5);
   background-color: hsla(0, 0%, 80%, 0.25);
   z-index: -1;
   opacity: 1;
+}
+.call .call-button {
+  position: absolute;
+  bottom: 60px;
+  left: 25%;
+  transform: translate(-50%, 0%);
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #8AFE71 0%, #0DD41A 100%);
+  border-radius: 50px;
+  box-shadow: 0 0 10px 0 hsla(0, 0%, 0%, 0.25);
+}
+.call .call-button .icon-call {
+  position: absolute;
+  width: 55%;
+  height: 55%;
+  fill: hsla(0, 0%, 0%, 0.5);
+}
+
+
+.call .call-rive {
+  position: absolute;
+  bottom: 60px;
+  height: 80px;
+  width: 100%;
 }
 
 /* Phone Call Dialogs */
