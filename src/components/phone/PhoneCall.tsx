@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AudioPlayer } from '../utility/AudioPlayer';
 import { TimelineHandle } from '../utility/TimelineHandle';
 
-interface CallProps {
+interface PhoneCallProps {
   children?: ReactNode;
 }
 
@@ -13,7 +13,7 @@ interface ExtendedTimelineHandle extends TimelineHandle {
   stopAudio: () => void;
 }
 
-export const Call = forwardRef<TimelineHandle, CallProps>(({ children }, ref) => {
+export const PhoneCall = forwardRef<TimelineHandle, PhoneCallProps>(({ children }, ref) => {
   const callRef = useRef<HTMLDivElement>(null);
   const audioPlayerRef = useRef<ExtendedTimelineHandle>(null);
 
@@ -72,4 +72,4 @@ export const Call = forwardRef<TimelineHandle, CallProps>(({ children }, ref) =>
       <div className="call-background" />
     </div>
   );
-});
+}); 

@@ -5,7 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TimelineHandle, safeGsapSet, safeGsapTo, safeAddTimeline } from './utility/TimelineHandle';
 
 import { Phone } from './phone/Phone';
-import { Call } from './phone/Call';
+import { PhoneCall } from './phone/PhoneCall';
 import { Dialogs } from './phone/Dialogs';
 import { MessagesApp } from './phone/MessagesApp';
 import { Messages } from './phone/Messages';
@@ -13,6 +13,11 @@ import { Notification } from './phone/Notification';
 import { Contract } from './document/Contract';
 import { Calculator } from './calculator/Calculator';
 
+
+interface MessagesTimelineHandle extends TimelineHandle {
+  pause: () => void;
+  resume: () => void;
+}
 
 export const SectionMissh = () => {
   const sectionRef = useRef(null);
@@ -22,7 +27,9 @@ export const SectionMissh = () => {
   const calculatorRef = useRef(null);
   const notificationRef = useRef<TimelineHandle | null>(null);
   const dialogsRef = useRef<TimelineHandle | null>(null);
-  const callRef = useRef<TimelineHandle | null>(null);
+  const phoneCallRef = useRef<TimelineHandle | null>(null);
+  const messagesAppRef = useRef<TimelineHandle | null>(null);
+  const messagesRef = useRef<MessagesTimelineHandle | null>(null);
   
   const globalmarks = true;
   const messageAvatarImg = "./assets/img/avatar_A.svg";
@@ -45,8 +52,6 @@ export const SectionMissh = () => {
     gsap.set(calculatorRef.current, { x: 100 });
     safeGsapSet(contractARef.current, { x: -1000, y: 1000, rotation: 10 });
     safeGsapSet(contractBRef.current, { x: -1000, y: 1000, rotation: 10 });
-
-    misshTL.to(phoneRef.current, { x: 700, rotation: 10, duration: 1 }, 5);
     safeGsapTo(misshTL, contractARef.current, 
       { x: 20, y: 50, rotation: -5, duration: 0.5 }, 5
     );
@@ -54,13 +59,25 @@ export const SectionMissh = () => {
       { x: 20, y: 150, rotation: 5, duration: 0.5 }, 5
     );
     
-    safeAddTimeline(misshTL, callRef.current, 0);
+    // Time Positioning
+    safeAddTimeline(misshTL, phoneCallRef.current, 0);
     safeAddTimeline(misshTL, dialogsRef.current, 0.85);
-    safeAddTimeline(misshTL, notificationRef.current, 1.8);
-    safeAddTimeline(misshTL, contractARef.current, 1.2);
-    safeAddTimeline(misshTL, contractBRef.current, 1.5);
 
-    misshTL.to(calculatorRef.current, { x: 0, duration: 0 }, 1.5);
+    safeAddTimeline(misshTL, messagesAppRef.current, 2.0);
+    safeAddTimeline(misshTL, messagesRef.current, 2.1);
+    misshTL.call(() => messagesRef.current?.pause(), [], 2.5);
+    misshTL.call(() => messagesRef.current?.resume(), [], 3);
+    misshTL.call(() => messagesRef.current?.pause(), [], 3.5);
+    misshTL.call(() => messagesRef.current?.resume(), [], 4);
+    
+    safeAddTimeline(misshTL, notificationRef.current, 4.5);
+
+    misshTL.to(phoneRef.current, { x: 700, rotation: 10, duration: 1 }, 5);
+    safeAddTimeline(misshTL, contractARef.current, 5);
+    safeAddTimeline(misshTL, contractBRef.current, 5);
+
+    misshTL.to(calculatorRef.current, { x: 0, duration: 0.5 }, 4.0);
+    
   }, []);
 
   return (
@@ -71,7 +88,7 @@ export const SectionMissh = () => {
         contract="1B" highlightIds={[2, 3]} isHighlight={true} />
       <Calculator ref={calculatorRef} markers={globalmarks} />
       <Phone ref={phoneRef}>
-        <Call ref={callRef}>
+        <PhoneCall ref={phoneCallRef}>
           <div className="call-contact">
             <h3>台新銀行</h3>
             <p>Whoscall</p>
@@ -96,18 +113,9 @@ export const SectionMissh = () => {
               <p>不客氣，有任何問題都可以再聯繫我</p>
             </div>
           </Dialogs>
-        </Call>
-        <MessagesApp markers={globalmarks} name="涂專員" start="620" end="3000" >
-          <Messages 
-            markers={globalmarks} 
-            start="600" 
-            end="2700" 
-            scrollDistance={300}
-            pausePoints={[
-              { index: 4, resumeAt: "1500" },
-              { index: 7, resumeAt: "2000" },
-              { index: 12, resumeAt: "2500" }
-            ]}>
+        </PhoneCall>
+        <MessagesApp ref={messagesAppRef} name="涂專員">
+          <Messages ref={messagesRef} stagger={0.3}>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg} />
               <p>小姐你好</p>
@@ -188,9 +196,7 @@ export const SectionMissh = () => {
           </Messages>
         </MessagesApp>
         <Notification ref={notificationRef}
-          app="Messages" 
-          title="涂專員" 
-          time="17:30" 
+          app="Messages" title="涂專員" time="17:30" 
           message="您好，您申請裕富融資 25 萬汽機車貸款，貸款核定已通過。" 
         />
       </Phone>
