@@ -24,14 +24,12 @@ export const Messages = forwardRef<TimelineHandle, MessagesProps>(
 
         if (messageElements.length === 0) return tl;
 
-        // 創建所有消息的動畫
         tl.fromTo(
           messageElements,
           { display: 'none', opacity: 0, y: 10 },
           { display: 'flex', opacity: 1, y: 0, stagger: stagger, duration: 0.3, ease: 'power2.out' }
         );
 
-        // 保存時間線引用以便後續控制
         timelineRef.current = tl;
 
         return tl;
@@ -39,7 +37,6 @@ export const Messages = forwardRef<TimelineHandle, MessagesProps>(
 
       createEndTimeline: () => {
         const tl = gsap.timeline();
-
         if (!messagesRef.current) return tl;
 
         const messageElements = messagesRef.current.querySelectorAll(
@@ -48,11 +45,11 @@ export const Messages = forwardRef<TimelineHandle, MessagesProps>(
 
         if (messageElements.length === 0) return tl;
 
-        return tl.to(messageElements, {
-          opacity: 0,
-          y: -10,
-          duration: 0.5,
-          stagger: 0.1,
+        return tl.fromTo(messageElements, {
+          opacity: 1, y: 0,
+        }, {
+          opacity: 0, y: -10,
+          duration: 0.5, stagger: 0.1,
           ease: 'power2.in',
         });
       },

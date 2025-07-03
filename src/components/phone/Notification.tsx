@@ -47,8 +47,13 @@ export const Notification = forwardRef<TimelineHandle, NotificationProps>(
         const tl = gsap.timeline();
 
         return tl
-          .to(
+          .fromTo(
             notificationRef.current,
+            {
+              width: '115px',
+              height: '30px',
+              boxShadow: 'inset 2px 2px 5px 0 hsla(0, 0%, 100%, 1)',
+            },
             {
               width: '90%',
               height: height,
@@ -58,8 +63,12 @@ export const Notification = forwardRef<TimelineHandle, NotificationProps>(
             },
             0
           )
-          .to(
+          .fromTo(
             [imgRef.current, contentRef.current],
+            {
+              display: 'none',
+              opacity: 0,
+            },
             {
               display: 'flex',
               opacity: 1,
@@ -71,20 +80,17 @@ export const Notification = forwardRef<TimelineHandle, NotificationProps>(
       },
 
       createEndTimeline: () => {
-        const tl = gsap.timeline();
+        const endTL = gsap.timeline();
+        if (!notificationRef.current) return endTL;
 
-        return tl
-          .to(
-            [imgRef.current, contentRef.current],
-            {
-              opacity: 0,
-              duration: 0.3,
-              ease: 'power1.in',
-            },
-            0
-          )
-          .to(
+        return endTL
+          .fromTo(
             notificationRef.current,
+            {
+              width: '90%',
+              height: height,
+              boxShadow: 'inset -3px -3px 10px 0 hsla(0, 0%, 100%, 0.9)',
+            },
             {
               width: '115px',
               height: '30px',
@@ -93,6 +99,20 @@ export const Notification = forwardRef<TimelineHandle, NotificationProps>(
               ease: 'power1.in',
             },
             0.2
+          )
+          .fromTo(
+            [imgRef.current, contentRef.current],
+            {
+              display: 'flex',
+              opacity: 1,
+            },
+            {
+              display: 'none',
+              opacity: 0,
+              duration: 0.3,
+              ease: 'power1.in',
+            },
+            0
           );
       },
 

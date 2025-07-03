@@ -14,7 +14,6 @@ export const MessagesApp = forwardRef<TimelineHandle, MessagesAppProps>(
     useImperativeHandle(ref, () => ({
       createStartTimeline: () => {
         const tl = gsap.timeline();
-
         if (!messagesAppRef.current) return tl;
 
         gsap.set(messagesAppRef.current, { opacity: 0, scale: 0.9 });
@@ -26,10 +25,12 @@ export const MessagesApp = forwardRef<TimelineHandle, MessagesAppProps>(
 
       createEndTimeline: () => {
         const tl = gsap.timeline();
-
         if (!messagesAppRef.current) return tl;
 
-        tl.to(messagesAppRef.current, { opacity: 0, scale: 0.9, duration: 0.5, ease: 'power2.in' });
+        tl.fromTo(messagesAppRef.current, 
+          { opacity: 1, scale: 1 }, 
+          { opacity: 0, scale: 0.9, duration: 0.5, ease: 'power2.in' }
+        );
 
         return tl;
       },

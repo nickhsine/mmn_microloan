@@ -61,28 +61,28 @@ export const SectionMissh = () => {
     safeGsapSet(contractARef.current, { x: -1000, y: 1000, rotation: 10 });
     safeGsapSet(contractBRef.current, { x: -1000, y: 1000, rotation: 10 });
 
-    safeGsapTo(misshTL, contractARef.current, { x: 20, y: 50, rotation: -5, duration: 0.5 }, 5);
-    safeGsapTo(misshTL, contractBRef.current, { x: 20, y: 150, rotation: 5, duration: 0.5 }, 5);
-
     // Time Positioning
     AddStartTL(misshTL, phoneCallRef.current, 0);
     AddStartTL(misshTL, dialogsRef.current, '<0.8');
     AddEndTL(misshTL, phoneCallRef.current, '>0.5');
 
     AddStartTL(misshTL, messagesAppRef.current, '>0');
-    AddStartTL(misshTL, messagesRef.current, '>0.1');
-    PauseTL(misshTL, messagesRef.current, 2.5);
-    ResumeTL(misshTL, messagesRef.current, 3);
-    PauseTL(misshTL, messagesRef.current, 3.5);
-    ResumeTL(misshTL, messagesRef.current, 4);
+    AddStartTL(misshTL, messagesRef.current,  '>0.1');
+    PauseTL(misshTL, messagesRef.current,     '>0.5');
+    ResumeTL(misshTL, messagesRef.current,    '>0.5');
+    PauseTL(misshTL, messagesRef.current,     '>0.5');
+    ResumeTL(misshTL, messagesRef.current,    '>0.5');
 
-    AddStartTL(misshTL, notificationRef.current, 4.5);
+    AddStartTL(misshTL, notificationRef.current, '>1');
+    AddEndTL(misshTL, notificationRef.current, '>0.5');
 
-    safeGsapTo(misshTL, phoneRef.current, { x: 700, rotation: 10, duration: 1 }, 5);
-    AddStartTL(misshTL, contractARef.current, 5);
-    AddStartTL(misshTL, contractBRef.current, 5);
+    safeGsapTo(misshTL, phoneRef.current, { x: 700, rotation: 10, duration: 1 }, '>');
+    safeGsapTo(misshTL, contractARef.current, { x: 20, y: 50, rotation: -5, duration: 1 }, '<-0.25');
+    safeGsapTo(misshTL, contractBRef.current, { x: 20, y: 150, rotation: 5, duration: 1 }, '<-0.25');
+    AddStartTL(misshTL, contractARef.current, '>1');
+    AddStartTL(misshTL, contractBRef.current, '>0.5');
 
-    safeGsapTo(misshTL, calculatorRef.current, { x: 0, duration: 0.5 }, 4.0);
+    safeGsapTo(misshTL, calculatorRef.current, { x: 0, duration: 0.5 }, '>2');
   }, []);
 
   return (
@@ -120,7 +120,7 @@ export const SectionMissh = () => {
           </Dialogs>
         </PhoneCall>
         <MessagesApp ref={messagesAppRef} name="涂專員">
-          <Messages ref={messagesRef} stagger={0.3}>
+          <Messages ref={messagesRef} stagger={0.25}>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg} />
               <p>小姐你好</p>

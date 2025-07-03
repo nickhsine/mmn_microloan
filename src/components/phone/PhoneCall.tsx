@@ -28,12 +28,8 @@ export const PhoneCall = forwardRef<TimelineHandle, PhoneCallProps>(({ children 
         background: 'linear-gradient(135deg, #8AFE71 0%, #0DD41A 100%)',
       });
       gsap.set('.icon-call', {
-        x: 0,
-        y: 0,
-        width: '55%',
-        height: '55%',
-        top: '50%',
-        left: '50%',
+        x: 0, y: 0, width: '55%', height: '55%',
+        top: '50%', left: '50%',
         transform: 'translate(-50%, -50%)',
         rotation: 0,
       });
@@ -48,12 +44,8 @@ export const PhoneCall = forwardRef<TimelineHandle, PhoneCallProps>(({ children 
       tl.fromTo(
         '.call-button',
         { left: '75%', background: 'linear-gradient(135deg, #8AFE71 0%, #0DD41A 100%)' },
-        {
-          left: '50%',
-          background: 'linear-gradient(135deg, #fe7171 0%, #d40d0d 100%)',
-          duration: 0.25,
-          ease: 'power2.inOut',
-        },
+        { left: '50%', background: 'linear-gradient(135deg, #fe7171 0%, #d40d0d 100%)',
+          duration: 0.25, ease: 'power2.inOut', },
         0.75
       );
       tl.fromTo(
@@ -75,18 +67,9 @@ export const PhoneCall = forwardRef<TimelineHandle, PhoneCallProps>(({ children 
       const endTL = gsap.timeline();
       if (!callRef.current) return endTL;
 
-      endTL.fromTo(
-        callRef.current,
-        {
-          opacity: 1,
-          scale: 1,
-        },
-        {
-          opacity: 0,
-          scale: 0.9,
-          duration: 0.5,
-          ease: 'power2.inOut',
-        }
+      endTL.fromTo( callRef.current,
+        { opacity: 1, scale: 1, },
+        { opacity: 0, scale: 0.9, duration: 0.5, ease: 'power2.inOut', }
       );
 
       return endTL;

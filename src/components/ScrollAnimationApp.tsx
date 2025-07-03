@@ -6,7 +6,7 @@ import { SectionMickey } from './SectionMickey';
 export const ScrollAnimationApp = () => {
   return (
     <div className="scroll-animation-app">
-      <Caption markers={false} />
+      <Caption />
       <SectionLanding />
       <SectionMissh />
       <p className="brief">

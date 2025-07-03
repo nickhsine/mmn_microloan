@@ -31,5 +31,7 @@ export const Calculator = forwardRef<TimelineHandle, CalculatorProps>(({ top, ma
     domElement: calculatorRef.current,
   }));
 
-  return <div ref={calculatorRef} className="calculator" style={containerStyle}></div>;
+  return (
+    <div ref={calculatorRef} className="calculator" style={containerStyle}></div>
+  );
 });
