@@ -18,7 +18,7 @@ export const MessagesApp = forwardRef<TimelineHandle, MessagesAppProps>(
 
         gsap.set(messagesAppRef.current, { opacity: 0, scale: 0.9 });
 
-        tl.to(messagesAppRef.current, { opacity: 1, scale: 1, duration: 0.5 }, 0);
+        tl.to(messagesAppRef.current, { opacity: 1, scale: 1, duration: 2 }, 0);
 
         return tl;
       },
@@ -29,7 +29,7 @@ export const MessagesApp = forwardRef<TimelineHandle, MessagesAppProps>(
 
         tl.fromTo(messagesAppRef.current, 
           { opacity: 1, scale: 1 }, 
-          { opacity: 0, scale: 0.9, duration: 0.5, ease: 'power2.in' }
+          { opacity: 0, scale: 0.9, duration: 2, ease: 'power2.in' }
         );
 
         return tl;

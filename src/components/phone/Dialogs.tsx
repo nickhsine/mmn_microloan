@@ -22,7 +22,7 @@ export const Dialogs = forwardRef<TimelineHandle, DialogsProps>(({ children }, r
       return tl.fromTo(
         dialogElements,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 1, stagger: 0.25, ease: 'power2.out' }
+        { opacity: 1, y: 0, duration: 1, stagger: 1, ease: 'power2.out' }
       );
     },
 

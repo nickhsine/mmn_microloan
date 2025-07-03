@@ -72,7 +72,13 @@ export const PauseTL = (
   position?: string | number
 ) => {
   if (ref && ref.pause) {
-    parentTimeline.call(() => ref.pause && ref.pause(), [], position);
+    parentTimeline.call(() => {
+      // only pause when playing forward (or no ScrollTrigger attached)
+      const shouldPause = !parentTimeline.scrollTrigger || parentTimeline.scrollTrigger.direction >= 0;
+      if (shouldPause) {
+        ref.pause && ref.pause();
+      }
+    }, [], position);
   } else {
     console.warn('PauseTL: ref is null or does not have pause method');
   }

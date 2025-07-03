@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, forwardRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -22,12 +22,7 @@ import { Notification } from './phone/Notification';
 import { Contract } from './document/Contract';
 import { Calculator } from './calculator/Calculator';
 
-interface MessagesTimelineHandle extends TimelineHandle {
-  pause: () => void;
-  resume: () => void;
-}
-
-export const SectionMissh = () => {
+export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
   const sectionRef = useRef(null);
   const phoneRef = useRef<TimelineHandle | null>(null);
   const contractARef = useRef<TimelineHandle | null>(null);
@@ -54,6 +49,7 @@ export const SectionMissh = () => {
         pin: sectionRef.current,
         markers: globalmarks,
       },
+      // smoothChildTiming: true,
     });
 
     safeGsapSet(phoneRef.current, { x: 0, rotation: 0 });
@@ -62,16 +58,17 @@ export const SectionMissh = () => {
     safeGsapSet(contractBRef.current, { x: -1000, y: 1000, rotation: 10 });
 
     // Time Positioning
-    AddStartTL(misshTL, phoneCallRef.current, 0);
-    AddStartTL(misshTL, dialogsRef.current, '<0.8');
-    AddEndTL(misshTL, phoneCallRef.current, '>0.5');
+    AddStartTL(misshTL, phoneCallRef.current, 5);
+    AddStartTL(misshTL, dialogsRef.current, '<3');
+    AddEndTL(misshTL, phoneCallRef.current, '>2.5');
 
-    AddStartTL(misshTL, messagesAppRef.current, '>0');
-    AddStartTL(misshTL, messagesRef.current,  '>0.1');
-    PauseTL(misshTL, messagesRef.current,     '>0.5');
-    ResumeTL(misshTL, messagesRef.current,    '>0.5');
-    PauseTL(misshTL, messagesRef.current,     '>0.5');
-    ResumeTL(misshTL, messagesRef.current,    '>0.5');
+    AddStartTL(misshTL, messagesAppRef.current, '>-0.5');
+    // StopTL(misshTL, messagesRef.current, '<0.0001');
+    AddStartTL(misshTL, messagesRef.current,  '>');
+    PauseTL(misshTL, messagesRef.current,     '<4.5');
+    ResumeTL(misshTL, messagesRef.current,    '>4');
+    PauseTL(misshTL, messagesRef.current,     '<4.5');
+    ResumeTL(misshTL, messagesRef.current,    '>4');
 
     AddStartTL(misshTL, notificationRef.current, '>1');
     AddEndTL(misshTL, notificationRef.current, '>0.5');
@@ -83,6 +80,10 @@ export const SectionMissh = () => {
     AddStartTL(misshTL, contractBRef.current, '>0.5');
 
     safeGsapTo(misshTL, calculatorRef.current, { x: 0, duration: 0.5 }, '>2');
+
+    if (ref && typeof ref !== 'function') {
+      ref.current = misshTL;
+    }
   }, []);
 
   return (
@@ -120,7 +121,7 @@ export const SectionMissh = () => {
           </Dialogs>
         </PhoneCall>
         <MessagesApp ref={messagesAppRef} name="涂專員">
-          <Messages ref={messagesRef} stagger={0.25}>
+          <Messages ref={messagesRef} stagger={1}>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg} />
               <p>小姐你好</p>
@@ -225,4 +226,4 @@ export const SectionMissh = () => {
       </Phone>
     </section>
   );
-};
+});

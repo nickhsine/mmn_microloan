@@ -8,7 +8,7 @@ interface MessagesProps {
 }
 
 export const Messages = forwardRef<TimelineHandle, MessagesProps>(
-  ({ children, stagger = 0.5 }, ref) => {
+  ({ children, stagger = 1 }, ref) => {
     const messagesRef = useRef<HTMLDivElement>(null);
     const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
@@ -27,7 +27,7 @@ export const Messages = forwardRef<TimelineHandle, MessagesProps>(
         tl.fromTo(
           messageElements,
           { display: 'none', opacity: 0, y: 10 },
-          { display: 'flex', opacity: 1, y: 0, stagger: stagger, duration: 0.3, ease: 'power2.out' }
+          { display: 'flex', opacity: 1, y: 0, stagger: stagger, duration: 0.5, ease: 'power2.out' }
         );
 
         timelineRef.current = tl;

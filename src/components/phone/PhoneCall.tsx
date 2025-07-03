@@ -34,30 +34,33 @@ export const PhoneCall = forwardRef<TimelineHandle, PhoneCallProps>(({ children 
         rotation: 0,
       });
 
-      tl.to(callRef.current, { opacity: 1, scale: 1, duration: 0.5 }, 0);
+      tl.fromTo(callRef.current, 
+        { opacity: 0, scale: 0.9 }, 
+        { opacity: 1, scale: 1, duration: 2, ease: 'power2.inOut' }
+      );
       tl.fromTo(
         '.call-button',
         { left: '25%' },
-        { left: '75%', duration: 0.5, ease: 'power2.inOut' },
-        0.25
+        { left: '75%', duration: 1, ease: 'power2.inOut' },
+        2
       );
       tl.fromTo(
         '.call-button',
         { left: '75%', background: 'linear-gradient(135deg, #8AFE71 0%, #0DD41A 100%)' },
         { left: '50%', background: 'linear-gradient(135deg, #fe7171 0%, #d40d0d 100%)',
-          duration: 0.25, ease: 'power2.inOut', },
-        0.75
+          duration: 0.5, ease: 'power2.inOut', },
+        3
       );
       tl.fromTo(
         '.icon-call',
         { rotation: 0, y: 0 },
-        { rotation: 135, y: 3, duration: 0.25, ease: 'power2.inOut' },
-        0.75
+        { rotation: 135, y: 3, duration: 0.5, ease: 'power2.inOut' },
+        3
       );
 
       if (audioPlayerRef.current) {
         tl.call(() => audioPlayerRef.current?.playAudio(), [], 0);
-        tl.call(() => audioPlayerRef.current?.stopAudio(), [], 0.75);
+        tl.call(() => audioPlayerRef.current?.stopAudio(), [], 3);
       }
 
       return tl;
@@ -69,7 +72,7 @@ export const PhoneCall = forwardRef<TimelineHandle, PhoneCallProps>(({ children 
 
       endTL.fromTo( callRef.current,
         { opacity: 1, scale: 1, },
-        { opacity: 0, scale: 0.9, duration: 0.5, ease: 'power2.inOut', }
+        { opacity: 0, scale: 0.9, duration: 2, ease: 'power2.inOut', }
       );
 
       return endTL;
