@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TimelineHandle, safeGsapSet, safeGsapTo, safeAddTimeline } from './utility/TimelineHandle';
 
 import { Phone } from './phone/Phone';
 import { Call } from './phone/Call';
@@ -10,16 +11,16 @@ import { MessagesApp } from './phone/MessagesApp';
 import { Messages } from './phone/Messages';
 import { Notification } from './phone/Notification';
 import { Contract } from './document/Contract';
-import { ContractDOM } from './document/ContractDOM';
 import { Calculator } from './calculator/Calculator';
 
 
 export const SectionMissh = () => {
   const sectionRef = useRef(null);
   const phoneRef = useRef(null);
-  const contractARef = useRef(null);
-  const contractBRef = useRef(null);
+  const contractARef = useRef<TimelineHandle | null>(null);
+  const contractBRef = useRef<TimelineHandle | null>(null);
   const calculatorRef = useRef(null);
+  const notificationRef = useRef<TimelineHandle | null>(null);
   
   const globalmarks = true;
   const messageAvatarImg = "./assets/img/avatar_A.svg";
@@ -27,7 +28,7 @@ export const SectionMissh = () => {
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const tl = gsap.timeline({
+    const misshTL = gsap.timeline({
       scrollTrigger: {
         trigger: ".section-missh",
         start: "top top",
@@ -39,29 +40,27 @@ export const SectionMissh = () => {
     });
 
     gsap.set(phoneRef.current, { x: 0, rotation: 0 });
-    gsap.set(contractARef.current, { x: -1000, y: 1000, rotation: 10 });
-    gsap.set(contractBRef.current, { x: -1000, y: 1000, rotation: 10 });
     gsap.set(calculatorRef.current, { x: 100 });
+    safeGsapSet(contractARef.current, { x: -1000, y: 1000, rotation: 10 });
+    safeGsapSet(contractBRef.current, { x: -1000, y: 1000, rotation: 10 });
 
-    tl.to(phoneRef.current, { x: 700, rotation: 10, duration: 1 }, 1)
+    misshTL.to(phoneRef.current, { x: 700, rotation: 10, duration: 1 }, 1);
+    safeGsapTo(misshTL, contractARef.current, { x: 20, y: 50, rotation: -5, duration: 0.5 }, 1);
+    safeGsapTo(misshTL, contractBRef.current, { x: 20, y: 150, rotation: 5, duration: 0.5 }, 1);
+    
+    safeAddTimeline(misshTL, notificationRef.current, 0.6);
+    safeAddTimeline(misshTL, contractARef.current, 1.2);
+    safeAddTimeline(misshTL, contractBRef.current, 1.5);
 
-      .to(contractARef.current, { x: 20, y: 50, rotation: -5, duration: 0.5 }, 1) 
-      .to(contractBRef.current, { x: 20, y: 150, rotation: 5, duration: 0.5 }, 1) 
-
-      .to(calculatorRef.current, { x: 0, duration: 0 }, 1.5);
+    misshTL.to(calculatorRef.current, { x: 0, duration: 0 }, 1.5);
   }, []);
 
   return (
     <section className="section-missh" ref={sectionRef}>
-      <ContractDOM ref={contractARef} markers={globalmarks} start="3000" end="3500"
-        contractSrc="./assets/img/contract_1A.svg" 
-        highlightIds={["Highlight1"]}
-      />
-      <ContractDOM ref={contractBRef} markers={globalmarks} start="3000" end="3500"
-        contractSrc="./assets/img/contract_1B.svg" 
-        highlightIds={["Highlight2", "Highlight3"]}
-        stagger={0.5}
-      />
+      <Contract ref={contractARef} 
+        contract="1A" highlightIds={[1]} isHighlight={true}/>
+      <Contract ref={contractBRef} 
+        contract="1B" highlightIds={[2, 3]} isHighlight={true} />
       <Calculator ref={calculatorRef} markers={globalmarks} />
       <Phone ref={phoneRef}>
         <Call markers={globalmarks} start="0" end="600">
@@ -180,7 +179,7 @@ export const SectionMissh = () => {
             </div>
           </Messages>
         </MessagesApp>
-        <Notification markers={globalmarks} start="2700" end="3000"
+        <Notification ref={notificationRef}
           app="Messages" 
           title="涂專員" 
           time="17:30" 

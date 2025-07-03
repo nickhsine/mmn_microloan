@@ -1,89 +1,57 @@
-import { CSSProperties, useRef, forwardRef } from 'react';
-import { useGSAP } from '@gsap/react';
+import { useRef, forwardRef, useImperativeHandle, useId } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { TimelineHandle } from '../utility/TimelineHandle';
 
 interface ContractProps {
-  contractSrc: string;
-  highlightIds: string[];
-  markers?: boolean;
-  start?: string;
-  end?: string;
-  stagger?: number;
+  contract?: string;
+  isHighlight?: boolean;
+  highlightIds?: number[];
 }
 
-export const Contract = forwardRef<HTMLDivElement, ContractProps>(({ 
-  markers = false, start = '100vh', end = '500vh',
-  contractSrc='./assets/img/contract_1A.svg', 
-  highlightIds=['Highlight3'],
-  stagger = 0.2,
+export const Contract = forwardRef<TimelineHandle, ContractProps>(({
+  contract = '1B',
+  isHighlight = false,
+  highlightIds = [2]
 }, ref) => {
-    const contractRef = useRef(null);
-    const objectRef = useRef<HTMLObjectElement>(null);
+  const contractRef = useRef<HTMLDivElement>(null);
+  const uniqueId = useId();
+  const contractSrc = `./assets/img/contract${contract}.svg`;
 
-    useGSAP(
-      () => {
-
-        if (objectRef.current) {
-          objectRef.current.onload = () => {
-
-            const svgDoc = objectRef.current?.contentDocument;
-            const highlightElements: Element[] = [];
-            
-            highlightIds.forEach(id => {
-              const element = svgDoc?.getElementById(id);
-              if (element) {
-                highlightElements.push(element);
-                console.log(`SVG Element Found: ${id}`, {
-                  tagName: element.tagName,
-                  id: element.id,
-                });
-              } else {
-                console.error(`無法找到元素 #${id}，請檢查 SVG 內容`);
-              }
-            });
-            
-            if (highlightElements.length > 0) {
-              gsap.set(highlightElements, { opacity: 0 });
-
-              gsap.to(highlightElements, {
-                opacity: 1,
-                duration: 1,
-                ease: 'power2.out',
-                stagger: stagger,
-                scrollTrigger: {
-                  trigger: contractRef.current,
-                  start: `${start} 10%`,
-                  end: `${end} 10%`,
-                  scrub: true,
-                  markers: markers,
-                  id: 'contract-trigger',
-                },
-              });
-            } else {
-              console.error(`無法找到任何指定的高亮元素：${highlightIds.join(', ')}`);
-            }
-          };
+  if (isHighlight) {
+    useImperativeHandle(ref, () => ({
+      createTimeline: () => {
+        const tl = gsap.timeline();
+        if (contractRef.current) {
+          tl.to(contractRef.current.querySelectorAll('.contract-highlight'), { 
+            opacity: 1, 
+            duration: 0.5,
+            stagger: 0.2
+          });
         }
+        return tl;
       },
-      { scope: contractRef, dependencies: [objectRef, highlightIds, stagger] }
-    );
-
-    const containerStyle: CSSProperties = {};
+      domElement: contractRef.current
+    }));
 
     return (
-      <div ref={ref || contractRef} className="contract-container" style={containerStyle}>
-        <div className="contract">
-          <object 
-            ref={objectRef}
-            data={contractSrc} 
-            type="image/svg+xml"
-            className="w-full h-full"
+      <div ref={contractRef} className="contract-container" data-contract-id={uniqueId}>
+        {highlightIds.map((id, index) => (
+          <img 
+            key={`${contract}-hl-${id}`} 
+            src={`./assets/img/contract${contract}_HL${id}.svg`} 
+            className="contract-highlight" 
+            alt={`contract highlight ${id}`} 
+            style={{ zIndex: index + 1 }}
           />
-        </div>
+        ))}
+        <img src={contractSrc} className="contract" alt="contract" />
+      </div>
+    );
+  } else {
+    return (
+      <div ref={contractRef} className="contract-container" data-contract-id={uniqueId}>
+        <img src={contractSrc} className="contract" alt="contract" />
       </div>
     );
   }
-);
+});

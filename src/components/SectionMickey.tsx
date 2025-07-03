@@ -1,6 +1,6 @@
 import { Phone } from './phone/Phone';
 import { Calculator } from './calculator/Calculator';
-import { Contract } from './document/Contract';
+import { Contract } from './document/ContractOBJ';
 import { ContractDOM } from './document/ContractDOM';
 import { Envelope } from './document/Envelope';
 

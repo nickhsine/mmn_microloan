@@ -1,7 +1,6 @@
-import { useRef, CSSProperties } from 'react';
+import { useRef, forwardRef, useImperativeHandle, CSSProperties } from 'react';
 import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { TimelineHandle } from '../utility/TimelineHandle';
 
 interface NotificationProps {
   app?: string;
@@ -9,25 +8,20 @@ interface NotificationProps {
   time?: string;
   message?: string;
   logoSrc?: string;
-  start?: string;
-  end?: string;
   height?: string;
-  markers?: boolean;
-  containerStyle?: CSSProperties;
-  contentStyle?: CSSProperties;
 }
 
-export const Notification = ({
+export const Notification = forwardRef<
+  TimelineHandle,
+  NotificationProps
+>(({
   app = 'Messages',
   title = '涂專員',
   time = '17:30',
   message = '您好，您申請裕富融資 25 萬汽機車貸款，貸款核定已通過。',
   logoSrc = '',
-  start = '0',
-  end = '100vh',
   height = '100px',
-  markers = false,
-}: NotificationProps) => {
+}, ref) => {
   const notificationRef = useRef<HTMLDivElement>(null);
   const imgRef = useRef<HTMLImageElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -37,6 +31,7 @@ export const Notification = ({
     height: '30px',
     boxShadow: 'inset 2px 2px 5px 0 hsla(0, 0%, 100%, 1)',
   };
+
   const contentStyle: CSSProperties = {
     display: 'none',
     opacity: 0,
@@ -46,44 +41,27 @@ export const Notification = ({
     logoSrc = './assets/img/logo_message.svg';
   }
 
-  useGSAP(
-    () => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: notificationRef.current,
-          start: `${start} 10%`,
-          end: `${end} 10%`,
-          scrub: 1,
-          markers: markers,
-          id: 'notification-trigger',
-        },
-      });
-
-      tl.to(
-        notificationRef.current,
-        {
+  useImperativeHandle(ref, () => ({
+    createTimeline: () => {
+      const tl = gsap.timeline();
+      
+      return tl
+        .to(notificationRef.current, {
           width: '90%',
           height: height,
           boxShadow: 'inset -3px -3px 10px 0 hsla(0, 0%, 100%, 0.9)',
           duration: 0.5,
           ease: 'power1.out',
-        },
-        0
-      ).to(
-        [imgRef.current, contentRef.current],
-        {
+        }, 0)
+        .to([imgRef.current, contentRef.current], {
           display: 'flex',
           opacity: 1,
           duration: 0.5,
           ease: 'power1.out',
-        },
-        0.4
-      );
+        }, 0.4);
     },
-    { scope: notificationRef }
-  );
+    domElement: notificationRef.current,
+  }));
 
   return (
     <div className="notification" ref={notificationRef} style={containerStyle}>
@@ -97,4 +75,4 @@ export const Notification = ({
       </div>
     </div>
   );
-};
+});

@@ -1,6 +1,5 @@
 .contract-container {
-  position: absolute;
-  top: 50vh;
+  position: relative;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.8);
   border: 1px solid white;
@@ -9,6 +8,22 @@
 
 .contract {
   filter: drop-shadow(5px 5px 10px hsla(0, 0%, 0%, 0.15));
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+.contract-highlight {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  mix-blend-mode: difference;
 }
 
 .envelope {
