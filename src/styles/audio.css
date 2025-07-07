@@ -1,0 +1,66 @@
+/* Audio Handler */
+.audio-handler-full {
+  position: absolute;
+  bottom: 10vh;
+  right: 50vw;
+  transform: translate(50%, 0%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-gray-900);
+  font-size: 14px;
+  font-weight: 400;
+  margin: 12px 0;
+  width: 100%;
+  z-index: 10;
+}
+.audio-handler-simple {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  transform: translate(0%, 0%);
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Telepromter */
+.telepromter {
+  position: absolute;
+  max-width: calc( var(--text-2xl) * 20 );
+  top: 40vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+.telepromter-script {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-gray-50);
+  text-shadow: 3px 3px 5px var(--color-gray-950),
+               -3px 3px 5px var(--color-gray-950),
+               3px -3px 5px var(--color-gray-950),
+               -3px -3px 5px var(--color-gray-950);
+  opacity: 0;
+}
+.telepromter-speaker {
+  display: inline-block;
+  width: fit-content;
+  text-align: right;
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-gray-50);
+  background-color: hsla(0, 0%, 0%, 0.8);
+  padding: 3px 6px;
+  /* rotate: 2deg; */
+}
+
+/* Audio Player */
+.audio-player {
+  width: 0px;
+  height: 0px;
+}

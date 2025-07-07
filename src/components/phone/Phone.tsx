@@ -44,8 +44,8 @@ export const Phone = forwardRef<TimelineHandle, PhoneProps>(({ children }, ref) 
     createStartTimeline: () => {
       const tl = gsap.timeline();
       if (phoneRef.current) {
-        gsap.set(phoneRef.current, { opacity: 0, scale: 0.9 });
-        tl.to(phoneRef.current, { opacity: 1, scale: 1, duration: 0.5 });
+        gsap.set(phoneRef.current, { opacity: 0 });
+        tl.to(phoneRef.current, { opacity: 1, duration: 0.5, ease: 'power1.out' });
       }
       return tl;
     },

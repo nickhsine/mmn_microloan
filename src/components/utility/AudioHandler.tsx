@@ -28,8 +28,7 @@ const useAudioRive = (artboard: string) => {
 
 export const AudioHandler = ({ markers }: AudioHandlerProps) => {
   const { RiveComponent: FullRiveComponent, stateInput: fullStateInput } = useAudioRive('Full');
-  const { RiveComponent: SimpleRiveComponent, stateInput: simpleStateInput } =
-    useAudioRive('Simple');
+  const { RiveComponent: SimpleRiveComponent, stateInput: simpleStateInput } = useAudioRive('Simple');
 
   const handleToggle = () => {
     globalAudioEnabled = !globalAudioEnabled;
@@ -44,20 +43,33 @@ export const AudioHandler = ({ markers }: AudioHandlerProps) => {
   useGSAP(() => {
     ScrollTrigger.create({
       trigger: '.audio-handler-full',
-      start: 'bottom top',
+      start: '+=550 bottom',
+      end: '+=550 bottom',
       markers: markers,
+      id: 'audio-handler-full',
       onEnter: () => {
         gsap.to('.audio-handler-simple', {
           opacity: 1,
           duration: 0.5,
           pointerEvents: 'auto',
         });
+        gsap.to('.audio-handler-full', {
+          opacity: 0,
+          duration: 0.5,
+          pointerEvents: 'none',
+        });
       },
+      
       onLeaveBack: () => {
         gsap.to('.audio-handler-simple', {
           opacity: 0,
           duration: 0.5,
           pointerEvents: 'none',
+        });
+        gsap.to('.audio-handler-full', {
+          opacity: 1,
+          duration: 0.5,
+          pointerEvents: 'auto',
         });
       },
     });

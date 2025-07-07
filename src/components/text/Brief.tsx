@@ -1,9 +1,59 @@
-import React from 'react';
+import { ReactNode, forwardRef, useRef, useImperativeHandle, CSSProperties } from 'react';
+import gsap from 'gsap';
+import { TimelineHandle } from '../utility/TimelineHandle';
 
-export const Brief = () => {
+interface BriefProps {
+  children: ReactNode;
+  type?: 'dark' | 'light' | 'clear';
+  style?: CSSProperties;
+}
+
+export const Brief = forwardRef<TimelineHandle, BriefProps>(({ children, type = 'dark', style }, ref) => {
+  const briefRef = useRef<HTMLDivElement>(null);
+
+  useImperativeHandle(ref, () => ({
+
+    createStartTimeline: () => {
+      const tl = gsap.timeline();
+
+      const briefElements = briefRef.current?.querySelectorAll('p');
+
+      if (briefElements) {
+        gsap.set(briefElements, { y: '-10vh', opacity: 0 });
+        tl.fromTo(briefRef.current, 
+          { opacity: 0 }, 
+          { opacity: 1, duration: 1, ease: 'power1.out' }
+        );
+        tl.fromTo(briefElements, 
+          { y: '-10vh', opacity: 0 }, 
+          { y: 0, 
+            opacity: 1, 
+            rotate: (index) => (Math.pow(-1, index) * 1), 
+            duration: 1, stagger: 1, ease: 'power1.out' }
+        );
+      }
+      return tl;
+    },
+    createEndTimeline: () => {
+      const tl = gsap.timeline();
+
+      const briefElements = briefRef.current?.querySelectorAll('p');
+
+      if (briefElements) {
+        tl.fromTo(briefElements, 
+          { y: 0, opacity: 1 }, 
+          { y: '20vh', opacity: 0, duration: 1, stagger: 1, ease: 'power1.out' }
+        );
+      }
+      return tl;
+    },
+
+    domElement: briefRef.current,
+  }));
+
   return (
-    <div className="landing-brief">
-      2022年，疫情時遭裁員的Ｈ小姐，因身體不佳，需定期支付龐大的醫藥費。眼看生活費即將見底，原本以為是和銀行貸款，沒想到卻捲入無盡的債務漩渦......
+    <div className={`brief ${type}`} ref={briefRef} style={style}>
+      {children}
     </div>
   );
-};
+});

@@ -46,10 +46,10 @@ export const Messages = forwardRef<TimelineHandle, MessagesProps>(
         if (messageElements.length === 0) return tl;
 
         return tl.fromTo(messageElements, {
-          opacity: 1, y: 0,
+          opacity: 1, y: 0, display: 'flex'
         }, {
-          opacity: 0, y: -10,
-          duration: 0.5, stagger: 0.1,
+          opacity: 0, y: -10, display: 'none',
+          duration: 0.2, stagger: 0.1,
           ease: 'power2.in',
         });
       },
