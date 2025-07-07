@@ -172,14 +172,17 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     );
 
     // 1st loan calculation
-    AddStartTL(misshTL, highlightUpdateRef_1.current, '<4');
+    AddStartTL(misshTL, highlightUpdateRef_1.current, '<2');
     AddStartTL(misshTL, highlightUpdateRef_1T.current, '<');
     AddStartTL(misshTL, resultRef_0.current, '<');
     AddStartTL(misshTL, detailsRef_1.current, '>1');;
     AddEndTL(misshTL, highlightUpdateRef_1T.current, '<');
     AddStartTL(misshTL, highlightUpdateRef_2T.current, '>-1');
+    
+    AddEndTL(misshTL, resultRef_0.current, '>');
+    AddStartTL(misshTL, resultRef_1.current, '>');
 
-    AddEndTL(misshTL, highlightUpdateRef_1.current, '>3');
+    AddEndTL(misshTL, highlightUpdateRef_1.current, '>-1');
     AddStartTL(misshTL, highlightUpdateRef_2.current, '>-1');
     AddEndTL(misshTL, highlightUpdateRef_2.current, '>1.5');
     AddStartTL(misshTL, highlightUpdateRef_3.current, '>-1');
@@ -189,9 +192,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, highlightUpdateRef_5.current, '>-1');
     AddEndTL(misshTL, highlightUpdateRef_5.current, '>1.5');
     AddStartTL(misshTL, highlightUpdateRef_6.current, '>-1');
-    
-    AddEndTL(misshTL, resultRef_0.current, '>');
-    AddStartTL(misshTL, resultRef_1.current, '>');
+
 
     AddEndTL(misshTL, detailsRef_1.current, '>');
     AddStartTL(misshTL, detailsRef_2.current, '>');

@@ -1,4 +1,4 @@
-import { forwardRef, ReactNode, useRef, useImperativeHandle } from 'react';
+import { forwardRef, ReactNode, useRef, useImperativeHandle, CSSProperties } from 'react';
 import gsap from 'gsap';
 import SplitText from 'gsap/SplitText';
 import { TimelineHandle } from '../utility/TimelineHandle';
@@ -6,8 +6,9 @@ import { TimelineHandle } from '../utility/TimelineHandle';
 interface UpdateProps {
   children?: ReactNode;
   type?: string;
+  style?: CSSProperties;
 }
-export const Update = forwardRef<TimelineHandle, UpdateProps>(({ children, type }, ref) => {
+export const Update = forwardRef<TimelineHandle, UpdateProps>(({ children, type, style }, ref) => {
   const updateRef = useRef<HTMLDivElement>(null);
   const charsRef = useRef<Element[] | null>(null);
   const splitRef = useRef<SplitText | null>(null);
@@ -49,6 +50,6 @@ export const Update = forwardRef<TimelineHandle, UpdateProps>(({ children, type 
   }));
 
   return (
-    <div ref={updateRef} className={type}>{children}</div>
+    <div ref={updateRef} className={type} style={style}>{children}</div>
   );
 });

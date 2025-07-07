@@ -117,8 +117,8 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
 
 
     // Animation Time Positioning
-    AddStartTL(mickeyTL, briefRefD.current, '<');
-    AddStartTL(mickeyTL, briefRefL.current, '>2');
+    AddStartTL(mickeyTL, briefRefD.current, '<-2');
+    AddStartTL(mickeyTL, briefRefL.current, '>10');
 
     AddStartTL(mickeyTL, telepromterRef_1.current, '>2');
     AddNoScrubTL(mickeyTL, telepromterRef_1.current, '>');
@@ -147,8 +147,8 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
     );
     // AddStartTL(mickeyTL, contractARef.current, '>');
 
-    AddStartTL(mickeyTL, notificationRef_1.current, '>');
-    AddEndTL(mickeyTL, messagesAppRef_1.current, '<1');
+    // AddStartTL(mickeyTL, notificationRef_1.current, '>');
+    AddEndTL(mickeyTL, messagesAppRef_1.current, '>1');
     AddEndTL(mickeyTL, messagesRef_1.current, '>1');
     AddStartTL(mickeyTL, messagesAppRef_2.current, '<-1');
     AddStartTL(mickeyTL, messagesRef_2.current,  '<');
@@ -222,7 +222,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(mickeyTL, highlightUpdateRef_5.current, '<1');
     AddStartTL(mickeyTL, highlightUpdateRef_1T.current, '<');
     AddStartTL(mickeyTL, resultRef_2a.current, '<');
-    AddStartTL(mickeyTL, detailsRef_2.current, '>1');;
+    AddStartTL(mickeyTL, detailsRef_2.current, '>1');
     AddEndTL(mickeyTL, highlightUpdateRef_1T.current, '<');
     AddStartTL(mickeyTL, highlightUpdateRef_2T.current, '>-1');
 
@@ -294,7 +294,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
           <Update ref={highlightUpdateRef_6} type="number">
             <span>$84,400</span>
           </Update>
-          <Update ref={highlightUpdateRef_7} type="number">
+          <Update ref={highlightUpdateRef_7} type="number" style={{ color: '#777' }}>
             <span>$0</span>
           </Update>
         </div>
