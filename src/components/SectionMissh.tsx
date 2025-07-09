@@ -31,11 +31,9 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
   const phoneCallRef_1 = useRef<TimelineHandle | null>(null);
   const phoneCallRef_2 = useRef<TimelineHandle | null>(null);
   const phoneCallRef_3 = useRef<TimelineHandle | null>(null);
-  const phoneCallRef_4 = useRef<TimelineHandle | null>(null);
   const dialogsRef_1 = useRef<TimelineHandle | null>(null);
   const dialogsRef_2 = useRef<TimelineHandle | null>(null);
   const dialogsRef_3 = useRef<TimelineHandle | null>(null);
-  const dialogsRef_4 = useRef<TimelineHandle | null>(null);
 
   const calculatorRef = useRef<TimelineHandle | null>(null);
   // detailsRef
@@ -43,9 +41,6 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
   const detailsRef_2 = useRef<TimelineHandle | null>(null);
   const detailsRef_3 = useRef<TimelineHandle | null>(null);
   const detailsRef_4 = useRef<TimelineHandle | null>(null);
-  const detailsRef_5 = useRef<TimelineHandle | null>(null);
-  const detailsRef_6 = useRef<TimelineHandle | null>(null);
-  const detailsRef_7 = useRef<TimelineHandle | null>(null);
   // highlightRef
   const highlightUpdateRef_1T = useRef<TimelineHandle | null>(null);
   const highlightUpdateRef_1 = useRef<TimelineHandle | null>(null);
@@ -55,15 +50,6 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
   const highlightUpdateRef_3 = useRef<TimelineHandle | null>(null);
   const highlightUpdateRef_4T = useRef<TimelineHandle | null>(null);
   const highlightUpdateRef_4 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_5 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_6 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_7 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_8 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_9T = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_9 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_10 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_11 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_12 = useRef<TimelineHandle | null>(null);
   // resultRef
   const resultRef_1T = useRef<TimelineHandle | null>(null);
   const resultRef_1a = useRef<TimelineHandle | null>(null);
@@ -77,6 +63,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
   const resultRef_3T = useRef<TimelineHandle | null>(null);
   const resultRef_3a = useRef<TimelineHandle | null>(null);
   const resultRef_3b = useRef<TimelineHandle | null>(null);
+  const resultRef_3c = useRef<TimelineHandle | null>(null);
   const resultRef_4T = useRef<TimelineHandle | null>(null);
   const resultRef_4a = useRef<TimelineHandle | null>(null);
   // contractRef
@@ -107,8 +94,15 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
 
     // INITIAL STATE
     RefFromTo(misshTL, phoneRef.current, 
-      { x: '50vw', y: '100vh', rotation: 20 }, 
-      { x: '50vw', y: '100vh', rotation: 20, duration: 0.5 }, 0
+      { x: '50vw', y: '100vh', rotation: 20, zIndex: 1 }, 
+      { x: '50vw', y: '100vh', rotation: 20, zIndex: 1, duration: 0.5 }, 0
+    );
+    RefFromTo(misshTL, messagesAppRef.current, 
+      { opacity: 0 },  { opacity: 0 }, 0
+    );
+    RefFromTo(misshTL, calculatorRef.current, 
+      { x: '-50vw', y: '100vh', rotation: -10, zIndex: 1 }, 
+      { x: '-50vw', y: '100vh', rotation: -10, zIndex: 1, duration: 0.5 }, 0
     );
     RefFromTo(misshTL, contractRef_A.current, 
       { x: '-100vw', y: '-100vh', rotation: -90 }, 
@@ -126,13 +120,6 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
       { x: 0, y: '150vh', rotation: -10 }, 
       { x: 0, y: '150vh', rotation: -10, duration: 0.5 }, 0
     ); 
-    RefFromTo(misshTL, calculatorRef.current, 
-      { x: '-50vw', y: '100vh', rotation: -10 }, 
-      { x: '-50vw', y: '100vh', rotation: -10, duration: 0.5 }, 0
-    );
-    RefFromTo(misshTL, messagesAppRef.current, 
-      { opacity: 0 },  { opacity: 0 }, 0
-    );
 
 
     // Animation Time Positioning
@@ -215,12 +202,12 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, resultRef_2a.current, '<');
 
     RefFromTo(misshTL, calculatorRef.current, 
-      { x: 0, y: 0, rotation: -2 }, 
-      { x: '-20vw', y: '5vh', rotation: -5, duration: 1 }, '>1'
+      { x: 0, y: 0, rotation: -2, zIndex: 1 }, 
+      { x: '-20vw', y: '5vh', rotation: -5, zIndex: 1, duration: 1 }, '>1'
     );
     RefFromTo(misshTL, phoneRef.current, 
-      { x: '35vw', y: 0, rotation: 5 }, 
-      { x: `15vw`, y: `5vh`, rotation: 5, duration: 1 }, '<'
+      { x: '35vw', y: 0, rotation: 5, zIndex: 1 }, 
+      { x: `15vw`, y: `5vh`, rotation: 5, zIndex: 2, duration: 1 }, '<'
     );
     RefFromTo(misshTL, messagesAppRef.current, 
       { opacity: 1, scale: 1 }, 
@@ -256,31 +243,30 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
 
     AddEndTL(misshTL, highlightUpdateRef_2T.current, '>');
     AddEndTL(misshTL, highlightUpdateRef_2.current, '<');
-    AddEndTL(misshTL, detailsRef_3.current, '<');
-    AddStartTL(misshTL, highlightUpdateRef_3.current, '<');
+    AddEndTL(misshTL, resultRef_2T.current, '<');
+    AddEndTL(misshTL, resultRef_2a.current, '<');
+    AddEndTL(misshTL, detailsRef_2.current, '<');
+    AddStartTL(misshTL, resultRef_3T.current, '>');
+    AddStartTL(misshTL, resultRef_3a.current, '<');
     AddStartTL(misshTL, highlightUpdateRef_3T.current, '<');
-    AddEndTL(misshTL, resultRef_3a.current, '<');
-    AddStartTL(misshTL, resultRef_3b.current, '<');
+    AddStartTL(misshTL, highlightUpdateRef_3.current, '<');
+    AddStartTL(misshTL, detailsRef_3.current, '<1');
+    AddEndTL(misshTL, resultRef_3a.current, '<2');
+    AddStartTL(misshTL, resultRef_3b.current, '>');
+    AddEndTL(misshTL, resultRef_3b.current, '>6');
+    AddStartTL(misshTL, resultRef_3c.current, '>');
 
+    AddEndTL(misshTL, detailsRef_3.current, '>2');
     AddStartTL(misshTL, detailsRef_4.current, '>');
-
-    AddEndTL(misshTL, highlightUpdateRef_3T.current, '<7');
+    AddEndTL(misshTL, highlightUpdateRef_3T.current, '<1');
     AddEndTL(misshTL, highlightUpdateRef_3.current, '<');
     AddStartTL(misshTL, highlightUpdateRef_4T.current, '>-1');
     AddStartTL(misshTL, highlightUpdateRef_4.current, '<');
-
     AddEndTL(misshTL, resultRef_3T.current, '>');
+    AddEndTL(misshTL, resultRef_3c.current, '<');
     AddStartTL(misshTL, resultRef_4T.current, '>');
-    AddEndTL(misshTL, resultRef_3b.current, '>2');
-    AddStartTL(misshTL, resultRef_4a.current, '>');
+    AddStartTL(misshTL, resultRef_4a.current, '<');
 
-    // AddEndTL(misshTL, highlightUpdateRef_2T.current, '>');
-    // AddEndTL(misshTL, highlightUpdateRef_11.current, '<');
-    // AddStartTL(misshTL, highlightUpdateRef_9T.current, '>');
-    // AddStartTL(misshTL, highlightUpdateRef_12.current, '<');
-
-    // Final Call
-    AddStartTL(misshTL, phoneCallRef_4.current, '>');
 
     if (ref && typeof ref !== 'function') {
       ref.current = misshTL;
@@ -449,7 +435,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             <span>$7,075</span>
           </Update>
           {/* 3rd loan calculation */}
-          {/* <Update ref={highlightUpdateRef_3T} type="title">
+          <Update ref={highlightUpdateRef_3T} type="title">
             <span>貸款金額</span>
           </Update>
           <Update ref={highlightUpdateRef_3} type="number">
@@ -460,7 +446,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
           </Update>
           <Update ref={highlightUpdateRef_4} type="number">
             <span>$9,100</span>
-          </Update> */}
+          </Update>
         </div>
         <Details ref={detailsRef_1} stagger={3}>
           <div className="content">
@@ -495,7 +481,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
           </div>
         </Details>
         {/* 3rd loan calculation */}
-        {/* <Details ref={detailsRef_3} stagger={3}>
+        <Details ref={detailsRef_3} stagger={3}>
           <div className="content">
             <span className="title">內扣 ?（裕富資融）</span>
             <span className="number">-$?????</span>
@@ -522,7 +508,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             <span className="title">實拿金額</span>
             <span className="number">$53,075</span>
           </div>
-        </Details> */}
+        </Details>
         <div className="result">
           <Update ref={resultRef_1T} type="title">
             <span>實拿金額</span>
@@ -552,13 +538,16 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             <span>31.4%</span>
           </Update>
           {/* 3rd loan calculation */}
-          {/* <Update ref={resultRef_3T} type="title">
+        <Update ref={resultRef_3T} type="title">
             <span>實拿金額</span>
           </Update>
           <Update ref={resultRef_3a} type="number">
-            <span>$??????</span>
+            <span>$350,000</span>
           </Update>
           <Update ref={resultRef_3b} type="number">
+            <span>$??????</span>
+          </Update>
+          <Update ref={resultRef_3c} type="number">
             <span>$53,075</span>
           </Update>
           <Update ref={resultRef_4T} type="title">
@@ -566,7 +555,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
           </Update>
           <Update ref={resultRef_4a} type="number">
             <span>36.1%</span>
-          </Update> */}
+          </Update>
         </div>
       </Calculator>
       <Telepromter ref={telepromterRef_1} 

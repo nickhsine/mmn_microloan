@@ -22,19 +22,20 @@ export const Contract = forwardRef<TimelineHandle, ContractProps>(
       () => {
         gsap.registerPlugin(Draggable);
   
-        if (!draggableRef.current) return;
+        if (!contractRef.current) return;
   
-        Draggable.create(draggableRef.current, {
+        Draggable.create(contractRef.current, {
           type: 'x,y',
           inertia: true,
-          onDragEnd: function () {
-            gsap.to(this.target, {
-              // x: 0,
-              // y: 0,
-              duration: 3,
-              ease: 'power1.out',
-            });
-          },
+          zIndexBoost: false,
+          // onDragEnd: function () {
+          //   gsap.to(this.target, {
+          //     // x: 0,
+          //     // y: 0,
+          //     duration: 3,
+          //     ease: 'power1.out',
+          //   });
+          // },
         });
       },
       { scope: contractRef }
@@ -56,9 +57,9 @@ export const Contract = forwardRef<TimelineHandle, ContractProps>(
     }));
     if (isHighlight) {
       return (
-        <div ref={contractRef} data-contract-id={uniqueId}>
+        <div className="contract-container" ref={contractRef} data-contract-id={uniqueId}>
           <div className="contract-draggable" ref={draggableRef}>
-            <div className="contract-container">
+            {/* <div> */}
               {highlightIds.map((id, index) => (
                 <img
                   key={`${contract}-hl-${id}`}
@@ -69,18 +70,18 @@ export const Contract = forwardRef<TimelineHandle, ContractProps>(
                 />
               ))}
               <img src={contractSrc} className="contract" alt="contract" />
-            </div>
+            {/* </div> */}
           </div>
         </div>
       );
     } else {
       return (
-        <div ref={contractRef} data-contract-id={uniqueId}>
-          <div className="contract-draggable" ref={draggableRef}>
-            <div className="contract-container">
+        <div className="contract-container" ref={contractRef} data-contract-id={uniqueId}>
+          {/* <div className="contract-draggable" ref={draggableRef}> */}
+            {/* <div> */}
               <img src={contractSrc} className="contract" alt="contract" />
-            </div>
-          </div>
+            {/* </div> */}
+          {/* </div> */}
         </div>
       );
     }
