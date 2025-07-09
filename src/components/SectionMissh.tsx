@@ -47,40 +47,43 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
   const detailsRef_6 = useRef<TimelineHandle | null>(null);
   const detailsRef_7 = useRef<TimelineHandle | null>(null);
   // highlightRef
-  const highlightUpdateRef_1 = useRef<TimelineHandle | null>(null);
   const highlightUpdateRef_1T = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_2 = useRef<TimelineHandle | null>(null);
+  const highlightUpdateRef_1 = useRef<TimelineHandle | null>(null);
   const highlightUpdateRef_2T = useRef<TimelineHandle | null>(null);
+  const highlightUpdateRef_2 = useRef<TimelineHandle | null>(null);
+  const highlightUpdateRef_3T = useRef<TimelineHandle | null>(null);
   const highlightUpdateRef_3 = useRef<TimelineHandle | null>(null);
+  const highlightUpdateRef_4T = useRef<TimelineHandle | null>(null);
   const highlightUpdateRef_4 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_5 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_6 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_7 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_8 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_9T = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_9 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_10 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_11 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_12 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_5 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_6 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_7 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_8 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_9T = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_9 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_10 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_11 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_12 = useRef<TimelineHandle | null>(null);
   // resultRef
-  const resultRef_0 = useRef<TimelineHandle | null>(null);
-  const resultRef_1 = useRef<TimelineHandle | null>(null);
-  const resultRef_2 = useRef<TimelineHandle | null>(null);
-  const resultRef_3 = useRef<TimelineHandle | null>(null);
-  const resultRef_4 = useRef<TimelineHandle | null>(null);
-  const resultRef_5 = useRef<TimelineHandle | null>(null);
-  const resultRef_6 = useRef<TimelineHandle | null>(null);
-  const resultRef_7 = useRef<TimelineHandle | null>(null);
-  const resultRef_8 = useRef<TimelineHandle | null>(null);
-  const resultRef_9 = useRef<TimelineHandle | null>(null);
-  const resultRef_10 = useRef<TimelineHandle | null>(null);
-  const resultRef_11 = useRef<TimelineHandle | null>(null);
-  const resultRef_12 = useRef<TimelineHandle | null>(null);
-  const resultRef_13 = useRef<TimelineHandle | null>(null);
-  const resultRef_14 = useRef<TimelineHandle | null>(null);
+  const resultRef_1T = useRef<TimelineHandle | null>(null);
+  const resultRef_1a = useRef<TimelineHandle | null>(null);
+  const resultRef_1b = useRef<TimelineHandle | null>(null);
+  const resultRef_1c = useRef<TimelineHandle | null>(null);
+  const resultRef_1d = useRef<TimelineHandle | null>(null);
+  const resultRef_1e = useRef<TimelineHandle | null>(null);
+  const resultRef_1f = useRef<TimelineHandle | null>(null);
+  const resultRef_2T = useRef<TimelineHandle | null>(null);
+  const resultRef_2a = useRef<TimelineHandle | null>(null);
+  const resultRef_3T = useRef<TimelineHandle | null>(null);
+  const resultRef_3a = useRef<TimelineHandle | null>(null);
+  const resultRef_3b = useRef<TimelineHandle | null>(null);
+  const resultRef_4T = useRef<TimelineHandle | null>(null);
+  const resultRef_4a = useRef<TimelineHandle | null>(null);
   // contractRef
-  const contractARef = useRef<TimelineHandle | null>(null);
-  const contractBRef = useRef<TimelineHandle | null>(null);
+  const contractRef_A = useRef<TimelineHandle | null>(null);
+  const contractRef_B = useRef<TimelineHandle | null>(null);
+  const contractRef_C1 = useRef<TimelineHandle | null>(null);
+  const contractRef_C2 = useRef<TimelineHandle | null>(null);
   // telepromterRef
   const telepromterRef_1 = useRef<TimelineHandle | null>(null);
   const telepromterRef_2 = useRef<TimelineHandle | null>(null);
@@ -104,20 +107,28 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
 
     // INITIAL STATE
     RefFromTo(misshTL, phoneRef.current, 
-      { x: '50vw', y: '100vh', rotation: 0 }, 
+      { x: '50vw', y: '100vh', rotation: 20 }, 
       { x: '50vw', y: '100vh', rotation: 20, duration: 0.5 }, 0
     );
-    RefFromTo(misshTL, contractARef.current, 
-      { x: '-100vw', y: '-100vh', rotation: 10 }, 
-      { x: '-100vw', y: '-100vh', rotation: 10, duration: 0.5 }, 0
+    RefFromTo(misshTL, contractRef_A.current, 
+      { x: '-100vw', y: '-100vh', rotation: -90 }, 
+      { x: '-100vw', y: '-100vh', rotation: -90, duration: 0.5 }, 0
     );
-    RefFromTo(misshTL, contractBRef.current, 
-      { x: '-100vw', y: '-100vh', rotation: 10 }, 
-      { x: '-100vw', y: '-100vh', rotation: 10, duration: 0.5 }, 0
+    RefFromTo(misshTL, contractRef_B.current, 
+      { x: '-100vw', y: '-100vh', rotation: 90 }, 
+      { x: '-100vw', y: '-100vh', rotation: 90, duration: 0.5 }, 0
     );
+    RefFromTo(misshTL, contractRef_C1.current, 
+      { x: 0, y: '150vh', rotation: 10 }, 
+      { x: 0, y: '150vh', rotation: 10, duration: 0.5 }, 0
+    ); 
+    RefFromTo(misshTL, contractRef_C2.current, 
+      { x: 0, y: '150vh', rotation: -10 }, 
+      { x: 0, y: '150vh', rotation: -10, duration: 0.5 }, 0
+    ); 
     RefFromTo(misshTL, calculatorRef.current, 
-      { x: '100vw', y: '100vh', rotation: -10 }, 
-      { x: '100vw', y: '100vh', rotation: -10, duration: 0.5 }, 0
+      { x: '-50vw', y: '100vh', rotation: -10 }, 
+      { x: '-50vw', y: '100vh', rotation: -10, duration: 0.5 }, 0
     );
     RefFromTo(misshTL, messagesAppRef.current, 
       { opacity: 0 },  { opacity: 0 }, 0
@@ -132,93 +143,84 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     );
     AddStartTL(misshTL, phoneCallRef_1.current, '>-1');
     AddStartTL(misshTL, dialogsRef_1.current, '<5');
-    AddStartTL(misshTL, notificationRef_1.current, '>1');
-    AddEndTL(misshTL, phoneCallRef_1.current, '<1');
-    AddEndTL(misshTL, dialogsRef_1.current, '<');
+    AddEndTL(misshTL, phoneCallRef_1.current, '>2');
+    AddStartTL(misshTL, notificationRef_1.current, '>');
+    AddEndTL(misshTL, notificationRef_1.current, '>');
+    // AddEndTL(misshTL, dialogsRef_1.current, '<');
 
-    AddStartTL(misshTL, messagesAppRef.current, '<2');
+    AddStartTL(misshTL, messagesAppRef.current, '<');
     AddStartTL(misshTL, messagesRef.current,  '<1');
     
     AddStartTL(misshTL, telepromterRef_1.current, '>1');
     AddNoScrubTL(misshTL, telepromterRef_1.current, '>');
+    RefFromTo(misshTL, messagesRef.current, 
+      { opacity: 1 },  { opacity: 0.25, duration: 0.5 }, '<'
+    );
     AddEndTL(misshTL, telepromterRef_1.current, '>4');
-    AddStartTL(misshTL, notificationRef_2.current, '>');
+    AddStartTL(misshTL, notificationRef_2.current, '<');
 
+    RefFromTo(misshTL, contractRef_A.current, 
+      { x: '-100vw', y: '-100vh', rotation: -90 }, 
+      { x: `-2.5vw`, y: '5vh', rotation: 5, duration: 2 }, '>-1'
+    );
+    RefFromTo(misshTL, contractRef_B.current, 
+      { x: '-100vw', y: '100vh', rotation: 90 }, 
+      { x: 0, y: '15vh', rotation: -5, duration: 2 }, '<-0.25'
+    );
     RefFromTo(misshTL, phoneRef.current, 
       { x: 0, y: 0, rotation: 0 }, 
-      { x: '50vw', y: 0, rotation: 10, duration: 1 }, '>'
+      { x: '35vw', y: 0, rotation: 5, duration: 1 }, '<1'
     );
-    RefFromTo(misshTL, contractARef.current, 
-      { x: '-100vw', y: '-100vh', rotation: -5 }, 
-      { x: 0, y: '5vh', rotation: 5, duration: 2 }, '<-0.25'
+    AddStartTL(misshTL, contractRef_A.current, '>1');
+    AddStartTL(misshTL, contractRef_B.current, '<');   
+    RefFromTo(misshTL, contractRef_A.current, 
+      { x: `-2.5vw`, y: '5vh', rotation: 5, }, 
+      { x: '-15vw', y: '10vh', rotation: -20, duration: 3 }, '>2'
     );
-    RefFromTo(misshTL, contractBRef.current, 
-      { x: '-100vw', y: '100vh', rotation: 5 }, 
-      { x: 50, y: '15vh', rotation: -5, duration: 2 }, '<-0.25'
-    );
-    AddStartTL(misshTL, contractARef.current, '>1');
-    AddStartTL(misshTL, contractBRef.current, '>0.5');   
-    RefFromTo(misshTL, contractARef.current, 
-      { x: 0, y: '5vh', rotation: 5, }, 
-      { x: '-10vw', y: '10vh', rotation: -40, duration: 3 }, '<3'
-    );
-    RefFromTo(misshTL, contractBRef.current, 
-      { x: 50, y: '15vh', rotation: -5 }, 
-      { x: '10vw', y: '-10vh', rotation: 30, duration: 3 }, '<'
+    RefFromTo(misshTL, contractRef_B.current, 
+      { x: 0, y: '15vh', rotation: -5 }, 
+      { x: '15vw', y: '5vh', rotation: 10, duration: 3 }, '<'
     ); 
     RefFromTo(misshTL, calculatorRef.current, 
-      { x: '100vw', y: '100vh', rotation: -10 }, 
-      { x: 0, y: 0, rotation: 2, duration: 2 }, '<'
+      { x: '-50vw', y: '100vh', rotation: -10 }, 
+      { x: 0, y: 0, rotation: -2, duration: 2 }, '<'
     );
 
     // 1st loan calculation
     AddStartTL(misshTL, highlightUpdateRef_1.current, '<2');
     AddStartTL(misshTL, highlightUpdateRef_1T.current, '<');
-    AddStartTL(misshTL, resultRef_0.current, '<');
-    AddStartTL(misshTL, detailsRef_1.current, '>1');;
-    AddEndTL(misshTL, highlightUpdateRef_1T.current, '<');
-    AddStartTL(misshTL, highlightUpdateRef_2T.current, '>-1');
-    
-    AddEndTL(misshTL, resultRef_0.current, '>');
-    AddStartTL(misshTL, resultRef_1.current, '>');
+    AddStartTL(misshTL, resultRef_1T.current, '<');
+    AddStartTL(misshTL, resultRef_1a.current, '<');
+    AddStartTL(misshTL, detailsRef_1.current, '>1');
+    AddEndTL(misshTL, resultRef_1a.current, '<1');
+    AddStartTL(misshTL, resultRef_1b.current, '>-0.5');
+    AddEndTL(misshTL, resultRef_1b.current, '>0.5');
+    AddStartTL(misshTL, resultRef_1c.current, '>-0.5');
+    AddEndTL(misshTL, resultRef_1c.current, '>0.5');
+    AddStartTL(misshTL, resultRef_1d.current, '>0.5');
+    AddEndTL(misshTL, resultRef_1d.current, '>0.5');
+    AddStartTL(misshTL, resultRef_1e.current, '>-0.5');
+    AddEndTL(misshTL, resultRef_1e.current, '>0.5');
+    AddStartTL(misshTL, resultRef_1f.current, '>0.5');
 
-    AddEndTL(misshTL, highlightUpdateRef_1.current, '>-1');
-    AddStartTL(misshTL, highlightUpdateRef_2.current, '>-1');
-    AddEndTL(misshTL, highlightUpdateRef_2.current, '>1.5');
-    AddStartTL(misshTL, highlightUpdateRef_3.current, '>-1');
-    AddEndTL(misshTL, highlightUpdateRef_3.current, '>1.5');
-    AddStartTL(misshTL, highlightUpdateRef_4.current, '>-1');
-    AddEndTL(misshTL, highlightUpdateRef_4.current, '>1.5');
-    AddStartTL(misshTL, highlightUpdateRef_5.current, '>-1');
-    AddEndTL(misshTL, highlightUpdateRef_5.current, '>1.5');
-    AddStartTL(misshTL, highlightUpdateRef_6.current, '>-1');
-
-
-    AddEndTL(misshTL, detailsRef_1.current, '>');
+    AddEndTL(misshTL, detailsRef_1.current, '>1');
     AddStartTL(misshTL, detailsRef_2.current, '>');
-    // months count
-    AddEndTL(misshTL, resultRef_1.current, '<');
-    AddStartTL(misshTL, resultRef_2.current, '>-0.5');
-    AddEndTL(misshTL, resultRef_2.current, '>-0.5');
-    AddStartTL(misshTL, resultRef_3.current, '>-0.5');
-    AddEndTL(misshTL, resultRef_3.current, '>-0.5');
-    AddStartTL(misshTL, resultRef_4.current, '>-0.5');
-    AddEndTL(misshTL, resultRef_4.current, '>-0.5');
-    AddStartTL(misshTL, resultRef_5.current, '>-0.5');
-    AddEndTL(misshTL, resultRef_5.current, '>-0.5');
-    AddStartTL(misshTL, resultRef_6.current, '>-0.5');
-    AddEndTL(misshTL, resultRef_6.current, '>-0.5');
-    AddStartTL(misshTL, resultRef_7.current, '>-0.5');
-    AddEndTL(misshTL, resultRef_7.current, '>-0.5');
-    AddStartTL(misshTL, resultRef_8.current, '>-0.5');
+    AddEndTL(misshTL, highlightUpdateRef_1T.current, '<1');
+    AddEndTL(misshTL, highlightUpdateRef_1.current, '<');
+    AddStartTL(misshTL, highlightUpdateRef_2T.current, '>-1');
+    AddStartTL(misshTL, highlightUpdateRef_2.current, '<');
+    AddEndTL(misshTL, resultRef_1T.current, '>');
+    AddEndTL(misshTL, resultRef_1f.current, '<');
+    AddStartTL(misshTL, resultRef_2T.current, '>');
+    AddStartTL(misshTL, resultRef_2a.current, '<');
 
     RefFromTo(misshTL, calculatorRef.current, 
-      { x: 0, y: 0, rotation: -10 }, 
-      { x: '-10vw', y: '30vh', rotation: 10, duration: 1 }, '>'
+      { x: 0, y: 0, rotation: -2 }, 
+      { x: '-20vw', y: '5vh', rotation: -5, duration: 1 }, '>1'
     );
     RefFromTo(misshTL, phoneRef.current, 
-      { x: '50vw', y: 0, rotation: 10 }, 
-      { x: 0, y: '-5vh', rotation: -5, duration: 1 }, '<'
+      { x: '35vw', y: 0, rotation: 5 }, 
+      { x: `15vw`, y: `5vh`, rotation: 5, duration: 1 }, '<'
     );
     RefFromTo(misshTL, messagesAppRef.current, 
       { opacity: 1, scale: 1 }, 
@@ -226,82 +228,56 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     );
     AddStartTL(misshTL, phoneCallRef_2.current, '<');
     AddStartTL(misshTL, dialogsRef_2.current, '>1'); 
-    
-    AddEndTL(misshTL, highlightUpdateRef_2T.current, '<');
-    AddEndTL(misshTL, highlightUpdateRef_6.current, '<');
-
-    AddStartTL(misshTL, telepromterRef_2.current, '>');
-    AddNoScrubTL(misshTL, telepromterRef_2.current, '>');
-    AddEndTL(misshTL, telepromterRef_2.current, '>4');
-    
-    AddEndTL(misshTL, detailsRef_2.current, '<');
-    AddEndTL(misshTL, phoneCallRef_2.current, '<');
-    AddEndTL(misshTL, dialogsRef_2.current, '<');
-
-    // 2nd loan calculation
-    RefFromTo(misshTL, calculatorRef.current, 
-      { x: '-10vw', y: '30vh', rotation: 10 }, 
-      { x: '-5vw', y: '10vh', rotation: 5, duration: 1 }, '>'
-    );
-    AddStartTL(misshTL, highlightUpdateRef_7.current, '<');
-    AddStartTL(misshTL, highlightUpdateRef_1T.current, '<');
-    AddEndTL(misshTL, highlightUpdateRef_1T.current, '>1');
-    AddStartTL(misshTL, highlightUpdateRef_2T.current, '>-1');
-    AddStartTL(misshTL, detailsRef_3.current, '<');
-    AddEndTL(misshTL, highlightUpdateRef_7.current, '<3');
-    AddStartTL(misshTL, highlightUpdateRef_8.current, '>-1');
-    AddEndTL(misshTL, resultRef_8.current, '<');
-    AddStartTL(misshTL, resultRef_9.current, '>');
-    AddEndTL(misshTL, resultRef_9.current, '>2');
-    AddStartTL(misshTL, resultRef_10.current, '>');
-    AddEndTL(misshTL, resultRef_10.current, '>');
-    AddStartTL(misshTL, resultRef_11.current, '>');
-
-    AddEndTL(misshTL, highlightUpdateRef_2T.current, '>');
-    AddEndTL(misshTL, highlightUpdateRef_8.current, '<');
-    AddStartTL(misshTL, highlightUpdateRef_9T.current, '>');
-    AddStartTL(misshTL, highlightUpdateRef_9.current, '<');
 
     // 3rd loan calculation
     AddStartTL(misshTL, phoneCallRef_3.current, '<');
-    RefFromTo(misshTL, phoneRef.current, 
-      { x: 0, y: '-5vh', rotation: -5 }, 
-      { x: '-5vw', y: '-3vh', rotation: 5, duration: 1 }, '<'
-    );
-    RefFromTo(misshTL, calculatorRef.current, 
-      { x: '-5vw', y: '10vh', rotation: 10 }, 
-      { x: '10vw', y: '33vh', rotation: -5, duration: 2 }, '<'
-    ); 
     AddStartTL(misshTL, dialogsRef_3.current, '>1');
-    AddStartTL(misshTL, telepromterRef_3.current, '<');
+
+    AddStartTL(misshTL, telepromterRef_3.current, '>');
     AddNoScrubTL(misshTL, telepromterRef_3.current, '>');
     AddEndTL(misshTL, telepromterRef_3.current, '>4');
     
+    RefFromTo(misshTL, contractRef_A.current, 
+      { x: '-15vw', y: '10vh', rotation: -20 }, 
+      { x: '-40vw', y: '10vh', rotation: -10, duration: 3 }, '>2'
+    );
+    RefFromTo(misshTL, contractRef_B.current, 
+      { x: '15vw', y: '5vh', rotation: 10 }, 
+      { x: '40vw', y: '5vh', rotation: 10, duration: 3 }, '<'
+    ); 
+    RefFromTo(misshTL, contractRef_C1.current, 
+      { x: 0, y: '150vh', rotation: 10 }, 
+      { x: `-10vw`, y: '-2vh', rotation: -3, duration: 3 }, '<'
+    ); 
+    RefFromTo(misshTL, contractRef_C2.current, 
+      { x: 0, y: '150vh', rotation: -10 }, 
+      { x: `10vw`, y: '5vh', rotation: 3, duration: 3 }, '<'
+    ); 
 
-    AddEndTL(misshTL, highlightUpdateRef_9T.current, '>');
-    AddEndTL(misshTL, highlightUpdateRef_9.current, '<');
+    AddEndTL(misshTL, highlightUpdateRef_2T.current, '>');
+    AddEndTL(misshTL, highlightUpdateRef_2.current, '<');
     AddEndTL(misshTL, detailsRef_3.current, '<');
-    AddStartTL(misshTL, highlightUpdateRef_10.current, '<');
-    AddStartTL(misshTL, highlightUpdateRef_1T.current, '<');
-    AddEndTL(misshTL, resultRef_11.current, '<');
-    AddStartTL(misshTL, resultRef_12.current, '<');
+    AddStartTL(misshTL, highlightUpdateRef_3.current, '<');
+    AddStartTL(misshTL, highlightUpdateRef_3T.current, '<');
+    AddEndTL(misshTL, resultRef_3a.current, '<');
+    AddStartTL(misshTL, resultRef_3b.current, '<');
 
     AddStartTL(misshTL, detailsRef_4.current, '>');
 
-    AddEndTL(misshTL, highlightUpdateRef_1T.current, '<7');
-    AddEndTL(misshTL, highlightUpdateRef_10.current, '<');
-    AddStartTL(misshTL, highlightUpdateRef_2T.current, '>-1');
-    AddStartTL(misshTL, highlightUpdateRef_11.current, '<');
+    AddEndTL(misshTL, highlightUpdateRef_3T.current, '<7');
+    AddEndTL(misshTL, highlightUpdateRef_3.current, '<');
+    AddStartTL(misshTL, highlightUpdateRef_4T.current, '>-1');
+    AddStartTL(misshTL, highlightUpdateRef_4.current, '<');
 
-    AddEndTL(misshTL, resultRef_12.current, '>');
-    AddStartTL(misshTL, resultRef_13.current, '>');
-    AddEndTL(misshTL, resultRef_13.current, '>2');
-    AddStartTL(misshTL, resultRef_14.current, '>');
+    AddEndTL(misshTL, resultRef_3T.current, '>');
+    AddStartTL(misshTL, resultRef_4T.current, '>');
+    AddEndTL(misshTL, resultRef_3b.current, '>2');
+    AddStartTL(misshTL, resultRef_4a.current, '>');
 
-    AddEndTL(misshTL, highlightUpdateRef_2T.current, '>');
-    AddEndTL(misshTL, highlightUpdateRef_11.current, '<');
-    AddStartTL(misshTL, highlightUpdateRef_9T.current, '>');
-    AddStartTL(misshTL, highlightUpdateRef_12.current, '<');
+    // AddEndTL(misshTL, highlightUpdateRef_2T.current, '>');
+    // AddEndTL(misshTL, highlightUpdateRef_11.current, '<');
+    // AddStartTL(misshTL, highlightUpdateRef_9T.current, '>');
+    // AddStartTL(misshTL, highlightUpdateRef_12.current, '<');
 
     // Final Call
     AddStartTL(misshTL, phoneCallRef_4.current, '>');
@@ -313,17 +289,19 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
 
   return (
     <section className="section-missh" ref={sectionRef}>
-      <Contract ref={contractARef} contract="1A" highlightIds={[1]} isHighlight={true} />
-      <Contract ref={contractBRef} contract="1B" highlightIds={[2, 3]} isHighlight={true} />
+      <Contract ref={contractRef_A} contract="1A" highlightIds={[1]} isHighlight={true} />
+      <Contract ref={contractRef_B} contract="1B" highlightIds={[2, 3]} isHighlight={true} />
+      <Contract ref={contractRef_C2} contract="1C2" isHighlight={false} />
+      <Contract ref={contractRef_C1} contract="1C1" isHighlight={false} />
       <Phone ref={phoneRef}>
         <PhoneCall ref={phoneCallRef_1}>
           <div className="call-contact">
-            <h3>台新銀行</h3>
-            <p>Whoscall</p>
+            <h3>未顯示號碼</h3>
+            <p>行動電話</p>
           </div>
           <Dialogs ref={dialogsRef_1}>
             <div className="dialog Recieve">
-              <span>銀行</span>
+              <span>台新銀行</span>
               <p>您好，我們是台新銀行，最近我們有貸款優惠活動，請問您有資金上的需求嗎？</p>
             </div>
             <div className="dialog Sent">
@@ -331,24 +309,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="dialog Recieve">
               <span>台新銀行</span>
-              <p>好的，那我稍後簡訊給您，我們等加 Line 聯繫喔！</p>
-            </div>
-          </Dialogs>
-        </PhoneCall>
-        <PhoneCall ref={phoneCallRef_2}>
-          <div className="call-contact">
-            <h3>裕富</h3>
-            <p>融資公司</p>
-          </div>
-          <Dialogs ref={dialogsRef_2}>
-            <div className="dialog Recieve" style={{ alignSelf: 'center' }}>
-              <p>2022年11月</p>
-            </div>
-            <div className="dialog Recieve" style={{ alignSelf: 'center' }}>
-              <p>裕富融資主動來電</p>
-            </div>
-            <div className="dialog Recieve" style={{ alignSelf: 'center', textAlign: 'center' }}>
-              <p>邀請Ｈ小姐申請一筆<br />15 萬元的小額貸款</p>
+              <p>好的，那我稍後簡訊給您，我們等等加Line聯繫喔！</p>
             </div>
           </Dialogs>
         </PhoneCall>
@@ -359,45 +320,22 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
           </div>
           <Dialogs ref={dialogsRef_3}>
             <div className="dialog Recieve" style={{ alignSelf: 'center' }}>
-              <p>2023年2月裕富融資主動來電</p>
+              <p>2023年2月裕富資融主動來電</p>
             </div>
             <div className="dialog Recieve" style={{ alignSelf: 'center' }}>
               <p>說明因蕭小姐「還款狀況正常」</p>
             </div>
             <div className="dialog Recieve" style={{ alignSelf: 'center', textAlign: 'center' }}>
-              <p>邀請她進行「增貸」35 萬元</p>
+              <p>邀請她進行「增貸」35萬元</p>
             </div>
             <div className="dialog Recieve" style={{ alignSelf: 'center', textAlign: 'center' }}>
-              <p>「借新還舊」不僅能以 35 萬元貸款，償還提前還清 25 萬元債務。</p>
+              <p>「借新還舊」不僅能以35萬元貸款，提前還清上一筆債務。</p>
             </div>
             <div className="dialog Recieve" style={{ alignSelf: 'center', textAlign: 'center' }}>
-              <p>償還債務後，多餘的錢還可以拿來做使用。</p>
+              <p>多餘的錢還可以另作他用。</p>
             </div>
           </Dialogs>
         </PhoneCall>
-        {/* <PhoneCall ref={phoneCallRef_4}>
-          <div className="call-contact">
-            <h3>裕富</h3>
-            <p>融資公司</p>
-          </div>
-          <Dialogs ref={dialogsRef_4}>
-            <div className="dialog Recieve" style={{ alignSelf: 'center' }}>
-              <p>2023年2月裕富融資主動來電</p>
-            </div>
-            <div className="dialog Recieve" style={{ alignSelf: 'center' }}>
-              <p>說明因蕭小姐「還款狀況正常」</p>
-            </div>
-            <div className="dialog Recieve" style={{ alignSelf: 'center', textAlign: 'center' }}>
-              <p>邀請她進行「增貸」35 萬元</p>
-            </div>
-            <div className="dialog Recieve" style={{ alignSelf: 'center', textAlign: 'center' }}>
-              <p>「借新還舊」不僅能以 35 萬元貸款，償還提前還清 25 萬元債務。</p>
-            </div>
-            <div className="dialog Recieve" style={{ alignSelf: 'center', textAlign: 'center' }}>
-              <p>償還債務後，多餘的錢還可以拿來做使用。</p>
-            </div>
-          </Dialogs>
-        </PhoneCall> */}
         <Notification
           ref={notificationRef_1}
           app="Messages"
@@ -435,7 +373,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageRecieve">
               <img className="avatar blank" src={messageAvatarImg} />
-              <p>這是我們的方案，給你參考一下</p>
+              <p>這是我們的方案，給您參考一下</p>
               <span>17:32</span>
             </div>
             <div className="messageSent">
@@ -493,7 +431,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
           app="Messages"
           title="涂專員"
           time="17:30"
-          message="您好，您申請裕富融資 25 萬汽機車貸款，貸款核定已通過。"
+          message="您好，您申請裕富資融25萬汽機車貸款，貸款核定已通過。" 
         ></Notification>
       </Phone>
       <Calculator ref={calculatorRef}>
@@ -505,203 +443,130 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             <span>$250,000</span>
           </Update>
           <Update ref={highlightUpdateRef_2T} type="title">
-            <span>實拿金額</span>
+            <span>每期應付（ 共48期 ）</span>
           </Update>
           <Update ref={highlightUpdateRef_2} type="number">
-            <span>$227,500</span>
-          </Update>
-          <Update ref={highlightUpdateRef_3} type="number">
-            <span>$221,500</span>
-          </Update>
-          <Update ref={highlightUpdateRef_4} type="number">
-            <span>$213,000</span>
-          </Update>
-          <Update ref={highlightUpdateRef_5} type="number">
-            <span>$203,000</span>
-          </Update>
-          <Update ref={highlightUpdateRef_6} type="number">
-            <span>$202,985</span>
-          </Update>
-          {/* 2nd loan calculation */}
-          <Update ref={highlightUpdateRef_7} type="number">
-            <span>$150,000</span>
-          </Update>
-          <Update ref={highlightUpdateRef_8} type="number">
-            <span>$141,750</span>
-          </Update>
-          <Update ref={highlightUpdateRef_9T} type="title">
-            <span>每月應繳</span>
-          </Update>
-          <Update ref={highlightUpdateRef_9} type="number">
-            <span>$11,755</span>
+            <span>$7,075</span>
           </Update>
           {/* 3rd loan calculation */}
-          <Update ref={highlightUpdateRef_10} type="number">
+          {/* <Update ref={highlightUpdateRef_3T} type="title">
+            <span>貸款金額</span>
+          </Update>
+          <Update ref={highlightUpdateRef_3} type="number">
             <span>$350,000</span>
           </Update>
-          <Update ref={highlightUpdateRef_11} type="number">
-            <span>$53,075</span>
+          <Update ref={highlightUpdateRef_4T} type="title">
+            <span>每期應付（ 共54期 ）</span>
           </Update>
-          <Update ref={highlightUpdateRef_12} type="number">
-            <span>$13,780</span>
-          </Update>
+          <Update ref={highlightUpdateRef_4} type="number">
+            <span>$9,100</span>
+          </Update> */}
         </div>
         <Details ref={detailsRef_1} stagger={3}>
           <div className="content">
-            <span className="title">貸款</span>
-            <span className="number">$250,000</span>
+            <span className="title">內扣 9%（裕富資融）</span>
+            <span className="number">-$22,500</span>
           </div>
           <div className="content">
-            <span className="title">內扣</span>
-            <span className="number">-$22,500</span>
+            <span className="title">開辦費 3%（尼亞斯國際）</span>
+            <span className="number">-$7,500</span>
+          </div>
+          <div className="content">
+            <span className="title">手續費 4%（尼亞斯國際）</span>
+            <span className="number">-$10,000</span>
           </div>
           <div className="content">
             <span className="title">動保設定費</span>
             <span className="number">-$6,000</span>
           </div>
           <div className="content">
-            <span className="title">開辦費 ( 3% )</span>
-            <span className="number">-$7,500</span>
-          </div>
-          <div className="content">
-            <span className="title">手續費 ( 4% )</span>
-            <span className="number">-$10,000</span>
-          </div>
-          <div className="content">
             <span className="title">轉帳手續費</span>
             <span className="number">-$15</span>
           </div>
         </Details>
-        <Details ref={detailsRef_2} stagger={2} style={{ gap: '10px' }}>
+        <Details ref={detailsRef_2} stagger={3} style={{ gap: '10px' }}>
           <div className="content">
-            <span className="title">2022年5月</span>
-            <span className="number">-$7,075</span>
+            <span className="title">債務金額</span>
+            <span className="number">$339,600</span>
           </div>
           <div className="content">
-            <span className="title">2022年6月</span>
-            <span className="number">-$7,075</span>
-          </div>
-          <div className="content">
-            <span className="title">2022年7月</span>
-            <span className="number">-$7,075</span>
-          </div>
-          <div className="content">
-            <span className="title">2022年8月</span>
-            <span className="number">-$7,075</span>
-          </div>
-          <div className="content">
-            <span className="title">2022年9月</span>
-            <span className="number">-$7,075</span>
-          </div>
-          <div className="content">
-            <span className="title">2022年10月</span>
-            <span className="number">-$7,075</span>
-          </div>
-          <div className="content">
-            <span className="title">2022年11月</span>
-            <span className="number">-$7,075</span>
-          </div>
-        </Details>
-        {/* 2nd loan calculation */}
-        <Details ref={detailsRef_3} stagger={3}>
-          <div className="content">
-            <span className="title">貸款</span>
-            <span className="number">$150,000</span>
-          </div>
-          <div className="content">
-            <span className="title">內扣</span>
-            <span className="number">-$8,250</span>
-          </div>
-          <div className="content">
-            <hr />
-          </div>
-          <div className="content">
-            <span className="title">第二筆待還（ 42期 ）</span>
-            <span className="number">$196,560</span>
-          </div>
-          <div className="content">
-            <span className="title">第一筆待還（ 35期 ）</span>
-            <span className="number">$247,625</span>
+            <span className="title">實拿金額</span>
+            <span className="number">$203,985</span>
           </div>
         </Details>
         {/* 3rd loan calculation */}
-        <Details ref={detailsRef_4} stagger={3}>
+        {/* <Details ref={detailsRef_3} stagger={3}>
           <div className="content">
-            <span className="title">貸款</span>
-            <span className="number">$350,000</span>
+            <span className="title">內扣 ?（裕富資融）</span>
+            <span className="number">-$?????</span>
           </div>
           <div className="content">
-            <span className="title">內扣</span>
-            <span className="number">-$70,525</span>
+            <span className="title">動保設定費</span>
+            <span className="number">-$?????</span>
           </div>
           <div className="content">
-            <span className="title">第一筆債務</span>
-            <span className="number">-$226,400</span>
+            <span className="title">提前清償違約金</span>
+            <span className="number">-$?????</span>
           </div>
-          <div className="content">
-            <hr />
+           <div className="content">
+            <span className="title">第一筆貸款剩餘債務</span>
+            <span className="number">-$??????</span>
           </div>
+        </Details>
+        <Details ref={detailsRef_4} stagger={2} style={{ gap: '10px' }}>
           <div className="content">
-            <span className="title">第三筆待還（ 54期 ）</span>
+            <span className="title">債務金額</span>
             <span className="number">$491,400</span>
           </div>
           <div className="content">
-            <span className="title">第二筆待還（ 39期 ）</span>
-            <span className="number">$181,980</span>
+            <span className="title">實拿金額</span>
+            <span className="number">$53,075</span>
           </div>
-        </Details>
+        </Details> */}
         <div className="result">
-          <span className="title">負債金額</span>
-          <Update ref={resultRef_0} type="number">
-            <span>$7,075</span>
-            <p>（共42期）</p>
+          <Update ref={resultRef_1T} type="title">
+            <span>實拿金額</span>
           </Update>
-          <Update ref={resultRef_1} type="number">
-            <span>$297,150</span>
+          <Update ref={resultRef_1a} type="number">
+            <span>$250,000</span>
           </Update>
-          <Update ref={resultRef_2} type="number">
-            <span>$290,075</span>
+          <Update ref={resultRef_1b} type="number">
+            <span>$227,500</span>
           </Update>
-          <Update ref={resultRef_3} type="number">
-            <span>$283,000</span>
+          <Update ref={resultRef_1c} type="number">
+            <span>$220,000</span>
           </Update>
-          <Update ref={resultRef_4} type="number">
-            <span>$275,925</span>
+          <Update ref={resultRef_1d} type="number">
+            <span>$210,000</span>
           </Update>
-          <Update ref={resultRef_5} type="number">
-            <span>$268,850</span>
-            </Update>
-            <Update ref={resultRef_6} type="number">
-            <span>$261,775</span>
+          <Update ref={resultRef_1e} type="number">
+            <span>$204,000</span>
           </Update>
-          <Update ref={resultRef_7} type="number">
-            <span>$254,700</span>
+          <Update ref={resultRef_1f} type="number">
+            <span>$203,985</span>
           </Update>
-          <Update ref={resultRef_8} type="number">
-            <span>$247,625</span>
+          <Update ref={resultRef_2T} type="title">
+            <span>年利率</span>
           </Update>
-          {/* 2nd loan calculation */}
-          <Update ref={resultRef_9} type="number">
-            <span>$4,680</span>
-            <p>（共42期）</p>
-          </Update>
-          <Update ref={resultRef_10} type="number">
-            <span>$196,560</span>
-          </Update>
-          <Update ref={resultRef_11} type="number">
-            <span>$444,185</span>
+          <Update ref={resultRef_2a} type="number">
+            <span>31.4%</span>
           </Update>
           {/* 3rd loan calculation */}
-          <Update ref={resultRef_12} type="number">
-            <span>$9,100</span>
-            <p>（共54期）</p>
+          {/* <Update ref={resultRef_3T} type="title">
+            <span>實拿金額</span>
           </Update>
-          <Update ref={resultRef_13} type="number">
-            <span>$491,400</span>
+          <Update ref={resultRef_3a} type="number">
+            <span>$??????</span>
           </Update>
-          <Update ref={resultRef_14} type="number">
-            <span>$673,380</span>
+          <Update ref={resultRef_3b} type="number">
+            <span>$53,075</span>
           </Update>
+          <Update ref={resultRef_4T} type="title">
+            <span>年利率</span>
+          </Update>
+          <Update ref={resultRef_4a} type="number">
+            <span>36.1%</span>
+          </Update> */}
         </div>
       </Calculator>
       <Telepromter ref={telepromterRef_1} 
@@ -713,22 +578,13 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
           其實，那時候我對融資公司沒有說很熟，所以我不太清楚那是什麼。資料繳出去後，他有提到，如果妳中途不辦了，可能會有毀約金的部分。
         </p>
       </Telepromter>
-      <Telepromter ref={telepromterRef_2} 
-        audioSrc="./assets/audio/蕭小姐：第二筆的原因.aac"
-        stagger={0.2}
-      >
-        <p className="telepromter-speaker">Ｈ小姐（聲音經過變聲處理）</p>
-        <p className="telepromter-script">
-          他是說可以，再申請一筆（第二筆），它的金額比較少。他就是可以幫我調降（貸款）金額。我想說那我可以拿來先還第一筆，因為第一筆的金額比較高，我就還第一筆可能還到一半以上，至少我不會說繳的那麼辛苦。
-        </p>
-      </Telepromter>
       <Telepromter ref={telepromterRef_3} 
         audioSrc="./assets/audio/蕭小姐：第三筆的原因.aac"
         stagger={0.2}
       >
         <p className="telepromter-speaker">Ｈ小姐（聲音經過變聲處理）</p>
         <p className="telepromter-script">
-          他說償還第一筆（債務）後，還會有多餘的錢可以拿來做使用。
+          他說可以清償第一筆（債務），把第一筆繳掉。然後還會有多餘的錢可以使用，所以才去申請。
         </p>
       </Telepromter>
     </section>

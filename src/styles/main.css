@@ -5,6 +5,7 @@
 @import './document.css';
 @import './phone.css';
 @import './audio.css';
+@import './background.css';
 
 /* * { margin: 0; padding: 0; box-sizing: border-box; } */
 html {
@@ -86,7 +87,6 @@ section.section-missh {
   width: 100%;
   overflow: hidden;
   z-index: 1;
-  /* display: none; */
 }
 section.section-mickey {
   height: var(--mickey-height);
@@ -96,7 +96,6 @@ section.section-mickey {
   width: 100%;
   overflow: hidden;
   z-index: 0;
-  /* display: none; */
 }
 
 /* Caption */
@@ -107,7 +106,7 @@ section.section-mickey {
   transform: translate(-50%, 0%);
   overflow: hidden;
   width: 100%;
-  pointer-events: none; /* 避免擋住滑鼠事件 */
+  /* pointer-events: none; */
   z-index: 20;
 }
 
@@ -165,6 +164,8 @@ p.caption.none {
   cursor: pointer;
   opacity: 0.65;
   backdrop-filter: blur(10px);
+  pointer-events: auto;
+  transition: all 0.5s ease;
 }
 .landing-title .topic-tag:hover {
   opacity: 1;
@@ -280,27 +281,27 @@ p.caption.none {
   .brief.light { max-width: 70vw; }
   .brief.light p { padding: 10px 15px; }
 
-  .phone { transform: translate(-50%, -50%) scale(1); }
-  .contract-container { transform: translate(-50%, -50%) scale(0.8); }
-  .calculator { transform: translate(-50%, -50%) scale(0.7); }
+  .phone { transform: translate(-50%, -50%) scale(1); pointer-events: auto;}
+  .contract-container { transform: translate(-50%, -50%) scale(0.8); pointer-events: auto;}
+  .calculator { transform: translate(-50%, -50%) scale(0.7); pointer-events: auto;}
 }
 
 @media (min-width: 1025px) and (max-width: 1439px) {
-  .phone { transform: translate(-50%, -50%) scale(1); }
-  .contract-container { transform: translate(-50%, -50%) scale(1); }
-  .calculator { transform: translate(-50%, -50%) scale(0.8); }
+  .phone { transform: translate(-50%, -50%) scale(1); pointer-events: auto;}
+  .contract-container { transform: translate(-50%, -50%) scale(1); pointer-events: auto;}
+  .calculator { transform: translate(-50%, -50%) scale(0.8); pointer-events: auto;}
 }
 
 @media (min-width: 1440px) and (max-width: 1919px) {
-  .phone { transform: translate(-50%, -50%) scale(1); }
-  .contract-container { transform: translate(-50%, -50%) scale(1); }
-  .calculator { transform: translate(-50%, -50%) scale(0.8); }
+  .phone { transform: translate(-50%, -50%) scale(1); pointer-events: auto;}
+  .contract-container { transform: translate(-50%, -50%) scale(1); pointer-events: auto;}
+  .calculator { transform: translate(-50%, -50%) scale(0.8); pointer-events: auto;}
 }
 
 @media (min-width: 1920px) {
-  .phone { transform: translate(-50%, -50%) scale(1.2); }
-  .contract-container { transform: translate(-50%, -50%) scale(1); }
-  .calculator { transform: translate(-50%, -50%) scale(0.8); }
+  .phone { transform: translate(-50%, -50%) scale(1); pointer-events: auto;}
+  .contract-container { transform: translate(-50%, -50%) scale(1); pointer-events: auto;}
+  .calculator { transform: translate(-50%, -50%) scale(0.8); pointer-events: auto;}
 }
 
 /* GSAP Functionality Settings */
@@ -326,4 +327,7 @@ p.caption.none {
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
+}
+.pin-spacer {
+  pointer-events: none;
 }

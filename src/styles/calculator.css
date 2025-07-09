@@ -174,10 +174,13 @@
   overflow: visible;
 }
 .result .title {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   font-size: 40px;
   font-weight: 500;
   color: hsla(0, 0%, 100%, 0.8);
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .result .number span {

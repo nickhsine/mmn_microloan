@@ -98,7 +98,8 @@ export const Notification = forwardRef<TimelineHandle, NotificationProps>(
           '<0.5'
         ).to(
           notificationRef.current,
-          { width: '115px', height: '30px',
+          { width: '115px',
+            height: '30px',
             backgroundColor: 'hsla(0, 0%, 90%, 0.3)',
             boxShadow: 'inset 2px 2px 5px 0 hsla(0, 0%, 100%, 1)',
             zIndex: 5 },

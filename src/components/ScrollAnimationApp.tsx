@@ -5,6 +5,7 @@ import { CaptionContainer } from './text/CaptionContainer';
 import { SectionLanding } from './SectionLanding';
 import { SectionMissh } from './SectionMissh';
 import { SectionMickey } from './SectionMickey';
+import { ContentBG } from './background/contentBG';
 
 export const ScrollAnimationApp = () => {
   const captionTL = useRef<gsap.core.Timeline | null>(null);
@@ -25,6 +26,7 @@ export const ScrollAnimationApp = () => {
 
   return (
     <div className="scroll-animation-app">
+      <ContentBG />
       <CaptionContainer ref={captionTL} />
       <SectionLanding ref={landingTL} />
       <SectionMissh ref={misshTL} />

@@ -19,7 +19,7 @@ export const Messages = forwardRef<TimelineHandle, MessagesProps>(
         if (!messagesRef.current) return tl;
 
         const messageElements = messagesRef.current.querySelectorAll(
-          '.messageRecieve, .messageSent'
+          '.messageRecieve, .messageSent, .messageBlank'
         );
 
         if (messageElements.length === 0) return tl;
@@ -40,7 +40,7 @@ export const Messages = forwardRef<TimelineHandle, MessagesProps>(
         if (!messagesRef.current) return tl;
 
         const messageElements = messagesRef.current.querySelectorAll(
-          '.messageRecieve, .messageSent'
+          '.messageRecieve, .messageSent, .messageBlank'
         );
 
         if (messageElements.length === 0) return tl;

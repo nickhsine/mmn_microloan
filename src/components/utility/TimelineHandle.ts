@@ -251,12 +251,17 @@ const playNoScrubAnimation = (animation: NoScrubAnimation) => {
 // 重置 noScrub 動畫
 const resetNoScrubAnimation = (animation: NoScrubAnimation) => {
   if (animation.currentTL) {
-    animation.currentTL.kill();
+    const currentTL = animation.currentTL;
     animation.currentTL = null;
+    if (currentTL) {
+      currentTL.kill();
+    }
   }
   if (animation.ref.createEndTimeline) {
     const endTL = animation.ref.createEndTimeline();
-    endTL.progress(1);
+    if (endTL) {
+      endTL.progress(1);
+    }
   }
   animation.isActive = false;
 };
@@ -264,10 +269,13 @@ const resetNoScrubAnimation = (animation: NoScrubAnimation) => {
 // 快進 noScrub 動畫
 const fastForwardNoScrubAnimation = (animation: NoScrubAnimation) => {
   if (animation.currentTL && animation.isActive) {
+    const currentTL = animation.currentTL;
     // 先完成動畫到最終狀態
-    animation.currentTL.progress(1);
+    currentTL.progress(1);
     // 然後停止動畫
-    animation.currentTL.kill();
+    if (currentTL) {
+      currentTL.kill();
+    }
     animation.isActive = false;
     animation.currentTL = null;
   }
@@ -279,7 +287,11 @@ export const clearNoScrubAnimations = (parentTimeline: gsap.core.Timeline) => {
   if (animations) {
     animations.forEach(animation => {
       if (animation.currentTL) {
-        animation.currentTL.kill();
+        const currentTL = animation.currentTL;
+        animation.currentTL = null;
+        if (currentTL) {
+          currentTL.kill();
+        }
       }
     });
     noScrubRegistry.delete(parentTimeline);

@@ -236,9 +236,9 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-end;
-  gap: 6px;
-  padding: 15px 20px;
-  overflow-y: auto;
+  /* gap: 6px; */
+  padding: 12px 20px;
+  overflow-y: hidden;
 }
 
 .messages-app .messages .messageRecieve {
@@ -270,7 +270,10 @@
 .messages-app .messages img.avatar.blank {
   visibility: hidden;
 }
-
+.messages-app .messages .messageRecieve,
+.messages-app .messages .messageSent {
+  margin: 4px 0;
+}
 .messages-app .messages .messageRecieve p,
 .messages-app .messages .messageSent p {
   font-size: 16px;
@@ -293,6 +296,12 @@
   font-weight: 400;
   color: hsla(0, 0%, 80%, 1);
   align-self: flex-end;
+}
+
+.messages-app .messages .messageBlank {
+  opacity: 0;
+  display: none;
+  height: 0;
 }
 
 /* Notification */
