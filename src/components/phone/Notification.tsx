@@ -34,77 +34,45 @@ export const Notification = forwardRef<TimelineHandle, NotificationProps>(
       logoSrc = './assets/img/logo_message.svg';
     }
 
-    const setCollapsedState = () => {
-      gsap.set(notificationRef.current, {
-        width: '115px',
-        height: '30px',
-      });
-      
-      if (appImgRef.current && contentRef.current) {
-        gsap.set([appImgRef.current, contentRef.current], {
-          opacity: 0
-        });
-      }
-    };
-
-    const setExpandedState = () => {
-      gsap.set(notificationRef.current, {
-        width: '90%',
-        height: 'auto',
-      });
-      
-      if (appImgRef.current && contentRef.current) {
-        gsap.set([appImgRef.current, contentRef.current], {
-          opacity: 0.9
-        });
-      }
-    };
 
     useImperativeHandle(ref, () => ({
       createStartTimeline: () => {
         const tl = gsap.timeline();
-        
-        // Start State
-        setCollapsedState();
-        
-        const state = Flip.getState([
-          notificationRef.current, 
-          appImgRef.current, 
-          contentRef.current
-        ].filter(Boolean));
-        
-        setExpandedState();
-        tl.add(
-          Flip.from(state, {
-            duration: 0.5,
-            ease: 'power1.out',
-          })
-        ).fromTo(
+
+        tl.fromTo(
           notificationRef.current,
-          { backgroundColor: 'hsla(0, 0%, 90%, 0.3)',
+          { width: '115px', height: '30px',
+            backgroundColor: 'hsla(0, 0%, 90%, 0.3)',
             boxShadow: 'inset 2px 2px 5px 0 hsla(0, 0%, 100%, 1)',
             zIndex: 5,
           },
-          { backgroundColor: 'hsla(0, 0%, 90%, 0.95)',
+          { width: '90%', height: 'auto',
+            backgroundColor: 'hsla(0, 0%, 90%, 0.95)',
             boxShadow: 
             'inset -5px -5px 15px 0 hsla(0, 0%, 100%, 0.7), 3px 3px 10px 0 hsla(0, 0%, 0%, 0.05)',
             zIndex: 6,
           },
           '<'
         ).fromTo(
-          [appImgRef.current, contentRef.current].filter(Boolean),
+          [appImgRef.current, contentRef.current],
           { opacity: 0 },
           { opacity: 0.9, duration: 0.5, ease: 'power1.out' },
           '<0.5'
-        ).to(
+        ).fromTo(
+          [appImgRef.current, contentRef.current],
+          { overflow: 'hidden', whiteSpace: 'nowrap' },
+          { overflow: 'visible', whiteSpace: 'normal' },
+          '<'
+        ).fromTo(
           notificationRef.current,
+          { width: '90%', height: 'auto' },
           { width: '115px', height: '30px',
             backgroundColor: 'hsla(0, 0%, 90%, 0.3)',
             boxShadow: 'inset 2px 2px 5px 0 hsla(0, 0%, 100%, 1)',
             zIndex: 5 },
           '>2'
         ).fromTo(
-          [appImgRef.current, contentRef.current].filter(Boolean),
+          [appImgRef.current, contentRef.current],
           { opacity: 0.9 },
           { opacity: 0, duration: 0.5, ease: 'power1.out' },
           '<-0.5'

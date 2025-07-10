@@ -132,7 +132,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, dialogsRef_1.current, '<5');
     AddEndTL(misshTL, phoneCallRef_1.current, '>2');
     AddStartTL(misshTL, notificationRef_1.current, '>');
-    // AddEndTL(misshTL, notificationRef_1.current, '>');
+    AddEndTL(misshTL, notificationRef_1.current, '>');
     // AddEndTL(misshTL, dialogsRef_1.current, '<');
 
     AddStartTL(misshTL, messagesAppRef.current, '<');
@@ -149,11 +149,11 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
 
     RefFromTo(misshTL, contractRef_A.current, 
       { x: '-100vw', y: '-100vh', rotation: -90 }, 
-      { x: '-25vw', y: '5vh', rotation: 5, duration: 2 }, '>-1'
+      { x: `-2.5vw`, y: '5vh', rotation: 5, duration: 2 }, '>-1'
     );
     RefFromTo(misshTL, contractRef_B.current, 
       { x: '-100vw', y: '100vh', rotation: 90 }, 
-      { x: '-25vw', y: '15vh', rotation: -5, duration: 2 }, '<-0.25'
+      { x: 0, y: '15vh', rotation: -5, duration: 2 }, '<-0.25'
     );
     RefFromTo(misshTL, phoneRef.current, 
       { x: 0, y: 0, rotation: 0 }, 
@@ -162,12 +162,12 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, contractRef_A.current, '>1');
     AddStartTL(misshTL, contractRef_B.current, '<');   
     RefFromTo(misshTL, contractRef_A.current, 
-      { x: '-25vw', y: '5vh', rotation: 5 }, 
-      { x: '-35vw', y: '10vh', rotation: -20, duration: 3 }, '>2'
+      { x: `-2.5vw`, y: '5vh', rotation: 5, }, 
+      { x: '-15vw', y: '10vh', rotation: -20, duration: 3 }, '>2'
     );
     RefFromTo(misshTL, contractRef_B.current, 
-      { x: '-25vw', y: '15vh', rotation: -5 }, 
-      { x: '-5vw', y: '5vh', rotation: 10, duration: 3 }, '<'
+      { x: 0, y: '15vh', rotation: -5 }, 
+      { x: '15vw', y: '5vh', rotation: 10, duration: 3 }, '<'
     ); 
     RefFromTo(misshTL, calculatorRef.current, 
       { x: '-50vw', y: '100vh', rotation: -10 }, 
@@ -226,20 +226,20 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddEndTL(misshTL, telepromterRef_3.current, '>4');
     
     RefFromTo(misshTL, contractRef_A.current, 
-      { x: '-35vw', y: '10vh', rotation: -20 }, 
-      { x: '-55vw', y: '10vh', rotation: -10, duration: 3 }, '>2'
+      { x: '-15vw', y: '10vh', rotation: -20 }, 
+      { x: '-40vw', y: '10vh', rotation: -10, duration: 3 }, '>2'
     );
     RefFromTo(misshTL, contractRef_B.current, 
-      { x: '-5vw', y: '5vh', rotation: 10 }, 
-      { x: '25vw', y: '5vh', rotation: 10, duration: 3 }, '<'
+      { x: '15vw', y: '5vh', rotation: 10 }, 
+      { x: '40vw', y: '5vh', rotation: 10, duration: 3 }, '<'
     ); 
     RefFromTo(misshTL, contractRef_C1.current, 
       { x: 0, y: '150vh', rotation: 10 }, 
-      { x: '-30vw', y: '0vh', rotation: -3, duration: 3 }, '<'
+      { x: `-10vw`, y: '-2vh', rotation: -3, duration: 3 }, '<'
     ); 
     RefFromTo(misshTL, contractRef_C2.current, 
       { x: 0, y: '150vh', rotation: -10 }, 
-      { x: '-5vw', y: '5vh', rotation: 3, duration: 3 }, '<'
+      { x: `10vw`, y: '5vh', rotation: 3, duration: 3 }, '<'
     ); 
 
     AddEndTL(misshTL, highlightUpdateRef_2T.current, '>');
@@ -377,7 +377,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg} />
-              <img className="photo" src={'./assets/img/messageImg_1A.jpg'} />
+              <p>（傳大量圖片）</p>
               <span>17:42</span>
             </div>
             <div className="messageRecieve">
@@ -413,7 +413,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageSent">
               <span>17:48</span>
-              <img className="photo" src={'./assets/img/messageImg_1B.png'} />
+              <p>（回傳簽名圖片）</p>
             </div>
           </Messages>
         </MessagesApp>

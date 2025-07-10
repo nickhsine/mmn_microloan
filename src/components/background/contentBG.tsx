@@ -32,7 +32,7 @@ export const ContentBG = () => {
     <div className="content-bg" ref={contentBGRef}>
       {/* <Envelope type={0} top={200} left={'10%'} rotate={45}/> */}
       {Array.from({ length: 50 }).map((_, i) => (
-        <Envelope key={i}/>
+        <Envelope key={i} />
       ))}
     </div>
   );

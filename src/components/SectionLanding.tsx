@@ -34,6 +34,7 @@ export const SectionLanding = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(landingTL, briefRefD.current, 0.5);
     AddEndTL(landingTL, titleRef.current, '>');
 
+    AddStartTL(landingTL, briefRefL.current, '<');
     safeGsapTo(landingTL, briefRefL.current, { 
       y: '0vh', rotate: 1.5, duration: 2, ease: 'power1.out' 
     }, '>3');

@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
-import { Caption } from './Caption';
+import { Caption } from '../text/Caption';
 
 export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
   const containerRef = useRef<HTMLDivElement>(null);

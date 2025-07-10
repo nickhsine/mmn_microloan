@@ -29,7 +29,7 @@ export const Envelope = forwardRef<HTMLImageElement, EnvelopeProps>(
   return (
     <img
       className="envelope"
-      style={{ top: `${finalTop}vh`, left: `${finalLeft}%`, rotate: finalRotate + 'deg' }}
+      style={{ top: `${finalTop}vh`, left: `${finalLeft}%`, transform: `translate(-50%, -50%) rotate(${finalRotate}deg)` }}
       ref={envelopeRef}
       src={`./assets/img/envelope_${finalType}.svg`}
       alt="envelope"

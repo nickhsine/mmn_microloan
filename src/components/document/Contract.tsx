@@ -16,26 +16,19 @@ export const Contract = forwardRef<TimelineHandle, ContractProps>(
     const contractRef = useRef<HTMLDivElement>(null);
     const uniqueId = useId();
     const contractSrc = `./assets/img/contract${contract}.svg`;
-    const draggableRef = useRef<HTMLDivElement>(null);
 
     useGSAP(
       () => {
         gsap.registerPlugin(Draggable);
   
         if (!contractRef.current) return;
-  
+
+        // gsap.set(contractRef.current, { x: 0, y: 0 });
+
         Draggable.create(contractRef.current, {
           type: 'x,y',
           inertia: true,
           zIndexBoost: false,
-          // onDragEnd: function () {
-          //   gsap.to(this.target, {
-          //     // x: 0,
-          //     // y: 0,
-          //     duration: 3,
-          //     ease: 'power1.out',
-          //   });
-          // },
         });
       },
       { scope: contractRef }
@@ -58,30 +51,22 @@ export const Contract = forwardRef<TimelineHandle, ContractProps>(
     if (isHighlight) {
       return (
         <div className="contract-container" ref={contractRef} data-contract-id={uniqueId}>
-          <div className="contract-draggable" ref={draggableRef}>
-            {/* <div> */}
-              {highlightIds.map((id, index) => (
-                <img
-                  key={`${contract}-hl-${id}`}
-                  src={`./assets/img/contract${contract}_HL${id}.svg`}
-                  className="contract-highlight"
-                  alt={`contract highlight ${id}`}
-                  style={{ zIndex: index + 1 }}
-                />
-              ))}
-              <img src={contractSrc} className="contract" alt="contract" />
-            {/* </div> */}
-          </div>
+          {highlightIds.map((id, index) => (
+            <img
+              key={`${contract}-hl-${id}`}
+              src={`./assets/img/contract${contract}_HL${id}.svg`}
+              className="contract-highlight"
+              alt={`contract highlight ${id}`}
+              style={{ zIndex: index + 1 }}
+            />
+          ))}
+          <img src={contractSrc} className="contract" alt="contract" />
         </div>
       );
     } else {
       return (
         <div className="contract-container" ref={contractRef} data-contract-id={uniqueId}>
-          {/* <div className="contract-draggable" ref={draggableRef}> */}
-            {/* <div> */}
-              <img src={contractSrc} className="contract" alt="contract" />
-            {/* </div> */}
-          {/* </div> */}
+          <img src={contractSrc} className="contract" alt="contract" />
         </div>
       );
     }

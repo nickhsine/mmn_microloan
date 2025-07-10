@@ -180,13 +180,13 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
       </Brief>
       <Brief ref={briefRefL} type="light">
         <p>米奇的故事，揭開另一種常見的債務陷阱。她身上累積多筆卡債與信貸，將近80萬元債務需要還清。因業績制工作月薪浮動，每月只能勉強以「最低繳款金額」償還，然而債務卻隨著循環利率愈滾愈大。</p>
-        <p>在收入不穩、壓力不斷的情況下，她每天醒來的第一個念頭就是：「還有哪一筆要繳？」</p>
+        <p>在收入不穩、壓力不斷的情況下，每天醒來的第一個念頭就是：「還有哪一筆要繳？」</p>
         <p>她也開始尋找所謂的「債務整合」，希望能盡早將債務還清、重啟生活。但不知道，等待她的不是出路，而是一道更深的債務陷阱……</p>
       </Brief>
       <Contract ref={contractARef} contract="2A" isHighlight={false} />
 
       <Phone ref={phoneRef}>
-        <PhoneStatic ref={phoneStaticRef_1} src="./assets/img/facebook_layout_all.png" />
+        <PhoneStatic ref={phoneStaticRef_1} src="./assets/img/web_ad_1.png" />
         <PhoneStatic ref={phoneStaticRef_2} src="./assets/img/web_consult.png" />
         <Notification
           ref={notificationRef_1}
@@ -204,7 +204,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageSent">
               <span>17:31</span>
-              <img className="photo" src={'./assets/img/messageImg_2A.png'} />
+              <p>（傳證件截圖）</p>
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_1} />
@@ -286,12 +286,11 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageSent">
               <span>17:40</span>
-              <p>你們沒有說服務費15,000元啊</p>
+              <p>你們沒有說服務費是15,000元啊</p>
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_2} />
-              <img className="photo" src={'./assets/img/messageImg_2C.svg'} 
-                   style={{ width: '100px', boxShadow: 'none' }} />
+              <p>（小熊問號貼圖）</p>
               <span>17:42</span>
             </div>
             <div className="messageRecieve">
@@ -321,8 +320,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_2} />
-              <img className="photo" src={'./assets/img/messageImg_2C.svg'} 
-                   style={{ width: '100px', boxShadow: 'none' }}/>
+              <p>（小熊問號）</p>
               <span>17:42</span>
             </div>
             <div className="messageRecieve">
@@ -407,7 +405,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageSent">
               <span>17:40</span>
-              <p>之前的費用可以申請退費嗎？</p>
+              <p>我之前的費用可以申請退費嗎？</p>
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_2} />
