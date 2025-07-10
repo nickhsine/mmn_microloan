@@ -368,9 +368,9 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
                 申辦門低 過件率高 <br /> <br />
                 ✍️準備資料如下： <br />
                 1.雙證件正反面 <br />
-                2.近期信用卡帳單明 <br />
+                2.近期信用卡帳單明細 <br />
                 3.撥款給您的存摺封面 <br />
-                4.信用卡卡面（安全碼碼請遮蔽 <br />
+                4.信用卡卡面（安全碼請遮蔽 <br />
                 5.健保明細
               </p>
               <span>17:32</span>

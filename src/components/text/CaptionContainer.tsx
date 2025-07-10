@@ -51,7 +51,7 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
   return (
     <div className="caption-container" ref={containerRef}>
       <Caption category="normal" startAt={6.85} style={{ top: '70vh', left: '80vw' }}>
-        從未申請過銀行貸款的Ｈ小姐，在訊息中再三與對方確認身份，卻沒有得到正面答覆。直到資料全部繳交後，對方才回覆，自己是協助辦理貸款的代辦公司。
+        從未申請過銀行貸款的Ｈ小姐，在訊息中再三與對方確認身分，卻沒有得到正面答覆。直到資料全部繳交後，對方才回覆，自己是協助辦理貸款的代辦公司。
       </Caption>
       <Caption category="normal" startAt={8.3}>
         蕭小姐是和裕富資融股份有限公司申請貸款，並由尼亞斯國際有限公司代辦，必須額外收取一筆代辦費。

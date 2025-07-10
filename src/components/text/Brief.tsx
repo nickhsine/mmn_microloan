@@ -42,7 +42,7 @@ export const Brief = forwardRef<TimelineHandle, BriefProps>(({
           { y: 0, 
             opacity: 1, 
             rotate: (index) => (Math.pow(-1, index) * 1), 
-            duration: 1, stagger: 1, ease: 'power1.inOut' }
+            duration: 2, stagger: 2, ease: 'power1.inOut' }
         );
       }
       return tl;
@@ -55,7 +55,7 @@ export const Brief = forwardRef<TimelineHandle, BriefProps>(({
       if (briefElements) {
         tl.fromTo(briefElements, 
           { y: 0, opacity: 1 }, 
-          { y: '20vh', opacity: 0, duration: 1, stagger: 1, ease: 'power1.out' }
+          { y: '20vh', opacity: 0, duration: 2, stagger: 2, ease: 'power1.out' }
         );
       }
       return tl;

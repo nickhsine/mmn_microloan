@@ -36,18 +36,21 @@ export const SectionLanding = forwardRef<gsap.core.Timeline>((_, ref) => {
 
     AddStartTL(landingTL, briefRefL.current, '<');
     safeGsapTo(landingTL, briefRefL.current, { 
-      y: '0vh', rotate: 1.5, duration: 2, ease: 'power1.out' 
+      y: '0vh', rotate: 1.5, duration: 3, ease: 'power1.out' 
     }, '>3');
     safeGsapTo(landingTL, briefRefD.current, { 
       color: 'var(--color-gray-800)', duration: 1, ease: 'power1.out' 
     }, '<');
 
-    safeGsapTo(landingTL, briefRefD.current,{ 
-      filter: 'blur(20px)', opacity: 0, duration: 2, ease: 'power1.out' 
-    }, '>3');
-    safeGsapTo(landingTL, briefRefL.current, { 
-      filter: 'blur(20px)', opacity: 0, duration: 2, ease: 'power1.out' 
-    }, '<');
+    // safeGsapTo(landingTL, briefRefD.current,{ 
+    //   filter: 'blur(20px)', opacity: 0, duration: 2, ease: 'power1.out' 
+    // }, '>3');
+    // safeGsapTo(landingTL, briefRefL.current, { 
+    //   filter: 'blur(20px)', opacity: 0, duration: 2, ease: 'power1.out' 
+    // }, '<');
+
+    AddEndTL(landingTL, briefRefD.current, '>5');
+    AddEndTL(landingTL, briefRefL.current, '<');
     
 
     if (ref && typeof ref !== 'function') {
