@@ -36,7 +36,7 @@ export const Title = forwardRef<TimelineHandle>((_, ref) => {
       <a className="topic-tag" href="https://www.twreporter.org/topics/loan-crisis" target="_blank">
         揭開「融資租賃」的高利結構
       </a>
-      <h1>債務為什麼越滾越多</h1>
+      <h1>債務為什麼愈滾愈多</h1>
       <div className="subtitle">
         <hr />
         <h2>兩位借款人的債務迷宮</h2>
