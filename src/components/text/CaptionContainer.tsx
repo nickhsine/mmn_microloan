@@ -87,7 +87,7 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
       去年（2024）5月，是米奇第一次在上網搜尋「債務整合」尋求協助。
       </Caption>
       <Caption category="normal" startAt={25.8}>
-      而「王道國際理財顧問」債務整合廣告，讓她誤以為與目前原債務銀行「王道銀行」同公司，便申請免費諮詢。
+      而「王道國際理財顧問」債務整合廣告，讓他誤以為與目前原債務銀行「王道銀行」同公司，便申請免費諮詢。
       </Caption>
       <Caption category="normal" startAt={27.2}>
       米奇同時諮詢「債務整合」與「現金周轉」兩項服務，規劃顧問表示可同時協助辦理，並傳簽約系統請米奇先簽署委託書合約。

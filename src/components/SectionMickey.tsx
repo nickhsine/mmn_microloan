@@ -17,8 +17,10 @@ import { Calculator } from './calculator/Calculator';
 import { Update } from './calculator/Update';
 import { Details } from './calculator/Details';
 import { Contract } from './document/Contract';
+import useWindowDimensions from './utility/useWindowDimensions';
 
 export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
+  const { width } = useWindowDimensions();
   const globalmarks = false;
   const messageAvatarImg_1 = './assets/img/avatar_A.svg';
   const messageAvatarImg_2 = './assets/img/avatar_A.svg';
@@ -98,6 +100,32 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
       },
     });
 
+    let phone_Yoffset: number, 
+        contract_Xoffset: number, 
+        contract_Yoffset: number;
+
+    if (width < 768) {
+      phone_Yoffset = 0;
+      contract_Xoffset = -25;
+      contract_Yoffset = 5;
+    } 
+    else if (width < 1024) {
+      phone_Yoffset = 5;
+      contract_Xoffset = -25;
+      contract_Yoffset = 5;
+    } 
+    else if (width < 2048) {
+      phone_Yoffset = 5;
+      contract_Xoffset = 0;
+      contract_Yoffset = 5;
+    } 
+    else {
+      phone_Yoffset = 0;
+      contract_Xoffset = 0;
+      contract_Yoffset = 5;
+    }
+
+
     // INITIAL STATE 
     RefFromTo(mickeyTL, phoneRef.current, 
       { x: '50vw', y: '100vh', rotation: 0 }, 
@@ -110,10 +138,6 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
     RefFromTo(mickeyTL, messagesAppRef_1.current, 
       { opacity: 0 },  { opacity: 0 }, 0
     );
-    // RefFromTo(mickeyTL, calculatorRef.current, 
-    //   { x: '100vw', y: '100vh', rotation: -10 }, 
-    //   { x: '100vw', y: '100vh', rotation: -10, duration: 0.5 }, 0
-    // );
 
     // Animation Time Positioning
     AddStartTL(mickeyTL, briefRefD.current, '<-5');
@@ -137,7 +161,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
 
     RefFromTo(mickeyTL, phoneRef.current, 
       { x: '50vw', y: '100vh', rotation: 20 }, 
-      { x: 0, y: 0, rotation: 0, duration: 1 }, 
+      { x: 0, y: `${phone_Yoffset}vh`, rotation: 0, duration: 1 }, 
       '<'
     );
     AddStartTL(mickeyTL, phoneStaticRef_1.current, '>1');
@@ -151,7 +175,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
 
     RefFromTo(mickeyTL, contractARef.current, 
       { x: 0, y: '-100vh', rotation: 90 }, 
-      { x: 0, y: 0, rotation: 3, duration: 2 }, '>2'
+      { x: `${contract_Xoffset}vw`, y: `${contract_Yoffset}vh`, rotation: 3, duration: 2 }, '>2'
     );
 
     AddEndTL(mickeyTL, messagesAppRef_1.current, '>1');
@@ -179,9 +203,9 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
         <p>融資業者與代辦公司則可能利用這樣的脆弱時刻，在正規借款管道無法取得資金時介入，提供表面誘人方案，實際卻伴隨高額費用與不對等條件，使債務問題進一步惡化。</p>
       </Brief>
       <Brief ref={briefRefL} type="light">
-        <p>米奇的故事，揭開另一種常見的債務陷阱。她身上累積多筆卡債與信貸，將近80萬元債務需要還清。因業績制工作月薪浮動，每月只能勉強以「最低繳款金額」償還，然而債務卻隨著循環利率愈滾愈大。</p>
-        <p>在收入不穩、壓力不斷的情況下，她每天醒來的第一個念頭就是：「還有哪一筆要繳？」</p>
-        <p>她也開始尋找所謂的「債務整合」，希望能盡早將債務還清、重啟生活。但不知道，等待她的不是出路，而是一道更深的債務陷阱……</p>
+        <p>米奇的故事，揭開另一種常見的債務陷阱。他身上累積多筆卡債與信貸，將近80萬元債務需要還清。因業績制工作月薪浮動，每月只能勉強以「最低繳款金額」償還，然而債務卻隨著循環利率愈滾愈大。</p>
+        <p>在收入不穩、壓力不斷的情況下，他每天醒來的第一個念頭就是：「還有哪一筆要繳？」</p>
+        <p>他也開始尋找所謂的「債務整合」，希望能盡早將債務還清、重啟生活。但不知道，等待他的不是出路，而是一道更深的債務陷阱……</p>
       </Brief>
       <Contract ref={contractARef} contract="2A" isHighlight={false} />
 
@@ -204,7 +228,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageSent">
               <span>17:31</span>
-              <img className="photo" src={'./assets/img/messageImg_2A.png'} />
+              <img className="photo" src="./assets/img/messageImg_2A.png" />
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_1} />
@@ -248,10 +272,10 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
               <p>這邊先幫你申請中租機車專案，金額10萬分36期，照會詢問，就說透過簡訊自行申辦，不可以提到（代辦公司），千萬記得提到會直接退掉。名下信用卡，說只有一張，信貸不要提到。資金用途說購買家具。</p>
               <span>17:42</span>
             </div>
-            <div className='messageBlank' />
-            <div className='messageBlank' />
-            <div className='messageBlank' />
-            <div className='messageDate'>7月14日 [ 二 ]</div>
+            <div className="messageBlank" />
+            <div className="messageBlank" />
+            <div className="messageBlank" />
+            <div className="messageDate">7月14日 [ 二 ]</div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_2} />
               <p>今天會撥款喔，對保費5,500，公司先幫你代墊，等等連同服務費一起匯給我們就好。</p>
@@ -290,8 +314,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_2} />
-              <img className="photo" src={'./assets/img/messageImg_2C.svg'} 
-                   style={{ width: '100px', boxShadow: 'none' }} />
+              <img className="photo" src="./assets/img/messageImg_2C.svg" style={{ width: '100px', boxShadow: 'none' }} />
               <span>17:42</span>
             </div>
             <div className="messageRecieve">
@@ -299,13 +322,10 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
               <p>當初您跟何小姐簽約時，不是有和您說過我們有服務費嗎？</p>
               <span>17:42</span>
             </div>
-            <div className='messageBlank' />
-            <div className='messageBlank' />
-            <div className='messageBlank' />
-            <div className='messageDate'>7月16日 [ 四 ]</div>
-            {/* Telepromter */}
-            {/* Caption: 由於１０萬…擔心… */}
-            {/* PAUSE! */}
+            <div className="messageBlank" />
+            <div className="messageBlank" />
+            <div className="messageBlank" />
+            <div className="messageDate">7月16日 [ 四 ]</div>
             <div className="messageSent">
               <span>17:40</span>
               <p>後續服務費大約是多少，可以先讓我知道嗎？</p>
@@ -321,8 +341,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_2} />
-              <img className="photo" src={'./assets/img/messageImg_2C.svg'} 
-                   style={{ width: '100px', boxShadow: 'none' }}/>
+              <img className="photo" src="./assets/img/messageImg_2C.svg" style={{ width: '100px', boxShadow: 'none' }}/>
               <span>17:42</span>
             </div>
             <div className="messageRecieve">
@@ -330,12 +349,10 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
               <p>您先等我週一和主管開會後再回覆您</p>
               <span>17:42</span>
             </div>
-            <div className='messageBlank' />
-            <div className='messageBlank' />
-            <div className='messageBlank' />
-            <div className='messageDate'>7月20日 [ 五 ]</div>
-            {/* Caption: 王道… */}
-            {/* PAUSE! */}
+            <div className="messageBlank" />
+            <div className="messageBlank" />
+            <div className="messageBlank" />
+            <div className="messageDate">7月20日 [ 五 ]</div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_2} />
               <p>當初何小姐就有和您說，會有服務費產生。您不處理的話，我們這邊必須聯繫法務。</p>
@@ -360,16 +377,13 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
               <p>三張年利率就45%了。</p>
               <span>17:42</span>
             </div>
-            <div className='messageBlank' />
-            <div className='messageBlank' />
-            <div className='messageBlank' />
-            <div className='messageBlank' />
-            <div className='messageBlank' />
-            <div className='messageBlank' />
-            <div className='messageDate'>10月20日 [ 五 ]</div>
-            {/* Caption: 為支付… */}
-            {/* Caption: 貸款金額核… */}
-            {/* PAUSE! */}
+            <div className="messageBlank" />
+            <div className="messageBlank" />
+            <div className="messageBlank" />
+            <div className="messageBlank" />
+            <div className="messageBlank" />
+            <div className="messageBlank" />
+            <div className="messageDate">10月20日 [ 五 ]</div>
             <div className="messageSent">
               <span>17:40</span>
               <p>您好，我之前有跟你們申請協助財務協商，銀行剛剛打來照會，跟我說要120期月付金10,586，這樣子等同於我要多付40幾萬。</p>
@@ -416,7 +430,6 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
           </Messages>
         </MessagesApp>
-
         <Notification
           ref={notificationRef_2}
           app="Messages"
@@ -427,8 +440,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
       </Phone>
       <Telepromter ref={telepromterRef_1} 
         audioSrc="./assets/audio/米奇：掉入深淵.aac"
-        stagger={0.2}
-      >
+        stagger={0.2}>
         <p className="telepromter-speaker">米奇（聲音經過變聲處理）</p>
         <p className="telepromter-script">
           我當時只是，單純想要趕快把債務做一個總整理。殊不知...... 就是跳入到萬劫不復的深淵。
@@ -436,8 +448,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
       </Telepromter>
       <Telepromter ref={telepromterRef_2} 
         audioSrc="./assets/audio/米奇：一些些服務費原來這麼多.aac"
-        stagger={0.2}
-      >
+        stagger={0.2}>
         <p className="telepromter-speaker">米奇（聲音經過變聲處理）</p>
         <p className="telepromter-script">
           他們算是代辦公司說，他可以幫我去做債務的統籌整理，但他們可能會收取一些些服務費。他只有說一些些，我不知道原來服務費要到這麼多。
