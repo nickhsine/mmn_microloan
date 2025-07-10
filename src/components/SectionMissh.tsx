@@ -252,9 +252,9 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, phoneCallRef_3.current, '<');
     AddStartTL(misshTL, dialogsRef_3.current, '>1');
 
-    AddStartTL(misshTL, telepromterRef_3.current, '>');
-    AddNoScrubTL(misshTL, telepromterRef_3.current, '>');
-    AddEndTL(misshTL, telepromterRef_3.current, '>4');
+    AddStartTL(misshTL, telepromterRef_2.current, '>');
+    AddNoScrubTL(misshTL, telepromterRef_2.current, '>');
+    AddEndTL(misshTL, telepromterRef_2.current, '>4');
     
     RefFromTo(misshTL, contractRef_A.current, 
       { x: `${contract_Xoffset-15}vw`, y: `${contract_Yoffset+10}vh`, rotation: -20 }, 
@@ -603,8 +603,8 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
           其實，那時候我對融資公司沒有說很熟，所以我不太清楚那是什麼。資料繳出去後，他有提到，如果妳中途不辦了，可能會有毀約金的部分，所以就是一定得辦。
         </p>
       </Telepromter>
-      <Telepromter ref={telepromterRef_3} 
-        audioSrc="./assets/audio/H小姐：第三筆的原因.aac"
+      <Telepromter ref={telepromterRef_2} 
+        audioSrc="./assets/audio/Ｈ小姐：增貸的原因.m4a"
         stagger={0.2}
       >
         <p className="telepromter-speaker">Ｈ小姐（聲音經過變聲處理）</p>

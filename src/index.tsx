@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     {/* <Noise /> */}
     {/* <ScrollCounter /> */}
-    <div style={{ height: '122px', width: '100vw', backgroundColor: '#00000033', position: 'fixed', top: 0, left: 0, zIndex: 1000 }}></div>
+    {/* <div style={{ height: '122px', width: '100vw', backgroundColor: '#00000033', position: 'fixed', top: 0, left: 0, zIndex: 1000 }}></div> */}
     <ScrollSmootherWrapper>
       <ScrollAnimationApp />
     </ScrollSmootherWrapper>

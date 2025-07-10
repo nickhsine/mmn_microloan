@@ -118,8 +118,8 @@ p.caption {
   backdrop-filter: blur(10px);
   text-align: left;
   z-index: 10;
-  left: 20vw;
-  top: 20vh;
+  left: 30vw;
+  top: 30vh;
   transform: translate(-50%, -50%);
   box-shadow: inset 1px 1px 3px 0 hsla(0, 0%, 100%, 1);
   /* background-color: hsla(0, 0%, 100%, 0.5); */
