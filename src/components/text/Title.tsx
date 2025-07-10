@@ -33,7 +33,7 @@ export const Title = forwardRef<TimelineHandle>((_, ref) => {
 
     return (
     <div className="landing-title" ref={titleRef}>
-      <a className="topic-tag" href="https://www.twreporter.org/topics/loan-crisis" target="_blank">
+      <a className="topic-tag" href="https://www.twreporter.org/topics/loan-crisis">
         揭開「融資租賃」的高利結構
       </a>
       <h1>債務為什麼越滾越多</h1>

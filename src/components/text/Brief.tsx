@@ -6,10 +6,22 @@ interface BriefProps {
   children: ReactNode;
   type?: 'dark' | 'light' | 'clear';
   style?: CSSProperties;
+  textColor?: string;
 }
 
-export const Brief = forwardRef<TimelineHandle, BriefProps>(({ children, type = 'dark', style }, ref) => {
+export const Brief = forwardRef<TimelineHandle, BriefProps>(({ 
+  children, type = 'dark', style, textColor 
+}, ref) => {
+
   const briefRef = useRef<HTMLDivElement>(null);
+
+  if (type === 'dark') {
+    textColor = 'var(--color-gray-50)';
+  } else if (type === 'light') {
+    textColor = 'var(--color-gray-900)';
+  } else if (type === 'clear') {
+    textColor = 'var(--color-gray-900)';
+  }
 
   useImperativeHandle(ref, () => ({
 
@@ -19,17 +31,18 @@ export const Brief = forwardRef<TimelineHandle, BriefProps>(({ children, type = 
       const briefElements = briefRef.current?.querySelectorAll('p');
 
       if (briefElements) {
+        gsap.set(briefRef.current, { color: textColor });
         gsap.set(briefElements, { y: '-10vh', opacity: 0 });
         tl.fromTo(briefRef.current, 
           { opacity: 0 }, 
-          { opacity: 1, duration: 1, ease: 'power1.out' }
+          { opacity: 1, duration: 1, ease: 'power1.inOut' }
         );
         tl.fromTo(briefElements, 
           { y: '-10vh', opacity: 0 }, 
           { y: 0, 
             opacity: 1, 
             rotate: (index) => (Math.pow(-1, index) * 1), 
-            duration: 1, stagger: 1, ease: 'power1.out' }
+            duration: 1, stagger: 1, ease: 'power1.inOut' }
         );
       }
       return tl;

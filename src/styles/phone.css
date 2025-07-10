@@ -271,7 +271,8 @@
   visibility: hidden;
 }
 .messages-app .messages .messageRecieve,
-.messages-app .messages .messageSent {
+.messages-app .messages .messageSent,
+.messages-app .messages .messageDate {
   margin: 4px 0;
 }
 .messages-app .messages .messageRecieve p,
@@ -302,6 +303,24 @@
   opacity: 0;
   display: none;
   height: 0;
+}
+.messages-app .messages .messageDate {
+  opacity: 0;
+  align-self: center;
+  display: flex;
+  display: none;
+  font-size: 12px;
+  font-weight: 450;
+  color: hsla(0, 0%, 25%, 1);
+  border-radius: 20px;
+  padding: 3px 13px 5px 13px;
+  border: solid hsla(0, 0%, 100%, 0.1);
+  border-width: 1px 0 0 1px;
+  background-color: hsla(0, 0%, 100%, 0.5);
+  width: fit-content;
+  max-width: 90%;
+  box-shadow: 0 2px 5px 0 hsla(0, 0%, 0%, 0.15);
+  margin-top: 8px;
 }
 
 /* Notification */

@@ -14,7 +14,8 @@ export const ContentBG = () => {
       scrollTrigger: {
         trigger: contentBGRef.current,
         start: 'top top',
-        end: '+=200%',
+        end: 'bottom bottom',
+        // end: '+=300%',
         pin: true,
         pinSpacing: false,
         scrub: true,
@@ -22,19 +23,17 @@ export const ContentBG = () => {
       }
     });
     tl.to('.envelope', {
-      y: (i, target) => -target.offsetTop,
+      y: (i, target) => -target.offsetTop + i * 20,
       stagger: 0.1
     });
   }, { scope: contentBGRef, dependencies: [contentBGRef] });
 
   return (
     <div className="content-bg" ref={contentBGRef}>
-      <Envelope type={0} top={200} left={'10%'} rotate={45}/>
-      <Envelope type={1} top={210} left={'20%'} />
-      <Envelope type={2} top={230} left={'30%'} />
-      <Envelope type={4} top={250} left={'50%'} />
-      <Envelope type={5} top={260} left={'60%'} />
-      <Envelope type={6} top={270} left={'70%'} />
+      {/* <Envelope type={0} top={200} left={'10%'} rotate={45}/> */}
+      {Array.from({ length: 50 }).map((_, i) => (
+        <Envelope key={i}/>
+      ))}
     </div>
   );
 };

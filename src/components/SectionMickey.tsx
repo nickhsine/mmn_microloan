@@ -33,53 +33,53 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
   const phoneRef = useRef<TimelineHandle | null>(null);
   const phoneStaticRef_1 = useRef<TimelineHandle | null>(null);
   const phoneStaticRef_2 = useRef<TimelineHandle | null>(null);
-  const phoneCallRef = useRef<TimelineHandle | null>(null);
-  const dialogsRef = useRef<TimelineHandle | null>(null);
+  // const phoneCallRef = useRef<TimelineHandle | null>(null);
+  // const dialogsRef = useRef<TimelineHandle | null>(null);
   const notificationRef_1 = useRef<TimelineHandle | null>(null);
   const notificationRef_2 = useRef<TimelineHandle | null>(null);
   const messagesAppRef_1 = useRef<TimelineHandle | null>(null);
   const messagesRef_1 = useRef<TimelineHandle | null>(null);
   const messagesAppRef_2 = useRef<TimelineHandle | null>(null);
   const messagesRef_2 = useRef<TimelineHandle | null>(null);
-  const messagesRef_3 = useRef<TimelineHandle | null>(null);
-  const messagesRef_4 = useRef<TimelineHandle | null>(null);
-  const messagesRef_5 = useRef<TimelineHandle | null>(null);
+  // const messagesRef_3 = useRef<TimelineHandle | null>(null);
+  // const messagesRef_4 = useRef<TimelineHandle | null>(null);
+  // const messagesRef_5 = useRef<TimelineHandle | null>(null);
 
-  const calculatorRef = useRef<TimelineHandle | null>(null);
-  // detailsRef
-  const detailsRef_1 = useRef<TimelineHandle | null>(null);
-  const detailsRef_2 = useRef<TimelineHandle | null>(null);
-  const detailsRef_3 = useRef<TimelineHandle | null>(null);
-  const detailsRef_4 = useRef<TimelineHandle | null>(null);
-  const detailsRef_5 = useRef<TimelineHandle | null>(null);
-  const detailsRef_6 = useRef<TimelineHandle | null>(null);
-  const detailsRef_7 = useRef<TimelineHandle | null>(null);
-  // highlightRef
-  const highlightUpdateRef_1 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_1T = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_2 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_2T = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_3 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_4 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_5 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_6 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_7 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_8 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_9T = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_9 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_10 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_11 = useRef<TimelineHandle | null>(null);
-  const highlightUpdateRef_12 = useRef<TimelineHandle | null>(null);
-  // resultRef
-  const resultRef_1a = useRef<TimelineHandle | null>(null);
-  const resultRef_1b = useRef<TimelineHandle | null>(null);
-  const resultRef_2a = useRef<TimelineHandle | null>(null);
-  const resultRef_2b = useRef<TimelineHandle | null>(null);
-  const resultRef_3 = useRef<TimelineHandle | null>(null);
-  const resultRef_4 = useRef<TimelineHandle | null>(null);
-  const resultRef_5 = useRef<TimelineHandle | null>(null);
-  const resultRef_6 = useRef<TimelineHandle | null>(null);
-  const resultRef_7 = useRef<TimelineHandle | null>(null);
+  // const calculatorRef = useRef<TimelineHandle | null>(null);
+  // // detailsRef
+  // const detailsRef_1 = useRef<TimelineHandle | null>(null);
+  // const detailsRef_2 = useRef<TimelineHandle | null>(null);
+  // const detailsRef_3 = useRef<TimelineHandle | null>(null);
+  // const detailsRef_4 = useRef<TimelineHandle | null>(null);
+  // const detailsRef_5 = useRef<TimelineHandle | null>(null);
+  // const detailsRef_6 = useRef<TimelineHandle | null>(null);
+  // const detailsRef_7 = useRef<TimelineHandle | null>(null);
+  // // highlightRef
+  // const highlightUpdateRef_1 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_1T = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_2 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_2T = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_3 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_4 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_5 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_6 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_7 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_8 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_9T = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_9 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_10 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_11 = useRef<TimelineHandle | null>(null);
+  // const highlightUpdateRef_12 = useRef<TimelineHandle | null>(null);
+  // // resultRef
+  // const resultRef_1a = useRef<TimelineHandle | null>(null);
+  // const resultRef_1b = useRef<TimelineHandle | null>(null);
+  // const resultRef_2a = useRef<TimelineHandle | null>(null);
+  // const resultRef_2b = useRef<TimelineHandle | null>(null);
+  // const resultRef_3 = useRef<TimelineHandle | null>(null);
+  // const resultRef_4 = useRef<TimelineHandle | null>(null);
+  // const resultRef_5 = useRef<TimelineHandle | null>(null);
+  // const resultRef_6 = useRef<TimelineHandle | null>(null);
+  // const resultRef_7 = useRef<TimelineHandle | null>(null);
 
   const telepromterRef_1 = useRef<TimelineHandle | null>(null);
   const telepromterRef_2 = useRef<TimelineHandle | null>(null);
@@ -103,29 +103,37 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
       { x: '50vw', y: '100vh', rotation: 0 }, 
       { x: '50vw', y: '100vh', rotation: 20, duration: 0.5 }, 0
     );
-    RefFromTo(mickeyTL, calculatorRef.current, 
-      { x: '100vw', y: '100vh', rotation: -10 }, 
-      { x: '100vw', y: '100vh', rotation: -10, duration: 0.5 }, 0
+    RefFromTo(mickeyTL, contractARef.current, 
+      { x: 0, y: '-100vh', rotation: 90 }, 
+      { x: 0, y: '-100vh', rotation: 90, duration: 0.5 }, 0
     );
-    // RefFromTo(mickeyTL, contractARef.current, 
-    //   { x: 0, y: '-100vh', rotation: 10 }, 
-    //   { x: 0, y: '-100vh', rotation: 10, duration: 0.5 }, 0
+    RefFromTo(mickeyTL, messagesAppRef_1.current, 
+      { opacity: 0 },  { opacity: 0 }, 0
+    );
+    // RefFromTo(mickeyTL, calculatorRef.current, 
+    //   { x: '100vw', y: '100vh', rotation: -10 }, 
+    //   { x: '100vw', y: '100vh', rotation: -10, duration: 0.5 }, 0
     // );
-    RefFromTo(mickeyTL, messagesRef_3.current, 
-      { display: 'none' }, { display: 'none', duration: 0 }, 0
-    );
-
 
     // Animation Time Positioning
-    AddStartTL(mickeyTL, briefRefD.current, '<-2');
+    AddStartTL(mickeyTL, briefRefD.current, '<-5');
     AddStartTL(mickeyTL, briefRefL.current, '>10');
-
-    AddStartTL(mickeyTL, telepromterRef_1.current, '>2');
+    RefFromTo(mickeyTL, briefRefD.current, 
+      { color: 'var(--color-gray-50)' }, 
+      { color: 'var(--color-gray-800)', duration: 1 }, 
+      '<2'
+    );
+    RefFromTo(mickeyTL, briefRefL.current, 
+      { color: 'var(--color-gray-900)' }, 
+      { color: 'var(--color-gray-300)', duration: 1 }, 
+      '>5'
+    );
+    AddStartTL(mickeyTL, telepromterRef_1.current, '>');
     AddNoScrubTL(mickeyTL, telepromterRef_1.current, '>');
     AddEndTL(mickeyTL, telepromterRef_1.current, '>4');
     
     AddEndTL(mickeyTL, briefRefD.current, '<2');
-    AddEndTL(mickeyTL, briefRefL.current, '<');
+    AddEndTL(mickeyTL, briefRefL.current, '>');
 
     RefFromTo(mickeyTL, phoneRef.current, 
       { x: '50vw', y: '100vh', rotation: 20 }, 
@@ -142,21 +150,22 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(mickeyTL, messagesRef_1.current,  '<1');
 
     RefFromTo(mickeyTL, contractARef.current, 
-      { x: 0, y: '-100vh', rotation: 10 }, 
-      { x: 0, y: '5vh', rotation: 3, duration: 2 }, '<'
+      { x: 0, y: '-100vh', rotation: 90 }, 
+      { x: 0, y: 0, rotation: 3, duration: 2 }, '>2'
     );
 
     AddEndTL(mickeyTL, messagesAppRef_1.current, '>1');
     AddEndTL(mickeyTL, messagesRef_1.current, '>1');
-    AddStartTL(mickeyTL, messagesAppRef_2.current, '<-1');
+    AddStartTL(mickeyTL, notificationRef_2.current, '<');
+    AddStartTL(mickeyTL, messagesAppRef_2.current, '>');
     AddStartTL(mickeyTL, messagesRef_2.current,  '<');
 
-    AddStartTL(mickeyTL, telepromterRef_2.current, '>2');
+    AddStartTL(mickeyTL, telepromterRef_2.current, '<30');
     AddNoScrubTL(mickeyTL, telepromterRef_2.current, '>');
     AddEndTL(mickeyTL, telepromterRef_2.current, '>4');
 
-    AddStartTL(mickeyTL, briefRefD_2.current, '>');
-    AddStartTL(mickeyTL, briefRefL_2.current, '>2');
+    AddStartTL(mickeyTL, briefRefD_2.current, '>50');
+    AddStartTL(mickeyTL, briefRefL_2.current, '>4');
 
     if (ref && typeof ref !== 'function') {
       ref.current = mickeyTL;
@@ -174,11 +183,11 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
         <p>在收入不穩、壓力不斷的情況下，她每天醒來的第一個念頭就是：「還有哪一筆要繳？」</p>
         <p>她也開始尋找所謂的「債務整合」，希望能盡早將債務還清、重啟生活。但不知道，等待她的不是出路，而是一道更深的債務陷阱……</p>
       </Brief>
-      {/* <Contract ref={contractARef} contract="1B" isHighlight={false} /> */}
+      <Contract ref={contractARef} contract="2A" isHighlight={false} />
 
       <Phone ref={phoneRef}>
-        <PhoneStatic ref={phoneStaticRef_1} src="./assets/img/web_ad_1.avif" />
-        <PhoneStatic ref={phoneStaticRef_2} src="./assets/img/web_ad_2.png" />
+        <PhoneStatic ref={phoneStaticRef_1} src="./assets/img/web_ad_1.png" />
+        <PhoneStatic ref={phoneStaticRef_2} src="./assets/img/web_consult.png" />
         <Notification
           ref={notificationRef_1}
           app="Messages"
@@ -239,9 +248,12 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
               <p>這邊先幫你申請中租機車專案，金額10萬分36期，照會詢問，就說透過簡訊自行申辦，不可以提到（代辦公司），千萬記得提到會直接退掉。名下信用卡，說只有一張，信貸不要提到。資金用途說購買家具。</p>
               <span>17:42</span>
             </div>
-            {/* PAUSE! */}
+            <div className='messageBlank' />
+            <div className='messageBlank' />
+            <div className='messageBlank' />
+            <div className='messageDate'>7月14日 [ 二 ]</div>
             <div className="messageRecieve">
-              <img className="avatar blank" src={messageAvatarImg_2} />
+              <img className="avatar" src={messageAvatarImg_2} />
               <p>今天會撥款喔，對保費5,500，公司先幫你代墊，等等連同服務費一起匯給我們就好。</p>
               <span>17:42</span>
             </div>
@@ -286,7 +298,10 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
               <p>當初您跟何小姐簽約時，不是有和您說過我們有服務費嗎？</p>
               <span>17:42</span>
             </div>
-            {/* PAUSE! */}
+            <div className='messageBlank' />
+            <div className='messageBlank' />
+            <div className='messageBlank' />
+            <div className='messageDate'>7月16日 [ 四 ]</div>
             {/* Telepromter */}
             {/* Caption: 由於１０萬…擔心… */}
             {/* PAUSE! */}
@@ -313,7 +328,10 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
               <p>您先等我週一和主管開會後再回覆您</p>
               <span>17:42</span>
             </div>
-            {/* PAUSE! */}
+            <div className='messageBlank' />
+            <div className='messageBlank' />
+            <div className='messageBlank' />
+            <div className='messageDate'>7月20日 [ 五 ]</div>
             {/* Caption: 王道… */}
             {/* PAUSE! */}
             <div className="messageRecieve">
@@ -340,7 +358,13 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
               <p>三張年利率就45%了。</p>
               <span>17:42</span>
             </div>
-            {/* PAUSE! */}
+            <div className='messageBlank' />
+            <div className='messageBlank' />
+            <div className='messageBlank' />
+            <div className='messageBlank' />
+            <div className='messageBlank' />
+            <div className='messageBlank' />
+            <div className='messageDate'>10月20日 [ 五 ]</div>
             {/* Caption: 為支付… */}
             {/* Caption: 貸款金額核… */}
             {/* PAUSE! */}

@@ -12,7 +12,7 @@ export const Caption = ({
   children,
   category = 'normal',
   startAt = 0,
-  stayFor = 1,
+  stayFor,
   style,
 }: CaptionProps) => {
   return (

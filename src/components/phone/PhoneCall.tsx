@@ -90,8 +90,8 @@ export const PhoneCall = forwardRef<TimelineHandle, PhoneCallProps>(({ children 
       // Minor Reset
       tl.fromTo(
         '.call-button',
-        { left: '75%', background: 'linear-gradient(135deg, #fe7171AA 0%, #d40d0dAA 100%)' },
-        { left: '25%', background: 'linear-gradient(135deg, #8AFE71AA 0%, #0DD41AAA 100%)',
+        { left: '50%', background: 'linear-gradient(135deg, #fe7171AA 0%, #d40d0dAA 100%)' },
+        { left: '75%', background: 'linear-gradient(135deg, #8AFE71AA 0%, #0DD41AAA 100%)',
           duration: 0.5, ease: 'power2.inOut', },
         4
       );

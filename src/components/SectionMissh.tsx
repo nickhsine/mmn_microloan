@@ -145,6 +145,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     );
     AddEndTL(misshTL, telepromterRef_1.current, '>4');
     AddStartTL(misshTL, notificationRef_2.current, '<');
+    AddEndTL(misshTL, notificationRef_2.current, '>');
 
     RefFromTo(misshTL, contractRef_A.current, 
       { x: '-100vw', y: '-100vh', rotation: -90 }, 
@@ -267,6 +268,10 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, resultRef_4T.current, '>');
     AddStartTL(misshTL, resultRef_4a.current, '<');
 
+    RefFromTo(misshTL, phoneRef.current, 
+      { x: `15vw`, y: `5vh`, rotation: 5, zIndex: 2 }, 
+      { x: `15vw`, y: `5vh`, rotation: 5, zIndex: 2, duration: 1 }, '>3'
+    );
 
     if (ref && typeof ref !== 'function') {
       ref.current = misshTL;
@@ -559,7 +564,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
         </div>
       </Calculator>
       <Telepromter ref={telepromterRef_1} 
-        audioSrc="./assets/audio/蕭小姐：為什麼知道是代辦還是有繼續辦？.aac"
+        audioSrc="./assets/audio/H小姐：為什麼知道是代辦還是有繼續辦？.aac"
         stagger={0.2}
       >
         <p className="telepromter-speaker">Ｈ小姐（聲音經過變聲處理）</p>
@@ -568,7 +573,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
         </p>
       </Telepromter>
       <Telepromter ref={telepromterRef_3} 
-        audioSrc="./assets/audio/蕭小姐：第三筆的原因.aac"
+        audioSrc="./assets/audio/H小姐：第三筆的原因.aac"
         stagger={0.2}
       >
         <p className="telepromter-speaker">Ｈ小姐（聲音經過變聲處理）</p>

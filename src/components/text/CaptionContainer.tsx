@@ -28,7 +28,7 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
 
     captions.forEach((caption) => {
       const startAt = caption.dataset.start || '0';
-      const stayFor = '0.15';
+      const stayFor = caption.dataset.stay || '0.15';
       // const stayFor = caption.dataset.stay || '0.1';
 
       const randomRotate = Math.random() * 10 - 5;
@@ -104,7 +104,7 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
       <Caption category="normal" startAt={34}>
       為了支付服務費，讓債務能順利協商，專員表示能再替米奇辦理一筆小額借款，米奇透過王道代辦再向「第一國際」申請一筆10萬元的手機貸款。
       </Caption>
-      <Caption category="normal" startAt={36}>
+      <Caption category="normal" startAt={34.5} stayFor={1}>
       貸款金額核發後，王道國際便要求米奇將所有貸款金額，匯出作為服務費。
       </Caption>
       <Caption category="normal" startAt={40}>
