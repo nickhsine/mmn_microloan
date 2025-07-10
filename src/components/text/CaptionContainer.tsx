@@ -107,19 +107,19 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
       <Caption category="normal" startAt={34}>
       為了讓債務能順利協商，專員表示能再替米奇辦理一筆貸款支付服務費。
       </Caption>
-      <Caption category="normal" startAt={34.2} stayFor={1} style={{ left: '30vw', top: '20vh' }}>
+      <Caption category="normal" startAt={34.2} stayFor={1} style={{ left: '30vw', top: '25vh' }}>
       米奇向第一國際申請10萬元手機貸款
       </Caption>
-      <Caption category="normal" startAt={34.3} stayFor={1} style={{ left: '30vw', top: '30vh' }}>
+      <Caption category="normal" startAt={34.3} stayFor={1} style={{ left: '30vw', top: '35vh' }}>
       內扣手續費15,350元後
       </Caption>
-      <Caption category="normal" startAt={34.4} stayFor={1} style={{ left: '30vw', top: '40vh' }}>
+      <Caption category="normal" startAt={34.4} stayFor={1} style={{ left: '30vw', top: '45vh' }}>
       實際核發84,470元
       </Caption>
-       <Caption category="normal" startAt={34.5} stayFor={1} style={{ left: '30vw', top: '50vh' }}>
+       <Caption category="normal" startAt={34.5} stayFor={1} style={{ left: '30vw', top: '55vh' }}>
       被王道國際要求全數匯出作為服務費
       </Caption>
-      <Caption category="normal" startAt={34.6} stayFor={1} style={{ left: '30vw', top: '60vh' }}>
+      <Caption category="normal" startAt={34.6} stayFor={1} style={{ left: '30vw', top: '65vh' }}>
       債務整合尚未開始，又新增一筆13萬635元債務
       </Caption>
       <Caption category="normal" startAt={35.1} style={{ left: '70vw', top: '70vh' }}>
