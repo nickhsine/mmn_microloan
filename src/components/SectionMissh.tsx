@@ -16,11 +16,13 @@ import { Calculator } from './calculator/Calculator';
 import { Details } from './calculator/Details';
 import { Update } from './calculator/Update';
 import { Telepromter } from './utility/Telepromter';
+import useWindowDimensions from './utility/useWindowDimensions';
 
 export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
   const globalmarks = false;
   const messageAvatarImg = './assets/img/avatar_A.svg';
-  
+  const { width, height } = useWindowDimensions();
+
   const sectionRef = useRef(null);
   // phoneRef
   const phoneRef = useRef<TimelineHandle | null>(null);
@@ -91,6 +93,15 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
       // smoothChildTiming: true,
     });
 
+    let contract_x;
+
+    if (width < 768) {
+      contract_x = '-25vw';
+    } else if (width < 1024) {
+      contract_x = 0;
+    } else {
+      contract_x = 0;
+    }
 
     // INITIAL STATE
     RefFromTo(misshTL, phoneRef.current, 
@@ -149,11 +160,11 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
 
     RefFromTo(misshTL, contractRef_A.current, 
       { x: '-100vw', y: '-100vh', rotation: -90 }, 
-      { x: '-25vw', y: '5vh', rotation: 5, duration: 2 }, '>-1'
+      { x: contract_x, y: '5vh', rotation: 5, duration: 2 }, '>-1'
     );
     RefFromTo(misshTL, contractRef_B.current, 
       { x: '-100vw', y: '100vh', rotation: 90 }, 
-      { x: '-25vw', y: '15vh', rotation: -5, duration: 2 }, '<-0.25'
+      { x: contract_x, y: '15vh', rotation: -5, duration: 2 }, '<-0.25'
     );
     RefFromTo(misshTL, phoneRef.current, 
       { x: 0, y: 0, rotation: 0 }, 
@@ -162,11 +173,11 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, contractRef_A.current, '>1');
     AddStartTL(misshTL, contractRef_B.current, '<');   
     RefFromTo(misshTL, contractRef_A.current, 
-      { x: '-25vw', y: '5vh', rotation: 5 }, 
+      { x: contract_x, y: '5vh', rotation: 5 }, 
       { x: '-35vw', y: '10vh', rotation: -20, duration: 3 }, '>2'
     );
     RefFromTo(misshTL, contractRef_B.current, 
-      { x: '-25vw', y: '15vh', rotation: -5 }, 
+      { x: contract_x, y: '15vh', rotation: -5 }, 
       { x: '-5vw', y: '5vh', rotation: 10, duration: 3 }, '<'
     ); 
     RefFromTo(misshTL, calculatorRef.current, 
