@@ -382,6 +382,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             <div className="messageBlank" />
             <div className="messageBlank" />
             <div className="messageBlank" />
+            <div className="messageBlank" />
             <div className="messageDate">10月21日 [ 一 ]</div>
             <div className="messageSent">
               <span>10:30</span>
@@ -458,7 +459,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
         <p>你總不可能請律師打官司，但最後官司敗訴，還要求律師費要退費吧？我們協商失敗還是要付服務費。</p>
       </Brief>
       <Brief ref={briefRefL_2} type="light">
-        <p>協商不成，平白無故多出一筆 13 萬元負債。由於每天收到「第一國際」的催債電話，米奇生活費僅剩的餘額，全都拿來償還融資公司，沒有餘力償還本來就積欠的卡債與信貸，遲遲無法繳清原有債務，現在遭到銀行威脅抵押父親的靈骨塔</p>
+        <p>協商不成，平白無故多出一筆 13 萬元負債。由於每天收到「第一國際」的催債電話，米奇生活費僅剩的餘額，全都拿來償還融資公司，沒有餘力償還本來就積欠的卡債與信貸，遲遲無法繳清原有債務，現在遭到銀行威脅抵押父親的靈骨塔。</p>
       </Brief>
     </section>
   );

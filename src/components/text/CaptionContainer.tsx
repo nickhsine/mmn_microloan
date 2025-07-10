@@ -101,7 +101,7 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
       <Caption category="normal" startAt={32}>
       由於10萬元現金周轉衍生高額的服務費用，也讓米奇開始擔心，債務整合的服務費金額。
       </Caption>
-      <Caption category="normal" startAt={33.5}>
+      <Caption category="normal" startAt={32}>
       米奇申請的債務整合服務，需要收取15%，近11萬元服務費......
       </Caption>
       <Caption category="normal" startAt={34}>
