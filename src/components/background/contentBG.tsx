@@ -19,7 +19,7 @@ export const ContentBG = () => {
         pin: true,
         pinSpacing: false,
         scrub: true,
-        markers: true,
+        markers: false,
       }
     });
     tl.to('.envelope', {

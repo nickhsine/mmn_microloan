@@ -93,16 +93,34 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
       // smoothChildTiming: true,
     });
 
-    let contract_x;
+    let phone_Yoffset: number, 
+        calculator_Yoffset: number,
+        contract_Xoffset: number, 
+        contract_Yoffset: number;
 
     if (width < 768) {
-      contract_x = '-25vw';
-    } else if (width < 1024) {
-      contract_x = '-25vw';
-    } else if (width < 1440) {
-      contract_x = 0;
-    } else {
-      contract_x = 0;
+      phone_Yoffset = 0;
+      calculator_Yoffset = 0;
+      contract_Xoffset = -25;
+      contract_Yoffset = 5;
+    } 
+    else if (width < 1024) {
+      phone_Yoffset = 5;
+      calculator_Yoffset = 5;
+      contract_Xoffset = -25;
+      contract_Yoffset = 5;
+    } 
+    else if (width < 2048) {
+      phone_Yoffset = 5;
+      calculator_Yoffset = 5;
+      contract_Xoffset = 0;
+      contract_Yoffset = 5;
+    } 
+    else {
+      phone_Yoffset = 0;
+      calculator_Yoffset = 0;
+      contract_Xoffset = 0;
+      contract_Yoffset = 5;
     }
 
     // INITIAL STATE
@@ -138,7 +156,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     // Animation Time Positioning
     RefFromTo(misshTL, phoneRef.current, 
       { x: '50vw', y: '100vh', rotation: 20 }, 
-      { x: 0, y: 0, rotation: 0, duration: 1 }, 
+      { x: 0, y: `${phone_Yoffset}vh`, rotation: 0, duration: 1 }, 
       6
     );
     AddStartTL(misshTL, phoneCallRef_1.current, '>-1');
@@ -162,29 +180,29 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
 
     RefFromTo(misshTL, contractRef_A.current, 
       { x: '-100vw', y: '-100vh', rotation: -90 }, 
-      { x: contract_x, y: '5vh', rotation: 5, duration: 2 }, '>-1'
+      { x: `${contract_Xoffset}vw`, y: `${contract_Yoffset+10}vh`, rotation: 5, duration: 2 }, '>-1'
     );
     RefFromTo(misshTL, contractRef_B.current, 
       { x: '-100vw', y: '100vh', rotation: 90 }, 
-      { x: contract_x, y: '15vh', rotation: -5, duration: 2 }, '<-0.25'
+      { x: `${contract_Xoffset}vw`, y: `${contract_Yoffset+22}vh`, rotation: -5, duration: 2 }, '<-0.25'
     );
     RefFromTo(misshTL, phoneRef.current, 
-      { x: 0, y: 0, rotation: 0 }, 
-      { x: '35vw', y: 0, rotation: 5, duration: 1 }, '<1'
+      { x: 0, y: `${phone_Yoffset}vh`, rotation: 0 }, 
+      { x: '35vw', y: `${phone_Yoffset}vh`, rotation: 5, duration: 1 }, '<1'
     );
     AddStartTL(misshTL, contractRef_A.current, '>1');
     AddStartTL(misshTL, contractRef_B.current, '<');   
     RefFromTo(misshTL, contractRef_A.current, 
-      { x: contract_x, y: '5vh', rotation: 5 }, 
-      { x: '-35vw', y: '10vh', rotation: -20, duration: 3 }, '>2'
+      { x: `${contract_Xoffset}vw`, y: `${contract_Yoffset+5}vh`, rotation: 5 }, 
+      { x: `${contract_Xoffset-15}vw`, y: `${contract_Yoffset+10}vh`, rotation: -20, duration: 3 }, '>2'
     );
     RefFromTo(misshTL, contractRef_B.current, 
-      { x: contract_x, y: '15vh', rotation: -5 }, 
-      { x: '-5vw', y: '5vh', rotation: 10, duration: 3 }, '<'
+      { x: `${contract_Xoffset}vw`, y: `${contract_Yoffset+15}vh`, rotation: -5 }, 
+      { x: `${contract_Xoffset+15}vw`, y: `${contract_Yoffset+5}vh`, rotation: 10, duration: 3 }, '<'
     ); 
     RefFromTo(misshTL, calculatorRef.current, 
       { x: '-50vw', y: '100vh', rotation: -10 }, 
-      { x: 0, y: 0, rotation: -2, duration: 2 }, '<'
+      { x: 0, y: `${calculator_Yoffset}vh`, rotation: -2, duration: 2 }, '<'
     );
 
     // 1st loan calculation
@@ -216,12 +234,12 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, resultRef_2a.current, '<');
 
     RefFromTo(misshTL, calculatorRef.current, 
-      { x: 0, y: 0, rotation: -2, zIndex: 1 }, 
-      { x: '-20vw', y: '5vh', rotation: -5, zIndex: 1, duration: 1 }, '>1'
+      { x: 0, y: `${calculator_Yoffset}vh`, rotation: -2, zIndex: 1 }, 
+      { x: '-20vw', y: `${calculator_Yoffset}vh`, rotation: -5, zIndex: 1, duration: 1 }, '>1'
     );
     RefFromTo(misshTL, phoneRef.current, 
-      { x: '35vw', y: 0, rotation: 5, zIndex: 1 }, 
-      { x: `15vw`, y: `5vh`, rotation: 5, zIndex: 2, duration: 1 }, '<'
+      { x: '35vw', y: `${phone_Yoffset}vh`, rotation: 5, zIndex: 1 }, 
+      { x: '15vw', y: `${phone_Yoffset}vh`, rotation: 5, zIndex: 2, duration: 1 }, '<0.25'
     );
     RefFromTo(misshTL, messagesAppRef.current, 
       { opacity: 1, scale: 1 }, 
@@ -239,20 +257,20 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddEndTL(misshTL, telepromterRef_3.current, '>4');
     
     RefFromTo(misshTL, contractRef_A.current, 
-      { x: '-35vw', y: '10vh', rotation: -20 }, 
-      { x: '-55vw', y: '10vh', rotation: -10, duration: 3 }, '>2'
+      { x: `${contract_Xoffset-15}vw`, y: `${contract_Yoffset+10}vh`, rotation: -20 }, 
+      { x: `${contract_Xoffset-30}vw`, y: `${contract_Yoffset+10}vh`, rotation: -10, duration: 3 }, '>2'
     );
     RefFromTo(misshTL, contractRef_B.current, 
-      { x: '-5vw', y: '5vh', rotation: 10 }, 
-      { x: '25vw', y: '5vh', rotation: 10, duration: 3 }, '<'
+      { x: `${contract_Xoffset+15}vw`, y: `${contract_Yoffset+5}vh`, rotation: 10 }, 
+      { x: `${contract_Xoffset+30}vw`, y: `${contract_Yoffset+5}vh`, rotation: 10, duration: 3 }, '<'
     ); 
     RefFromTo(misshTL, contractRef_C1.current, 
-      { x: 0, y: '150vh', rotation: 10 }, 
-      { x: '-30vw', y: '0vh', rotation: -3, duration: 3 }, '<'
+      { x: `${contract_Xoffset}vw`, y: '150vh', rotation: 10 }, 
+      { x: `${contract_Xoffset-10}vw`, y: `${contract_Yoffset+0}vh`, rotation: -3, duration: 3 }, '<'
     ); 
     RefFromTo(misshTL, contractRef_C2.current, 
-      { x: 0, y: '150vh', rotation: -10 }, 
-      { x: '-5vw', y: '5vh', rotation: 3, duration: 3 }, '<'
+      { x: `${contract_Xoffset}vw`, y: '150vh', rotation: -10 }, 
+      { x: `${contract_Xoffset+15}vw`, y: `${contract_Yoffset+5}vh`, rotation: 3, duration: 3 }, '<'
     ); 
 
     AddEndTL(misshTL, highlightUpdateRef_2T.current, '>');
@@ -282,8 +300,8 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, resultRef_4a.current, '<');
 
     RefFromTo(misshTL, phoneRef.current, 
-      { x: `15vw`, y: `5vh`, rotation: 5, zIndex: 2 }, 
-      { x: `15vw`, y: `5vh`, rotation: 5, zIndex: 2, duration: 1 }, '>3'
+      { x: '15vw', y: `${phone_Yoffset}vh`, rotation: 5, zIndex: 2 }, 
+      { x: '15vw', y: `${phone_Yoffset}vh`, rotation: 5, zIndex: 2, duration: 1 }, '>3'
     );
 
     if (ref && typeof ref !== 'function') {
@@ -390,7 +408,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg} />
-              <img className="photo" src={'./assets/img/messageImg_1A.jpg'} />
+              <img className="photo" src="./assets/img/messageImg_1A.jpg" />
               <span>17:42</span>
             </div>
             <div className="messageRecieve">
@@ -426,7 +444,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageSent">
               <span>17:48</span>
-              <img className="photo" src={'./assets/img/messageImg_1B.png'} />
+              <img className="photo" src="./assets/img/messageImg_1B.png" />
             </div>
           </Messages>
         </MessagesApp>
