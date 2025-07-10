@@ -98,6 +98,8 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     if (width < 768) {
       contract_x = '-25vw';
     } else if (width < 1024) {
+      contract_x = '-25vw';
+    } else if (width < 1440) {
       contract_x = 0;
     } else {
       contract_x = 0;

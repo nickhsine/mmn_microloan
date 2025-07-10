@@ -39,7 +39,7 @@ export const Title = forwardRef<TimelineHandle>((_, ref) => {
       <h1>債務為什麼越滾越多</h1>
       <div className="subtitle">
         <hr />
-        <h2>兩位債務人的債務迷宮</h2>
+        <h2>兩位借款人的債務迷宮</h2>
       </div>
     </div>
   );
