@@ -118,7 +118,7 @@ p.caption {
   backdrop-filter: blur(10px);
   text-align: left;
   z-index: 10;
-  left: 25vw;
+  left: 15vw;
   top: 30vh;
   transform: translate(-50%, -50%);
   box-shadow: inset 1px 1px 3px 0 hsla(0, 0%, 100%, 1);
@@ -285,7 +285,13 @@ p.caption.none {
   .calculator { transform: translate(-50%, -50%) scale(0.7); pointer-events: auto;}
 }
 
-@media (min-width: 1024px) and (max-width: 2047px) {
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .phone { transform: translate(-50%, -50%) scale(0.7); pointer-events: auto;}
+  .contract-container { transform: translate(-50%, -50%) scale(1); pointer-events: auto;}
+  .calculator { transform: translate(-50%, -50%) scale(0.55); pointer-events: auto;}
+}
+
+@media (min-width: 1440px) and (max-width: 2047px) {
   .phone { transform: translate(-50%, -50%) scale(0.7); pointer-events: auto;}
   .contract-container { transform: translate(-50%, -50%) scale(1); pointer-events: auto;}
   .calculator { transform: translate(-50%, -50%) scale(0.65); pointer-events: auto;}

@@ -110,6 +110,12 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
       contract_Xoffset = -25;
       contract_Yoffset = 5;
     } 
+    else if (width < 1440) {
+      phone_Yoffset = 5;
+      calculator_Yoffset = 10;
+      contract_Xoffset = -25;
+      contract_Yoffset = 5;
+    } 
     else if (width < 2048) {
       phone_Yoffset = 5;
       calculator_Yoffset = 5;
