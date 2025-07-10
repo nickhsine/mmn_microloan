@@ -169,7 +169,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, messagesAppRef.current, '<');
     AddStartTL(misshTL, messagesRef.current,  '<1');
     
-    AddStartTL(misshTL, telepromterRef_1.current, '>1');
+    AddStartTL(misshTL, telepromterRef_1.current, '>3');
     AddNoScrubTL(misshTL, telepromterRef_1.current, '>');
     RefFromTo(misshTL, messagesRef.current, 
       { opacity: 1 },  { opacity: 0.25, duration: 0.5 }, '<'
@@ -331,21 +331,21 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="dialog Recieve">
               <span>台新銀行</span>
-              <p>好的，那我稍後簡訊給您，我們等等加Line聯繫喔！</p>
+              <p>好的，那我稍後簡訊給您，我們等等加LINE聯繫喔！</p>
             </div>
           </Dialogs>
         </PhoneCall>
         <PhoneCall ref={phoneCallRef_3}>
           <div className="call-contact">
             <h3>裕富</h3>
-            <p>融資公司</p>
+            <p>公司</p>
           </div>
           <Dialogs ref={dialogsRef_3}>
             <div className="dialog Recieve" style={{ alignSelf: 'center' }}>
               <p>2023年2月裕富資融主動來電</p>
             </div>
             <div className="dialog Recieve" style={{ alignSelf: 'center' }}>
-              <p>說明因蕭小姐「還款狀況正常」</p>
+              <p>說明因Ｈ小姐「還款狀況正常」</p>
             </div>
             <div className="dialog Recieve" style={{ alignSelf: 'center', textAlign: 'center' }}>
               <p>邀請她進行「增貸」35萬元</p>
@@ -362,7 +362,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
           ref={notificationRef_1}
           app="Messages"
           title="涂專員"
-          time="17:30"
+          time="09:50"
           message="Ｈ小姐您好，我是剛剛跟您聯繫的涂專員"
         ></Notification>
         <MessagesApp ref={messagesAppRef} name="涂專員">
@@ -370,10 +370,10 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg} />
               <p>Ｈ小姐您好，我是剛剛跟您聯繫的涂專員</p>
-              <span>17:30</span>
+              <span>09:50</span>
             </div>
             <div className="messageSent">
-              <span>17:31</span>
+              <span>09:51</span>
               <p>你好</p>
             </div>
             <div className="messageRecieve">
@@ -388,18 +388,18 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
                 1.雙證件正反面 <br />
                 2.近期信用卡帳單明細 <br />
                 3.撥款給您的存摺封面 <br />
-                4.信用卡卡面（安全碼請遮蔽 <br />
+                4.信用卡卡號面（安全碼請遮蔽 <br />
                 5.健保明細
               </p>
-              <span>17:32</span>
+              <span>10:00</span>
             </div>
             <div className="messageRecieve">
               <img className="avatar blank" src={messageAvatarImg} />
               <p>這是我們的方案，給您參考一下</p>
-              <span>17:32</span>
+              <span>10:00</span>
             </div>
             <div className="messageSent">
-              <span>17:40</span>
+              <span>10:06</span>
               <p>
                 不好意思
                 <br />
@@ -409,15 +409,15 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg} />
               <img className="photo" src="./assets/img/messageImg_1A.jpg" />
-              <span>17:42</span>
+              <span>10:08</span>
             </div>
             <div className="messageRecieve">
               <img className="avatar blank" src={messageAvatarImg} />
               <p>這樣做使用</p>
-              <span>17:42</span>
+              <span>10:08</span>
             </div>
             <div className="messageSent">
-              <span>17:45</span>
+              <span>10:10</span>
               <p>不好意思，可以再說一次你們是和哪幾家合作嗎？抱歉因為剛剛有一點聽不清楚全部？</p>
             </div>
             <div className="messageRecieve">
@@ -426,24 +426,24 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
                 　　　　　　　　　　<br />　　　　　　　　　　<br />
                 　　　　　　　　　　<br />　　　　　　　　　　<br />
               </p>
-              <span>17:46</span>
+              <span>10:33</span>
             </div>
             <div className="messageRecieve">
               <img className="avatar blank" src={messageAvatarImg} />
               <p>在空白處簽名回傳給我，就可以幫您跑貸款流程了。</p>
-              <span>17:47</span>
+              <span>10:33</span>
             </div>
             <div className="messageSent">
-              <span>17:48</span>
+              <span>10:48</span>
               <p>請問這是汽機車貸款的意思嗎？但是我沒有要買汽機車</p>
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg} />
               <p>這就是商品貸的意思</p>
-              <span>17:50</span>
+              <span>10:50</span>
             </div>
             <div className="messageSent">
-              <span>17:48</span>
+              <span>11:03</span>
               <img className="photo" src="./assets/img/messageImg_1B.png" />
             </div>
           </Messages>
@@ -452,7 +452,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
           ref={notificationRef_2}
           app="Messages"
           title="涂專員"
-          time="17:30"
+          time="09:30"
           message="您好，您申請裕富資融25萬汽機車貸款，貸款核定已通過。" 
         ></Notification>
       </Phone>
@@ -600,7 +600,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
       >
         <p className="telepromter-speaker">Ｈ小姐（聲音經過變聲處理）</p>
         <p className="telepromter-script">
-          其實，那時候我對融資公司沒有說很熟，所以我不太清楚那是什麼。資料繳出去後，他有提到，如果妳中途不辦了，可能會有毀約金的部分。
+          其實，那時候我對融資公司沒有說很熟，所以我不太清楚那是什麼。資料繳出去後，他有提到，如果妳中途不辦了，可能會有毀約金的部分，所以就是一定得辦。
         </p>
       </Telepromter>
       <Telepromter ref={telepromterRef_3} 
@@ -609,7 +609,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
       >
         <p className="telepromter-speaker">Ｈ小姐（聲音經過變聲處理）</p>
         <p className="telepromter-script">
-          他說可以清償第一筆（債務），把第一筆繳掉。然後還會有多餘的錢可以使用，所以才去申請。
+          他（裕富）說可以清償第一筆（債務），把第一筆繳掉。然後還會有多餘的錢可以使用，所以才去申請。
         </p>
       </Telepromter>
     </section>

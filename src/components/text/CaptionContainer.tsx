@@ -50,30 +50,30 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
 
   return (
     <div className="caption-container" ref={containerRef}>
-      <Caption category="normal" startAt={6.85} style={{ top: '70vh', left: '80vw' }}>
+      <Caption category="normal" startAt={6.45} style={{ top: '70vh', left: '80vw' }}>
         從未申請過銀行貸款的Ｈ小姐，在訊息中再三與對方確認身分，卻沒有得到正面答覆。直到資料全部繳交後，對方才回覆，自己是協助辦理貸款的代辦公司。
       </Caption>
       <Caption category="normal" startAt={8.3}>
-        蕭小姐是和裕富資融股份有限公司申請貸款，並由尼亞斯國際有限公司代辦，必須額外收取一筆代辦費。
+        Ｈ小姐是和裕富資融股份有限公司申請貸款，並由尼亞斯國際有限公司代辦，必須額外收取一筆代辦費。
       </Caption>
       <Caption category="normal" startAt={8.6} style={{ top: '35vh' }}>
         而雖然貸款金額為25萬，實際撥款金額是以申辦單位（裕富資融）核貸為準。
       </Caption>
       <Caption category="normal" startAt={12} style={{ top: '50vh' }}>
-        扣除手續費與代辦費用，蕭小姐最後實拿約20萬3,985元。
+        扣除手續費與代辦費用，Ｈ小姐最後實拿約20萬3,985元。
       </Caption>
       <Caption category="normal" startAt={13.2} style={{ top: '65vh' }}>
-        每期繳納7,075元還款（共48期），實際負債金額為33萬9,600元。經《報導者》試算還款利率，本筆借貸利率為31.4%，高於民法上限融資公司設定的16%。
+        每期繳納7,075元還款（共48期），實際負債金額為33萬9,600元。經《報導者》試算還款利率，本筆借貸利率為31.4%，高於《民法》規定的16%借貸上限。
       </Caption>
 
       <Caption category="normal" startAt={13.6}>
-        Ｈ小姐因身體不好，選擇排班兼職工作。每月不穩定的薪水，必須負擔生活費、醫療費以及債務，即是十分積極每月穩定還款，但生活的壓力越來越大......
+        Ｈ小姐因身體不好，選擇排班兼職工作。每月不穩定的薪水，必須負擔生活費、醫療費以及債務，即使十分積極每月穩定還款，但生活的壓力愈來愈大......
       </Caption>
       <Caption category="normal" startAt={17}>
-        蕭小姐決定申請新一筆35萬貸款，希望減輕前述債務壓力。
+        Ｈ小姐決定申請新一筆35萬貸款，希望減輕前述債務壓力。
       </Caption>
       <Caption category="normal" startAt={18.8}>
-        然而，申請一筆新貸款，需重新承擔內扣與手續費用；提前清償債務，更有違約金的產生。35萬元的貸款，Ｈ小姐最後僅實拿53,075元，卻完全不知道衍生費用的確切金額。
+        申請一筆新貸款，須重新承擔內扣與手續費用；提前清償上一筆債務，也可能得負擔違約金。
       </Caption>
       <Caption category="normal" startAt={19.5}>
        每月還款金額提升至9,100元，長達54期，總債務來到49萬1,400元。
