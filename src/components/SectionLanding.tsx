@@ -69,7 +69,7 @@ export const SectionLanding = forwardRef<gsap.core.Timeline>((_, ref) => {
         <p>即使留有通話紀錄、LINE訊息與紙本合約，債務人仍可能在高度分工、資訊破碎的借貸系統中迷失方向，難以看清整個借貸流程的全貌。</p>
       </Brief>
       <Brief ref={briefRefL} type="light">
-        <p>2022年，疫情時遭裁員的Ｈ小姐，眼看生活費即將見底，恰巧接到銀行來電詢問借款需求。沒想到，卻捲入無盡的「銀行」來電</p>
+        <p>2022年，疫情時遭裁員的Ｈ小姐，眼看生活費即將見底，恰巧接到「銀行」來電詢問借款需求。沒想到卻捲入無盡的債務漩渦⋯⋯</p>
       </Brief>
     </section>
   );
