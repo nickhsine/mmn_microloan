@@ -19,6 +19,7 @@ type NoScrubAnimation = {
   exitOffset: number;
   currentTL: gsap.core.Timeline | null;
   isActive: boolean;
+  hasPlayed: boolean; // 新增：追蹤動畫是否已經播放過
 };
 
 const noScrubRegistry = new Map<gsap.core.Timeline, NoScrubAnimation[]>();
@@ -178,7 +179,8 @@ export const AddNoScrubTL = (
     labelName,
     exitOffset,
     currentTL: null,
-    isActive: false
+    isActive: false,
+    hasPlayed: false // 初始化 hasPlayed 為 false
   };
 
   // 將動畫添加到註冊表
@@ -205,8 +207,8 @@ const setupNoScrubUpdateCallback = (parentTimeline: gsap.core.Timeline) => {
       const labelPos = getLabelProgress(parentTimeline, animation.labelName);
       const exitPos = labelPos + animation.exitOffset;
       
-      // 觸發動畫
-      if (direction > 0 && progress >= labelPos && progress < exitPos && !animation.isActive) {
+      // 觸發動畫（只有在未播放過且不活躍時才觸發）
+      if (direction > 0 && progress >= labelPos && progress < exitPos && !animation.isActive && !animation.hasPlayed) {
         playNoScrubAnimation(animation);
       }
       
@@ -220,6 +222,10 @@ const setupNoScrubUpdateCallback = (parentTimeline: gsap.core.Timeline) => {
         else if (direction > 0 && progress > exitPos) {
           fastForwardNoScrubAnimation(animation);
         }
+      }
+      // 即使動畫不活躍，也檢查是否需要重置（處理已播放但需要重置的情況）
+      else if (animation.hasPlayed && direction < 0 && progress < labelPos) {
+        resetNoScrubAnimation(animation);
       }
     });
   });
@@ -236,6 +242,7 @@ const playNoScrubAnimation = (animation: NoScrubAnimation) => {
   if (animation.isActive) return;
   
   animation.isActive = true;
+  animation.hasPlayed = true; // 開始播放時立即設置為已播放，防止重複觸發
   const tlFunction = animation.ref.createNoScrubTimeline || animation.ref.createStartTimeline;
   
   if (tlFunction) {
@@ -264,6 +271,7 @@ const resetNoScrubAnimation = (animation: NoScrubAnimation) => {
     }
   }
   animation.isActive = false;
+  animation.hasPlayed = false; // 重置 hasPlayed 狀態
 };
 
 // 快進 noScrub 動畫
@@ -278,6 +286,7 @@ const fastForwardNoScrubAnimation = (animation: NoScrubAnimation) => {
     }
     animation.isActive = false;
     animation.currentTL = null;
+    animation.hasPlayed = true; // 設置為已播放
   }
 };
 
