@@ -101,7 +101,7 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
       <Caption category="normal" startAt={32}>
       由於10萬元現金周轉衍生高額的服務費用，也讓米奇開始擔心，債務整合的服務費金額。
       </Caption>
-      <Caption category="normal" startAt={32}>
+      <Caption category="normal" startAt={32.5}>
       米奇申請的債務整合服務，需要收取15%，近11萬元服務費......
       </Caption>
       <Caption category="normal" startAt={34}>
@@ -110,19 +110,19 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
       <Caption category="normal" startAt={34.2} stayFor={1} style={{ left: '30vw', top: '25vh' }}>
       米奇向第一國際申請10萬元手機貸款
       </Caption>
-      <Caption category="normal" startAt={34.3} stayFor={1} style={{ left: '30vw', top: '35vh' }}>
+      <Caption category="normal" startAt={34.3} stayFor={1} style={{ left: '35vw', top: '35vh' }}>
       內扣手續費15,350元後
       </Caption>
       <Caption category="normal" startAt={34.4} stayFor={1} style={{ left: '30vw', top: '45vh' }}>
       實際核發84,470元
       </Caption>
-       <Caption category="normal" startAt={34.5} stayFor={1} style={{ left: '30vw', top: '55vh' }}>
+       <Caption category="normal" startAt={34.5} stayFor={1} style={{ left: '35vw', top: '55vh' }}>
       被王道國際要求全數匯出作為服務費
       </Caption>
       <Caption category="normal" startAt={34.6} stayFor={1} style={{ left: '30vw', top: '65vh' }}>
       債務整合尚未開始，又新增一筆13萬635元債務
       </Caption>
-      <Caption category="normal" startAt={35.1} style={{ left: '70vw', top: '70vh' }}>
+      <Caption category="normal" startAt={35} style={{ left: '65vw', top: '75vh' }}>
       三個月後......
       </Caption>
       <Caption category="normal" startAt={40}>
