@@ -208,10 +208,13 @@
   box-shadow: 0 0 50px 0 hsla(0, 0%, 0%, 0.2);
   border-radius: var(--phone-roundness) var(--phone-roundness) 0 0;
 }
-
 .messages-app .app-header .material-symbols-outlined {
   font-size: var(--text-2xl);
   color: hsla(0, 0%, 60%, 1);
+}
+.messages-app .app-header .sender-name {
+  font-size: var(--text-lg);
+  font-weight: 500;
 }
 
 .messages-app .app-footer {

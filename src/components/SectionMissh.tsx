@@ -99,6 +99,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
         contract_Yoffset: number,
         phone_offscreen_1: number,
         phone_offscreen_2: number,
+        calculator_Xoffset: number,
         calculator_offscreen_1: number;
 
     if (width < 768) {
@@ -109,6 +110,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
       calculator_offscreen_1 = -80;
       contract_Xoffset = -25;
       contract_Yoffset = 5;
+      calculator_Xoffset = -12;
     } 
     else if (width < 1024) {
       phone_Yoffset = 5;
@@ -118,6 +120,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
       calculator_offscreen_1 = 0;
       contract_Xoffset = -25;
       contract_Yoffset = 5;
+      calculator_Xoffset = 0;
     } 
     else if (width < 1440) {
       phone_Yoffset = 5;
@@ -127,6 +130,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
       calculator_offscreen_1 = 0;
       contract_Xoffset = 0;
       contract_Yoffset = 5;
+      calculator_Xoffset = 0;
     } 
     else if (width < 2048) {
       phone_Yoffset = 5;
@@ -136,6 +140,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
       calculator_offscreen_1 = 0;
       contract_Xoffset = 0;
       contract_Yoffset = 5;
+      calculator_Xoffset = 0;
     } 
     else {
       phone_Yoffset = 0;
@@ -145,6 +150,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
       calculator_offscreen_1 = 0;
       contract_Xoffset = 0;
       contract_Yoffset = 5;
+      calculator_Xoffset = 0;
     }
 
     // INITIAL STATE
@@ -288,6 +294,10 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
       { x: `${contract_Xoffset+15}vw`, y: `${contract_Yoffset+5}vh`, rotation: 10 }, 
       { x: `${contract_Xoffset+30}vw`, y: `${contract_Yoffset+5}vh`, rotation: 10, duration: 3 }, '<'
     ); 
+    RefFromTo(misshTL, calculatorRef.current, 
+      { x: `${calculator_offscreen_1+15}vw`, y: `${calculator_Yoffset}vh`, rotation: 2, zIndex: 1 }, 
+      { x: `${calculator_Xoffset+15}vw`, y: `${calculator_Yoffset}vh`, rotation: 2, zIndex: 1, duration: 1 }, '<'
+    );
     RefFromTo(misshTL, contractRef_C1.current, 
       { x: `${contract_Xoffset}vw`, y: '150vh', rotation: 10 }, 
       { x: `${contract_Xoffset-10}vw`, y: `${contract_Yoffset+0}vh`, rotation: -3, duration: 3 }, '<'
@@ -324,8 +334,8 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, resultRef_4a.current, '<');
 
     RefFromTo(misshTL, phoneRef.current, 
-      { x: '-15vw', y: `${phone_Yoffset}vh`, rotation: -5, zIndex: 2 }, 
-      { x: '-15vw', y: `${phone_Yoffset}vh`, rotation: -5, zIndex: 2, duration: 1 }, '>3'
+      { x: `${phone_offscreen_2-15}vw`, y: `${phone_Yoffset}vh`, rotation: -5, zIndex: 2 }, 
+      { x: `${phone_offscreen_2-15}vw`, y: `${phone_Yoffset}vh`, rotation: -5, zIndex: 2, duration: 1 }, '>3'
     );
 
     if (ref && typeof ref !== 'function') {

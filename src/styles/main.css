@@ -244,14 +244,24 @@ p.caption.none {
 .brief p {
   margin: 10px 0;
 }
+.brief p.about {
+  color: var(--color-gray-500);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  text-align: center;
+  background-color: transparent;
+  box-shadow: none;
+}
 
 
 /* Responsive */
 @media (max-width: 767px) {
   html { scroll-behavior: normal; font-size: 14px; }
-  p.caption { left: 50vw; top: 20vh; }
+  p.caption { left: 50vw; top: 70vh; }
   
   .landing-title { width: 80%; }
+  .landing-title h1  { font-size: 2.35rem; }
+  .landing-title .subtitle h2  { font-size: 1.35rem; }
   .brief { width: 80vw; gap: 5px; }
   .brief.dark { max-width: 100vw; }
   .brief.dark p { padding: 10px 15px; }
@@ -273,6 +283,9 @@ p.caption.none {
   .call .call-background { bottom: 40px; }
   .call .call-button { bottom: 45px; }
   .messages-app .messages img.avatar { width: 32px; height: 32px;}
+  .messages-app .app-header .sender-name {
+    font-size: var(--text-base);
+  }
 
   .calculator { 
     transform: translate(-50%, -50%) scale(0.5); 

@@ -49,7 +49,7 @@ export const MessagesApp = forwardRef<TimelineHandle, MessagesAppProps>(
         <div className="app-header">
           <div className="flex items-center gap-2">
             <span className="material-symbols-outlined">arrow_back_ios_new</span>
-            <span className="text-lg font-medium">{name}</span>
+            <span className="sender-name">{name}</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="material-symbols-outlined">search</span>

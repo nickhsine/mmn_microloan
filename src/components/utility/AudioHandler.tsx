@@ -78,10 +78,11 @@ export const AudioHandler = ({ markers }: AudioHandlerProps) => {
   return (
     <>
       <div className="audio-handler-full">
-        <p>本文含聲音敘事，開啟聲音以獲得完整閱讀體驗</p>
+        <p className="audio-instruction">本文含聲音敘事，開啟聲音以獲得完整閱讀體驗</p>
         <div onClick={handleToggle} style={{ cursor: 'pointer', width: '104px', height: '36px' }}>
           <FullRiveComponent />
         </div>
+        <p className="draggable-instruction">以下多媒體物件可自由拖曳，輔助閱讀</p>
       </div>
 
       {createPortal(

@@ -294,7 +294,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
               <p>收到款項了</p>
             </div>
             <div className="messageRecieve">
-              <img className="avatar blank" src={messageAvatarImg_2} />
+              <img className="avatar" src={messageAvatarImg_2} />
               <p>好的，我們公司服務費＋對保費，麻煩等等幫我匯款一下喔。</p>
               <span>12:32</span>
             </div>
