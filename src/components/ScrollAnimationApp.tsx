@@ -13,7 +13,7 @@ export const ScrollAnimationApp = () => {
   const misshTL = useRef<gsap.core.Timeline | null>(null);
   const mickeyTL = useRef<gsap.core.Timeline | null>(null);
   const masterTL = useRef<gsap.core.Timeline | null>(null);
-
+  // scrubValue for timeline speed
   const scrubValue = 5;
 
   useEffect(() => {
