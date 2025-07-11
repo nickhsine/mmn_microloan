@@ -525,7 +525,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
         {/* 3rd loan calculation */}
         <Details ref={detailsRef_3} stagger={3}>
           <div className="content">
-            <span className="title">內扣 ?（裕富資融）</span>
+            <span className="title">內扣</span>
             <span className="number">-$?????</span>
           </div>
           <div className="content">

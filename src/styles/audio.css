@@ -1,7 +1,7 @@
 /* Audio Handler */
 .audio-handler-full {
   position: absolute;
-  bottom: 10vh;
+  top: 80vh;
   right: 50vw;
   transform: translate(50%, 0%);
   display: flex;
@@ -20,10 +20,11 @@
   position: fixed;
   bottom: 50px;
   right: 50px;
-  transform: translate(0%, 0%);
+  transform: translate(-50%, -50%);
   z-index: 10;
   opacity: 0;
   pointer-events: none;
+  width: fit-content;
 }
 
 /* Telepromter */

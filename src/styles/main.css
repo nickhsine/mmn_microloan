@@ -36,7 +36,7 @@ body::-webkit-scrollbar {
   --text-2xl: 1.5rem;
   --text-3xl: 1.75rem;
   --text-4xl: 2rem;
-  --text-5xl: 3.5rem;
+  --text-5xl: 2.5rem;
 
   --color-gray-50: hsl(0, 0%, 95%);
   --color-gray-100: hsl(0, 0%, 90%);
@@ -53,9 +53,9 @@ body::-webkit-scrollbar {
   --color-main-500: hsl(40, 100%, 50%);
   --color-main-300: hsl(40, 100%, 30%);
 
-  --landing-height: 100vh;
-  --missh-height: 900vh;
-  --mickey-height: 700vh;
+  --landing-height: 200vh;
+  --missh-height: 1800vh;
+  --mickey-height: 1400vh;
 }
 ::selection {
   background-color: hsla(40, 100%, 50%, 0.55);
@@ -258,16 +258,27 @@ p.caption.none {
   .brief.light { max-width: 70vw; }
   .brief.light p { padding: 10px 15px; }
 
+  .audio-handler-simple {
+    bottom: 55px;
+    left: 50%;
+  }
+
   .phone {
-    transform: translate(-50%, -50%) scale(0.7);
+    transform: translate(-50%, -50%) scale(0.85);
     pointer-events: none;
+    height: calc(var(--phone-height) * 0.75);
+    width: calc(var(--phone-width) * 0.75);
   }
-  .contract-container {
-    transform: translate(-50%, -50%) scale(0.6);
-    pointer-events: none;
+  /* .call .call-background {
+    height: 80px;
   }
+  .call .call-button {
+    width: 70px;
+    height: 70px;
+  } */
+
   .calculator { 
-    transform: translate(-50%, -50%) scale(0.7); 
+    transform: translate(-50%, -50%) scale(0.5); 
     pointer-events: none;
   }
 }
