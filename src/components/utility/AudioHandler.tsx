@@ -12,7 +12,6 @@ interface AudioHandlerProps {
 
 export let globalAudioEnabled = false;
 
-// 簡易行動裝置偵測，用來決定是否啟用 Rive 的 autoBind（桌機保留 Hover 效果，手機避免卡在 Hover 狀態）
 const isMobile = () =>
   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent
@@ -20,12 +19,11 @@ const isMobile = () =>
 
 const useAudioRive = (artboard: string) => {
   const { RiveComponent, rive } = useRive({
-    src: './assets/rive/shared-audiohandler.riv',
+    src: 'https://storytelling-storage.twreporter.org/files/audiohandler-u5x111bYDH2P.riv',
     stateMachines: 'State Machine 1',
     artboard,
     autoplay: true,
     autoBind: true,
-    // 行動裝置停用 Rive Listeners（hover / pointer）以避免 hover 卡住
     shouldDisableRiveListeners: isMobile(),
   });
 
@@ -42,10 +40,6 @@ export const AudioHandler = ({ markers }: AudioHandlerProps) => {
     globalAudioEnabled = !globalAudioEnabled;
 
     window.dispatchEvent(new CustomEvent('audioToggle'));
-
-    // 首次開啟聲音時，由於這個 onClick 具備使用者手勢，
-    // 派發一個 audioUnlock，讓所有 AudioPlayer 先以 muted 方式播放／暫停，
-    // 進而取得後續程式播放權限（iOS/Safari & Chrome）。
     if (globalAudioEnabled) {
       window.dispatchEvent(new Event('audioUnlock'));
     }
@@ -58,10 +52,8 @@ export const AudioHandler = ({ markers }: AudioHandlerProps) => {
 
     setInputValue(fullStateInput);
 
-    // Simple Rive 可能尚未載入完畢，延遲嘗試一次確保狀態同步
     setTimeout(() => setInputValue(simpleStateInput), 50);
 
-    // 行動裝置已停用 Rive Listeners，上述 hover 卡住問題已排除
   };
 
   useGSAP(() => {

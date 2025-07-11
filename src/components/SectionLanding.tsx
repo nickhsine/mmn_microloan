@@ -42,13 +42,6 @@ export const SectionLanding = forwardRef<gsap.core.Timeline>((_, ref) => {
       color: 'var(--color-gray-800)', duration: 1, ease: 'power1.out' 
     }, '<');
 
-    // safeGsapTo(landingTL, briefRefD.current,{ 
-    //   filter: 'blur(20px)', opacity: 0, duration: 2, ease: 'power1.out' 
-    // }, '>3');
-    // safeGsapTo(landingTL, briefRefL.current, { 
-    //   filter: 'blur(20px)', opacity: 0, duration: 2, ease: 'power1.out' 
-    // }, '<');
-
     AddEndTL(landingTL, briefRefD.current, '>5');
     AddEndTL(landingTL, briefRefL.current, '<');
     

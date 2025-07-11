@@ -27,7 +27,7 @@ const SUPPORTS_VOLUME_CHANGE = (() => {
 })();
 
 export const AudioPlayer = forwardRef<ExtendedTimelineHandle, AudioPlayerProps>(
-  ({ audioSrc = './assets/audio/SFX_PhoneVibrate_v1.aac', volume = 0.5, loop = true }, ref) => {
+  ({ audioSrc = 'https://storytelling-storage.twreporter.org/files/SFX-PhoneVibrate-hAOnEKQWnTwn.aac', volume = 0.5, loop = true }, ref) => {
     const audioRef = useRef<HTMLAudioElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const [isPlaying, setIsPlaying] = useState(false);

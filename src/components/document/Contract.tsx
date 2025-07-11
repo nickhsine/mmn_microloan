@@ -23,8 +23,6 @@ export const Contract = forwardRef<TimelineHandle, ContractProps>(
   
         if (!contractRef.current) return;
 
-        // gsap.set(contractRef.current, { x: 0, y: 0 });
-
         Draggable.create(contractRef.current, {
           type: 'x,y',
           inertia: true,

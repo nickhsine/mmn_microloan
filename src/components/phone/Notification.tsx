@@ -31,7 +31,7 @@ export const Notification = forwardRef<TimelineHandle, NotificationProps>(
     const contentRef = useRef<HTMLDivElement>(null);
 
     if (app === 'Messages') {
-      logoSrc = './assets/img/logo_message.svg';
+      logoSrc = 'https://storytelling-storage.twreporter.org/files/logo-message-6SWcHK5x8THX.svg';
     }
 
 

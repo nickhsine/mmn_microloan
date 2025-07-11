@@ -5,25 +5,20 @@ import { useGSAP } from '@gsap/react';
 import { TimelineHandle, RefFromTo, AddStartTL, AddEndTL, AddNoScrubTL } from './utility/TimelineHandle';
 
 import { Phone } from './phone/Phone';
-import { PhoneCall } from './phone/PhoneCall';
-import { Dialogs } from './phone/Dialogs';
 import { Notification } from './phone/Notification';
 import { MessagesApp } from './phone/MessagesApp';
 import { Messages } from './phone/Messages';
 import { PhoneStatic } from './phone/PhoneStatic';
 import { Brief } from './text/Brief';
 import { Telepromter } from './utility/Telepromter';
-import { Calculator } from './calculator/Calculator';
-import { Update } from './calculator/Update';
-import { Details } from './calculator/Details';
 import { Contract } from './document/Contract';
 import useWindowDimensions from './utility/useWindowDimensions';
 
 export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
   const { width } = useWindowDimensions();
   const globalmarks = false;
-  const messageAvatarImg_1 = './assets/img/avatar_B.svg';
-  const messageAvatarImg_2 = './assets/img/avatar_C.svg';
+  const messageAvatarImg_1 = 'https://storytelling-storage.twreporter.org/files/avatar-B-jg3onwo5JV_x.svg';
+  const messageAvatarImg_2 = 'https://storytelling-storage.twreporter.org/files/avatar-C-XTowzTejMf76.svg';
 
   const sectionRef = useRef<HTMLElement | null>(null);
   const briefRefD = useRef<TimelineHandle | null>(null);
@@ -35,53 +30,12 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
   const phoneRef = useRef<TimelineHandle | null>(null);
   const phoneStaticRef_1 = useRef<TimelineHandle | null>(null);
   const phoneStaticRef_2 = useRef<TimelineHandle | null>(null);
-  // const phoneCallRef = useRef<TimelineHandle | null>(null);
-  // const dialogsRef = useRef<TimelineHandle | null>(null);
   const notificationRef_1 = useRef<TimelineHandle | null>(null);
   const notificationRef_2 = useRef<TimelineHandle | null>(null);
   const messagesAppRef_1 = useRef<TimelineHandle | null>(null);
   const messagesRef_1 = useRef<TimelineHandle | null>(null);
   const messagesAppRef_2 = useRef<TimelineHandle | null>(null);
   const messagesRef_2 = useRef<TimelineHandle | null>(null);
-  // const messagesRef_3 = useRef<TimelineHandle | null>(null);
-  // const messagesRef_4 = useRef<TimelineHandle | null>(null);
-  // const messagesRef_5 = useRef<TimelineHandle | null>(null);
-
-  // const calculatorRef = useRef<TimelineHandle | null>(null);
-  // // detailsRef
-  // const detailsRef_1 = useRef<TimelineHandle | null>(null);
-  // const detailsRef_2 = useRef<TimelineHandle | null>(null);
-  // const detailsRef_3 = useRef<TimelineHandle | null>(null);
-  // const detailsRef_4 = useRef<TimelineHandle | null>(null);
-  // const detailsRef_5 = useRef<TimelineHandle | null>(null);
-  // const detailsRef_6 = useRef<TimelineHandle | null>(null);
-  // const detailsRef_7 = useRef<TimelineHandle | null>(null);
-  // // highlightRef
-  // const highlightUpdateRef_1 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_1T = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_2 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_2T = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_3 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_4 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_5 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_6 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_7 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_8 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_9T = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_9 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_10 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_11 = useRef<TimelineHandle | null>(null);
-  // const highlightUpdateRef_12 = useRef<TimelineHandle | null>(null);
-  // // resultRef
-  // const resultRef_1a = useRef<TimelineHandle | null>(null);
-  // const resultRef_1b = useRef<TimelineHandle | null>(null);
-  // const resultRef_2a = useRef<TimelineHandle | null>(null);
-  // const resultRef_2b = useRef<TimelineHandle | null>(null);
-  // const resultRef_3 = useRef<TimelineHandle | null>(null);
-  // const resultRef_4 = useRef<TimelineHandle | null>(null);
-  // const resultRef_5 = useRef<TimelineHandle | null>(null);
-  // const resultRef_6 = useRef<TimelineHandle | null>(null);
-  // const resultRef_7 = useRef<TimelineHandle | null>(null);
 
   const telepromterRef_1 = useRef<TimelineHandle | null>(null);
   const telepromterRef_2 = useRef<TimelineHandle | null>(null);
@@ -210,8 +164,8 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
       <Contract ref={contractARef} contract="2A" isHighlight={false} />
 
       <Phone ref={phoneRef}>
-        <PhoneStatic ref={phoneStaticRef_1} src="./assets/img/facebook_layout_all.png" />
-        <PhoneStatic ref={phoneStaticRef_2} src="./assets/img/web_consult.png" />
+        <PhoneStatic ref={phoneStaticRef_1} src="https://storytelling-storage.twreporter.org/files/facebook-layout-all-2Vut2b-oSlcr.png" />
+        <PhoneStatic ref={phoneStaticRef_2} src="https://storytelling-storage.twreporter.org/files/web-consult-_fy9YKPx3On0.png" />
         <Notification
           ref={notificationRef_1}
           app="Messages"
@@ -228,7 +182,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageSent">
               <span>16:31</span>
-              <img className="photo" src="./assets/img/messageImg_2A.png" />
+              <img className="photo" src="https://storytelling-storage.twreporter.org/files/messageImg-2A-QZ4c_fysM6uS.png" />
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_1} />
@@ -287,7 +241,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageSent">
               <span>12:30</span>
-              <img className="photo" src="./assets/img/messageImg_2B.png" style={{ width: '200px', boxShadow: 'none' }} />
+              <img className="photo" src="https://storytelling-storage.twreporter.org/files/messageImg-2B-EU2EZwLhR0hC.png" style={{ width: '200px', boxShadow: 'none' }} />
             </div>
             <div className="messageSent">
               <span>12:31</span>
@@ -313,7 +267,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_2} />
-              <img className="photo" src="./assets/img/messageImg_2C.svg" style={{ width: '100px', boxShadow: 'none' }} />
+              <img className="photo" src="https://storytelling-storage.twreporter.org/files/messageImg-2C-w6Pc2DVY0AnV.svg" style={{ width: '100px', boxShadow: 'none' }} />
               <span>13:01</span>
             </div>
             <div className="messageRecieve">
@@ -340,7 +294,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_2} />
-              <img className="photo" src="./assets/img/messageImg_2C.svg" style={{ width: '100px', boxShadow: 'none' }}/>
+              <img className="photo" src="https://storytelling-storage.twreporter.org/files/messageImg-2C-w6Pc2DVY0AnV.svg" style={{ width: '100px', boxShadow: 'none' }}/>
               <span>17:10</span>
             </div>
             <div className="messageRecieve">
@@ -439,7 +393,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
         ></Notification>
       </Phone>
       <Telepromter ref={telepromterRef_1} 
-        audioSrc="./assets/audio/米奇：掉入深淵.aac"
+        audioSrc="https://storytelling-storage.twreporter.org/files/Recording-Mickey-1-rAyZERMAL8_t.aac"
         stagger={0.2}>
         <p className="telepromter-speaker">米奇（聲音經過變聲處理）</p>
         <p className="telepromter-script">
@@ -447,7 +401,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
         </p>
       </Telepromter>
       <Telepromter ref={telepromterRef_2} 
-        audioSrc="./assets/audio/米奇：一些些服務費原來這麼多.aac"
+        audioSrc="https://storytelling-storage.twreporter.org/files/Recording-Mickey-2-hfUrsa-hPnD1.aac"
         stagger={0.2}>
         <p className="telepromter-speaker">米奇（聲音經過變聲處理）</p>
         <p className="telepromter-script">

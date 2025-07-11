@@ -20,8 +20,8 @@ import useWindowDimensions from './utility/useWindowDimensions';
 
 export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
   const globalmarks = false;
-  const messageAvatarImg = './assets/img/avatar_A.svg';
-  const { width, height } = useWindowDimensions();
+  const messageAvatarImg = 'https://storytelling-storage.twreporter.org/files/avatar-A-T8XooKMfr3pO.svg';
+  const { width } = useWindowDimensions();
 
   const sectionRef = useRef(null);
   // phoneRef
@@ -76,7 +76,6 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
   // telepromterRef
   const telepromterRef_1 = useRef<TimelineHandle | null>(null);
   const telepromterRef_2 = useRef<TimelineHandle | null>(null);
-  const telepromterRef_3 = useRef<TimelineHandle | null>(null);
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -193,8 +192,6 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, dialogsRef_1.current, '<5');
     AddEndTL(misshTL, phoneCallRef_1.current, '>2');
     AddStartTL(misshTL, notificationRef_1.current, '>');
-    // AddEndTL(misshTL, notificationRef_1.current, '>');
-    // AddEndTL(misshTL, dialogsRef_1.current, '<');
 
     AddStartTL(misshTL, messagesAppRef.current, '<');
     AddStartTL(misshTL, messagesRef.current,  '<1');
@@ -442,7 +439,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg} />
-              <img className="photo" src="./assets/img/messageImg_1A.jpg" />
+              <img className="photo" src="https://storytelling-storage.twreporter.org/files/messageImg-1A-NQFOCcISn1d1.jpg" />
               <span>10:08</span>
             </div>
             <div className="messageRecieve">
@@ -478,7 +475,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageSent">
               <span>11:03</span>
-              <img className="photo" src="./assets/img/messageImg_1B.png" />
+              <img className="photo" src="https://storytelling-storage.twreporter.org/files/messageImg-1B-Zpimvt1jnIzH.png" />
             </div>
           </Messages>
         </MessagesApp>
@@ -629,7 +626,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
         </div>
       </Calculator>
       <Telepromter ref={telepromterRef_1} 
-        audioSrc="./assets/audio/H小姐：為什麼知道是代辦還是有繼續辦？.aac"
+        audioSrc="https://storytelling-storage.twreporter.org/files/Recording-MissH-1-2MiS0fI0kBfF.aac"
         stagger={0.2}
       >
         <p className="telepromter-speaker">Ｈ小姐（聲音經過變聲處理）</p>
@@ -638,7 +635,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
         </p>
       </Telepromter>
       <Telepromter ref={telepromterRef_2} 
-        audioSrc="./assets/audio/Ｈ小姐：增貸的原因.m4a"
+        audioSrc="https://storytelling-storage.twreporter.org/files/Recording-MissH-2-Ci68jPqpfj5Q.m4a"
         stagger={0.2}
       >
         <p className="telepromter-speaker">Ｈ小姐（聲音經過變聲處理）</p>

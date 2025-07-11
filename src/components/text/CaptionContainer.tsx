@@ -31,7 +31,6 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
     captions.forEach((caption) => {
       const startAt = caption.dataset.start || '0';
       const stayFor = caption.dataset.stay || '0.15';
-      // const stayFor = caption.dataset.stay || '0.1';
 
       const randomRotate = Math.random() * 10 - 5;
 

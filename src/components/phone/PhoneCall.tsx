@@ -119,11 +119,11 @@ export const PhoneCall = forwardRef<TimelineHandle, PhoneCallProps>(({ children 
       <AudioPlayer
         ref={audioPlayerRef}
         volume={0.2}
-        audioSrc="./assets/audio/SFX_PhoneVibrate_v2.aac"
+        audioSrc="https://storytelling-storage.twreporter.org/files/SFX-PhoneVibrate-hAOnEKQWnTwn.aac"
       />
       {children}
       <div className="call-button">
-        <img src="./assets/img/icon_call.svg" alt="call-icon" className="icon-call" />
+        <img src="https://storytelling-storage.twreporter.org/files/icon-call-EEvqybtwNKvz.svg" alt="call-icon" className="icon-call" />
       </div>
       <div className="call-background" />
     </div>
