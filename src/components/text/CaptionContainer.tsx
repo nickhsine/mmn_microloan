@@ -2,6 +2,7 @@ import { useRef, forwardRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import useWindowDimensions from '../utility/useWindowDimensions';
 
 import { Caption } from './Caption';
 
@@ -11,6 +12,7 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
     const captions = gsap.utils.toArray<HTMLParagraphElement>('.caption', containerRef.current);
+    // const { width } = useWindowDimensions();
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -48,13 +50,18 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
     });
   }, { scope: containerRef });
 
+  // if ( width < 768) {
+  // }
+  // else {
+  // }
+  
   return (
     <div className="caption-container" ref={containerRef}>
       <Caption category="normal" startAt={6.45} style={{ top: '70vh', left: '75vw' }}>
         從未申請過銀行貸款的Ｈ小姐，在訊息中再三與對方確認身分，卻沒有得到正面答覆。直到資料全部繳交後，對方才回覆，自己是協助辦理貸款的代辦公司。
       </Caption>
       <Caption category="normal" startAt={8.3}>
-        Ｈ小姐是和裕富資融股份有限公司申請貸款，並由尼亞斯國際有限公司代辦，必須額外收取一筆代辦費。
+        Ｈ小姐是和裕富數位資融股份有限公司申請貸款，並由尼亞斯國際有限公司代辦，必須額外收取一筆代辦費。
       </Caption>
       <Caption category="normal" startAt={8.6} style={{ top: '35vh' }}>
         而雖然貸款金額為25萬，實際撥款金額是以申辦單位（裕富資融）核貸為準。
@@ -63,7 +70,7 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
         扣除手續費與代辦費用，Ｈ小姐最後實拿約20萬3,985元。
       </Caption>
       <Caption category="normal" startAt={13.2} style={{ top: '65vh' }}>
-        每期繳納7,075元還款（共48期），實際負債金額為33萬9,600元。經《報導者》試算還款利率，本筆借貸利率為31.4%，高於《民法》規定的16%借貸上限。
+        每期繳納7,075元還款（共48期），實際負債金額為33萬9,600元。經《報導者》以H小姐實拿金額試算還款利率，，本筆借貸利率為31.4%，高於《民法》規定的16%借貸上限。
       </Caption>
 
       <Caption category="normal" startAt={13.6}>
@@ -75,11 +82,11 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
       <Caption category="normal" startAt={18.8}>
         申請一筆新貸款，須重新承擔內扣與手續費用；提前清償上一筆債務，也可能得負擔違約金，35萬元的貸款，Ｈ小姐最後僅實拿53,075元，卻完全不知道衍生費用的確切名目與金額。
       </Caption>
-      <Caption category="normal" startAt={19.5}>
-       每月還款金額提升至9,100元，長達54期，總債務來到49萬1,400元。
+      <Caption category="normal" startAt={20} style={{ left: '37vw', top: '30vh' }}>
+        借大還小之後，H小姐每月還款金額從7075元提高到9100元，總債務也從近34萬增加到49萬1400元
       </Caption>
-      <Caption category="normal" startAt={20}>
-        借大還小之後，經《報導者》還原試算此筆利率高達36.1%，更是高於原先31.4%利率。
+      <Caption category="normal" startAt={20.5} style={{ left: '37vw', top: '40vh' }}>
+        經《報導者》還原試算此筆利率高達36.1%，更是高於原先31.4%利率。
       </Caption>
 
       {/* Mickey */}
@@ -98,34 +105,35 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
       <Caption category="normal" startAt={29.2}>
       米奇先透過王道國際協助「現金周轉」，和中租旗下的「合迪股份有限公司」申請10萬元汽機車貸款。
       </Caption>
-      <Caption category="normal" startAt={32}>
+      <Caption category="normal" startAt={31.7}>
       由於10萬元現金周轉衍生高額的服務費用，也讓米奇開始擔心，債務整合的服務費金額。
       </Caption>
-      <Caption category="normal" startAt={33.5}>
-      米奇申請的債務整合服務，需要收取15%，近11萬元服務費......
+      {/* SLOWER */}
+      <Caption category="normal" startAt={32.95}>
+      米奇申請的債務整合服務，需要收取15%服務費，以米奇債務近80萬元計算，則要近11萬元......
       </Caption>
-      <Caption category="normal" startAt={34.15} stayFor={1} style={{ left: '70vw', top: '25vh' }}>
-      為了讓債務能順利協商，專員表示能再替米奇辦理一筆貸款支付服務費。
+      <Caption category="normal" startAt={34.15} stayFor={0.2} style={{ left: '70vw', top: '25vh' }}>
+      為了讓債務整合順利，專員表示可再替米奇向第一國際資融股份有限公司申請一筆貸款，協助他繳納服務費。
       </Caption>
-      <Caption category="normal" startAt={34.5} stayFor={1} style={{ left: '31vw', top: '25vh' }}>
+      <Caption category="normal" startAt={34.5} stayFor={0.2} style={{ left: '31vw', top: '25vh' }}>
       米奇向第一國際申請10萬元手機貸款
       </Caption>
-      <Caption category="normal" startAt={34.54} stayFor={1} style={{ left: '35vw', top: '35vh' }}>
+      <Caption category="normal" startAt={34.54} stayFor={0.2} style={{ left: '35vw', top: '35vh' }}>
       內扣手續費15,350元後
       </Caption>
-      <Caption category="normal" startAt={34.56} stayFor={1} style={{ left: '31vw', top: '45vh' }}>
+      <Caption category="normal" startAt={34.56} stayFor={0.2} style={{ left: '31vw', top: '45vh' }}>
       實際核發84,470元
       </Caption>
-       <Caption category="normal" startAt={34.58} stayFor={1} style={{ left: '35vw', top: '55vh' }}>
-      被王道國際要求全數匯出作為服務費
+       <Caption category="normal" startAt={34.58} stayFor={0.2} style={{ left: '35vw', top: '55vh' }}>
+      被王道國際要求全數匯出作為債務整合的服務費
       </Caption>
-      <Caption category="normal" startAt={34.6} stayFor={1} style={{ left: '31vw', top: '65vh' }}>
-      債務整合尚未開始，又新增一筆13萬635元債務
+      <Caption category="normal" startAt={34.6} stayFor={0.2} style={{ left: '31vw', top: '65vh' }}>
+      米奇因此又新增一筆13萬635元債務
       </Caption>
       <Caption category="normal" startAt={35} style={{ left: '65vw', top: '75vh' }}>
       三個月後......
       </Caption>
-      <Caption category="normal" startAt={40}>
+      <Caption category="normal" startAt={40} style={{ display: 'none' }}>
       </Caption>
     </div>
   );

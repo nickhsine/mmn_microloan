@@ -193,14 +193,14 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, messagesAppRef.current, '<');
     AddStartTL(misshTL, messagesRef.current,  '<1');
     
-    AddStartTL(misshTL, telepromterRef_1.current, '>3');
+    AddStartTL(misshTL, telepromterRef_1.current, '>4');
     AddNoScrubTL(misshTL, telepromterRef_1.current, '>');
     RefFromTo(misshTL, messagesRef.current, 
       { opacity: 1 },  { opacity: 0.25, duration: 0.5 }, '<'
     );
     AddEndTL(misshTL, telepromterRef_1.current, '>4');
     AddStartTL(misshTL, notificationRef_2.current, '<');
-    AddEndTL(misshTL, notificationRef_2.current, '>');
+    AddEndTL(misshTL, notificationRef_2.current, '>2');
 
     RefFromTo(misshTL, contractRef_A.current, 
       { x: '-100vw', y: '-100vh', rotation: -90 }, 
@@ -208,11 +208,11 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     );
     RefFromTo(misshTL, contractRef_B.current, 
       { x: '-100vw', y: '100vh', rotation: 90 }, 
-      { x: `${contract_Xoffset}vw`, y: `${contract_Yoffset+22}vh`, rotation: -5, duration: 2 }, '<-0.25'
+      { x: `${contract_Xoffset}vw`, y: `${contract_Yoffset+22}vh`, rotation: -5, duration: 2 }, '<-0.5'
     );
     RefFromTo(misshTL, phoneRef.current, 
       { x: 0, y: `${phone_Yoffset}vh`, rotation: 0 }, 
-      { x: `${phone_offscreen_1-25}vw`, y: `${phone_Yoffset}vh`, rotation: -5, duration: 1 }, '<1'
+      { x: `${phone_offscreen_1-25}vw`, y: `${phone_Yoffset}vh`, rotation: -5, duration: 1 }, '<'
     );
     AddStartTL(misshTL, contractRef_A.current, '>1');
     AddStartTL(misshTL, contractRef_B.current, '<');   
@@ -259,7 +259,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
 
     RefFromTo(misshTL, calculatorRef.current, 
       { x: '5vw', y: `${calculator_Yoffset}vh`, rotation: 2, zIndex: 1 }, 
-      { x: `${calculator_offscreen_1}vw`, y: `${calculator_Yoffset}vh`, rotation: 5, zIndex: 1, duration: 1 }, '>1'
+      { x: `${calculator_offscreen_1+15}vw`, y: `${calculator_Yoffset}vh`, rotation: 5, zIndex: 1, duration: 1 }, '>1'
     );
     RefFromTo(misshTL, phoneRef.current, 
       { x: `${phone_offscreen_1-25}vw`, y: `${phone_Yoffset}vh`, rotation: -5, zIndex: 1 }, 

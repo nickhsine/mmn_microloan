@@ -160,21 +160,22 @@
   align-self: flex-end;
 }
 .call .dialogs-container .Single {
-  text-align: center;
   align-self: center;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .call .dialogs-container .Recieve p,
-.call .dialogs-container .Sent p {
-  font-size: 16px;
+.call .dialogs-container .Sent p, 
+.call .dialogs-container .Single p {
+  font-size: var(--text-base);
   font-weight: 400;
   color: var(--color-gray-900);
 }
 
 .call .dialogs-container .Recieve span,
-.call .dialogs-container .Sent span {
-  font-size: 12px;
+.call .dialogs-container .Sent span,
+.call .dialogs-container .Single span {
+  font-size: var(--text-xs);
   font-weight: 400;
   color: var(--color-gray-900);
 }
@@ -282,7 +283,7 @@
 }
 .messages-app .messages .messageRecieve p,
 .messages-app .messages .messageSent p {
-  font-size: 16px;
+  font-size: var(--text-base);
   font-weight: 400;
   color: hsla(0, 0%, 25%, 1);
   border-radius: 20px;
@@ -298,7 +299,7 @@
 
 .messages-app .messages .messageRecieve span,
 .messages-app .messages .messageSent span {
-  font-size: 12px;
+  font-size: var(--text-xs);
   font-weight: 400;
   color: hsla(0, 0%, 80%, 1);
   align-self: flex-end;

@@ -249,27 +249,27 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
               <p>您好，我是理財專員鍾先生，協助你處理後續事宜。</p>
               <span>17:10</span>
             </div>
-            <div className="messageSent">
+            <div className="messageRecieve">
+            <img className="avatar blank" src={messageAvatarImg_2} />
+              <p>這邊先幫你申請中租機車專案，金額10萬分36期，照會詢問，就說透過簡訊自行申辦，不可以提到（代辦公司），千萬記得提到會直接退掉。名下信用卡，說只有一張，信貸不要提到。資金用途說購買家具。</p>
               <span>17:13</span>
-              <p>想問「債務整合」有機會幫我與銀行協商在7年每月付5,000元嗎？</p>
+            </div>
+            <div className="messageSent">
+            <span>17:30</span>
+              <p>謝謝，想問「債務整合」有機會幫我與銀行協商在7年每月付5,000元嗎？</p> 
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_2} />
               <p>我們會盡全力試試看。</p>
-              <span>17:30</span>
+              <span>17:32</span>
             </div>
             <div className="messageSent">
-              <span>17:32</span>
+              <span>17:55</span>
               <p>過件機率有多大？</p>
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_2} />
               <p>先等我消息喔</p>
-              <span>17:55</span>
-            </div>
-            <div className="messageRecieve">
-              <img className="avatar blank" src={messageAvatarImg_2} />
-              <p>這邊先幫你申請中租機車專案，金額10萬分36期，照會詢問，就說透過簡訊自行申辦，不可以提到（代辦公司），千萬記得提到會直接退掉。名下信用卡，說只有一張，信貸不要提到。資金用途說購買家具。</p>
               <span>17:56</span>
             </div>
             <div className="messageBlank" />
@@ -278,7 +278,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             <div className="messageDate">7月11日 [ 四 ]</div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_2} />
-              <p>今天會撥款喔，對保費5,500，公司先幫你代墊，等等連同服務費一起匯給我們就好。</p>
+              <p>今天機車貸會撥款喔，對保費5,500元，公司先幫你代墊，等等連同服務費一起匯給我們就好。</p>
               <span>10:30</span>
             </div>
             <div className="messageSent">
@@ -287,7 +287,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             </div>
             <div className="messageSent">
               <span>12:30</span>
-              <p>（入帳截圖）</p>
+              <img className="photo" src="./assets/img/messageImg_2B.png" style={{ width: '200px', boxShadow: 'none' }} />
             </div>
             <div className="messageSent">
               <span>12:31</span>
@@ -327,7 +327,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
             <div className="messageDate">7月12日 [ 五 ]</div>
             <div className="messageSent">
               <span>08:06</span>
-              <p>後續服務費大約是多少，可以先讓我知道嗎？</p>
+              <p>後續債務整合的服務費大約是多少，可以先讓我知道嗎？</p>
             </div>
             <div className="messageRecieve">
               <img className="avatar" src={messageAvatarImg_2} />
@@ -459,7 +459,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
         <p>你總不可能請律師打官司，但最後官司敗訴，還要求律師費要退費吧？我們協商失敗還是要付服務費。</p>
       </Brief>
       <Brief ref={briefRefL_2} type="light">
-        <p>協商不成，平白無故多出一筆 13 萬元負債。由於每天收到「第一國際」的催債電話，米奇生活費僅剩的餘額，全都拿來償還融資公司，沒有餘力償還本來就積欠的卡債與信貸，遲遲無法繳清原有債務，現在遭到銀行威脅抵押父親的靈骨塔。</p>
+        <p>債務整合不成，平白無故多出一筆 13 萬元負債。由於每天收到「第一國際」的催債電話，米奇生活費僅剩的餘額，全都拿來償還融資公司，沒有餘力償還本來就積欠的卡債與信貸，遲遲無法繳清原有債務，現在遭到銀行催繳扣押父親的靈骨塔。</p>
       </Brief>
     </section>
   );
