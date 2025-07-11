@@ -65,12 +65,7 @@ export const PhoneCall = forwardRef<TimelineHandle, PhoneCallProps>(({ children 
       )
 
       if (audioPlayerRef.current) {
-        tl.call(() => {
-          // 使用 setTimeout 來確保不阻塞動畫
-          setTimeout(() => {
-            audioPlayerRef.current?.playAudio();
-          }, 50);
-        }, [], 0);
+        tl.call(() => audioPlayerRef.current?.playAudio(), [], 0);
         tl.call(() => audioPlayerRef.current?.stopAudio(), [], 4);
       }
 

@@ -88,14 +88,8 @@ export const Telepromter = forwardRef<TimelineHandle, TelepromterProps>(({
         );
       }
 
-      // 延遲一點點再播放音訊，確保視覺效果先開始
       if (audioPlayerRef.current) {
-        tl.call(() => {
-          // 使用 setTimeout 來確保不阻塞動畫
-          setTimeout(() => {
-            audioPlayerRef.current?.playAudio();
-          }, 100);
-        }, [], 0.1);
+        tl.call(() => audioPlayerRef.current?.playAudio(), [], 0);
       }
 
       return tl;
