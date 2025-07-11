@@ -6,16 +6,34 @@ import Draggable from 'gsap/Draggable';
 
 interface ContractProps {
   contract?: string;
-  isHighlight?: boolean;
-  highlightIds?: number[];
   stagger?: number;
+  contractSrc?: string;
+  contractSrc_HL?: string[];
 }
 
 export const Contract = forwardRef<TimelineHandle, ContractProps>(
-  ({ contract = '1B', isHighlight = false, highlightIds = [2], stagger = 2 }, ref) => {
+  ({ contract = '1B', stagger = 2, contractSrc, contractSrc_HL }, ref) => {
     const contractRef = useRef<HTMLDivElement>(null);
     const uniqueId = useId();
-    const contractSrc = `./assets/img/contract${contract}.svg`;
+
+    if (contract === '1A') {
+      contractSrc = `https://storytelling-storage.twreporter.org/files/contract1A-dgBiLWKE-yjr.svg`;
+      contractSrc_HL = [`https://storytelling-storage.twreporter.org/files/contract1A-HL1-ICg32cPmcvsl.svg`];
+    } else if (contract === '1B') {
+      contractSrc = `https://storytelling-storage.twreporter.org/files/contract1B-qh-koTyAB8IR.svg`;
+      contractSrc_HL = [
+        `https://storytelling-storage.twreporter.org/files/contract1B-HL1-uDegw-pqOjxG.svg`, 
+        `https://storytelling-storage.twreporter.org/files/contract1B-HL2-CjUccYyDzbgM.svg`
+      ];
+    } else if ( contract === '1C1') {
+      contractSrc = `https://storytelling-storage.twreporter.org/files/contract1C1-NeQsHBYAwsS6.svg`;
+    } else if ( contract === '1C2') {
+      contractSrc = `https://storytelling-storage.twreporter.org/files/contract1C2-XzqKI7dzl_tZ.svg`;
+    } else if (contract === '2A') {
+      contractSrc = `https://storytelling-storage.twreporter.org/files/contract2A-NxE7UARit7LK.svg`;
+    } else {
+      console.log('contract not found');
+    }
 
     useGSAP(
       () => {
@@ -46,15 +64,15 @@ export const Contract = forwardRef<TimelineHandle, ContractProps>(
       },
       domElement: contractRef.current,
     }));
-    if (isHighlight) {
+    if (contractSrc_HL && contractSrc_HL.length > 0) {
       return (
         <div className="contract-container" ref={contractRef} data-contract-id={uniqueId}>
-          {highlightIds.map((id, index) => (
+          {contractSrc_HL?.map((src, index) => (
             <img
-              key={`${contract}-hl-${id}`}
-              src={`./assets/img/contract${contract}_HL${id}.svg`}
+              key={`${contract}-hl-${index}`}
+              src={src}
               className="contract-highlight"
-              alt={`contract highlight ${id}`}
+              alt={`contract highlight ${index}`}
               style={{ zIndex: index + 1 }}
             />
           ))}

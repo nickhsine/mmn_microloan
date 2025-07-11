@@ -10,7 +10,6 @@ interface TelepromterProps {
   audioSrc?: string;
   volume?: number;
   loop?: boolean;
-  audioDuration?: number;
 }
 
 interface ExtendedTimelineHandle extends TimelineHandle {
@@ -24,7 +23,6 @@ export const Telepromter = forwardRef<TimelineHandle, TelepromterProps>(({
   audioSrc, 
   volume = 1, 
   loop = false,
-  audioDuration
 }, ref) => {
 
   const telepromterRef = useRef<HTMLDivElement>(null);

@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 
-@import './noise.css';
 @import './calculator.css';
 @import './document.css';
 @import './phone.css';

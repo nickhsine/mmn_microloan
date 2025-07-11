@@ -161,7 +161,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
         <p>在收入不穩、壓力不斷的情況下，他每天醒來的第一個念頭就是：「還有哪一筆要繳？」</p>
         <p>他也開始尋找所謂的「債務整合」，整合名下所有債務，申請一筆利率較低的貸款，進行清償，重啟生活。但不知道，等待他的不是出路，而是一道更深的債務陷阱……</p>
       </Brief>
-      <Contract ref={contractARef} contract="2A" isHighlight={false} />
+      <Contract ref={contractARef} contract="2A" />
 
       <Phone ref={phoneRef}>
         <PhoneStatic ref={phoneStaticRef_1} src="https://storytelling-storage.twreporter.org/files/facebook-layout-all-2Vut2b-oSlcr.png" />

@@ -342,10 +342,10 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
 
   return (
     <section className="section-missh" ref={sectionRef}>
-      <Contract ref={contractRef_A} contract="1A" highlightIds={[1]} isHighlight={true} />
-      <Contract ref={contractRef_B} contract="1B" highlightIds={[2, 3]} isHighlight={true} />
-      <Contract ref={contractRef_C2} contract="1C2" isHighlight={false} />
-      <Contract ref={contractRef_C1} contract="1C1" isHighlight={false} />
+      <Contract ref={contractRef_A} contract="1A" />
+      <Contract ref={contractRef_B} contract="1B" />
+      <Contract ref={contractRef_C2} contract="1C2" />
+      <Contract ref={contractRef_C1} contract="1C1" />
       <Phone ref={phoneRef}>
         <PhoneCall ref={phoneCallRef_1}>
           <div className="call-contact">
