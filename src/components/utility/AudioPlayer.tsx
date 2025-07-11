@@ -41,7 +41,7 @@ export const AudioPlayer = forwardRef<ExtendedTimelineHandle, AudioPlayerProps>(
         if (!audioRef.current || !isPlaying) return;
 
         if (SUPPORTS_VOLUME_CHANGE) {
-          const targetVolume = globalAudioEnabled ? volume : 0;
+          const targetVolume = globalAudioEnabled ? volume : 0.05;
           gsap.to(audioRef.current, { volume: targetVolume, duration: 0.5 });
         } else {
           // 無法調整 volume 時，直接切換 muted
@@ -59,16 +59,26 @@ export const AudioPlayer = forwardRef<ExtendedTimelineHandle, AudioPlayerProps>(
       const audio = audioRef.current;
       audio.loop = loop;
 
-      // iOS 需在使用者互動後才能播放，這裡假設前面的 AudioHandler 點擊已符合條件
-      audio.play().catch(error => console.log('無法播放聲音', error));
+      const startPlayback = async () => {
+        try {
+          // 先以 muted 播放，符合行動端自動播放條件
+          audio.muted = true;
+          await audio.play();
 
-      if (SUPPORTS_VOLUME_CHANGE) {
-        const targetVolume = globalAudioEnabled ? volume : 0;
-        gsap.to(audio, { volume: targetVolume, duration: 0.5 });
-      } else {
-        // 直接透過 muted 控制
-        audio.muted = !globalAudioEnabled;
-      }
+          // 播放成功後依瀏覽器能力決定解除靜音或調整音量
+          if (SUPPORTS_VOLUME_CHANGE) {
+            audio.muted = false;
+            const targetVolume = globalAudioEnabled ? volume : 0;
+            gsap.to(audio, { volume: targetVolume, duration: 0.5 });
+          } else {
+            audio.muted = !globalAudioEnabled;
+          }
+        } catch (error) {
+          console.log('無法播放聲音', error);
+        }
+      };
+
+      startPlayback();
       setIsPlaying(true);
     };
 
@@ -77,7 +87,7 @@ export const AudioPlayer = forwardRef<ExtendedTimelineHandle, AudioPlayerProps>(
 
       if (SUPPORTS_VOLUME_CHANGE) {
         gsap.to(audioRef.current, {
-          volume: 0,
+          volume: 0.05,
           duration: 0.5,
           onComplete: () => {
             setIsPlaying(false);
@@ -102,7 +112,7 @@ export const AudioPlayer = forwardRef<ExtendedTimelineHandle, AudioPlayerProps>(
 
       if (SUPPORTS_VOLUME_CHANGE) {
         gsap.to(audioRef.current, {
-          volume: 0,
+          volume: 0.05,
           duration: 0.3,
           onComplete: () => {
             if (audioRef.current) {
@@ -125,7 +135,7 @@ export const AudioPlayer = forwardRef<ExtendedTimelineHandle, AudioPlayerProps>(
       audio.play().catch(error => console.log('無法恢復聲音', error));
 
       if (SUPPORTS_VOLUME_CHANGE) {
-        const targetVolume = globalAudioEnabled ? volume : 0;
+        const targetVolume = globalAudioEnabled ? volume : 0.05;
         gsap.to(audio, { volume: targetVolume, duration: 0.3 });
       } else {
         audio.muted = !globalAudioEnabled;
@@ -159,6 +169,34 @@ export const AudioPlayer = forwardRef<ExtendedTimelineHandle, AudioPlayerProps>(
 
       domElement: containerRef.current,
     }));
+
+    /*
+     * 🔓 透過使用者點擊 AudioHandler 後發出的 custom event 先行「解鎖」音訊：
+     *     1. 將 muted 設定為 true
+     *     2. 播放一次並立即暫停（iOS/Safari 允許）
+     * 之後即使程式碼再次呼叫 play() 也不會被視為自動播放而遭阻擋。
+     */
+    useEffect(() => {
+      const unlockHandler = () => {
+        if (!audioRef.current) return;
+
+        const audio = audioRef.current;
+        const unlock = async () => {
+          try {
+            audio.muted = true;
+            await audio.play();
+            audio.pause();
+            audio.currentTime = 0;
+            // 保持 muted 狀態，待真正播放時再決定是否取消靜音
+          } catch {}
+        };
+
+        unlock();
+      };
+
+      window.addEventListener('audioUnlock', unlockHandler);
+      return () => window.removeEventListener('audioUnlock', unlockHandler);
+    }, []);
 
     return (
       <div className="audio-player" ref={containerRef} style={{ height: '0px', width: '0px' }}>

@@ -43,6 +43,13 @@ export const AudioHandler = ({ markers }: AudioHandlerProps) => {
 
     window.dispatchEvent(new CustomEvent('audioToggle'));
 
+    // 首次開啟聲音時，由於這個 onClick 具備使用者手勢，
+    // 派發一個 audioUnlock，讓所有 AudioPlayer 先以 muted 方式播放／暫停，
+    // 進而取得後續程式播放權限（iOS/Safari & Chrome）。
+    if (globalAudioEnabled) {
+      window.dispatchEvent(new Event('audioUnlock'));
+    }
+
     const setInputValue = (input: typeof fullStateInput | typeof simpleStateInput | null) => {
       if (input) {
         input.value = globalAudioEnabled;
