@@ -109,10 +109,10 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
         Ｈ小姐決定申請新一筆35萬貸款，希望減輕前述債務壓力。
       </Caption>
       <Caption category="normal" startAt={18.8}>
-        申請一筆新貸款，須重新承擔內扣與手續費用；提前清償上一筆債務，也可能得負擔違約金，35萬元的貸款，Ｈ小姐最後僅實拿53,075元，卻完全不知道衍生費用的確切名目與金額。
+        申請一筆新貸款，須重新承擔內扣與手續費用；提前清償上一筆債務，也可能得負擔違約金。35萬元的貸款，Ｈ小姐最後僅實拿53,075元，卻完全不知道衍生費用的確切名目與金額。
       </Caption>
       <Caption category="normal" startAt={20} style={{ left: left_37, top: top_6 }}>
-        借大還小之後，H小姐每月還款金額從7075元提高到9100元，總債務也從近34萬增加到49萬1400元
+        借大還小之後，H小姐每月還款金額從7,075元提高到9,100元，總債務也從近34萬增加到49萬1,400元
       </Caption>
       <Caption category="normal" startAt={20.5} style={{ left: left_37, top: top_7 }}>
         經《報導者》還原試算此筆利率高達36.1%，更是高於原先31.4%利率。
@@ -123,10 +123,10 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
       去年（2024）5月，是米奇第一次上網搜尋「債務整合」尋求協助。
       </Caption>
       <Caption category="normal" startAt={25.8}>
-      而「王道國際理財顧問」債務整合廣告，讓他誤以為與目前原債務銀行「王道銀行」同公司，便申請免費諮詢。
+      而「王道國際理財顧問」債務整合廣告，讓他誤以為與目前主要債務銀行「王道銀行」同公司，便申請免費諮詢。
       </Caption>
       <Caption category="normal" startAt={27.2}>
-      米奇同時諮詢「債務整合」與「現金周轉」兩項服務，規劃顧問表示可同時協助辦理，並傳簽約系統請米奇先簽署委託書合約。
+      米奇同時諮詢「債務整合」與「現金周轉」兩項服務，規劃顧問表示可同時協助辦理，不過須先簽署「委託代辦契約」。
       </Caption>
       <Caption category="normal" startAt={27.7}>
       簽約完成後，轉介另一位理財專員，協助處理後續事宜。
