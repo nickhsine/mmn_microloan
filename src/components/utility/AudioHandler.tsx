@@ -12,6 +12,12 @@ interface AudioHandlerProps {
 
 export let globalAudioEnabled = false;
 
+// 簡易行動裝置偵測，用來決定是否啟用 Rive 的 autoBind（桌機保留 Hover 效果，手機避免卡在 Hover 狀態）
+const isMobile = () =>
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  ) || window.innerWidth <= 768 || 'ontouchstart' in window;
+
 const useAudioRive = (artboard: string) => {
   const { RiveComponent, rive } = useRive({
     src: './assets/rive/shared-audiohandler.riv',
@@ -19,25 +25,36 @@ const useAudioRive = (artboard: string) => {
     artboard,
     autoplay: true,
     autoBind: true,
+    // 行動裝置停用 Rive Listeners（hover / pointer）以避免 hover 卡住
+    shouldDisableRiveListeners: isMobile(),
   });
 
   const stateInput = useStateMachineInput(rive, 'State Machine 1', 'State');
 
-  return { RiveComponent, stateInput };
+  return { RiveComponent, stateInput, rive };
 };
 
 export const AudioHandler = ({ markers }: AudioHandlerProps) => {
-  const { RiveComponent: FullRiveComponent, stateInput: fullStateInput } = useAudioRive('Full');
-  const { RiveComponent: SimpleRiveComponent, stateInput: simpleStateInput } = useAudioRive('Simple');
+  const { RiveComponent: FullRiveComponent, stateInput: fullStateInput, rive: fullRive } = useAudioRive('Full');
+  const { RiveComponent: SimpleRiveComponent, stateInput: simpleStateInput, rive: simpleRive } = useAudioRive('Simple');
 
   const handleToggle = () => {
     globalAudioEnabled = !globalAudioEnabled;
 
     window.dispatchEvent(new CustomEvent('audioToggle'));
 
-    [fullStateInput, simpleStateInput].forEach(input => {
-      input && (input.value = globalAudioEnabled);
-    });
+    const setInputValue = (input: typeof fullStateInput | typeof simpleStateInput | null) => {
+      if (input) {
+        input.value = globalAudioEnabled;
+      }
+    };
+
+    setInputValue(fullStateInput);
+
+    // Simple Rive 可能尚未載入完畢，延遲嘗試一次確保狀態同步
+    setTimeout(() => setInputValue(simpleStateInput), 50);
+
+    // 行動裝置已停用 Rive Listeners，上述 hover 卡住問題已排除
   };
 
   useGSAP(() => {

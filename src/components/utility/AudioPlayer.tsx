@@ -14,6 +14,18 @@ interface ExtendedTimelineHandle extends TimelineHandle {
   stopAudio: () => void;
 }
 
+// 檢測瀏覽器是否允許修改 audio.volume（iOS Safari 幾乎完全禁用，部分 Android 也無效）
+const SUPPORTS_VOLUME_CHANGE = (() => {
+  const testAudio = document.createElement('audio');
+  const original = testAudio.volume;
+  try {
+    testAudio.volume = 0.123;
+    return testAudio.volume !== original;
+  } catch {
+    return false;
+  }
+})();
+
 export const AudioPlayer = forwardRef<ExtendedTimelineHandle, AudioPlayerProps>(
   ({ audioSrc = './assets/audio/SFX_PhoneVibrate_v1.aac', volume = 0.5, loop = true }, ref) => {
     const audioRef = useRef<HTMLAudioElement>(null);
@@ -21,17 +33,19 @@ export const AudioPlayer = forwardRef<ExtendedTimelineHandle, AudioPlayerProps>(
     const [isPlaying, setIsPlaying] = useState(false);
     const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
-    useEffect(() => {
-      if (audioRef.current) {
-        audioRef.current.volume = 0;
-      }
-    }, []);
+    // 行動裝置會忽略 volume 寫入，因此改用 muted 控制；
+    // 若瀏覽器支援 volume 仍可以保留舊有淡入淡出效果。
 
     useEffect(() => {
       const handleAudioToggle = () => {
-        if (audioRef.current && isPlaying) {
+        if (!audioRef.current || !isPlaying) return;
+
+        if (SUPPORTS_VOLUME_CHANGE) {
           const targetVolume = globalAudioEnabled ? volume : 0;
           gsap.to(audioRef.current, { volume: targetVolume, duration: 0.5 });
+        } else {
+          // 無法調整 volume 時，直接切換 muted
+          audioRef.current.muted = !globalAudioEnabled;
         }
       };
 
@@ -44,41 +58,64 @@ export const AudioPlayer = forwardRef<ExtendedTimelineHandle, AudioPlayerProps>(
 
       const audio = audioRef.current;
       audio.loop = loop;
+
+      // iOS 需在使用者互動後才能播放，這裡假設前面的 AudioHandler 點擊已符合條件
       audio.play().catch(error => console.log('無法播放聲音', error));
 
-      const targetVolume = globalAudioEnabled ? volume : 0;
-      gsap.to(audio, { volume: targetVolume, duration: 0.5 });
+      if (SUPPORTS_VOLUME_CHANGE) {
+        const targetVolume = globalAudioEnabled ? volume : 0;
+        gsap.to(audio, { volume: targetVolume, duration: 0.5 });
+      } else {
+        // 直接透過 muted 控制
+        audio.muted = !globalAudioEnabled;
+      }
       setIsPlaying(true);
     };
 
     const stopAudio = () => {
       if (!audioRef.current) return;
 
-      gsap.to(audioRef.current, {
-        volume: 0,
-        duration: 0.5,
-        onComplete: () => {
-          setIsPlaying(false);
-          if (audioRef.current) {
-            audioRef.current.pause();
-            audioRef.current.currentTime = 0;
-          }
-        },
-      });
+      if (SUPPORTS_VOLUME_CHANGE) {
+        gsap.to(audioRef.current, {
+          volume: 0,
+          duration: 0.5,
+          onComplete: () => {
+            setIsPlaying(false);
+            if (audioRef.current) {
+              audioRef.current.pause();
+              audioRef.current.currentTime = 0;
+            }
+          },
+        });
+      } else {
+        if (audioRef.current) {
+          audioRef.current.muted = true;
+          audioRef.current.pause();
+          audioRef.current.currentTime = 0;
+        }
+        setIsPlaying(false);
+      }
     };
 
     const pauseAudio = () => {
       if (!audioRef.current || !isPlaying) return;
 
-      gsap.to(audioRef.current, {
-        volume: 0,
-        duration: 0.3,
-        onComplete: () => {
-          if (audioRef.current) {
-            audioRef.current.pause();
-          }
-        },
-      });
+      if (SUPPORTS_VOLUME_CHANGE) {
+        gsap.to(audioRef.current, {
+          volume: 0,
+          duration: 0.3,
+          onComplete: () => {
+            if (audioRef.current) {
+              audioRef.current.pause();
+            }
+          },
+        });
+      } else {
+        if (audioRef.current) {
+          audioRef.current.muted = true;
+          audioRef.current.pause();
+        }
+      }
     };
 
     const resumeAudio = () => {
@@ -87,8 +124,12 @@ export const AudioPlayer = forwardRef<ExtendedTimelineHandle, AudioPlayerProps>(
       const audio = audioRef.current;
       audio.play().catch(error => console.log('無法恢復聲音', error));
 
-      const targetVolume = globalAudioEnabled ? volume : 0;
-      gsap.to(audio, { volume: targetVolume, duration: 0.3 });
+      if (SUPPORTS_VOLUME_CHANGE) {
+        const targetVolume = globalAudioEnabled ? volume : 0;
+        gsap.to(audio, { volume: targetVolume, duration: 0.3 });
+      } else {
+        audio.muted = !globalAudioEnabled;
+      }
       setIsPlaying(true);
     };
 
