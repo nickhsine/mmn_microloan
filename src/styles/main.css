@@ -269,8 +269,8 @@ p.caption.none {
   .brief.light p { padding: 10px 15px; }
 
   .audio-handler-simple {
-    bottom: 55px;
-    left: 50%;
+    top: 60px;
+    right: 5px;
   }
 
   .phone {
