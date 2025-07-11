@@ -194,7 +194,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     );
     RefFromTo(misshTL, phoneRef.current, 
       { x: 0, y: `${phone_Yoffset}vh`, rotation: 0 }, 
-      { x: '35vw', y: `${phone_Yoffset}vh`, rotation: 5, duration: 1 }, '<1'
+      { x: '-25vw', y: `${phone_Yoffset}vh`, rotation: -5, duration: 1 }, '<1'
     );
     AddStartTL(misshTL, contractRef_A.current, '>1');
     AddStartTL(misshTL, contractRef_B.current, '<');   
@@ -208,7 +208,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     ); 
     RefFromTo(misshTL, calculatorRef.current, 
       { x: '-50vw', y: '100vh', rotation: -10 }, 
-      { x: 0, y: `${calculator_Yoffset}vh`, rotation: -2, duration: 2 }, '<'
+      { x: '5vw', y: `${calculator_Yoffset}vh`, rotation: 2, duration: 2 }, '<'
     );
 
     // 1st loan calculation
@@ -240,12 +240,12 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, resultRef_2a.current, '<');
 
     RefFromTo(misshTL, calculatorRef.current, 
-      { x: 0, y: `${calculator_Yoffset}vh`, rotation: -2, zIndex: 1 }, 
-      { x: '-20vw', y: `${calculator_Yoffset}vh`, rotation: -5, zIndex: 1, duration: 1 }, '>1'
+      { x: '5vw', y: `${calculator_Yoffset}vh`, rotation: 2, zIndex: 1 }, 
+      { x: '20vw', y: `${calculator_Yoffset}vh`, rotation: 5, zIndex: 1, duration: 1 }, '>1'
     );
     RefFromTo(misshTL, phoneRef.current, 
-      { x: '35vw', y: `${phone_Yoffset}vh`, rotation: 5, zIndex: 1 }, 
-      { x: '15vw', y: `${phone_Yoffset}vh`, rotation: 5, zIndex: 2, duration: 1 }, '<0.25'
+      { x: '-25vw', y: `${phone_Yoffset}vh`, rotation: -5, zIndex: 1 }, 
+      { x: '-15vw', y: `${phone_Yoffset}vh`, rotation: -5, zIndex: 2, duration: 1 }, '<0.25'
     );
     RefFromTo(misshTL, messagesAppRef.current, 
       { opacity: 1, scale: 1 }, 
@@ -306,8 +306,8 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, resultRef_4a.current, '<');
 
     RefFromTo(misshTL, phoneRef.current, 
-      { x: '15vw', y: `${phone_Yoffset}vh`, rotation: 5, zIndex: 2 }, 
-      { x: '15vw', y: `${phone_Yoffset}vh`, rotation: 5, zIndex: 2, duration: 1 }, '>3'
+      { x: '-15vw', y: `${phone_Yoffset}vh`, rotation: -5, zIndex: 2 }, 
+      { x: '-15vw', y: `${phone_Yoffset}vh`, rotation: -5, zIndex: 2, duration: 1 }, '>3'
     );
 
     if (ref && typeof ref !== 'function') {
