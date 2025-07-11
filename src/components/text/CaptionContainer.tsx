@@ -73,7 +73,7 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
         Ｈ小姐決定申請新一筆35萬貸款，希望減輕前述債務壓力。
       </Caption>
       <Caption category="normal" startAt={18.8}>
-        申請一筆新貸款，須重新承擔內扣與手續費用；提前清償上一筆債務，也可能得負擔違約金。
+        申請一筆新貸款，須重新承擔內扣與手續費用；提前清償上一筆債務，也可能得負擔違約金，35萬元的貸款，Ｈ小姐最後僅實拿53,075元，卻完全不知道衍生費用的確切名目與金額。
       </Caption>
       <Caption category="normal" startAt={19.5}>
        每月還款金額提升至9,100元，長達54期，總債務來到49萬1,400元。
@@ -84,7 +84,7 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
 
       {/* Mickey */}
       <Caption category="normal" startAt={25.5}>
-      去年（2024）5月，是米奇第一次在上網搜尋「債務整合」尋求協助。
+      去年（2024）5月，是米奇第一次上網搜尋「債務整合」尋求協助。
       </Caption>
       <Caption category="normal" startAt={25.8}>
       而「王道國際理財顧問」債務整合廣告，讓他誤以為與目前原債務銀行「王道銀行」同公司，便申請免費諮詢。
