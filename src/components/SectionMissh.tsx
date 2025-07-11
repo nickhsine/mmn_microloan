@@ -96,43 +96,61 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     let phone_Yoffset: number, 
         calculator_Yoffset: number,
         contract_Xoffset: number, 
-        contract_Yoffset: number;
+        contract_Yoffset: number,
+        phone_offscreen_1: number,
+        phone_offscreen_2: number,
+        calculator_offscreen_1: number;
 
     if (width < 768) {
       phone_Yoffset = 0;
+      phone_offscreen_1 = 90;
+      phone_offscreen_2 = 10;
       calculator_Yoffset = 0;
+      calculator_offscreen_1 = -80;
       contract_Xoffset = -25;
       contract_Yoffset = 5;
     } 
     else if (width < 1024) {
       phone_Yoffset = 5;
+      phone_offscreen_1 = 0;
+      phone_offscreen_2 = 0;
       calculator_Yoffset = 5;
+      calculator_offscreen_1 = 0;
       contract_Xoffset = -25;
       contract_Yoffset = 5;
     } 
     else if (width < 1440) {
       phone_Yoffset = 5;
+      phone_offscreen_1 = 0;
+      phone_offscreen_2 = 0;
       calculator_Yoffset = 10;
+      calculator_offscreen_1 = 0;
       contract_Xoffset = 0;
       contract_Yoffset = 5;
     } 
     else if (width < 2048) {
       phone_Yoffset = 5;
+      phone_offscreen_1 = 0;
+      phone_offscreen_2 = 0;
       calculator_Yoffset = 5;
+      calculator_offscreen_1 = 0;
       contract_Xoffset = 0;
       contract_Yoffset = 5;
     } 
     else {
       phone_Yoffset = 0;
+      phone_offscreen_1 = 0;
+      phone_offscreen_2 = 0;
       calculator_Yoffset = 0;
+      calculator_offscreen_1 = 0;
       contract_Xoffset = 0;
       contract_Yoffset = 5;
     }
 
     // INITIAL STATE
     RefFromTo(misshTL, phoneRef.current, 
-      { x: '50vw', y: '100vh', rotation: 20, zIndex: 1 }, 
-      { x: '50vw', y: '100vh', rotation: 20, zIndex: 1, duration: 0.5 }, 0
+      { x: '25vw', y: '100vh', rotation: -20, zIndex: 1 }, 
+      { x: '25vw', y: '100vh', rotation: -20, zIndex: 1, duration: 0.5 }, 0
     );
     RefFromTo(misshTL, messagesAppRef.current, 
       { opacity: 0 },  { opacity: 0 }, 0
@@ -161,7 +179,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
 
     // Animation Time Positioning
     RefFromTo(misshTL, phoneRef.current, 
-      { x: '50vw', y: '100vh', rotation: 20 }, 
+      { x: '25vw', y: '100vh', rotation: -20 }, 
       { x: 0, y: `${phone_Yoffset}vh`, rotation: 0, duration: 1 }, 
       6
     );
@@ -194,7 +212,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     );
     RefFromTo(misshTL, phoneRef.current, 
       { x: 0, y: `${phone_Yoffset}vh`, rotation: 0 }, 
-      { x: '-25vw', y: `${phone_Yoffset}vh`, rotation: -5, duration: 1 }, '<1'
+      { x: `${phone_offscreen_1-25}vw`, y: `${phone_Yoffset}vh`, rotation: -5, duration: 1 }, '<1'
     );
     AddStartTL(misshTL, contractRef_A.current, '>1');
     AddStartTL(misshTL, contractRef_B.current, '<');   
@@ -241,11 +259,11 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
 
     RefFromTo(misshTL, calculatorRef.current, 
       { x: '5vw', y: `${calculator_Yoffset}vh`, rotation: 2, zIndex: 1 }, 
-      { x: '20vw', y: `${calculator_Yoffset}vh`, rotation: 5, zIndex: 1, duration: 1 }, '>1'
+      { x: `${calculator_offscreen_1}vw`, y: `${calculator_Yoffset}vh`, rotation: 5, zIndex: 1, duration: 1 }, '>1'
     );
     RefFromTo(misshTL, phoneRef.current, 
-      { x: '-25vw', y: `${phone_Yoffset}vh`, rotation: -5, zIndex: 1 }, 
-      { x: '-15vw', y: `${phone_Yoffset}vh`, rotation: -5, zIndex: 2, duration: 1 }, '<0.25'
+      { x: `${phone_offscreen_1-25}vw`, y: `${phone_Yoffset}vh`, rotation: -5, zIndex: 1 }, 
+      { x: `${phone_offscreen_2-15}vw`, y: `${phone_Yoffset}vh`, rotation: -5, zIndex: 2, duration: 1 }, '<0.25'
     );
     RefFromTo(misshTL, messagesAppRef.current, 
       { opacity: 1, scale: 1 }, 
@@ -347,19 +365,19 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
             <p>公司</p>
           </div>
           <Dialogs ref={dialogsRef_3}>
-            <div className="dialog Recieve" style={{ alignSelf: 'center' }}>
+            <div className="dialog Single">
               <p>2023年2月裕富資融主動來電</p>
             </div>
-            <div className="dialog Recieve" style={{ alignSelf: 'center' }}>
+            <div className="dialog Single">
               <p>說明因Ｈ小姐「還款狀況正常」</p>
             </div>
-            <div className="dialog Recieve" style={{ alignSelf: 'center', textAlign: 'center' }}>
+            <div className="dialog Single">
               <p>邀請她進行「增貸」35萬元</p>
             </div>
-            <div className="dialog Recieve" style={{ alignSelf: 'center', textAlign: 'center' }}>
+            <div className="dialog Single">
               <p>「借新還舊」不僅能以35萬元貸款，提前還清上一筆債務。</p>
             </div>
-            <div className="dialog Recieve" style={{ alignSelf: 'center', textAlign: 'center' }}>
+            <div className="dialog Single">
               <p>多餘的錢還可以另作他用。</p>
             </div>
           </Dialogs>

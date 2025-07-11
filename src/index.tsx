@@ -6,7 +6,7 @@ import './styles/main.css';
 import { Noise } from './components/utility/noise';
 import { ScrollCounter } from './components/utility/ScrollCounter';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById('multimedia_microloan')!).render(
   <React.StrictMode>
     {/* <Noise /> */}
     {/* <ScrollCounter /> */}

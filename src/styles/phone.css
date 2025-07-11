@@ -155,10 +155,14 @@
   text-align: left;
   align-self: flex-start;
 }
-
 .call .dialogs-container .Sent {
   text-align: right;
   align-self: flex-end;
+}
+.call .dialogs-container .Single {
+  text-align: center;
+  align-self: center;
+  text-align: center;
 }
 
 .call .dialogs-container .Recieve p,

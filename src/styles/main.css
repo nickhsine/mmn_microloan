@@ -269,13 +269,10 @@ p.caption.none {
     height: calc(var(--phone-height) * 0.75);
     width: calc(var(--phone-width) * 0.75);
   }
-  /* .call .call-background {
-    height: 80px;
-  }
-  .call .call-button {
-    width: 70px;
-    height: 70px;
-  } */
+  .call .call-contact { padding: 65px 25px 5px 25px; }
+  .call .call-background { bottom: 40px; }
+  .call .call-button { bottom: 45px; }
+  .messages-app .messages img.avatar { width: 32px; height: 32px;}
 
   .calculator { 
     transform: translate(-50%, -50%) scale(0.5); 

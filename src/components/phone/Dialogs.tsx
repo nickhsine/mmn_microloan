@@ -15,7 +15,7 @@ export const Dialogs = forwardRef<TimelineHandle, DialogsProps>(({ children }, r
 
       if (!dialogsRef.current) return tl;
 
-      const dialogElements = dialogsRef.current.querySelectorAll('.Recieve, .Sent');
+      const dialogElements = dialogsRef.current.querySelectorAll('.Recieve, .Sent, .Single');
 
       if (dialogElements.length === 0) return tl;
 
@@ -31,7 +31,7 @@ export const Dialogs = forwardRef<TimelineHandle, DialogsProps>(({ children }, r
 
       if (!dialogsRef.current) return tl;
 
-      const dialogElements = dialogsRef.current.querySelectorAll('.Recieve, .Sent');
+      const dialogElements = dialogsRef.current.querySelectorAll('.Recieve, .Sent, .Single');
 
       if (dialogElements.length === 0) return tl;
 
