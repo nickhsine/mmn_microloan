@@ -144,7 +144,7 @@ p.caption.none {
 .landing-title {
   font-family: 'Roboto Slab', 'Noto Serif TC', serif;
   position: absolute;
-  top: 40vh;
+  top: 38vh;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0.8;
