@@ -13,8 +13,6 @@ export const ScrollAnimationApp = () => {
   const misshTL = useRef<gsap.core.Timeline | null>(null);
   const mickeyTL = useRef<gsap.core.Timeline | null>(null);
   const masterTL = useRef<gsap.core.Timeline | null>(null);
-  // scrubValue for timeline speed
-  const scrubValue = 5;
 
   useEffect(() => {
     masterTL.current = gsap.timeline({ paused: true });
@@ -28,11 +26,11 @@ export const ScrollAnimationApp = () => {
 
   return (
     <div className="scroll-animation-app">
-      <ContentBG scrubValue={scrubValue} />
-      <CaptionContainer ref={captionTL} scrubValue={scrubValue} />
-      <SectionLanding ref={landingTL} scrubValue={scrubValue} />
-      <SectionMissh ref={misshTL} scrubValue={scrubValue} />
-      <SectionMickey ref={mickeyTL} scrubValue={scrubValue} />
+      <ContentBG />
+      <CaptionContainer ref={captionTL} />
+      <SectionLanding ref={landingTL} />
+      <SectionMissh ref={misshTL} />
+      <SectionMickey ref={mickeyTL} />
     </div>
   );
 };

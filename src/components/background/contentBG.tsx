@@ -5,11 +5,7 @@ import { useGSAP } from '@gsap/react';
 
 import { Envelope } from '../document/Envelope';
 
-interface ContentBGProps {
-  scrubValue: number;
-}
-
-export const ContentBG = ({ scrubValue }: ContentBGProps) => {
+export const ContentBG = () => {
   const contentBGRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -22,7 +18,7 @@ export const ContentBG = ({ scrubValue }: ContentBGProps) => {
         // end: '+=300%',
         pin: true,
         pinSpacing: false,
-        scrub: scrubValue,
+        scrub: true,
         markers: false,
       }
     });

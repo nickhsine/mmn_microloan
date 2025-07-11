@@ -18,11 +18,7 @@ import { Update } from './calculator/Update';
 import { Telepromter } from './utility/Telepromter';
 import useWindowDimensions from './utility/useWindowDimensions';
 
-interface SectionMisshProps {
-  scrubValue: number;
-}
-
-export const SectionMissh = forwardRef<gsap.core.Timeline, SectionMisshProps>(({ scrubValue }, ref) => {
+export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
   const globalmarks = false;
   const messageAvatarImg = 'https://storytelling-storage.twreporter.org/files/avatar-A-T8XooKMfr3pO.svg';
   const { width } = useWindowDimensions();
@@ -89,7 +85,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline, SectionMisshProps>(({
         trigger: '.section-missh',
         start: 'top top',
         end: 'bottom center',
-        scrub: scrubValue,
+        scrub: 1,
         pin: sectionRef.current,
         markers: globalmarks,
       },

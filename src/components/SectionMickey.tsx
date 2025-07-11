@@ -14,11 +14,7 @@ import { Telepromter } from './utility/Telepromter';
 import { Contract } from './document/Contract';
 import useWindowDimensions from './utility/useWindowDimensions';
 
-interface SectionMickeyProps {
-  scrubValue: number;
-}
-
-export const SectionMickey = forwardRef<gsap.core.Timeline, SectionMickeyProps>(({ scrubValue }, ref) => {
+export const SectionMickey = forwardRef<gsap.core.Timeline>((_, ref) => {
   const { width } = useWindowDimensions();
   const globalmarks = false;
   const messageAvatarImg_1 = 'https://storytelling-storage.twreporter.org/files/avatar-B-jg3onwo5JV_x.svg';
@@ -52,7 +48,7 @@ export const SectionMickey = forwardRef<gsap.core.Timeline, SectionMickeyProps>(
         trigger: sectionRef.current,
         start: 'top top',
         end: 'bottom center',
-        scrub: scrubValue,
+        scrub: 1,
         pin: sectionRef.current,
         markers: globalmarks,
       },
