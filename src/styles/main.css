@@ -52,9 +52,9 @@ body::-webkit-scrollbar {
   --color-main-500: hsl(40, 100%, 50%);
   --color-main-300: hsl(40, 100%, 30%);
 
-  --landing-height: 200vh;
-  --missh-height: 1800vh;
-  --mickey-height: 1400vh;
+  --landing-height: 100vh;
+  --missh-height: 900vh;
+  --mickey-height: 700vh;
 }
 ::selection {
   background-color: hsla(40, 100%, 50%, 0.55);

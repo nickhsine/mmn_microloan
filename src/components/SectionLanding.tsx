@@ -7,7 +7,11 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AddEndTL, AddStartTL, safeGsapSet, safeGsapTo, RefFromTo, TimelineHandle } from './utility/TimelineHandle';
 
-export const SectionLanding = forwardRef<gsap.core.Timeline>((_, ref) => {
+interface SectionLandingProps {
+  scrubValue: number;
+}
+
+export const SectionLanding = forwardRef<gsap.core.Timeline, SectionLandingProps>(({ scrubValue }, ref) => {
   const sectionRef = useRef<HTMLElement | null>(null);
   const titleRef = useRef<TimelineHandle | null>(null);
   const briefRefD = useRef<TimelineHandle | null>(null);
@@ -23,7 +27,7 @@ export const SectionLanding = forwardRef<gsap.core.Timeline>((_, ref) => {
         trigger: sectionRef.current,
         start: 'top top',
         end: 'bottom center',
-        scrub: 1,
+        scrub: scrubValue,
         pin: sectionRef.current,
         markers: globalmarks,
       },
@@ -42,7 +46,7 @@ export const SectionLanding = forwardRef<gsap.core.Timeline>((_, ref) => {
       color: 'var(--color-gray-800)', duration: 1, ease: 'power1.out' 
     }, '<');
 
-    AddEndTL(landingTL, briefRefD.current, '>5');
+    AddEndTL(landingTL, briefRefD.current, '>7');
     AddEndTL(landingTL, briefRefL.current, '<');
     
 

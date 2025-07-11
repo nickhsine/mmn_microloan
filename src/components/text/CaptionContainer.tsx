@@ -6,7 +6,11 @@ import useWindowDimensions from '../utility/useWindowDimensions';
 
 import { Caption } from './Caption';
 
-export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
+interface CaptionContainerProps {
+  scrubValue: number;
+}
+
+export const CaptionContainer = forwardRef<gsap.core.Timeline, CaptionContainerProps>(({ scrubValue }, ref) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { width } = useWindowDimensions();
 
@@ -19,7 +23,7 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
         trigger: containerRef.current,
         start: 'top top',
         end: 'bottom center',
-        scrub: true,
+        scrub: scrubValue,
         pin: true,
       },
     });
