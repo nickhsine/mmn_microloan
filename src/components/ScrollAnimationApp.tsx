@@ -14,6 +14,9 @@ export const ScrollAnimationApp = () => {
   const mickeyTL = useRef<gsap.core.Timeline | null>(null);
   const masterTL = useRef<gsap.core.Timeline | null>(null);
 
+  // 統一控制所有時間軸的 scrub 值
+  const scrubValue = 5;
+
   useEffect(() => {
     masterTL.current = gsap.timeline({ paused: true });
 
@@ -26,11 +29,11 @@ export const ScrollAnimationApp = () => {
 
   return (
     <div className="scroll-animation-app">
-      <ContentBG />
-      <CaptionContainer ref={captionTL} />
-      <SectionLanding ref={landingTL} />
-      <SectionMissh ref={misshTL} />
-      <SectionMickey ref={mickeyTL} />
+      <ContentBG scrubValue={scrubValue} />
+      <CaptionContainer ref={captionTL} scrubValue={scrubValue} />
+      <SectionLanding ref={landingTL} scrubValue={scrubValue} />
+      <SectionMissh ref={misshTL} scrubValue={scrubValue} />
+      <SectionMickey ref={mickeyTL} scrubValue={scrubValue} />
     </div>
   );
 };
