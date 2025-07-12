@@ -23,23 +23,46 @@ export const ScrollSmootherWrapper = ({ children }: ScrollSmootherWrapperProps) 
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let smoother : ScrollSmoother
     if (wrapperRef.current && !isMobile()) {
-      ScrollSmoother.create({
+     smoother = ScrollSmoother.create({
         wrapper: '#smooth-wrapper',
         content: '#smooth-content',
         smooth: 2,
         effects: true,
         normalizeScroll: false,
+        onUpdate: () => {
+          if (smoother) {
+            const scrollY = smoother.scrollTop();
+            const maxScroll = smoother.content().offsetHeight - window.innerHeight;
+
+            console.log({
+              scrollY,
+              maxScroll,
+            })
+            if (scrollY >= maxScroll) {
+              //smoother.paused(true); // or smoother.kill();
+              document.getElementById('smooth-wrapper').style.position = 'relative';
+              document.getElementById('smooth-content').style.transform = '';
+              document.body.classList.remove('scroll-lock-multimedia-loadcrsis');
+            } else {
+              document.getElementById('smooth-wrapper').style.position = 'fixed';
+              document.body.classList.add('scroll-lock-multimedia-loadcrsis');
+            }
+          }
+        }
       });
     }
 
     return () => {
-      ScrollSmoother.get()?.kill();
+      if (smoother) {
+        smoother.kill();
+      }
     };
   }, []);
 
   return (
-    <div id="smooth-wrapper" ref={wrapperRef}>
+    <div id="smooth-wrapper" ref={wrapperRef} style={{backgroundColor: '#f1f1f1'}}>
       <div id="smooth-content">{children}</div>
     </div>
   );
