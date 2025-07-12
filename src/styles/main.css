@@ -177,6 +177,7 @@ p.caption.none {
   color: var(--color-gray-900);
   text-align: left;
   line-height: 1.15;
+  margin: 0;
 }
 
 .landing-title .subtitle {
