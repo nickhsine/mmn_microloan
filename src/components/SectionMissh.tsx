@@ -284,7 +284,7 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddEndTL(misshTL, telepromterRef_2.current, '>4');
     
     RefFromTo(misshTL, contractRef_A.current, 
-      { x: `${contract_Xoffset-15}vw`, y: `${contract_Yoffset+10}vh`, rotation: -20 }, 
+      { x: `${contract_Xoffset-15}vw`, y: `${contract_Yoffset+5}vh`, rotation: -20 }, 
       { x: `${contract_Xoffset-30}vw`, y: `${contract_Yoffset+10}vh`, rotation: -10, duration: 3 }, '>2'
     );
     RefFromTo(misshTL, contractRef_B.current, 
