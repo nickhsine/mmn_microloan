@@ -26,6 +26,10 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+body.scroll-lock-multimedia-loadcrsis {
+  overflow: hidden;
+}
+
 :root {
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
