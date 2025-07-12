@@ -319,7 +319,7 @@
   display: flex;
   display: none;
   font-size: 12px;
-  font-weight: 450;
+  font-weight: 500;
   color: hsla(0, 0%, 25%, 1);
   border-radius: 20px;
   padding: 3px 13px 5px 13px;
@@ -397,7 +397,7 @@
 
 .notification .content .message {
   font-size: var(--text-base);
-  font-weight: 450;
+  font-weight: 500;
   letter-spacing: 0.03em;
   line-height: 1.2;
 }

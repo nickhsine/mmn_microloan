@@ -114,9 +114,13 @@ button.audio-handler-simple-button {
   padding: 0;
   margin: 0;
   transform: scale(2);
+  opacity: 0.75;
 }
 button.audio-handler-simple-button:hover {
-  background-color: transparent;
+  opacity: 1;
+}
+button.audio-handler-simple-button .audio-logo {
+  filter: drop-shadow(-2px 2px 2px #F1F1F1);
 }
 
 .audio-logo {
