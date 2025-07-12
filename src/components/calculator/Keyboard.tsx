@@ -29,7 +29,7 @@ export const Keyboard = () => {
         <span className="material-symbols-outlined">equal</span>
       </div>
       <div className="key orange">
-        <span className="material-symbols-outlined">add_2</span>
+        <span className="material-symbols-outlined">add</span>
       </div>
     </div>
   );

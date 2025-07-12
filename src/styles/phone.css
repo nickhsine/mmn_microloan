@@ -246,7 +246,7 @@
   justify-content: flex-end;
   /* gap: 6px; */
   padding: 12px 20px;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .messages-app .messages .messageRecieve {

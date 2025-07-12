@@ -118,7 +118,7 @@ export const PhoneCall = forwardRef<TimelineHandle, PhoneCallProps>(({ children 
     <div className="call" ref={callRef}>
       <AudioPlayer
         ref={audioPlayerRef}
-        volume={0.2}
+        volume={0.5}
         audioSrc="https://storytelling-storage.twreporter.org/files/SFX-PhoneVibrate-lowdb-aSMWKK46v_D-.aac"
       />
       {children}

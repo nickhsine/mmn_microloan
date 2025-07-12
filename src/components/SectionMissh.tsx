@@ -220,11 +220,11 @@ export const SectionMissh = forwardRef<gsap.core.Timeline>((_, ref) => {
     AddStartTL(misshTL, contractRef_A.current, '>1');
     AddStartTL(misshTL, contractRef_B.current, '<');   
     RefFromTo(misshTL, contractRef_A.current, 
-      { x: `${contract_Xoffset}vw`, y: `${contract_Yoffset+5}vh`, rotation: 5 }, 
-      { x: `${contract_Xoffset-15}vw`, y: `${contract_Yoffset+10}vh`, rotation: -20, duration: 3 }, '>2'
+      { x: `${contract_Xoffset}vw`, y: `${contract_Yoffset+10}vh`, rotation: 5 }, 
+      { x: `${contract_Xoffset-15}vw`, y: `${contract_Yoffset+5}vh`, rotation: -20, duration: 3 }, '>2'
     );
     RefFromTo(misshTL, contractRef_B.current, 
-      { x: `${contract_Xoffset}vw`, y: `${contract_Yoffset+15}vh`, rotation: -5 }, 
+      { x: `${contract_Xoffset}vw`, y: `${contract_Yoffset+22}vh`, rotation: -5 }, 
       { x: `${contract_Xoffset+15}vw`, y: `${contract_Yoffset+5}vh`, rotation: 10, duration: 3 }, '<'
     ); 
     RefFromTo(misshTL, calculatorRef.current, 

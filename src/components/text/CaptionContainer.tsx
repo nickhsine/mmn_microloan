@@ -88,26 +88,26 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
       <Caption category="normal" startAt={6.45} style={{ top: top_1, left: left_75 }}>
         從未申請過銀行貸款的Ｈ小姐，在訊息中再三與對方確認身分，卻沒有得到正面答覆。直到資料全部繳交後，對方才回覆，自己是協助辦理貸款的代辦公司。
       </Caption>
-      <Caption category="normal" startAt={8.3} style={{ top: top_2 }}>
+      <Caption category="normal" startAt={8.6} style={{ top: top_2 }}>
         Ｈ小姐是和裕富數位資融股份有限公司申請貸款，並由尼亞斯國際有限公司代辦，必須額外收取一筆代辦費。
       </Caption>
-      <Caption category="normal" startAt={8.6} style={{ top: top_3 }}>
+      <Caption category="normal" startAt={8.9} style={{ top: top_3 }}>
         而雖然貸款金額為25萬，實際撥款金額是以申辦單位（裕富資融）核貸為準。
       </Caption>
-      <Caption category="normal" startAt={12} style={{ top: top_4 }}>
+      <Caption category="normal" startAt={12.4} style={{ top: top_4 }}>
         扣除手續費與代辦費用，Ｈ小姐最後實拿約20萬3,985元。
       </Caption>
-      <Caption category="normal" startAt={13.2} style={{ top: top_5 }}>
+      <Caption category="normal" startAt={13.4} style={{ top: top_5 }}>
         每期繳納7,075元還款（共48期），實際負債金額為33萬9,600元。經《報導者》以H小姐實拿金額試算還款利率，本筆借貸利率為31.4%，高於《民法》規定的16%借貸上限。
       </Caption>
 
-      <Caption category="normal" startAt={13.6}>
+      <Caption category="normal" startAt={14.1}>
         Ｈ小姐因身體不好，選擇排班兼職工作。每月不穩定的薪水，必須負擔生活費、醫療費以及債務，即使十分積極每月穩定還款，但生活的壓力愈來愈大......
       </Caption>
-      <Caption category="normal" startAt={17}>
+      <Caption category="normal" startAt={17.1}>
         Ｈ小姐決定申請新一筆35萬貸款，希望減輕前述債務壓力。
       </Caption>
-      <Caption category="normal" startAt={18.8}>
+      <Caption category="normal" startAt={19.25}>
         申請一筆新貸款，須重新承擔內扣與手續費用；提前清償上一筆債務，也可能得負擔違約金。35萬元的貸款，Ｈ小姐最後僅實拿53,075元，卻完全不知道衍生費用的確切名目與金額。
       </Caption>
       <Caption category="normal" startAt={20} style={{ left: left_37, top: top_6 }}>
@@ -118,16 +118,16 @@ export const CaptionContainer = forwardRef<gsap.core.Timeline>((_, ref) => {
       </Caption>
 
       {/* Mickey */}
-      <Caption category="normal" startAt={25.5}>
+      <Caption category="normal" startAt={25.2}>
       去年（2024）5月，是米奇第一次上網搜尋「債務整合」尋求協助。
       </Caption>
-      <Caption category="normal" startAt={25.8}>
+      <Caption category="normal" startAt={25.5}>
       而「王道國際理財顧問」債務整合廣告，讓他誤以為與目前主要債務銀行「王道銀行」同公司，便申請免費諮詢。
       </Caption>
       <Caption category="normal" startAt={27.2}>
       米奇同時諮詢「債務整合」與「現金周轉」兩項服務，規劃顧問表示可同時協助辦理，不過須先簽署「委託代辦契約」。
       </Caption>
-      <Caption category="normal" startAt={27.7}>
+      <Caption category="normal" startAt={27.85}>
       簽約完成後，轉介另一位理財專員，協助處理後續事宜。
       </Caption>
       <Caption category="normal" startAt={29.2}>

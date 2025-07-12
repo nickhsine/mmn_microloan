@@ -59,7 +59,7 @@ export const MessagesApp = forwardRef<TimelineHandle, MessagesAppProps>(
         </div>
         {children}
         <div className="app-footer">
-          <span className="material-symbols-outlined">add_2</span>
+          <span className="material-symbols-outlined">add</span>
           <span className="material-symbols-outlined">photo_camera</span>
           <span className="material-symbols-outlined">image</span>
           <div className="flex justify-between w-full rounded-full bg-gray-200/30 px-2 py-1 ml-1">
