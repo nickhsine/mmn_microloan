@@ -2,7 +2,7 @@ import { createPortal } from 'react-dom';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useRive, useStateMachineInput } from '@rive-app/react-webgl2';
+import { useState } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,48 +12,18 @@ interface AudioHandlerProps {
 
 export let globalAudioEnabled = false;
 
-const isMobile = () =>
-  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  ) || window.innerWidth <= 768 || 'ontouchstart' in window;
-
-const useAudioRive = (artboard: string) => {
-  const { RiveComponent, rive } = useRive({
-    src: 'https://storytelling-storage.twreporter.org/files/audiohandler-u5x111bYDH2P.riv',
-    stateMachines: 'State Machine 1',
-    artboard,
-    autoplay: true,
-    autoBind: true,
-    shouldDisableRiveListeners: isMobile(),
-  });
-
-  const stateInput = useStateMachineInput(rive, 'State Machine 1', 'State');
-
-  return { RiveComponent, stateInput, rive };
-};
-
 export const AudioHandler = ({ markers }: AudioHandlerProps) => {
-  const { RiveComponent: FullRiveComponent, stateInput: fullStateInput, rive: fullRive } = useAudioRive('Full');
-  const { RiveComponent: SimpleRiveComponent, stateInput: simpleStateInput, rive: simpleRive } = useAudioRive('Simple');
+  const [audioEnabled, setAudioEnabled] = useState(globalAudioEnabled);
 
   const handleToggle = () => {
-    globalAudioEnabled = !globalAudioEnabled;
+    const newValue = !globalAudioEnabled;
+    globalAudioEnabled = newValue;
+    setAudioEnabled(newValue);
 
     window.dispatchEvent(new CustomEvent('audioToggle'));
     if (globalAudioEnabled) {
       window.dispatchEvent(new Event('audioUnlock'));
     }
-
-    const setInputValue = (input: typeof fullStateInput | typeof simpleStateInput | null) => {
-      if (input) {
-        input.value = globalAudioEnabled;
-      }
-    };
-
-    setInputValue(fullStateInput);
-
-    setTimeout(() => setInputValue(simpleStateInput), 50);
-
   };
 
   useGSAP(() => {
@@ -75,7 +45,7 @@ export const AudioHandler = ({ markers }: AudioHandlerProps) => {
           pointerEvents: 'none',
         });
       },
-      
+
       onLeaveBack: () => {
         gsap.to('.audio-handler-simple', {
           opacity: 0,
@@ -96,16 +66,67 @@ export const AudioHandler = ({ markers }: AudioHandlerProps) => {
       <div className="audio-handler-full">
         <p className="draggable-instruction">以下多媒體物件可自由拖曳，輔助閱讀</p>
         <p className="audio-instruction">本文含聲音敘事，開啟聲音以獲得完整閱讀體驗</p>
-        <div onClick={handleToggle} style={{ cursor: 'pointer', width: '104px', height: '36px' }}>
-          <FullRiveComponent />
-        </div>
+        <button
+          className={`audio-handler-button audio-handler-full-button ${audioEnabled ? 'on' : 'off'}`}
+          onClick={handleToggle}
+          aria-label={audioEnabled ? '關閉聲音 audioToggleOff' : '開啟聲音 audioToggleOn'}
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 42 43"
+            xmlns="http://www.w3.org/2000/svg"
+            className={`audio-logo ${audioEnabled ? 'on' : ''}`}
+            aria-hidden="true"
+          >
+            <g clipPath="url(#clip0)">
+              <path
+                id="LogoRight"
+                className="logo-right"
+                d="M26.252 10.9328L42.0005 6.84521V36.2L26.252 32.0677V10.9328Z"
+              />
+              <path
+                id="LogoLeft"
+                className="logo-left"
+                d="M0 0L26.2514 10.9326V32.0674L0 43V0Z"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0">
+                <rect width="42" height="43" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+          {audioEnabled ? ' 已開啟聲音' : ' 點擊開聲音'}
+        </button>
       </div>
 
       {createPortal(
         <div className="audio-handler-simple">
-          <div onClick={handleToggle} style={{ cursor: 'pointer', width: '60px', height: '20px' }}>
-            <SimpleRiveComponent />
-          </div>
+          <button
+            className={`audio-handler-button audio-handler-simple-button ${audioEnabled ? 'on' : 'off'}`}
+            onClick={handleToggle}
+            aria-label={audioEnabled ? '關閉聲音 audioToggleOff' : '開啟聲音 audioToggleOn'}
+          >
+            <svg
+               width="16"
+               height="16"
+               viewBox="0 0 42 43"
+               xmlns="http://www.w3.org/2000/svg"
+               className={`audio-logo ${audioEnabled ? 'on' : ''}`}
+               aria-hidden="true"
+             >
+               <g clipPath="url(#clip0simple)">
+                 <path id="LogoRight" className="logo-right" d="M26.252 10.9328L42.0005 6.84521V36.2L26.252 32.0677V10.9328Z" />
+                 <path id="LogoLeft" className="logo-left" d="M0 0L26.2514 10.9326V32.0674L0 43V0Z" />
+               </g>
+               <defs>
+                 <clipPath id="clip0simple">
+                   <rect width="42" height="43" fill="white" />
+                 </clipPath>
+               </defs>
+             </svg>
+          </button>
         </div>,
         document.body
       )}

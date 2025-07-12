@@ -8,7 +8,7 @@
 
 /* * { margin: 0; padding: 0; box-sizing: border-box; } */
 html {
-  scroll-behavior: normal;
+  scroll-behavior: smooth;
   font-size: 18px;
   overflow-x: hidden;
   width: 100%;
@@ -56,7 +56,7 @@ body.scroll-lock-multimedia-loadcrsis {
   --color-main-500: hsl(40, 100%, 50%);
   --color-main-300: hsl(40, 100%, 30%);
 
-  --landing-height: 200vh;
+  --landing-height: 100vh;
   --missh-height: 1800vh;
   --mickey-height: 1400vh;
 }
@@ -267,8 +267,8 @@ p.caption.none {
   .brief.light p { padding: 10px 15px; }
 
   .audio-handler-simple {
-    top: 80px;
-    right: 5px;
+    bottom: 50px;
+    right: 40px;
   }
 
   .phone {
