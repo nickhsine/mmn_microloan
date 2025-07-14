@@ -29,9 +29,9 @@ export const AudioHandler = ({ markers }: AudioHandlerProps) => {
   useGSAP(() => {
     ScrollTrigger.create({
       trigger: '.audio-handler-full',
-      start: '+=550 bottom',
+      start: '+=550 center',
       end: '+=550 bottom',
-      markers: markers,
+      markers: true,
       id: 'audio-handler-full',
       onEnter: () => {
         gsap.to('.audio-handler-simple', {
