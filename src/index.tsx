@@ -9,13 +9,17 @@ if (
   host !== 'keystone-editor.twreporter.org' &&
   host !== 'staging-keystone-editor.twreporter.org'
 ) {
-  ReactDOM.createRoot(document.getElementById('multimedia_loancrisis')!).render(
-    <React.StrictMode>
-      <ScrollSmootherWrapper>
-        <ScrollAnimationApp />
-      </ScrollSmootherWrapper>
-    </React.StrictMode>
-  );
+  setTimeout(() => {
+    ReactDOM.createRoot(document.getElementById('multimedia_loancrisis')!).render(
+      <React.StrictMode>
+    
+        <ScrollSmootherWrapper>
+          <ScrollAnimationApp />
+        </ScrollSmootherWrapper>
+      </React.StrictMode>
+    );
+  }, 3000)
+
 } else {
   ReactDOM.createRoot(document.getElementById('multimedia_loancrisis')!).render(
     <div
