@@ -102,7 +102,7 @@ export const AudioHandler = ({ markers }: AudioHandlerProps) => {
       </div>
 
       {createPortal(
-        <div className="audio-handler-simple">
+        <div className="audio-handler-simple" style={{ zIndex: 600 }}>
           <button
             className={`audio-handler-button audio-handler-simple-button ${audioEnabled ? 'on' : 'off'}`}
             onClick={handleToggle}
