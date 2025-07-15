@@ -31,7 +31,7 @@ export const AudioHandler = ({ markers }: AudioHandlerProps) => {
       trigger: '.audio-handler-full',
       start: '+=550 center',
       end: '+=550 bottom',
-      markers: true,
+      markers: markers,
       id: 'audio-handler-full',
       onEnter: () => {
         gsap.to('.audio-handler-simple', {

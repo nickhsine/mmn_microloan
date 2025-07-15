@@ -1,0 +1,51 @@
+/* src/styles/loading.css */
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #F1F1F1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+.loading-screen-content {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+.loading-screen-content.fade-out {
+  opacity: 0;
+}
+
+.loading-screen-content img {
+  position: absolute;
+  box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  transform-origin: center bottom;
+  animation: fanout 1.2s ease-out forwards;
+  opacity: 0;
+}
+
+
+@keyframes fanout {
+  from {
+    transform: translateY(50px) rotate(0deg) scale(0.8);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(var(--translateY)) rotate(var(--angle)) scale(1);
+    opacity: 1;
+  }
+} 
