@@ -69,11 +69,6 @@ body.scroll-lock-multimedia-loadcrsis {
 /* 劇情長度 */
 .scroll-animation-app {
   height: calc(var(--landing-height) + var(--missh-height) + var(--mickey-height) - var(--page-end-offset));
-  opacity: 0;
-  transition: opacity 0.25s ease-in-out;
-}
-.scroll-animation-app.loaded {
-  opacity: 1;
 }
 
 section.section-landing {
@@ -106,10 +101,6 @@ section.section-mickey {
   width: 100%;
   overflow: hidden;
   z-index: 0;
-}
-
-/* Loading Screen */
-.loading-screen {
 }
 
 /* Caption */

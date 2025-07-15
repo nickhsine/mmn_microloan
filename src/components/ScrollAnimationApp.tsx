@@ -23,11 +23,6 @@ export const ScrollAnimationApp = () => {
     if (misshTL.current) masterTL.current.add(misshTL.current, 0);
     if (mickeyTL.current) masterTL.current.add(mickeyTL.current, 0);
 
-    // Trigger the opacity transition after a short delay
-    setTimeout(() => {
-      setIsLoaded(true);
-    }, 0);
-
   }, []);
 
   return (
