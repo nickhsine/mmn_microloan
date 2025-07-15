@@ -5,6 +5,7 @@
 @import './phone.css';
 @import './audio.css';
 @import './background.css';
+@import './loading.css';
 
 /* * { margin: 0; padding: 0; box-sizing: border-box; } */
 html {
@@ -59,6 +60,7 @@ body.scroll-lock-multimedia-loadcrsis {
   --landing-height: 200vh;
   --missh-height: 1800vh;
   --mickey-height: 1400vh;
+  --page-end-offset: 100vh;
 }
 ::selection {
   background-color: hsla(40, 100%, 50%, 0.55);
@@ -66,7 +68,12 @@ body.scroll-lock-multimedia-loadcrsis {
 
 /* 劇情長度 */
 .scroll-animation-app {
-  height: calc(var(--landing-height) + var(--missh-height) + var(--mickey-height));
+  height: calc(var(--landing-height) + var(--missh-height) + var(--mickey-height) - var(--page-end-offset));
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+.scroll-animation-app.loaded {
+  opacity: 1;
 }
 
 section.section-landing {
@@ -99,6 +106,10 @@ section.section-mickey {
   width: 100%;
   overflow: hidden;
   z-index: 0;
+}
+
+/* Loading Screen */
+.loading-screen {
 }
 
 /* Caption */
@@ -255,7 +266,11 @@ p.caption.none {
 
 /* Responsive */
 @media (max-width: 767px) {
+  :root { --page-end-offset: 80vh; }
   html { scroll-behavior: normal; font-size: 14px; }
+
+  .loading-screen-content { transform: translate(-50%, -30%) scale(0.4); }
+
   p.caption { left: 50vw; top: 70vh; }
   
   .landing-title { width: 80%; }

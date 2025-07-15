@@ -42,11 +42,14 @@ export const ScrollSmootherWrapper = ({ children }: ScrollSmootherWrapperProps) 
             })
             if (scrollY >= maxScroll) {
               //smoother.paused(true); // or smoother.kill();
-              document.getElementById('smooth-wrapper').style.position = 'relative';
-              document.getElementById('smooth-content').style.transform = '';
+              const wrapper = document.getElementById('smooth-wrapper');
+              const content = document.getElementById('smooth-content');
+              if (wrapper) wrapper.style.position = 'relative';
+              if (content) content.style.transform = '';
               document.body.classList.remove('scroll-lock-multimedia-loadcrsis');
             } else {
-              document.getElementById('smooth-wrapper').style.position = 'fixed';
+              const wrapper = document.getElementById('smooth-wrapper');
+              if (wrapper) wrapper.style.position = 'fixed';
               document.body.classList.add('scroll-lock-multimedia-loadcrsis');
             }
           }
