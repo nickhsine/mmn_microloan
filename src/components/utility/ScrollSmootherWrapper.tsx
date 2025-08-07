@@ -40,7 +40,9 @@ export const ScrollSmootherWrapper = ({ children }: ScrollSmootherWrapperProps) 
               scrollY,
               maxScroll,
             })
-            if (scrollY >= maxScroll) {
+
+            const scrollBuffer = 100
+            if (scrollY >= maxScroll - scrollBuffer) {
               //smoother.paused(true); // or smoother.kill();
               const wrapper = document.getElementById('smooth-wrapper');
               const content = document.getElementById('smooth-content');
